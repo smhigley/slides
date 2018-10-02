@@ -1,0 +1,95 @@
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.reveal section img {
+	background: none;
+	box-shadow: none;
+	border: none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.overlay-container {
+	display: inline-block;
+	position: relative;
+}
+
+.overlay-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+
+.reveal .global-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 0.6em;
+	color: grey;
+	z-index: 2;
+}
+
+.global-footer a {
+	color: grey;
+}
+
+/* specific slides */
+.profile-slide > div {
+	display: flex !important;
+	align-items: start;
+}
+
+.profile-slide .profile {
+	width: 40%;
+}
+
+.profile-slide .desc {
+	text-align: left;
+}
+
+.pony-button {
+	background-color: #ffffff;
+	border: 2px solid #006be6;
+	color: #006be6;
+	display: inline-block;
+	font-size: 56px;
+	font-weight: bold;
+	line-height: 24px;
+	min-width: 160px;
+	padding: 30px;
+	margin: 0 auto;
+}
+
+.reveal .pony-button img {
+	height: 100px;
+	margin: 0;
+	margin-left: 25px;
+}
+
+.reveal pre {
+	font-size: 0.7em;
+}
+
+@keyframes pony-dance {
+  0%   { transform: rotateZ(0deg); }
+  50% { transform: rotateZ(45deg); }
+	100%   { transform: rotateZ(0deg); }
+}
+
+.pony-button:focus img {
+	animation: pony-dance 1s infinite;
+}

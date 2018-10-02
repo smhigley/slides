@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Performant DOM Animations</h1>
+					<img src="./assets/roombacat.gif" alt="rotating cat">
+				</section>
+				<section>
+					<ul>
+						<li>Position</li>
+						<li>Scale</li>
+						<li>Rotation</li>
+						<li>Opacity</li>
+					</ul>
+				</section>
+				<section>
+						<h2>Why some animations are cheaper</h2>
+						<p>The higher up the waterfall a change occurs, the more work a browser must do before pixels can appear on the screen</p>
+						<img src="assets/waterfall.png" alt="browser rendering waterfall">
+				</section>
+				<section>
+					<h3>Not all paints are equal</h3>
+					<p><span class="large"><code>box-shadow</code> and <code>border-radius</code></span><br> will slow down a layer paint</p>
+				</section>
+				<section>
+					<h3>Forcing a new layer</h3>
+					<ul>
+						<li>Used to need <code>translateZ(0.1px)</code> or another 3D transform</li>
+						<li>Now <code>will-change</code> is available, <em>WITH CAUTION</em></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Too many layers?</h3>
+					<figure>
+						<img src="./assets/apple.com.jank.png" alt="performance graph showing long composite layers step">
+						<figcaption>Source: <a href="http://wesleyhales.com/blog/2013/10/26/Jank-Busting-Apples-Home-Page/">Jank Busting Apple's Home Page</a></figcaption>
+					</figure>
+					<p>Too many separate layers, especially nested ones, can cause jank</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

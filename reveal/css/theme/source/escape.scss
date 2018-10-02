@@ -1,0 +1,96 @@
+/**
+ * Escape theme for reveal.js. Based on the black theme.
+ *
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #222;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 42px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #42affa;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal {
+	.has-light-background {
+		&, h1, h2, h3, h4, h5, h6 {
+			color: #222;
+		}
+	}
+
+	pre {
+		box-shadow: none;
+	}
+
+	section {
+		img {
+			&.character {
+				height: 100vh;
+			}
+		}
+	}
+
+	.character-slide {
+		blockquote {
+			
+			position: absolute;
+			bottom: 40vh;
+			left: 0;
+			text-align: center;
+			width: 100%;
+			span {
+				background: #fff;
+				box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+				display: inline-block;
+				padding: 0.25em;
+			}
+		}
+	}
+
+	blockquote {
+		box-shadow: none;
+		background: none;
+	}
+
+	.slide-background[data-background-hash*='cavemanAvatar'] {
+		background: url("../../assets/cavemanAvatar.svg") -60px -50px no-repeat, url("../../assets/cavemanbg2.svg") no-repeat;
+		background-size: 300px, cover;
+	}
+
+	.slide-background[data-background-hash*='internsAvatar'] {
+		background: url("../../assets/internsAvatar.svg") -60px -50px no-repeat;
+		background-size: 300px;
+	}
+	
+}
+

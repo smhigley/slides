@@ -1,0 +1,57 @@
+/* some style overrides */
+.reveal figure {
+	margin-bottom: 15px;
+}
+.reveal figure img {
+	max-width: 100%;
+}
+
+.reveal h1 {
+	font-size: 3em;
+}
+
+.reveal figcaption {
+	margin-top: -15px;
+	font-size: 0.6em;
+}
+
+.reveal .attribution {
+	text-align: right;
+}
+
+.reveal .footnote {
+	font-size: 0.5em;
+	margin: 0;
+}
+
+.reveal .small {
+	font-size: 0.7em;
+}
+
+/* Focus slides */
+.reveal .todomvc-gif {
+	max-width: 70%;
+}
+
+.infinite-tabs {
+	height: 150px;
+	overflow: visible;
+}
+
+.infinite-tabs ~ img {
+	position: relative;
+	float: left;
+}
+
+/* XKCD bole overlay styles */
+.overlay-container {
+	position: relative;
+}
+
+.xkcd-overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+}

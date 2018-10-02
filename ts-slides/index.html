@@ -1,0 +1,519 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Escape the Office: designing interfaces for other developers</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/escape.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Escape the Office</h1>
+				</section>
+				<section class="profile-slide">
+					<img src="./assets/avatar.png" alt="profile illustration of Sarah" class="profile">
+					<div class="desc">
+						<p>Who is this Sarah person?</p>
+						<ul>
+							<li>Dojo 2 widgets</li>
+							<li>accessibility</li>
+							<li>herds cats</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Typescript is a design tool</h2>
+					<aside class="notes">
+						<p>We're developers, so we get caught up in the implementation details. Not a bad thing, I love talking about why a type is failing to narrow or hating on smoosh as much as the next person, but we also design whether we intend to or not.</p>
+					</aside>
+				</section>
+				<section>
+					<p>Design?</p>
+					<div class="overlay-container">
+						<img src="assets/ps-logo.png" alt="Photoshop?">
+						<div class="fragment overlay-content">
+							<img src="assets/nope.png" alt="not that kind of design">
+						</div>
+					</div>
+					<aside class="notes">
+						<p>Not that design</p>
+						<p>Our "users" are different: not the people who consume a finished product in their browser, but other developers who consume our code.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>Who are you designing for?</h3>
+					<ul>
+						<li class="fragment">Your future self</li>
+						<li class="fragment">New contributors to your code</li>
+						<li class="fragment">Developers consuming your code as a library</li>
+					</ul>
+					<aside class="notes">
+						<p>"Your future self" includes the future of other devs currently working on the same code</p>
+						<ul>
+							<li>You control the options for users. You can limit something like alt text to a string, or force button/input type to be a specific string. Or you can allow something like button text to be any html element or string</li>
+							<li>So: where do you expect to know better than users, and where do they know better?</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-background="#29B6B9" data-background-image="./assets/monstersbg.svg" data-background-size="cover">
+					<h3>How will they interact <br>with your code?</h3>
+					<p><img src="./assets/monsters.svg" alt="Mayhem is lurking"></p>
+					<aside class="notes">
+						<h3>Introduce the characters</h3>
+						<p>I'm sure you've had the experience of working with one or more of these, now or in the past. I definitely don't work with anyone like this now, my coworkers are all the best! In fact, some of them are in the audience now ;D. </p>
+						<p>Seriously though, they're great. But writing open source means that what you make will be exposed to all sorts of developers, and some of them will come back and submit Github issues.</p>
+						<p>Yeah, these are charicatures, but everyone has probably been in the position of wanting something to "just work", starting out and not understanding errors, and needing to extend default functionality before. They're all valid use cases, and it's reductive and unhelpful to dismiss all poor code usage as user error.</p>
+					</aside>
+				</section>
+				<section>
+					<section data-background="#372B2B">
+						<h4>An icon button case study:</h4>
+						<img src="./assets/button_textOnly.png" alt="Button with text 'I am a button'"> &bull;
+						<img src="./assets/button_icon.png" alt="Button with search icon and text"> &bull;
+						<img src="./assets/button_iconOnly.png" alt="Button only search icon">
+						<aside class="notes">
+							<p>You have no idea which one he wants</p>
+						</aside>
+					</section>
+					<section>
+						<h5>Requirements:</h5>
+						<ul>
+							<li>The icon is optional</li>
+							<li>Alt text is necessary if the icon adds meaning</li>
+							<li>There is a predetermined set of possible icons</li>
+						</ul>
+						<aside class="notes">
+							<p>Elaborate on "adds meaning": the icon adds information not present in the button text</p>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section data-background="#F17B6B" data-background-image="assets/cavemanbg.svg" data-background-position="0 10%" data-background-size="cover">
+						<div class="character-slide">
+							<h3>Caveman Coder</h3>
+							<p><img class="character" src="assets/caveman.svg" alt="Caveman Coder"></p>
+							<blockquote class="fragment">
+								<span>I want it to "just work"</span>
+							</blockquote>
+						</div>
+					</section>
+					<section>
+						<h5>Take 1:</h5>
+						<pre>
+							<code data-trim class="typescript">
+							interface ButtonProperties {
+							  label?: text;
+							  iconType?: string;
+							  iconAltText?: string;
+							}
+							</code>
+						</pre>
+					</section>
+					<section data-background="cavemanAvatar">
+						<pre>
+							<code data-trim class="javascript">
+							w(Button, {
+							  iconType: 'search'
+							});
+							</code>
+						</pre>
+					</section>
+					<section data-background="cavemanAvatar">
+						<div>
+							<img src="./assets/button_iconOnly.png" alt="Button only search icon">
+							<pre><code data-trim data-noescape class="html">
+								&lt;button&gt;
+								  &lt;svg role="img"&gt;
+								    &lt;use xlink:href="#search"&gt;&lt;/use&gt;
+								  &lt;/svg&gt;
+								&lt;/button&gt;
+							</code></pre>
+						</div>
+						<blockquote class="fragment">
+							Yes, this looks right. I am done here.
+						</blockquote>
+						<aside class="notes">
+							<ul>
+								<li>Easy to create an incorrect <code>iconType</code></li>
+								<li>Easy to leave off alt text</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h5>Take 2:</h5>
+						<pre><code data-trim class="typescript">
+						interface ButtonProperties {
+						  label?: string;
+						  icon?: {
+						    type: string;
+						    altText: string;
+						  };
+						}
+						</code></pre>
+						<aside class="notes">
+							No alt text as an error forces the use of at least an empty string
+						</aside>
+					</section>
+					<section data-background="cavemanAvatar">
+						<img src="assets/button-ts-error.png" alt="typescript error showing the icon property must contain a required altText string">
+						<blockquote class="fragment">Fine, I will smash my keys until this error goes away</blockquote>
+					</section>
+					<section data-background="cavemanAvatar">
+						<pre><code data-trim class="javascript">
+						w(Button, {
+						  icon: {
+						    type: 'search',
+						    altText: 'search'
+						  }
+						});
+						</code></pre>
+					</section>
+					<section data-background="cavemanAvatar">
+						<div>
+							<img src="./assets/button_iconOnly.png" alt="Button only search icon">
+							<pre><code data-trim data-noescape class="html">
+								&lt;button&gt;
+								  &lt;svg role="img" aria-labelledby="search-title"&gt;
+								    &lt;title id="search-title">search&lt;/title&gt;
+								    &lt;use xlink:href="#search"&gt;&lt;/use&gt;
+								  &lt;/svg&gt;
+								&lt;/button&gt;
+							</code></pre>
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>Just having altText present lets us do all sorts of nice a11y things</li>
+								<li>Now a screen reader will announce "search" when the button is focused</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section data-background="#4FB55D" data-background-image="assets/internsbg.svg" data-background-position="bottom left" data-background-size="cover">
+						<div class="character-slide">
+							<h3>Intern Horde</h3>
+							<p><img class="character" src="assets/interns.svg" alt="Intern Horde"></p>
+							<blockquote class="fragment">
+								<span>Docs? What are docs?</span>
+							</blockquote>
+						</div>
+					</section>
+					<section>
+						<h4>Let's break the button interface</h4>
+						<img src="assets/intern-email.png" alt="" aria-hidden="true">
+						<p class="sr-only">
+							Email Subject: Where do I find icon types?<br>
+							Body: For some reason <code>icon.type: 'magnifying-glass'</code> isn't working. What do I do?
+						</p>
+						<aside class="notes">
+							<p>To be fair, at some point there's no more you can do. But we can do a little better here :)</p>
+						</aside>
+					</section>
+					<section>
+						<h4>What would help someone new to your code?</h4>
+						<ul>
+							<li>IntelliSense/code hinting</li>
+							<li>A more intuitive way to identify an icon as presentational</li>
+						</ul>
+					</section>
+					<section>
+						<h5>From earlier:</h5>
+						<pre><code data-trim class="typescript">
+						interface ButtonProperties {
+						  label?: string;
+						  icon?: {
+						    type: string;
+						    altText: string;
+						  };
+						}
+						</code></pre>
+					</section>
+					<section data-background="internsAvatar">
+						<pre><code data-trim class="javascript">
+						w(Button, {
+						  label: 'Search',
+						  icon: {
+						    type: 'magnifying-glass',
+						    altText: 'search'
+						  }
+						});
+						</code></pre>
+					</section>
+					<section data-background="internsAvatar">
+						<div>
+							<img src="./assets/button_iconFail.png" alt="Button with search label and missing glyph box">
+							<pre><code data-trim data-noescape class="html">
+								&lt;button&gt;
+								  Search
+								  &lt;svg role="img" aria-labelledby="search-title"&gt;
+								    &lt;title id="search-title">search&lt;/title&gt;
+								    &lt;use xlink:href="#magnifying-glass"&gt;&lt;/use&gt;
+								  &lt;/svg&gt;
+								&lt;/button&gt;
+							</code></pre>
+						</div>
+						<aside class="notes">
+							<p>OK, in reality that icon would just disappear, but the missing glyph box is funnier</p>
+							<p>It is actually redundant to have the svg label on there, since the icon adds no extra meaning to the existing text</p>
+						</aside>
+					</section>
+					<section>
+						<h5>Take 3:</h5>
+						<pre><code data-trim class="typescript">
+						enum IconType {
+						  plus = 'plus',
+						  arrow = 'arrow',
+						  search = 'search'
+						};
+						interface PresentationIcon {
+						  type: IconType;
+						  presentation: true;
+						}
+						interface ContentIcon {
+						  type: IconType;
+						  altText: string;
+						}
+						interface ButtonProperties {
+						  label?: string;
+						  icon?: PresentationIcon | ContentIcon;
+						}
+						</code></pre>
+						<aside class="notes">
+							<ul>
+								<li>Provides typeahead support for <code>IconType</code></li>
+								<li>IconType, PresentationIcon, and ContentIcon can be split out for wider use</li>
+								<li>Forces deliberate use of <code>presentation: true</code> if <code>altText</code> is absent</li>
+							</ul>
+						</aside>
+					</section>
+					<section data-background="internsAvatar">
+						<img src="assets/icon_typeahead.png" alt="screen capture of code hinting for IconType">
+						<blockquote>Hmmm... one of these looks right</blockquote>
+					</section>
+					<section data-background="internsAvatar">
+						<div>
+							<img src="./assets/button_icon.png" alt="Button with search label and correct search icon">
+							<pre><code data-trim data-noescape class="html">
+								&lt;button&gt;
+								  Search
+								  &lt;svg aria-hidden="true"&gt;
+								    &lt;use xlink:href="#search"&gt;&lt;/use&gt;
+								  &lt;/svg&gt;
+								&lt;/button&gt;
+							</code></pre>
+						</div>
+						<aside class="notes">
+							<p>SR says:</p>
+						</aside>
+					</section>
+				</section>
+				<section data-background="#4FB55D" data-background-image="assets/inventorbg.svg"  data-background-size="cover">
+					<div class="character-slide">
+						<h3>Inventor</h3>
+						<img class="character" src="./assets/inventor.svg" alt="The Inventor">
+						<blockquote class="fragment">
+							<span>I also want it to do <br>[insert 10 extra features, and a pony]</span>
+						</blockquote>
+					</div>
+					<aside class="notes">
+						Sometimes you just need the pony
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h3>Flexibility vs. control</h3>
+						<p>First let's talk about <code>aria</code>...</p>
+					</section>
+					<section>
+						<h4>What is a <code>&lt;button&gt;</code>?</h4>
+						<ul>
+							<li class="fragment">An interactive element that performs an action on the page</li>
+							<li class="fragment">e.g. controlling a popup</li>
+							<li class="fragment">toggling a state</li>
+							<li class="fragment">submitting a form</li>
+							<li class="fragment">??</li>
+						</ul>
+						<aside class="notes">
+							<p>As opposed to a link, which brings you somewhere by changing the url (maybe in the same page)</p>
+							<p>Example of when the user knows more</p>
+							<p>The functional part is obviously up to the user, and customizable in things like onClick</p>
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li><code>type</code></li>
+							<li><code>aria-expanded</code></li>
+							<li><code>aria-haspopup</code></li>
+							<li><code>aria-pressed</code></li>
+							<li>...</li>
+						</ul>
+						<aside class="notes">
+							<p>When we started, we tried to account for every use case within the button's API</p>
+							<p>There are just wayyy too many, and ARIA spec is evolving quickly</p>
+							<p>talk about TextInput, and its use within ComboBox</p>
+							<p>Now we internally handle popups and toggles, but allow custom props to be passed through in a bucket, but they're always prepended with <code>aria-</code></p>
+							<p>Balance between not expecting users to know enough or need to do that work to correctly use these attributes for popup and toggle buttons, and needing to allow for edge cases.</p>
+							<p>**Don't require knowledge of ARIA to create common use cases**</p>
+						</aside>
+					</section>
+					<section>
+						<h4>Our solution:</h4>
+						<pre><code data-trim class="typescript">
+						interface ButtonProperties {
+						  aria?: { [key: string]: string; };
+						  popup?: boolean;
+						  pressed?: boolean;
+						  type?: 'submit' | 'reset' | 'button' | 'menu';
+						}
+						</code></pre>
+						<aside class="notes">
+							<p>Still allows for edge cases like `aria-hidden` or `aria-label`, while providing an easy way to add popup and toggle buttons w/o user knowledge of aria</p>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section data-background="inventorAvatar">
+						<h4>Back to this guy</h4>
+						<button class="pony-button">Dance with ponies<img src="assets/pony.png" alt="pink pony"></button>
+						<aside class="notes">
+							<p>Pony animates on focus. I... have nothing to say for myself</p>
+						</aside>
+					</section>
+					<section>
+						<h5>Where do you want to preserve control?</h5>
+						<ul>
+							<li>Creating the <code>&lt;button&gt;</code> element</li>
+							<li>All event handlers, states, etc.</li>
+						</ul>
+						<aside class="notes">
+							<p>Weigh both complexity and consequences for failure</p>
+						</aside>
+					</section>
+					<section>
+						<h5>Where do you expect someone to add functionality?</h5>
+						<ul>
+							<li>Tooltips</li>
+							<li>Custom content</li>
+							<li>Addons</li>
+						</ul>
+					</section>
+					<section>
+						<h5>Extension points:</h5>
+						<ul>
+							<li>getContent()<span class="fragment">: string | HTMLElement</span></li>
+							<li>renderPopupIcon()<span class="fragment">: HTMLElement</span></li>
+							<li>render()<span class="fragment">: HTMLElement</span></li>
+						</ul>
+					</section>
+					<section data-background="inventorAvatar">
+						<h5>Extending Button:</h5>
+						<pre><code data-trim data-noescape class="typescript">
+						interface PonyButtonProperties extends ButtonProperties {
+						  icon?: ContentIcon | PresentationIcon | Pony;
+						}
+
+						class PonyButton extends Button&lt;PonyButtonProperties&gt; {
+							renderIcon() {
+								...
+							}
+						}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Who really knows best?</h2>
+					<aside class="notes">
+						<ul>
+							<li>a11y is interesting in that it's not an area where people generally have experience, and is often done wrong</li>
+							<li>It isn't just me, this matters for anyone making tools that can be used on the front end. People will use your stuff!</li>
+							<li>Sure you can think of other areas you know best -- you designed your code for a reason, after all</li>
+							<li>Even though these slides use charaicatures, they are real use cases -- someone shouldn't need to think too hard to do a basic use case (Caveman), it should be as helpful and intuitive in-editor as possible (interns), and there will always be valid use cases you haven't thought of at design-time (inventor)</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h2>Escape Challenge!</h2>
+					<blockquote>Create an interface for an optionally hidden label on a text input</blockquote>
+				</section>
+				<section>
+					<h3>Requirements</h3>
+					<ul>
+						<li>A visible label should be able to support custom content, e.g. <code>&lt;span class="required"&gt;*&lt;/span&gt;</code></li>
+						<li>There must be labelling text, even if invisible</li>
+						<li><code>aria-label</code> is ignored by all common translation services</li>
+						<li>This may change</li>
+					</ul>
+					<aside class="notes">
+						<p>Example of when you know more</p>
+						<p>NOT advocating hidden labels!</p>
+						<p>In reality, we can't enforce label text b/c someone may want to have a label somewhere else with for/id</p>
+						<p>By only accepting a string hidden label, we can switch to aria-label in the future</p>
+						<p>A string-only visible label might be too limiting</p>
+						<p>Run suggestions through use cases from Caveman, interns, and inventor</p>
+						<p>DON'T SAY: thought: label: string | () => string</p>
+					</aside>
+				</section>
+				<section>
+					<figure>
+						<img src="assets/cat-computer.jpg" alt="kitten falling asleep on keyboard">
+						<figcaption>please send help...</figcaption>
+					</figure>
+					<pre><code data-trim class="typescript">
+					interface TextInputProperties {
+					  label: string | HTMLElement;
+					  labelHidden?: boolean;
+					}
+					</code></pre>
+					<p>@codingchaos &bull; #TSConf #EscapeTheOffice</p>
+					<aside class="notes">
+						I'm sure you all can do better!
+					</aside>
+				</section>
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/hashtag/TSConf">#TSConf</a> &bull;
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Don't forget your keys | slides by Sarah Higley</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Don't forget your keys</h1>
+					<p class="small">Make cats and bad puns accessible to all!</p>
+					<img src="assets/cat-keyboard2.jpg" alt="cat on a keyboard" width="70%">
+					<p class="footnote">This presentation contains animated gifs with flashing imagery</p>
+				</section>
+				<section>
+					<h1>Links</h1>
+					<p>This slide deck: <a href="https://smhigley.github.io/keyboard-slides">smhigley.github.io/keyboard-slides</a></p>
+					<p>Dojo 2: <a href="https://dojo.io/">dojo.io</a></p>
+				</section>
+				<section>
+					<section>
+						<h2>Who uses keyboards?</h2>
+						<figure>
+							<img src="assets/cat-keyboard.gif" alt="Cat using a keyboard" width="50%">
+							<figcaption>Some cats have trouble catching mice</figcaption>
+						</figure>
+
+						<aside class="notes">
+							<p>Users stories are important. Not all people use the keyboard the same way, or with the same level of familiarity</p>
+						</aside>
+					</section>
+					<section>
+						<h3>OK, besides cats</h3>
+						<ul>
+							<li>No or almost no vision</li>
+							<li>Low vision</li>
+							<li>Mobility impairments (Parkinson's, ALS)</li>
+						</ul>
+
+						<aside class="notes">
+							<li>Blind = no visual info, use screen reader</li>
+							<li>Other two use screens</li>
+							<li>Screen readers navigate a little differently with the keyboard; more options to jump around. Not going to talk about this much here, since sighted keyboard users mean all content needs to be accessible even without extra SR options</li>
+							<li>Screen magnifiers: often used by the elderly; unlike browser zoom, they act more like pinch-zoom on phones, but they follow focus. ZoomText is popular.</li>
+							<li>Mobility impairments: lack of fine motor control makes using a mouse difficult</li>
+							<li>Phones have their own gesture-based assistive tech (VoiceOver on iOS is the most popular). Making your widgets keyboard-accessible generally also makes them phone-accessible.</li>
+						</aside>
+					</section>
+					<section>
+						<h3>Permanent &bull; Temporary &bull; Situational</h3>
+						<ul>
+							<li>Loss of vision at an early age</li>
+							<li>Eye surgery</li>
+							<li>Broken mouse/trackpad</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Probably the most experienced of these possibilities. Could also be someone losing vision as they get older, with less tech familiarity</li>
+								<li>Surgery => doctor rec to not look at screens for a couple weeks. Probably beginner screen reader usage</li>
+								<li>just broke your mouse, need to look up where the apple store is</li>
+								<li>Another good example: I use SR and dim screen to input sensitive data in a public place (e.g. airport, travel)</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Maintaining visual focus</h1>
+						<div class="overlay-container">
+							<img src="assets/todomvc-bad.gif" alt="TodoMVC loses visual focus" class="todomvc-gif">
+							<div class="fragment xkcd-overlay">
+								<figure>
+									<img src="assets/black-hole.png" alt="illustrated tear in reality from the comic XKCD">
+									<figcaption class="attribution">Source: <a href="https://xkcd.com/264/">XKCD</a></figcaption>
+								</figure>
+							</div>
+						</div>
+
+						<aside class="notes">
+							<ul>
+								<li>From TodoMVC examples</li>
+								<li>It's impossible to interact with any of these elements as a keyboard user</li>
+								<li>Four tabs in between text input and first outlined link: "check all" checkbox + one per todo item</li>
+								<li>It's not obvious, but there's also a hidden "remove" button on each todo, which isn't focusable by keyboard</li>
+								<li>So: it is impossible to edit todos or to delete todos with the keyboard</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<figure>
+							<img src="assets/todomvc-css.png" alt="TodoMVC CSS uses outline: none">
+							<figcaption>Don't do this</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>How to do better</h2>
+						<ul>
+							<li class="fragment">Keep the default <code>:focus</code> styles</li>
+							<li class="fragment">Replace the default <code>:focus</code> styles with something visible</li>
+							<li class="fragment">Certain styles can make an element unfocusable  (<code>display: none</code> and <code>visibility: hidden</code>)</li>
+							<li class="fragment">If it's focusable, it should have programmatically accessible text</li>
+						</ul>
+
+						<aside class="notes">
+							<ul>
+								<li>Yes, TodoMVC really just removed the outline style with that CSS</li>
+								<li><code>display: none</code> can be intentional for invisible AND unfocusable elements (e.g. a hidden modal)</li>
+								<li>In addition to visual focus, SR-accessible text label (also missing in TodoMVC)</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>A tale of two menus</h1>
+						<p>It was the best of focus, it was the worst of focus</p>
+						<figure>
+							<img src="assets/focus-cat.jpg" alt="Unimpressed cat with monocle" width="50%">
+							<figcaption>Monsieur Defeline comes to avenge bad focus</figcaption>
+						</figure>
+
+						<aside class="notes">
+							<ul>
+								<li>Going to delve more into direct focus management -- when you should directly intervene in the tab order.</li>
+								<li>Active vs. passive focus management: passive is where you set up a good focus order in your dom (use native elements, good tabindex values); active is when you directly manage focus with JS.</li>
+								<li>TodoMVC just needed better passive focus management, while more complex widgets need active management.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Menu 1: focuses when closed</h2>
+						<div class="overlay-container">
+							<img src="assets/wapo-menu-bad.gif" alt="Focus moves to hidden menu on Washington Post site" width="45%">
+							<div class="fragment xkcd-overlay">
+								<figure>
+									<img src="assets/black-hole.png" alt="illustrated tear in reality from the comic XKCD">
+									<figcaption class="attribution">Source: <a href="https://xkcd.com/264/">XKCD</a></figcaption>
+								</figure>
+							</div>
+						</div>
+
+						<aside class="notes">
+							<ul>
+								<li>If it's not clear in the gif, the mobile menu is always in the focus order, even collapsed.</li>
+								<li>If you can't interact with it with a mouse, you probably shouldn't interact with it with a keyboard</li>
+								<li>Menu should be unfocusable when collapsed, focusable when open</li>
+								<li>Should have either set all tabindexes (indices?) to -1, or used CSS to hide</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Menu 2: doesn't focus when opened</h2>
+						<div class="overlay-container">
+							<img src="assets/abc-menu-bad.gif" alt="Focus moves behind open menu on ABC News site" width="50%">
+							<div class="fragment xkcd-overlay">
+								<figure>
+									<img src="assets/black-hole.png" alt="illustrated tear in reality from the comic XKCD">
+									<figcaption class="attribution">Source: <a href="https://xkcd.com/264/">XKCD</a></figcaption>
+								</figure>
+							</div>
+						</div>
+
+						<aside class="notes">
+							<ul>
+								<li>Menu opens, but focus moves behind it</li>
+								<li>Should have directly called <code>element.focus()</code> when opened</li>
+								<li>There are a couple possible approaches: the inline menu, and the modal/slideout menu</li>
+								<li>Inline menu can just move into the focus order when opened, and close when focus moves out</li>
+								<li>Slideout menu like this should get direct focus management: it should be focused on open, and trap focus</li>
+								<li>Same basic principle: if it's invisible (no mouse interaction), no keyboard interaction. Goes for main content, too.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Takeaways</h3>
+						<ul>
+							<li>Visible &amp; interactive => focus order</li>
+							<li>No cursor interaction => no keyboard interaction</li>
+							<li><code>display: none;</code> <code>visibility: hidden;</code> or javascript</li>
+						</ul>
+						<p class="small"><i>Like all rules, there are exceptions. Make sure you have a good reason to break them, though!</i></p>
+						<aside class="notes">
+							<p>You may wish to avoid display and visibility for animations. If so, you MUST use javascript to compensate</p>
+						</aside>
+					</section>
+				</section>
+				<!--
+				<section>
+					<h2>Basic Focus Management</h2>
+
+					<p data-height="500" data-theme-id="0" data-slug-hash="pPjRvE" data-default-tab="js,result" data-user="smhigley" data-embed-version="2" data-pen-title="Accessible dropdown menu" class="codepen">See the Pen <a href="https://codepen.io/smhigley/pen/pPjRvE/">Accessible dropdown menu</a> by Sarah Higley (<a href="http://codepen.io/smhigley">@smhigley</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+					<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+					<aside class="notes">
+						<ul>
+							<li>Focus is handled when the menu is closed or open: moves to first link on open, or button on close</li>
+							<li>Handle some key events inside the menu: up, down, home, end, escape</li>
+							<li>Use <code>focusin</code> event because it bubbles. <code>document.activeElement</code> is not available on blur, so we listen to a focus event on the document.</li>
+							<li>A tabindex of -1 means you can programmatically focus, but the element isn't in the tab order</li>
+							<li>All links have <code>tabindex="-1"</code>, which solves the problem of focusing on them when hidden. Additionally, it means you don't get stuck tabbing through the menu (talk more about this later)</li>
+						</ul>
+					</aside>
+				</section>
+				-->
+				<section>
+					<section>
+						<h1>Keyboard patterns</h1>
+						<p class="infinite-tabs" aria-hidden="true">tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab</p>
+						<img src="assets/waiting.jpg" alt="Person turned into a skeleton waiting to tab through a menu" width="30%">
+
+						<aside class="notes">
+							<ul>
+								<li>Let's talk about something touched on in the previous example: that menu had only one element in the focus order.</li>
+								<li>I like your menu, but not enough to spend 10 minutes tabbing through it. Especially since it's probably on every page.</li>
+								<li>Tab in, tab out. One focus node per widget, as a rule of thumb</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Tab in, tab out</h2>
+						<p>From the WAI-ARIA Authoring Practices 1.1:</p>
+						<blockquote>A primary keyboard navigation convention common across all platforms is that the tab and shift+tab keys move focus from one UI component to another while other keys, primarily the arrow keys, move focus inside of components that include multiple focusable elements.</blockquote>
+
+						<aside class="notes">
+							<ul>
+								<li>WAI-ARIA etc. is a bit of a mouthful... you can refer to them as "Oh captain my captain"</li>
+								<li>But if you were wondering: Web Accessibility Initiative - Accessible Rich Internet Applications</li>
+								<li>Tabbing should be a quick way of moving through the web page or app; other keys let you interact in depth with a widget</li>
+								<li>Yes, screen readers have multiple ways to navigate a page, but keyboard users !== SR users</li>
+								<li>Composite widgets (e.g. a text input + dropdown might focus on both the input and the dropdown trigger)</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Example:</h3>
+						<figure>
+							<img src="assets/aria-menu-good.gif" alt="Good menu keyboard pattern animation">
+							<figcaption>From <a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html">WAI-ARIA examples</a></figcaption>
+						</figure>
+
+						<aside class="notes">
+							<ul>
+								<li>Things to note: arrow keys let you navigate in an intuitive way</li>
+								<li>Down arrow opens initial dropdown, right opens secondary dropdown. Up/down navigates within the dropdown, wrapping top to bottom</li>
+								<li>Focus moves immediately to first link when dropdown is opened</li>
+								<li>Right/left without a secondary menu moves immediately to next top-level item</li>
+								<li>Orientation matters, and will change arrow key bindings. You can set <code>aria-orientation</code> if it's vertical (default is horizontal)</li>
+								<li>Enter/space also opens a menu and moves focus to the first link</li>
+								<li>Escape closes a menu</li>
+								<li>Tab immediately moves focus to next focusable element after the menu (not shown)</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Bonus pattern: skip links</h1>
+						<figure>
+							<img src="assets/skip-links.gif" alt="Skip links example from the New York Times">
+							<figcaption>Finally, a media website used as a good example</figcaption>
+						</figure>
+
+						<aside class="notes">
+							<ul>
+								<li>NY Times has decent overall accessibility. Go them!</li>
+								<li>These links are only accessible from a keyboard, since a cursor-user would never need help skipping over the menu and header</li>
+								<li>Useful for skipping over content present on every page</li>
+							</ul>
+						</aside>
+					</section>
+					<!--<section>
+						<h4 style="margin: 12px 0 10px;">Step 1: Add id's to landmark regions</h4>
+						<code>&lt;nav role="navigation" id="navigation"&gt;</code>
+						<h4 style="margin: 12px 0 10px;">Step 2: Add links</h4>
+						<code>&lt;a href="#navigation" class="skip-link"&gt;Skip to Menu&lt;/a&gt;</code>
+						<h4 style="margin: 12px 0 10px;">Step 3: Styles</h4>
+						<pre style="float: left;width:50%;">
+.skip-link {
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	position: absolute;
+	overflow: hidden;
+	width: 1px;
+}
+						</pre>
+						<pre style="float: right;width:50%;">
+.skip-link:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	position: static;
+	overflow: visible;
+	width: auto;
+}
+						</pre>
+
+						<aside class="notes">
+							<ul>
+								<li>Usually add the skip links to the very top of the DOM</li>
+								<li>Using the HTML5 Boilerplate method of hiding the skip links to preserve SR accessibility</li>
+								<li>The unfocused style is useful for anything else you may want to only provide to SRs</li>
+							</ul>
+						</aside>
+					</section>-->
+				</section>
+				<section>
+					<section>
+						<h1>Focus traps</h1>
+						<figure>
+							<img src="assets/cat-box.jpg" alt="Cat in a box" width="65%">
+							<figcaption>A good modal is like a cardboard box: square and full of cats.</figcaption>
+						</figure>
+
+						<aside class="notes">
+							<ul>
+								<li>Contrary to what it sounds like, it can be a good thing</li>
+								<li>Remember the bad slideout menu examples, where focus moved out of them? Those are examples of when focus should be trapped in the menu</li>
+								<li>Going to use a modal widget to look closer at it: modals also dim page content</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>When should you use a focus trap?</h2>
+						<ul>
+							<li>Modals of any kind</li>
+							<li>Slideout content (like the mobile menus earlier)</li>
+							<li>??</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Make your focus trap</h2>
+						<p>Traditional options:</p>
+						<ol>
+							<li class="fragment">Listen to the <code>focus</code> or <code>focusin</code> event and hijack it.</li>
+							<li class="fragment">Set every focusable element in the hidden region to <code>tabindex="-1"</code></li>
+						</ol>
+					</section>
+					<section>
+						<h3>"Focusable" can get messy</h3>
+						<pre>document.querySelectorAll('a[href],
+	button:not([disabled]),
+	area[href],
+	input:not([disabled]),
+	select:not([disabled]),
+	textarea:not([disabled]),
+	iframe,
+	object,
+	embed,
+	*[tabindex],
+	*[contenteditable]);</pre>
+
+						<aside class="notes">
+							Unless you know exactly what content is going to be in the modal, you'll probably need to select for focusable elements no matter which solution you use.<br>
+							It's not a pretty selector, but it does the job. Some day, something like <code>:focusable</code> would be great.
+						</aside>
+					</section>
+					<section>
+						<h3>New (and improved) options:</h3>
+						<ul>
+							<li><code>&lt;dialog&gt;</code></li>
+							<li><code>inert</code></li>
+						</ul>
+						<aside class="notes">You will need polyfills; dialog is element, inert is a primitive</aside>
+					</section>
+					<section>
+						<h3>Unfocusable &ne; hidden</h3>
+						<p class="small">Remember the menus!</p>
+						<p>Add <code>aria-hidden="true"</code> to your hidden content to ensure Screen readers can't access it.</p>
+					</section>
+					<section>
+						<h2>The finished product:</h2>
+						<figure>
+							<img src="assets/modal-good.gif" alt="Good modal focus example" width="65%">
+							<figcaption>From <a href="http://ianmcburnie.github.io/mindpatterns/disclosure/dialog/index.html">eBay MIND Patterns</a>, highly recommended</figcaption>
+						</figure>
+
+						<aside class="notes">
+							<ul>
+								<li>Check out the eBay MIND Patterns website for lots of good examples!</li>
+								<li>Notice how focus wraps from the last to first element when tabbing, as it would do if tabbing through a page</li>
+								<li>Escape closes the dialog, sends focus back to the button</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Semantics vs. Function</h1>
+						<img src="assets/magritte-pipe.jpg" alt="Magritte's Treachery of Images painting">
+					</section>
+					<section>
+						<h2>role="button"</h2>
+						<ul>
+							<li>Screen Readers care</li>
+							<li>Keyboards do not care</li>
+						</ul>
+						<p class="fragment" style="text-transform:uppercase">Use native elements whenever possible!</p>
+						<aside class="notes">
+							<p>ARIA is spackle, not rebar. ARIA, role, type, etc. will NOT add any functionality to your onclick handlers</p>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Lightning Round: Common Mistakes</h2>
+						<img src="assets/lightning-cat.jpg" alt="Kitten with lightning" width="40%">
+					</section>
+					<section>
+						<p>1. Removing an element with focus from the DOM</p>
+						<img src="assets/angry-cat1.jpg" alt="Angry cat">
+
+						<aside class="notes">
+							Move focus BEFORE removing the element, or focus moves to <code>body</code>
+						</aside>
+					</section>
+					<section>
+						<p>2. Programmatically changing focus in response to something other than a user event</p>
+						<img src="assets/angry-cat2.jpg" alt="Angry cat" width="60%">
+
+						<aside class="notes">
+							It's disorienting. Focus should only be changed in response to something the user does (e.g. clicking on a modal button or opening a menu)
+						</aside>
+					</section>
+					<section>
+						<p>3. Making everything focusable, including content-only elements</p>
+						<img src="assets/angry-cat3.jpg" alt="Angry cat" width="60%">
+
+						<aside class="notes">
+							It doesn't need it, and it's weird! Screen readers have ways of reading content (it's their job). Users don't need focus on an element unless they're going to interact with it.
+						</aside>
+					</section>
+					<section>
+						<p>4. Positive tab indexes</p>
+						<img src="assets/angry-cat4.jpg" alt="Angry cat" width="60%">
+
+						<aside class="notes">
+							Any tab index greater than 0 messes with the tab order, which should logically follow the order of elements in the dom. If you need to do this, your DOM is probably poorly organized. It's also an official anti-pattern in spec.
+						</aside>
+					</section>
+					<section>
+						<p>5. Providing interaction only on <code>:hover</code> events</p>
+						<img src="assets/angry-cat5.jpg" alt="Angry cat" width="50%">
+
+						<aside class="notes">
+							Should go without saying b/c mobile also lacks hover. Tapping will give :focus, though. Common mistake for tooltips.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h1>Go forth and make thy widgets accessible!</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

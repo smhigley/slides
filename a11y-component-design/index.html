@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Designing accessible components for other developers</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/solarized.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Designing accessible components</h1>
+					<figure>
+						<img src="./assets/a11y-horns.png" alt="a rock n roll illustration of the a11y hashtag with the ones replaced by a hand making the horns" width="50%">
+						<figcaption class="attribution">image source: <a href="https://dribbble.com/shots/2121794-rock-n-roll-a11y">Heydon Pickering</a></figcaption>
+					</figure>
+				</section>
+				<section class="profile-slide">
+					<img src="./assets/avatar.png" alt="illustrated avatar of Sarah with cat" class="profile">
+					<div class="desc">
+						<p>Who is this Sarah person?</p>
+						<ul>
+							<li>Dojo 2 widgets</li>
+							<li>web accessibility</li>
+							<li>herds cats</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h2>Designing accessibility? Other developers? What?</h2>
+						<img src="./assets/picard-what.jpg" alt="Captain Picard incredulously asking 'What does that even mean?'">
+					</section>
+					<section>
+						<h3>Today we're talking about:</h3>
+						<ul>
+							<li>Component libraries</li>
+							<li>Diverse models of user interaction</li>
+							<li>Diverse models of developer meddling</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>OK but... why do I care?</h2>
+						<figure class="fragment">
+							<img src="./assets/rolling-quads.jpg" alt="Crowd of disability rights activists under the sign 'Injustice anywhere is a threat to justice everywhere'">
+							<figcaption class="attribution">The Rolling Quads. Source: <a href="https://99percentinvisible.org/episode/curb-cuts/">99 Percent Invisible</a></figcaption>
+						</figure>
+						<aside class="notes">Let's talk about Ed Roberts and the rolling quads for just a sec: rogue late-night curb ramps. In the 60s and 70s, curb cuts were not common, much like a11y on the web now</aside>
+					</section>
+					<section>
+						<h3>Accessibility is:</h3>
+						<ul>
+							<li>Freedom</li>
+							<li>Privacy</li>
+							<li>Participation</li>
+							<li>Equality</li>
+						</ul>
+						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature</aside>
+					</section>
+					<section>
+						<h3>The Curb Cut effect</h3>
+						<figure class="left">
+							<img src="./assets/wheelchair-curb.jpg" alt="a wheelchair stopped next two a four inch curb">
+							<figcaption>Necessary<br><span class="attribution">(source: <a href="http://americanhistory.si.edu/blog/smashing-barriers-access-disability-activism-and-curb-cuts">the Smithsonian</a>)</span></figcaption>
+						</figure>
+						<figure class="right">
+							<img src="./assets/stroller-curb.jpg" alt="woman pushing stroller up curb cut" width="75%">
+							<figcaption>Beneficial<br><span class="attribution">(<a href="http://doug-johnson.squarespace.com/blue-skunk-blog/2016/2/1/curb-cut-theory-applied-to-education.html">source</a>)</span></figcaption>
+						</figure>
+						<aside class="notes">
+							<p>Let's talk for a second about the curb cut effect</p>
+							<ul>
+								<li>One of my favorite terms, and it comes directly from disablity rights activism</li>
+								<li>Refers to a change championed by a small group who need it, that ends up benefitting everyone</li>
+								<li>Other examples: audio captions, high contrast mode/night mode, distraction-free features</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li>Curb cuts</li>
+							<li class="fragment">Audio captions and transcripts</li>
+							<li class="fragment">High contrast mode or night mode</li>
+							<li class="fragment">Distraction-free features</li>
+							<li class="fragment">An accessible, semantic web?</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Audio captions: bars, videos in public, language learners</li>
+								<li>high contrast mode: reading in bright environments, easier on the eyes</li>
+								<li>distraction-free: necessary for ADD/autism/etc, nice for everyone</li>
+								<li>what will be the long-term unanticipated benefits of an accesible web?</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>OK, accessibility. But why make a pattern library?</h2>
+					</section>
+					<section data-background="#29B6B9" data-background-image="./assets/monstersbg.svg" data-background-size="cover">
+						<h3>Meet your coworkers</h3>
+						<p><img src="./assets/monsters.svg" alt="Mayhem is lurking, in the form of a cadre monster coworkers"></p>
+						<aside class="notes">
+							<h3>Introduce the characters</h3>
+							<p>Even if you don't work with anyone like this now, I'm sure you've had the experience of working with one or more of these in the past.</p>
+							<p>Writing open source means that what you make will be exposed to all sorts of developers, and some of them will come back and submit Github issues.</p>
+							<p>Yeah, these are charicatures, but everyone has probably been in the position of wanting something to "just work", starting out and not understanding errors, and needing to extend default functionality before. They're all valid use cases, and it's reductive and unhelpful to dismiss all poor code usage as user error.</p>
+							<p>Additionally, coding for the most extreme cases will make the average better</p>
+						</aside>
+					</section>
+					<section>
+						<blockquote class="quote-with-thumb">
+							<img src="./assets/cavemanAvatar.svg" class="quote-thumb" alt="profile image of your caveman coworker">
+							&ldquo;If it looks right, I'm done.&rdquo;
+						</blockquote>
+						<blockquote class="fragment quote-with-thumb">
+							<img src="./assets/internsAvatar.svg" class="quote-thumb" alt="profile image of your zombie intern">
+							&ldquo;What's an ARIA? I don't like opera.&rdquo;
+						</blockquote>
+						<blockquote class="fragment quote-with-thumb">
+							<img src="./assets/inventorAvatar.svg" class="quote-thumb" alt="profile image of your inventive I'll-just-roll-my-own coworker">
+							&ldquo;I need these twenty obscure features, and a pony.&rdquo;
+						</blockquote>
+						<aside class="notes">Lack of accessibility is not malicious. Make it easy, and they will come around.</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Flexibility and Control</h2>
+					<img src="./assets/rhythmic-gymnast.jpg" alt="A rhythmic gymnast doing a split leap while juggling the web components icon">
+				</section>
+				<section>
+					<section>
+						<h3>An icon button case study:</h3>
+						<img src="./assets/button_textOnly.png" alt="Button with text 'I am a button'"> &bull;
+						<img src="./assets/button_icon.png" alt="Button with search icon and text"> &bull;
+						<img src="./assets/button_iconOnly.png" alt="Button only search icon">
+						<aside class="notes">
+							<p>Any of them are valid use cases</p>
+						</aside>
+					</section>
+					<section>
+						<pre><code data-trim data-noescape class="html">
+							&lt;button type="button"&gt;I'm a button!&lt;/button&gt;
+						</code></pre>
+						<pre class="fragment"><code data-trim data-noescape class="html">
+							&lt;button type="submit"&gt;
+							  Search
+							  &lt;svg role="img" aria-hidden="true"&gt;
+							    &lt;use xlink:href="#search"&gt;&lt;/use&gt;
+							  &lt;/svg&gt;
+							&lt;/button&gt;
+						</code></pre>
+						<pre class="fragment"><code data-trim data-noescape class="html">
+							&lt;button type="submit"&gt;
+							  &lt;svg role="img" aria-labelledby="search-title"&gt;
+							    &lt;title id="search-title">Search&lt;/title&gt;
+							    &lt;use xlink:href="#search"&gt;&lt;/use&gt;
+							  &lt;/svg&gt;
+							&lt;/button&gt;
+						</code></pre>
+						<aside class="notes">
+							a side note: both the title element and aria-labelledby are necessary to support as many browser + AT pairings as possible
+						</aside>
+					</section>
+					<section>
+						<h4>Other possibilities:</h4>
+						<ul>
+							<li><code>aria-label</code></li>
+							<li>icon fonts</li>
+							<li>a text node with some fancy <code>.sr-only</code> CSS</li>
+						</ul>
+						<p class="fragment"><span class="text-emphasis">None of this is easy!</span></p>
+						<aside class="notes">
+							In order:
+							aria-label - doesn't play well with translators
+							icon fonts - require a lot more help to make them accessible
+							sr-only css: this is also fine, perhaps more work
+						</aside>
+					</section>
+					<section data-background="#4FB55D" data-background-image="assets/inventorbg.svg"  data-background-size="cover">
+						<div class="character-slide">
+							<h3>Flexibility</h3>
+							<img class="character" src="./assets/inventor.svg" alt="Your inventor colleague is back. Did you miss him?">
+							<blockquote class="fragment">
+								<span>I also want it to do <br>[insert 10 extra features, and a pony]</span>
+							</blockquote>
+						</div>
+						<aside class="notes">
+							Sometimes you just need the pony.
+							We talked about why you need control, so now flexibility.
+						</aside>
+					</section>
+					<section data-background="inventorAvatar">
+						<h4>Ponies, popups, oh my!</h4>
+						<button class="pony-button">Dance with ponies <img src="assets/pony.png" alt="dancing pink pony of death"></button>
+						<p class="fragment">What could go wrong?</p>
+						<img src="./assets/takei.jpg" class="fragment fade-left takei" alt="George Takei says oh my to pony buttons">
+						<aside class="notes">
+							<p>Pony animates on focus. I... have nothing to say for myself</p>
+						</aside>
+					</section>
+					<section>
+						<h3>Common button use cases:</h3>
+						<ul>
+							<li>Submit or reset a form <pre class="fragment inline-pre"><code class="html">type="submit | reset"</code></pre></li>
+							<li>Open a panel <pre class="fragment inline-pre"><code class="html">aria-expanded="true"</code></pre></li>
+							<li>Open a menu <pre class="fragment inline-pre"><code class="html">aria-haspopup="menu"</code></pre></li>
+							<li>Toggle a state <pre class="fragment inline-pre"><code class="html">aria-pressed="true"</code></pre></li>
+						</ul>
+						<aside class="notes">Think of as many valid permutations as you can, and handle them well. Don't expect the end developer to think about semantic patterns or non-mouse interaction well</aside>
+					</section>
+					<section>
+						<h3>Uncommon button use cases</h3>
+						<img src="assets/pony.png" alt="The pink pony of death strikes again">
+						<p>???</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Who really knows best?</h2>
+						<figure>
+							<img src="./assets/computer-dog.jpg" alt="highly competent and well-dressed golden retriever using a laptop" width="60%">
+							<figcaption>Definitely this guy</figcaption>
+						</figure>
+						<aside class="notes">
+							<ul>
+								<li>a11y is interesting in that it's not an area where people generally have experience, and is often done wrong</li>
+								<li>It isn't just me, this matters for anyone making tools that can be used on the front end. People will use your stuff!</li>
+								<li>Sure you can think of other areas you know best -- you designed your code for a reason, after all</li>
+								<li>Even though these slides use charicatures, they are real use cases -- someone shouldn't need to think too hard to do a basic use case (Caveman), it should be as helpful and intuitive in-editor as possible (interns), and there will always be valid use cases you haven't thought of at design-time (inventor)</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<p>With too many granular details left open-ended...</p>
+					</section>
+					<section data-background="cavemanAvatar">
+						<p>... you end up with this:</p>
+						<pre class="fragment"><code data-trim data-noescape class="html">
+							&lt;button aria-pressed="true" aria-expanded="true"
+							  class="btn btn-open btn-pressed"&gt;
+							  Open Accordion
+							  &lt;svg role="img" aria-labelledby="icon-title"&gt;
+							    &lt;title id="icon-title">Expand accordion&lt;/title&gt;
+							    &lt;use xlink:href="#plus"&gt;&lt;/use&gt;
+							  &lt;/svg&gt;
+							&lt;/button&gt;
+						</code></pre>
+					</section>
+					<section data-background="internsAvatar">
+						<p>or this:</p>
+						<pre class="fragment"><code data-trim data-noescape class="html">
+							&lt;button type="submit" aria-haspopup="true"&gt;
+							  Tooltip
+							  &lt;svg role="img"&gt;
+							    &lt;use xlink:href="#plus"&gt;&lt;/use&gt;
+							  &lt;/svg&gt;
+							&lt;/button&gt;
+						</code></pre>
+					</section>
+					<section data-background="inventorAvatar">
+						<p>But without enough flexibility, your component might be abandoned in favor of this:</p>
+						<pre class="fragment"><code data-trim data-noescape class="html">
+							&lt;div role="button" onclick="ponyDance()"&gt;
+							  Ponies for all
+							  &lt;img src="pony.png"&gt;
+							&lt;/div&gt;
+						</code></pre>
+						<aside class="notes">
+							<p>A slightly better (but not really) alternative would be a link instead of a button</p>
+						</aside>
+					</section>
+					<section>
+						<h4>Build extensibility into:</h4>
+						<ul>
+							<li>Visual styles</li>
+							<li>Layout</li>
+							<li>Child content</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Provide an intuitive API for built-in defaults:</h4>
+						<pre class="fragment"><code data-trim data-noescape class="javascript">
+							interface ButtonProperties {
+							  type: 'submit' | 'reset' | 'button' | 'toggle'
+							        | 'menu' | 'accordion';
+							  disabled: boolean;
+							  pressed: boolean;
+							  open: boolean;
+							}
+						</code></pre>
+						<aside class="notes">
+							<p>Including menu/accordion with button types allows you to set aria-haspopup and aria-expanded behind the scenes</p>
+							<p>Alternatively, have separate menu buttons and accordion buttons</p>
+						</aside>
+					</section>
+					<section>
+						<h3>What can you do better now?</h3>
+						<ul>
+							<li>Accessibility</li>
+							<li>Internationalization</li>
+							<li>Performance</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>The limits of a framework</h2>
+					</section>
+					<section>
+						<p>You will never be able to:</p>
+						<ul>
+							<li>Write appropriate labels and alt text</li>
+							<li>Take care of overall page structure (landmarks, heading hierarchy)</li>
+							<li>Account for all possible use cases</li>
+						</ul>
+						<aside class="notes">
+							<p>Be realistic: a framework can never do all the work, and shouldn't claim to. There are plenty of other a11y requirements you can't handle in a library</p>
+							<p>Context is everything! There is so much guesswork around what covers "most" use cases. There are always outliers</p>
+						</aside>
+					</section>
+					<section>
+						<p>Instead:</p>
+						<ul>
+							<li>Be realistic up front</li>
+							<li>Provide good usage documentation</li>
+							<li>Educate other developers about diverse interaction patterns</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Thank you!</h2>
+				</section>
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/hashtag/NodeJSInteractive">#NodeJSInteractive</a> &bull;
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>
