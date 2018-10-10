@@ -32,17 +32,22 @@
 						<img src="./assets/a11y-horns.png" alt="a rock n roll illustration of the a11y hashtag with the ones replaced by a hand making the horns" width="50%">
 						<figcaption class="attribution">image source: <a href="https://dribbble.com/shots/2121794-rock-n-roll-a11y">Heydon Pickering</a></figcaption>
 					</figure>
+					<aside class="notes">
+						<p>For JS Interactive/Vancouver area:</p>
+						<p>Before I begin, I would like to acknowledge that I am speaking on the unceded territory of the Coast Salish Peoples, including the territories of the Musqueam, Squamish, Tsleil-Waututh Nations.</p>
+					</aside>
 				</section>
 				<section class="profile-slide">
 					<img src="./assets/avatar.png" alt="illustrated avatar of Sarah with cat" class="profile">
 					<div class="desc">
 						<p>Who is this Sarah person?</p>
 						<ul>
-							<li>Dojo 2 widgets</li>
+							<li>Dojo widgets</li>
 							<li>web accessibility</li>
 							<li>herds cats</li>
 						</ul>
 					</div>
+					<img src="./assets/dojo-logo.svg" alt="dragon logo of the dojo web framework" style="width:20%;margin-top:100px">
 				</section>
 				<section>
 					<section>
@@ -56,6 +61,11 @@
 							<li>Diverse models of user interaction</li>
 							<li>Diverse models of developer meddling</li>
 						</ul>
+						<aside class="notes">
+							<p>All the ways you envision users interacting with your component</p>
+							<p>And all the ways you can imagine developers stretching it past its basic form (which can be one of the most beautiful parts of an open source community)</p>
+							<p>Discussing this specifically in the context of accessibility: if your goal is to make the web a more accessible place, with more inclusive patterns of interaction, how do you get there?</p>
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -65,7 +75,10 @@
 							<img src="./assets/rolling-quads.jpg" alt="Crowd of disability rights activists under the sign 'Injustice anywhere is a threat to justice everywhere'">
 							<figcaption class="attribution">The Rolling Quads. Source: <a href="https://99percentinvisible.org/episode/curb-cuts/">99 Percent Invisible</a></figcaption>
 						</figure>
-						<aside class="notes">Let's talk about Ed Roberts and the rolling quads for just a sec: rogue late-night curb ramps. In the 60s and 70s, curb cuts were not common, much like a11y on the web now</aside>
+						<aside class="notes">
+							<p>I know this might be preaching to the choir, but...</p>
+							<p>Let's talk about Ed Roberts and the rolling quads: rogue late-night curb ramps. In the 60s and 70s, curb cuts were not common, much like a11y on the web now. Ed Roberts was a wheelchair-riding student and activist at Berkeley, and one of his many stories involved wanting to go on a date with his then-girlfriend without a metaphorical fifth wheel to help him get his chair up and down physical obstacles</p>
+						</aside>
 					</section>
 					<section>
 						<h3>Accessibility is:</h3>
@@ -75,7 +88,7 @@
 							<li>Participation</li>
 							<li>Equality</li>
 						</ul>
-						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature</aside>
+						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature. It is also not an abstract thing -- in constructing the web, we help build public spaces and lived realities just as much as if we created a physical store.</aside>
 					</section>
 					<section>
 						<h3>The Curb Cut effect</h3>
@@ -92,7 +105,6 @@
 							<ul>
 								<li>One of my favorite terms, and it comes directly from disablity rights activism</li>
 								<li>Refers to a change championed by a small group who need it, that ends up benefitting everyone</li>
-								<li>Other examples: audio captions, high contrast mode/night mode, distraction-free features</li>
 							</ul>
 						</aside>
 					</section>
@@ -109,7 +121,8 @@
 								<li>Audio captions: bars, videos in public, language learners</li>
 								<li>high contrast mode: reading in bright environments, easier on the eyes</li>
 								<li>distraction-free: necessary for ADD/autism/etc, nice for everyone</li>
-								<li>what will be the long-term unanticipated benefits of an accesible web?</li>
+								<li>what will be the long-term unanticipated benefits of an accesible web? (ask audience to actually think about this)</li>
+								<li>what tools could you build if you could trust that any given web page would be semantically marked up?</li>
 							</ul>
 						</aside>
 					</section>
@@ -160,6 +173,20 @@
 						</aside>
 					</section>
 					<section>
+						<h3>An icon button in the wild</h3>
+						<pre class="right"><code data-trim data-noescape class="html">
+							&lt;button ng-click="triggerDownload()" class="btn"
+							  tooltip="Download as a zip file"&gt;
+							  &lt;i class="icon-download-alt"&gt;&lt;/i&gt;
+							&lt;/button&gt;
+						</code></pre>
+						<figure>
+							<img src="./assets/download-button.png" alt="a screenshot of a button with no visible text and only a download icon">
+							<figcaption>VoiceOver output: "button"</figcaption>
+						</figure>
+						<aside class="notes">This is from a popular code-sharing site that shall remain nameless (yes, there are developers who use AT too).<br>At least you can click it?</aside>
+					</section>
+					<section>
 						<pre><code data-trim data-noescape class="html">
 							&lt;button type="button"&gt;I'm a button!&lt;/button&gt;
 						</code></pre>
@@ -198,6 +225,24 @@
 							sr-only css: this is also fine, perhaps more work
 						</aside>
 					</section>
+					<section>
+						<h3>Reserving control:</h3>
+						<pre class="fragment"><code data-trim data-noescape class="javascript">
+							interface ButtonProperties {
+							  type: 'submit' | 'reset' | 'button';
+							}
+
+							interface IconProperties {
+								use: string;
+								label?: string;
+							}
+						</code></pre>
+						<aside class="notes">
+							<p>Optional icon label allows you to set aria-hidden if absent. Also lets you handle label attrs correctly, forces SVG</p>
+						</aside>
+					</section>
+				</section>
+				<section>
 					<section data-background="#4FB55D" data-background-image="assets/inventorbg.svg"  data-background-size="cover">
 						<div class="character-slide">
 							<h3>Flexibility</h3>
@@ -213,7 +258,7 @@
 					</section>
 					<section data-background="inventorAvatar">
 						<h4>Ponies, popups, oh my!</h4>
-						<button class="pony-button">Dance with ponies <img src="assets/pony.png" alt="dancing pink pony of death"></button>
+						<button class="pony-button">Dance with ponies <img src="assets/pony.png" alt="the dancing pink pony of death"></button>
 						<p class="fragment">What could go wrong?</p>
 						<img src="./assets/takei.jpg" class="fragment fade-left takei" alt="George Takei says oh my to pony buttons">
 						<aside class="notes">
@@ -234,6 +279,7 @@
 						<h3>Uncommon button use cases</h3>
 						<img src="assets/pony.png" alt="The pink pony of death strikes again">
 						<p>???</p>
+						<aside class="notes">You can't account for everything. Make sure you allow extension</aside>
 					</section>
 				</section>
 				<section>
@@ -258,11 +304,9 @@
 					<section data-background="cavemanAvatar">
 						<p>... you end up with this:</p>
 						<pre class="fragment"><code data-trim data-noescape class="html">
-							&lt;button aria-pressed="true" aria-expanded="true"
-							  class="btn btn-open btn-pressed"&gt;
-							  Open Accordion
-							  &lt;svg role="img" aria-labelledby="icon-title"&gt;
-							    &lt;title id="icon-title">Expand accordion&lt;/title&gt;
+							&lt;button aria-haspopup="true" class="btn btn-popup"&gt;
+							  Tooltip
+							  &lt;svg role="img"&gt;
 							    &lt;use xlink:href="#plus"&gt;&lt;/use&gt;
 							  &lt;/svg&gt;
 							&lt;/button&gt;
@@ -271,9 +315,11 @@
 					<section data-background="internsAvatar">
 						<p>or this:</p>
 						<pre class="fragment"><code data-trim data-noescape class="html">
-							&lt;button type="submit" aria-haspopup="true"&gt;
-							  Tooltip
-							  &lt;svg role="img"&gt;
+							&lt;button aria-pressed="true" aria-expanded="true"
+							  class="btn btn-open btn-pressed"&gt;
+							  Open Accordion
+							  &lt;svg role="img" aria-labelledby="icon-title"&gt;
+							    &lt;title id="icon-title">Expand accordion&lt;/title&gt;
 							    &lt;use xlink:href="#plus"&gt;&lt;/use&gt;
 							  &lt;/svg&gt;
 							&lt;/button&gt;
@@ -316,24 +362,62 @@
 						</aside>
 					</section>
 					<section>
-						<h3>What can you do better now?</h3>
+						<h3>Where should you keep control?</h3>
 						<ul>
 							<li>Accessibility</li>
 							<li>Internationalization</li>
 							<li>Performance</li>
 							<li>...</li>
 						</ul>
+						<aside class="notes">
+							What can you think about now that often gets overlooked in a sprint?<br>
+							When are "best practices" pretty inflexible?
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Choosing what to build</h2>
+						<figure>
+							<img src="./assets/red-panda.jpg" alt="Extremely cute red panda smiling up at you trustingly. Do not disappoint the red panda.">
+							<figcaption>Not everything is what it seems</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h3>Are these both menus?</h3>
+						<img src="./assets/program-menu.png" class="left" style="padding: 0 20px" alt="a screenshot of the google docs editing menu">
+						<img src="./assets/nav-menu.png" class="right" alt="a screenshot of the new york times navigation menu">
+					</section>
+					<section>
+						<p>Don't ask</p>
+						<p class="heading h2">What it looks like</p>
+						<p>ask</p>
+						<p class="heading h2">What it does</p>
+					</section>
+					<section>
+						<h3>Try describing your component's function in a single sentence:</h3>
+						<figure class="fragment">
+							<img src="./assets/combobox.png" alt="screenshot of a combobox allowing the user to choose a cat, dog, hamster, or goat. Cat is the clearly superior choice." width="60%">
+							<figcaption class="fragment">"A combobox is a normal text input enhanced with a list of suggested options."</figcaption>
+						</figure>
+					</section>
+					<section>
+						<figure>
+							<img src="./assets/chips.png" alt="screenshot of rows of material design chips showing radio, checkbox, and button functionality">
+							<figcaption class="fragment">"Chips allow users to enter information, make selections, filter content, or trigger actions."</figcaption>
+						</figure>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>The limits of a framework</h2>
+						<img src="./assets/scaffolding.jpg" alt="construction worker precariously perched at the edge of a framework of scaffolding" width="80%">
 					</section>
 					<section>
 						<p>You will never be able to:</p>
 						<ul>
 							<li>Write appropriate labels and alt text</li>
-							<li>Take care of overall page structure (landmarks, heading hierarchy)</li>
+							<li>Take care of overall page structure (landmarks, heading hierarchy, focus order)</li>
 							<li>Account for all possible use cases</li>
 						</ul>
 						<aside class="notes">
