@@ -16,11 +16,13 @@
 }
 
 .left {
+	box-sizing: border-box;
 	float: left;
 	width: 50%;
 }
 
 .right {
+	box-sizing: border-box;
 	float: right;
 	width: 50%;
 }
@@ -84,7 +86,7 @@
 }
 
 .reveal section .quote-thumb {
-	flex: 0;
+	flex: 0 1 20%;
 	margin: 5px 20px 5px 0;
 	width: 20%;
 }
