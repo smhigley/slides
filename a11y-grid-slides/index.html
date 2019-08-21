@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Grids: a case study in accessibility</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/solarized.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Designing accessible components</h1>
+					<figure>
+						<img src="./assets/a11y-horns.png" alt="a rock n roll illustration of the a11y hashtag with the ones replaced by a hand making the horns" width="50%">
+						<figcaption class="attribution">image source: <a href="https://dribbble.com/shots/2121794-rock-n-roll-a11y">Heydon Pickering</a></figcaption>
+					</figure>
+				</section>
+				<section class="profile-slide">
+					<img src="./assets/avatar.png" alt="illustrated avatar of Sarah with cat" class="profile">
+					<div class="desc">
+						<p>Who is this Sarah person?</p>
+						<ul>
+							<li>works at Microsoft</li>
+							<li>web accessibility</li>
+							<li>herds cats</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h2>OK but... why do I care?</h2>
+						<figure class="fragment">
+							<img src="./assets/rolling-quads.jpg" alt="Crowd of disability rights activists under the sign 'Injustice anywhere is a threat to justice everywhere'">
+							<figcaption class="attribution">The Rolling Quads. Source: <a href="https://99percentinvisible.org/episode/curb-cuts/">99 Percent Invisible</a></figcaption>
+						</figure>
+						<aside class="notes">Let's talk about Ed Roberts and the rolling quads for just a sec: rogue late-night curb ramps. In the 60s and 70s, curb cuts were not common, much like a11y on the web now</aside>
+					</section>
+					<section>
+						<h3>Accessibility is:</h3>
+						<ul>
+							<li>Freedom</li>
+							<li>Privacy</li>
+							<li>Participation</li>
+							<li>Equality</li>
+						</ul>
+						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature</aside>
+					</section>
+					<section>
+						<h3>The Curb Cut effect</h3>
+						<figure class="left">
+							<img src="./assets/wheelchair-curb.jpg" alt="a wheelchair stopped next two a four inch curb">
+							<figcaption>Necessary<br><span class="attribution">(source: <a href="http://americanhistory.si.edu/blog/smashing-barriers-access-disability-activism-and-curb-cuts">the Smithsonian</a>)</span></figcaption>
+						</figure>
+						<figure class="right">
+							<img src="./assets/stroller-curb.jpg" alt="woman pushing stroller up curb cut" width="75%">
+							<figcaption>Beneficial<br><span class="attribution">(<a href="http://doug-johnson.squarespace.com/blue-skunk-blog/2016/2/1/curb-cut-theory-applied-to-education.html">source</a>)</span></figcaption>
+						</figure>
+						<aside class="notes">
+							<p>Let's talk for a second about the curb cut effect</p>
+							<ul>
+								<li>One of my favorite terms, and it comes directly from disablity rights activism</li>
+								<li>Refers to a change championed by a small group who need it, that ends up benefitting everyone</li>
+								<li>Other examples: audio captions, high contrast mode/night mode, distraction-free features</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li>Curb cuts</li>
+							<li class="fragment">Audio captions and transcripts</li>
+							<li class="fragment">High contrast mode or night mode</li>
+							<li class="fragment">Distraction-free features</li>
+							<li class="fragment">An accessible, semantic web?</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Audio captions: bars, videos in public, language learners</li>
+								<li>high contrast mode: reading in bright environments, easier on the eyes</li>
+								<li>distraction-free: necessary for ADD/autism/etc, nice for everyone</li>
+								<li>what will be the long-term unanticipated benefits of an accesible web?</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Accessibility is Easy</h3>
+					</section>
+					<section>
+						<pre><code data-trim data-noescape class="html">
+								&lt;div role="button" onclick="submit()"&gt;Submit&lt;/div&gt;
+						</code></pre>
+						<div class="fragment magic-a11y">
+							<img src="./assets/a11y-icon.svg" class="magic-animation" alt="The magic wand of accessibility comes to the rescue.">
+							<pre><code data-trim data-noescape class="html">
+									&lt;button type="submit" onclick="submit()"&gt;Submit&lt;/button&gt;
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<p>But...</p>
+						<figure>
+							<img src="./assets/xkcd-flowchart.png" alt="do you like overly complex flowcharts? XKCD will force you to like overly complex flowcharts using this overly complex flowchart.">
+							<figcaption class="attribution">image source: <a href="https://xkcd.com/1488/">XKCD</a></figcaption>
+						</figure>
+						<div class="fragment magic-a11y">
+							<img src="./assets/a11y-icon.svg" class="magic-animation" alt="You try the magic wand of accessibility again.">
+							<img src="./assets/confusedparrot.gif" alt="The confused party parrot has been summoned. It is confused. There is no accessibility in sight.">
+						</div>
+					</section>
+					<section>
+						<p class="h3"><s>Accessibility is Easy</s></p>
+						<p>Easy Accessibility is Easy</p>
+					</section>
+				</section>
+				<section>
+					<h2>A Study in Accessibility</h2>
+					<p>Who killed the grid?</p>
+					<div class="overlay-container">
+						<img src="./assets/happy-grid.png" alt="A regular happy data grid goes out for a stroll">
+						<img src="./assets/killed-icon.png" alt="The happy data grid is now a dead data grid" class="overlay">
+					</div>
+					<aside class="notes">There are going to be lots of puns. I would apologize in advance, but I'm really not sorry</aside>
+				</section>
+				<section>
+					<section>
+						<h3>Part 1: Four A11y Tools</h3>
+						<img src="./assets/sign-four.jpg" alt="Sign language diagram from numbers 1-4. A sign of four. ...Get it?">
+						<aside class="notes">a sign of four</aside>
+					</section>
+					<section>
+						<h4>HTML</h4>
+						<img src="./assets/html.png" alt="HTML logo">
+						<aside class="notes">Use native elements whenever possible. Never do more from scratch than you absolutely need to.</aside>
+					</section>
+					<section>
+						<h4>Keyboard Interaction</h4>
+						<img src="./assets/cat-keyboard.gif" alt="cats might eat mice, but they can't use them">
+						<aside class="notes">program in any necessary keyboard interaction to match functionality with mouse & pointer</aside>
+					</section>
+					<section>
+						<h4>ARIA</h4>
+						<img src="./assets/duct-tape.png" alt="duct tape">
+						<aside class="notes">ARIA is spackle, not rebar</aside>
+					</section>
+					<section>
+						<h4>Testing</h4>
+						<img src="./assets/ai.png" alt="Accessibility Insights, the cute cat logo">
+						<aside class="notes">Test everything, always. Go over tools here: accessibility insights, keyboard testing, screen reader testing, HCM</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>The crime scene:</h3>
+						<img src="./assets/holmes-body.webp" alt="Holmes comes upon the scene of the crime at the priory school">
+						<aside class="notes">demo the broken grid, screen reader and </aside>
+					</section>
+				</section>
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/hashtag/CPL2019">#CPL2019</a> &bull;
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>
