@@ -12,6 +12,7 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -26,10 +27,10 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Designing accessible components</h1>
+					<h1>A Study in Accessibility</h1>
 					<figure>
-						<img src="./assets/a11y-horns.png" alt="a rock n roll illustration of the a11y hashtag with the ones replaced by a hand making the horns" width="50%">
-						<figcaption class="attribution">image source: <a href="https://dribbble.com/shots/2121794-rock-n-roll-a11y">Heydon Pickering</a></figcaption>
+						<img src="./assets/holmes-body.webp" alt="Sherlock Holmes and Watson come across the dead corpse of web accessibility" width="50%">
+						<figcaption></figcaption>
 					</figure>
 				</section>
 				<section class="profile-slide">
@@ -58,9 +59,9 @@
 							<li>Freedom</li>
 							<li>Privacy</li>
 							<li>Participation</li>
-							<li>Equality</li>
+							<li>Power</li>
 						</ul>
-						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature</aside>
+						<aside class="notes">A11y is NOT like browser support for IE11 -- it is a civil right, not a feature. It's about equalizing access to public spaces, and who is allowed power.</aside>
 					</section>
 					<section>
 						<h3>The Curb Cut effect</h3>
@@ -104,25 +105,33 @@
 						<h3>Accessibility is Easy</h3>
 					</section>
 					<section>
-						<pre><code data-trim data-noescape class="html">
-								&lt;div role="button" onclick="submit()"&gt;Submit&lt;/div&gt;
-						</code></pre>
-						<div class="fragment magic-a11y">
-							<img src="./assets/a11y-icon.svg" class="magic-animation" alt="The magic wand of accessibility comes to the rescue.">
+						<div class="overlay-container">
 							<pre><code data-trim data-noescape class="html">
-									&lt;button type="submit" onclick="submit()"&gt;Submit&lt;/button&gt;
+	&lt;div role="button" onclick="submit()"&gt;
+		Submit
+	&lt;/div&gt;
 							</code></pre>
+							<div class="fragment magic-a11y overlay" style="width:100%">
+								<img src="./assets/a11y-icon.svg" class="magic-animation" alt="The magic wand of accessibility comes to the rescue.">
+								<pre><code data-trim data-noescape class="html">
+	&lt;button type="submit" onclick="submit()"&gt;
+		Submit
+	&lt;/button&gt;
+								</code></pre>
+							</div>
 						</div>
 					</section>
 					<section>
-						<p>But...</p>
-						<figure>
-							<img src="./assets/xkcd-flowchart.png" alt="do you like overly complex flowcharts? XKCD will force you to like overly complex flowcharts using this overly complex flowchart.">
-							<figcaption class="attribution">image source: <a href="https://xkcd.com/1488/">XKCD</a></figcaption>
-						</figure>
-						<div class="fragment magic-a11y">
-							<img src="./assets/a11y-icon.svg" class="magic-animation" alt="You try the magic wand of accessibility again.">
-							<img src="./assets/confusedparrot.gif" alt="The confused party parrot has been summoned. It is confused. There is no accessibility in sight.">
+						<div class="overlay-container">
+							<p>But...</p>
+							<figure>
+								<img src="./assets/xkcd-flowchart.png" alt="do you like overly complex flowcharts? XKCD will force you to like overly complex flowcharts using this overly complex flowchart." width="55%">
+								<figcaption class="attribution">image source: <a href="https://xkcd.com/1488/">XKCD</a></figcaption>
+							</figure>
+							<div class="fragment magic-a11y overlay">
+								<img src="./assets/a11y-icon.svg" class="magic-animation" alt="You try the magic wand of accessibility again.">
+								<img src="./assets/confusedparrot.gif" alt="The confused party parrot has been summoned. It is confused. There is no accessibility in sight.">
+							</div>
 						</div>
 					</section>
 					<section>
@@ -131,7 +140,7 @@
 					</section>
 				</section>
 				<section>
-					<h2>A Study in Accessibility</h2>
+					<h2>A Study in Accessibility:</h2>
 					<p>Who killed the grid?</p>
 					<div class="overlay-container">
 						<img src="./assets/happy-grid.png" alt="A regular happy data grid goes out for a stroll">
@@ -152,12 +161,12 @@
 					</section>
 					<section>
 						<h4>Keyboard Interaction</h4>
-						<img src="./assets/cat-keyboard.gif" alt="cats might eat mice, but they can't use them">
+						<img src="./assets/cat-keyboard.gif" alt="cats might eat mice, but they can't use them" width="50%">
 						<aside class="notes">program in any necessary keyboard interaction to match functionality with mouse & pointer</aside>
 					</section>
 					<section>
 						<h4>ARIA</h4>
-						<img src="./assets/duct-tape.png" alt="duct tape">
+						<img src="./assets/duct-tape.png" alt="duct tape" width="50%">
 						<aside class="notes">ARIA is spackle, not rebar</aside>
 					</section>
 					<section>
@@ -167,11 +176,39 @@
 					</section>
 				</section>
 				<section>
-					<section>
-						<h3>The crime scene:</h3>
-						<img src="./assets/holmes-body.webp" alt="Holmes comes upon the scene of the crime at the priory school">
-						<aside class="notes">demo the broken grid, screen reader and </aside>
-					</section>
+					<h3>A Case of Identity</h3>
+					<figure class="overlay-container">
+						<img src="./assets/magritte-pipe.jpg" alt="This is not a pipe, but in French. Also, it is a pipe.">
+					</figure>
+					<aside class="notes">Semantics have power. Demo the broken grid, screen reader and Acc In</aside>
+				</section>
+				<section>
+					<h3>The Speckled Band</h3>
+					<figure class="overlay-container">
+						<img src="./assets/speckled-band.jpg" alt="An old-timey poster for the Speckled Band episode of Sherlock Holmes" style="outline: 10px dashed #000">
+						<figcaption>Focus, Watson</figcaption>
+					</figure>
+				</section>
+				<section>
+					<h3>The Illustrious Click Events</h3>
+					<img src="./assets/illustrious-client.jpg" alt="Strand magazine cover for the illustrious client story" width="40%">
+					<aside class="notes">
+						Break down any necessary interaction into simpler pieces.
+						<ul>
+							<li>How do you enter and exit edit mode?</li>
+							<li>How do you get to cells to edit at all? (start with just tabindex="0" on everything)</li>
+							<li>What is most understandable to most people, and most efficient for people who use this often?</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h3>The Valley of ARIA</h3>
+					<img src="./assets/valley-fear.jpg" alt="Vintage paperback cover for the valley of fear" width="35%">
+				</section>
+				<section>
+					<h3>The Final Problem</h3>
+					<img src="./assets/final-problem.jpg" alt="Holmes takes on Moriarty in the final problem" width="40%">
+					<aside class="notes">The final problem really is that anything custom will not be as robust as anything built in. Ask: do you really need this? Who are you excluding? Are there workarounds?</aside>
 				</section>
 			</div>
 			<footer class="global-footer">
