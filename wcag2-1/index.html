@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>WCAG 2.1 Overview</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/solarized.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>A WCAG 2.1 Overview</h1>
+					<aside class="notes">
+						Ask who knows what I mean by "WCAG", "MAS", or where these come from
+					</aside>
+				</section>
+				<section>
+					<p>Accessibility criteria aim to make access possible, not pleasant</p>
+					<figure class="left">
+						<img src="./assets/wheelchair-curb.jpg" alt="a wheelchair stopped next two a four inch curb">
+					</figure>
+					<figure class="right">
+						<img src="./assets/stroller-curb.jpg" alt="woman pushing stroller up curb cut" width="75%">
+					</figure>
+					<aside class="notes">You may end up needing to go out of your way to get to a curb cut, or in the kitchen entrance of a restaurant, but at least you can get in. It's not enough, but the minimum bar</aside>
+				</section>
+				<section>
+					<section>
+						<h2>The new requirements:</h2>
+						<ul>
+							<div role="presentation" class="left">
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html">Orientation</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html">Identify Input Purpose</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html">Reflow</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html">Non-text Contrast</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html">Text Spacing</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">Content on Hover or Focus</a></li>
+							</div>
+							<div role="presentation" class="right">
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html">Character Key Shortcuts</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-gestures.html">Pointer Gestures</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html">Pointer Cancellation</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html">Label in Name</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/motion-actuation.html">Motion Actuation</a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">Status Messages</a></li>
+							</div>
+						</ul>
+						<aside class="notes">Going to get a bit in the weeds now. 12 is too many for 30min, so going to focus on 5</aside>
+					</section>
+					<section data-transition="none">
+						<h2>The new requirements:</h2>
+						<ul>
+							<div role="presentation" class="left">
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html"><s>Orientation</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html"><s>Identify Input Purpose</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html"><strong>Reflow</strong></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html"><strong>Non-text Contrast</strong></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html"><strong>Text Spacing</strong></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html"><strong>Content on Hover or Focus</strong></a></li>
+							</div>
+							<div role="presentation" class="right">
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html"><s>Character Key Shortcuts</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-gestures.html"><s>Pointer Gestures</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html"><s>Pointer Cancellation</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html"><s>Label in Name</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/motion-actuation.html"><s>Motion Actuation</s></a></li>
+								<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html"><strong>Status Messages</strong></a></li>
+							</div>
+						</ul>
+						<aside class="notes">Going to get a bit in the weeds now. 12 is too many for 30min, so going to focus on 5</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Reflow: low vision</h3>
+						<figure class="fragment fade-out">
+							<img src="./assets/reflow-bad.png" alt="screenshots showing a web app not resizing on smaller screens">
+						</figure>
+						<figure class="fragment">
+							<img src="./assets/reflow-good.png" alt="screenshots showing a website successfully resizing on smaller screens">
+						</figure>
+					</section>
+					<section>
+						<h3>Reflow exceptions</h3>
+						<ul>
+							<li>Tabular data</li>
+							<li>Other widgets that rely on 2-dimensional presentation (e.g. a flowchart)</li>
+							<li>Toolbars?</li>
+						</ul>
+						<aside class="notes">Ask questions!</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Non-text Contrast: low vision</h3>
+						<figure class="fragment fade-out">
+							<img src="./assets/stacked-bar-bad.png" alt="A stacked bar chart without adequate contrast between bar sections">
+							<figcaption>Possible solutions: a border between sections, patterns, being very careful with color choices</figcaption>
+						</figure>
+						<figure class="fragment">
+							<img src="./assets/star-examples-fail.png" alt="A star rating widget without contrast between filled and empty stars">
+							<figcaption>Possible solutions: choose a contrasting fill color, add borders</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h3>Non-text Contrast exceptions</h3>
+						<ul>
+							<li>Logos</li>
+							<li>Text alternative immediately adjacent</li>
+							<li>Toolbars?</li>
+						</ul>
+						<aside class="notes">Ask questions! Text must be immediately next to the graphic. Also applies to control boundaries</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Text Spacing: cognitive, vision</h3>
+						<figure>
+							<img src="./assets/text-spacing-bad.png" alt="screenshot of text spacing styles breaking layout">
+							<figcaption>This is about allowing user stylesheets, not your own styles!</figcaption>
+						</figure>
+						<aside class="notes">Common misconception: you must meet this requirement in your own styles</aside>
+					</section>
+					<section>
+						<h3>Text Spacing exceptions</h3>
+						<p>None! :)</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Content on Hover or Focus: mobility, vision</h3>
+						<figure>
+							<img src="./assets/tooltip-success.png" alt="screenshot of a mouse able to hover over a tooltip">
+							<figcaption>Success! A user can move their pointer over the tooltip</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h3>Content on Hover or Focus exceptions</h3>
+						<ul>
+							<li>Popups that will never cover other content</li>
+							<li>Popups that the user actively opens (e.g. with click, enter, etc.)</li>
+						</ul>
+						<aside class="notes">Tooltips! Zoom!</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Status Messages: low vision</h3>
+						<figure>
+							<img src="./assets/progressbar.jpg" alt="a design sketch of progressbars at varying percents">
+						</figure>
+					</section>
+					<section>
+						<h3>Status Message exceptions</h3>
+						<ul>
+							<li>UI changes that cause a forced context/focus change</li>
+							<li>Immediate and successful actions (e.g. opening an accordion does not need a status message)</li>
+							<li>Too many or too frequent announcements can be distracting, use with care</li>
+						</ul>
+						<aside class="notes">Ask questions!</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Testing and fixing bugs</h2>
+					<ul>
+						<li>Accessibility Insights for Web has 2.1 covered in manual tests</li>
+						<li>Come to office hours, or the C&AI Accessibility Teams channel</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Questions?</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>
