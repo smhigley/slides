@@ -1,0 +1,120 @@
+.reveal {
+	/* increase default solarized text contrast */
+	color: #496169;
+}
+
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.left {
+	float: left;
+	width: 50%;
+	margin: 0;
+}
+
+.right {
+	float: right;
+	width: 50%;
+	margin: 0;
+}
+
+.text-emphasis {
+	font-size: 1.5em;
+	text-transform: uppercase;
+}
+
+.reveal section img {
+	background: none;
+	box-shadow: none;
+	border: none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.reveal .attribution {
+	font-size: 0.5em;
+}
+
+.reveal h1 {
+	font-size: 3em;
+}
+
+.reveal .global-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 0.6em;
+	color: grey;
+	z-index: 2;
+}
+
+.global-footer a {
+	color: grey;
+}
+
+/* custom text */
+.large {
+	font-size: 1.25em;
+}
+
+blockquote {
+	text-align: left;
+}
+
+/* slide decorations */
+.slide-background:first-child .slide-background-content {
+	background-position: 50% -20%;
+	background-size: contain;
+	transform: rotate(180deg);
+}
+
+.slide-background:nth-child(2) .slide-background-content {
+	background-position: 0% 0%;
+	background-size: 30%;
+}
+
+/* Tooltip demo styles */
+.tooltip-wrapper {
+  position: relative;
+	display: inline-block;
+	padding: 0.5em 0.75em;
+  border: 1px solid #666;
+  border-radius: 3px;
+	background-color: #ddd;
+	width: 5em;
+}
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, calc(100% + 10px));
+  padding: 6px calc(10px + 1rem) 6px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.9);
+	color: #fff;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 10px);
+  border-bottom: 10px solid rgba(0, 0, 0, 0.9);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}

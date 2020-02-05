@@ -1,0 +1,523 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Tooltips, from semantics to semiotics</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/simple.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="assets/slide-bg.png" style="transform: translateY(-40%);">
+					<h1>Tooltips: <br> <span style="font-size:0.5em">an investigation in four parts</span></h1>
+				</section>
+				<section data-background="assets/corner-left.jpg">
+					<h2>Part 1: What is a tooltip?</h2>
+				</section>
+				<section>
+					<img src="assets/tooltip-collage.png" alt="Many examples of tooltips in the wild, including icon names, simple descriptions, and hover cards">
+				</section>
+				<section>
+					<p>When we say "tooltip," we're speaking a visual language:</p>
+					<ul>
+						<li>It appears on mouse hover</li>
+						<li>It overlays other content</li>
+						<li>It is in close proximity to whatever triggered it</li>
+					</ul>
+				</section>
+				<section>
+					<p class="large">There are commonalities in <strong>interaction:</strong></p>
+					<ul style="font-size:0.85em">
+						<li>Appears and disappears on hover</li>
+						<li>Interaction is optional and non-blocking</li>
+					</ul>
+					<p class="fragment large">These are not commonalities in <strong>purpose</strong></p>
+					<aside class="notes">It is not a modal, which is blocking and persistent. Tooltips are more ignorable.</aside>
+				</section>
+				<section>
+					<p>In contrast, let's consider these other patterns:</p>
+				</section>
+				<section>
+					<p>Table:</p>
+					<p>A structured presentation of data with two-dimensional relationships.</p>
+					<img src="assets/table.png" alt="A basic styled table with sample data on houses for sale">
+				</section>
+				<section>
+					<p>Tabs:</p>
+					<p>A group of content panels, of which only one is exposed at any given time.</p>
+					<img src="assets/tabs.png" alt="VS Code file tab UI">
+				</section>
+				<section>
+					<p>Toolbar:</p>
+					<p>A set of related actions, often for modifying the same visually associated region.</p>
+					<img src="assets/toolbar.png" alt="A simple rich text editor toolbar, taken from the Aria Practices Guide">
+				</section>
+				<section>
+					<p>Tree:</p>
+					<p>A list of hierarchical pieces of content or actionable items</p>
+					<img src="assets/tree.png" alt="simple file viewer tree view, taken from the APG" style="width:500px">
+					<aside class="notes"><p>Side note: a lot of UI patterns seem to start with "T"...</p></aside>
+				</section>
+				<section>
+					<h3>Take 2, tooltips:</h3>
+					<p>Extra, non-essential helper text?</p>
+					<p>no... (insert photo of icon button name tip)</p>
+					<p>Alternative text?</p>
+					<p>No... (though funny story, the image alt used to be a tooltip)</p>
+				</section>
+				<section>
+					<p>Tooltips are a visual pattern, not a functional pattern</p>
+				</section>
+
+				<!-- Part 2: Semantics -->
+				<section data-background="assets/corner-right.jpg" data-background-size="50%" data-background-position="100% 0%">
+					<h2>Part 2: Tooltip Semantics</h2>
+				</section>
+				<section>
+					<h3>What is the tooltip role?</h3>
+					<p>Let's get this out of the way...</p>
+				</section>
+				<section>
+					<p>If tooltips aren't a functional pattern, why do they have a role?</p>
+					<blockquote>
+						A contextual popup that displays a description for an element
+						(...)
+						Authors <strong>SHOULD</strong> ensure that elements with the role tooltip are referenced through the use of aria-describedby
+					</blockquote>
+					<aside class="notes"><p>The tooltip role is essentially a mirror of <code>title</code>. It is not flexible, and adds pretty much nothing, since <code>aria-describedby</code> is still required and does the heavy lifting</p></aside>
+				</section>
+				<section>
+					<h3>Name vs. description</h3>
+					<img src="assets/name-desc.png" alt="two tooltips, one showing the name of a text align icon, and the other showing username requirements for a username form field">
+				</section>
+				<section>
+					<p>On the control the tooltip is naming/describing, regardless of where the trigger is:</p>
+					<p class="large"><strong>Name:</strong> aria-labelledby</p>
+					<p class="large"><strong>Description:</strong> aria-describedby</p>
+				</section>
+				<section>
+					<p>Do not duplicate the name and description</p>
+					<img src="assets/tooltip-duplicate.png" alt="Add tab button with add tab tooltip">
+					<aside class="notes">In some cases, this can cause duplicate screen reader announcements. If the tooltip shows the name, define it as the name. Do not use the title attribute for names.</aside>
+				</section>
+				<section>
+					<p><strong>Errormessages</strong></p>
+					<img src="assets/tooltip-double.png" alt="Form field with two tooltips: one for description, and one error message">
+				</section>
+				<section>
+					<pre><code class="html">aria-describedby="description-id error-id"</code></pre>
+					<p>OR</p>
+					<pre><code class="html">aria-describedby="description-id" aria-errormessage="error-id"</code class="html"></pre>
+				</section>
+				<section>
+					<p>Hovercards: no internal semantics will be conveyed</p>
+					<img src="assets/tooltip-twitter.png" alt="Twitter profile hover card for the Microsoft account" style="width:50%">
+					<aside class="notes">If this information were associated with the twitter handle link through hint text, it would be read all in one go</aside>
+				</section>
+				<section>
+					<p>Tooltip content is never independent of the control it describes</p>
+					<img src="assets/formfield-tooltip-desc.png" alt="username field with instructions in a tooltip" style="width:80%">
+					<img src="assets/formfield-description.png" alt="username field with instructions in text below the field" style="width:80%">
+					<aside class="notes">
+						<p>It is not truly content in its own right. It does not matter that it is in a tooltip, from an information structure POV.</p>
+						(image of tooltip + form field vs. descriptive text + form field)
+					</aside>
+				</section>
+
+				<!-- Part 3: Interaction -->
+				<section data-background="assets/corner-bottom-left.jpg" data-background-size="40%" data-background-position="0% 100%">
+					<div style="transform: translate(0, -20%);">
+						<h2>Part 3: Interaction</h2>
+						<img src="assets/input-modalities.png" alt="icons for mouse, tab, touch, speech, eye control, and switch" style="width: 50%;">
+					</div>
+				</section>
+				<section>
+					<h3>Browsers and tooltips: a history</h3>
+					(image of tooltip + edge friendship, with other browser looking on)
+					(replaced by image of tooltip sad, and edge friends with chrome)
+					<aside class="notes">(note: both edge and IE 10+ supported the title attribute on focus, but none now that Edge is on Chromium)</aside>
+				</section>
+				<section>
+					<p>The title attribute will turn 27 this year</p>
+					<img src="assets/celebration.png" alt="party for tooltips!" style="width: 30%;">
+				</section>
+				<section>
+					<p>No modern browser supports showing the `title` attribute on focus</p>
+					<img src="assets/sad-party.png" alt="line drawing of a lone person looking sadly at a cake" style="width: 40%;">
+					<aside class="notes">(don't want to diminsh the Edge team's work on accessibility. I'm assuming they just haven't gotten to it yet)</aside>
+				</section>
+				<section>
+					<h3>Beyond Browsers: Custom tooltip inaccessibility</h3>
+					<pre><code class="css">
+.tooltip:hover,
+.tooltip:focus {
+	display: block;
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Where this works:</p>
+					<ul>
+						<li>Desktop with mouse</li>
+						<li>Desktop with keyboard</li>
+						<li>Form inputs anywhere</li>
+					</ul>
+				</section>
+				<section>
+					<p>Where this doesn't work:</p>
+					<ul>
+						<li>Touchscreens on links or buttons</li>
+						<li>Eye control and other pointers on links or buttons</li>
+						<li>ZoomText and magnifiers, where the pointer must be able to move over the tooltip</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Zooming, dismissing, and WCAG 2.1</h3>
+					<blockquote>
+						<strong>Content on Hover or Focus</strong>
+						<p>Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true:</p>
+					</blockquote>
+				</section>
+				<section>
+					<blockquote><strong>Dismissable</strong>: A mechanism is available to dismiss the additional content without moving pointer hover or keyboard focus, unless the additional content communicates an input error or does not obscure or replace other content;</blockquote>
+				</section>
+				<section>
+					<blockquote><strong>Hoverable</strong>: If pointer hover can trigger the additional content, then the pointer can be moved over the additional content without the additional content disappearing;</blockquote>
+				</section>
+				<section>
+					<blockquote><strong>Persistent</strong>: The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.</blockquote>
+				</section>
+				<section>
+					<p>Let's break down hoverable and persistent:</p>
+					<div class="demo">
+					<button type="button" aria-labelledby="tip2" class="tooltip-wrapper tooltip-trigger">
+						<span class="tooltip" id="tip2">Delete</span>
+						<svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
+							<path d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+							<path d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+						</svg>
+					</button>
+					</div>
+				</section>
+				<section>
+					<p>Now Dismissable for keyboard:</p>
+					<img src="assets/escape-key.png" alt="the escape key" style="width: 30%;">
+				</section>
+				<section>
+					<p>And finally, Dismissable for pointer users:</p>
+					<img src="assets/escape-what.png" alt="the escape key, question mark?" style="width: 50%;">
+				</section>
+				<section>
+					<p>Where this doesn't work:</p>
+					<ul>
+						<li>tooltips in modals</li>
+						<li>tooltips in iframes</li>
+						<li>tooltips anywhere outside the current application window</li>
+						<li>tooltips that exist anywhere on a page with other complex widget</li>
+						<li>tooltips on fields that have a popup, e.g. a combobox</li>
+						<li>for touch and other pointer users</li>
+						<li>reusable tooltip components in any modern UI framework</li>
+					</ul>
+					<aside class="notes">(brief wcag rant here)</aside>
+				</section>
+				<section>
+					<p>If escape doesn't work, what does?</p>
+				</section>
+				<section>
+					<h3>Usability testing tooltips</h3>
+					<img src="assets/tooltip-study.png" alt="two tooltips, without a close button and with a close button in the corner, showing red X's, and one tooltip with a close button near the trigger showing a green check">
+				</section>
+				<section>
+					<p>Tooltips in forms: maybe don't?</p>
+					<img src="assets/form-study-prototypes.png" alt="four styles of tips on a form: tooltip, two toggle tips, and static text">
+				</section>
+				<section>
+					<img src="assets/study1-participants.png" alt="chart of all particiapnts, including three blind screen reader users, seven low vision magnification software users, and one smartbox grid switch user">
+				</section>
+				<section>
+					<p>A quick summary of user issues with form field tooltips:</p>
+					<ul>
+						<li>It was hidden behind the keyboard on iOS with zoom</li>
+						<li>The text was not reviewable character-by-character</li>
+						<li>The mechanism to show and hide the tooltip on demand was unclear</li>
+						<li>It "looked a bit annoying"</li>
+					</ul>
+					<aside class="notes">(ok, maybe that last one was just a comment on my lack of design chops)</aside>
+				</section>
+				<section>
+					<p>Recommendation: static text or toggle tips</p>
+					<img src="assets/study1-results.png" alt="two examples of a toggle tip opened next to a form field label and static text above a form field, both with green check marks">
+				</section>
+				<section>
+					<h4>Dismissing tooltips</h4>
+					<img src="assets/close-methods.png" alt="an escape key, a control key, and a close icon">
+				</section>
+				<section>
+					<img src="assets/study1-participants.png" alt="chart of all particiapnts in second study, including three blind screen reader users, seven low vision magnification software users, and one switch users, and one dragon speech recognition user">
+				</section>
+				<section>
+					<img src="assets/study2-prototypes.png" alt="three tooltips, one with a close button in the corner, one with a close button above, and one with no close button">
+				</section>
+				<section>
+					<p>Feedback:</p>
+					<ul>
+						<li>A visible close button was preferred by pointer users</li>
+						<li>Close button placement has a big impact</li>
+						<li>Tooltip position is very important, even when hoverable</li>
+						<li>Participants were unwilling to use <kbd>Escape</kbd> within a modal</li>
+						<li>Once discovered, the <kbd>Control</kbd> key shortcut was ok, but was not well known</li>
+						<li>Screen reader users wanted the option to review tooltip text</li>
+					</ul>
+				</section>
+				<section>
+					<p>Main takeaway: when given a close button, people use the close button.</p>
+				</section>
+				<section>
+					<h4>My tooltip hot take:</h4>
+					<p>WCAG 1.4.13's dismissable bullet is both prohitively difficult to implement in practice, and not ideal for magnification users. Don't follow it. Do better.</p>
+					<aside class="notes">(this is my personal opinion, not that of my employer)</aside>
+				</section>
+				<section>
+					<p>Do this instead:</p>
+					<img src="assets/tooltip-good.png" alt="tooltip next to an icon button with a close button above the tooltip next to the icon">
+
+					<aside class="notes">(this isn't the be-all end-all of tooltip design. Keep iterating, and if you have a design you think will work as well or better, test it and go for it!)</aside>
+				</section>
+				<section>
+					<h3>Hover Cards</h3>
+					<img src="assets/tooltip-github-card.png" alt="hover card showing my github profile information next to my github avatar">
+				</section>
+				<section>
+					<div class="left">
+						<img src="assets/tooltip-card.png" alt="very long hover card of virtual machine information, including headings, buttons, and links">
+					</div>
+					<div class="right">
+						<p>As a tooltip, this will:</p>
+						<ul style="font-size:0.8em">
+							<li>Be read all at once by screen readers</li>
+							<li>Lose formatting and interactive elements</li>
+							<li>Be a pain for magnification users</li>
+							<li>May not be accessible to mobile screen reader users, pointer users, and sometimes keyboard users</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<p>If you implement this as a toggle tip, it:</p>
+					<ul>
+						<li>Retains its semantics, and gives reading control back to screen reader users</li>
+						<li>Gives greater view/dismiss control to all users</li>
+						<li>Is more discoverable to screen reader users and non-mouse pointer users</li>
+					</ul>
+				</section>
+
+				<!-- Part 4: Content -->
+				<section data-background="assets/corner-bottom-right.jpg" data-background-size="40%" data-background-position="100% 100%">
+					<h2>Part 4: Writing Tooltip Content</h2>
+				</section>
+				<section>
+					<p><strong>The Tooltip Content Paradox:</strong></p>
+					<p>You must assume that some people will never be able to access the tooltip, so its content must not be necessary to use the UI.</p>
+					<p class="fragment">But if the tooltip is unnecessary, why have it at all?</p>
+				</section>
+				<section>
+					<!-- Billy Gregory #SUX tweet -->
+					<blockquote class="twitter-tweet"><p lang="en" dir="ltr">When UX doesn&#39;t consider ALL users, shouldn&#39;t it be known as &quot;SOME User Experience&quot; or... SUX? <a href="https://twitter.com/hashtag/a11y?src=hash&amp;ref_src=twsrc%5Etfw">#a11y</a></p>&mdash; Billy Gregory (@thebillygregory) <a href="https://twitter.com/thebillygregory/status/552466012713783297?ref_src=twsrc%5Etfw">January 6, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+				</section>
+				<section>
+					<h3>The SAGA of alt text</h3>
+					<p>Or: what happens when content is written exclusively for abled people</p>
+					<img src="assets/saga.jpg" alt="Two fairies drawn in a realistic comic book style, one holding a child" style="width:80%">
+
+					<aside class="notes">(note: the slide image is from the comic SAGA, which may or may not be too obscure a reference, but I'm going for it)</aside>
+				</section>
+				<section>
+					<p>It begins in the dark days of yore, web browsers decided to present image <code>alt</code> text as a visual tooltip.</p>
+					<img src="assets/old-browsers.png" alt="netscape and internet explorer 5 saying remember us?">
+				</section>
+				<section>
+					<p>So people began writing alt text aimed at sighted users:</p>
+					<ul>
+						<li class="fragment">This image is mapped, please download it</li>
+						<li class="fragment">Self explanatory</li class="fragment">
+						<li class="fragment">Turn on image loading, damnit!</li class="fragment">
+						<li class="fragment">(Sorry, Not Available With Your Web Client)</li class="fragment">
+					</ul>
+					<p class="attribution">All from <a href="http://www.alanflavell.org.uk//alt/alt-text.html#howlers">A. J. Flavell</a>, circa 2006</p>
+
+					<aside class="notes">(note: the second one is even misspelled! the horror! The second two are written for visual users with image loading issues or text browsers)</aside>
+				</section>
+				<section>
+					<p>Then the <code>title</code> attribute was introduced to images in HTML4, bringing about the image tooltips we have now.</p>
+					<figure>
+						<img src="assets/xkcd-html.png" alt="XKCD comic that says 'how do you annoy a web developer?' with incorrect HTML, and title text that says 'like this' with mismatched tag cases">
+						<figcaption class="attribution">Source: <a href="https://xkcd.com/1144/">XKCD</a></figcaption>
+					</figure>
+				</section>
+				<section>
+					<p>This, of course, solved all remaining tooltip accessibility problems.</p>
+					<img src="assets/spec-title.png" alt="The HTML spec explicitly warns against the title attribute, saying user agents have not implemented it accessibly">
+					<aside class="notes">
+						There's a circular nature to web development: we fight the same battles over and over, in minorly different ways. In the same way that many slurs did not begin as slurs, but became so through racism, sexism, ableism, and more. We do this over and over again, turning descriptive words into insults, and slurs, because we don't bother to fix the basic problem.
+
+						In the same way, we take technologies that have the potential to support universal access, but over and over we undermine them. We make alt text into tooltips, and then fix it by making titles into tooltips. I'm sure there was a way browsers could have chosen to present the title attribute other than a tooltip on hover, but they didn't.
+
+						Next we fixed the title attribute with custom tooltips, and try to fix poor custom tooltip patterns with WCAG criteria that seem increasingly divorced from the realities of modern web development. There are other casualties along the way, caused by an entrenched ableism in every facet of our ecosystem: longdesc, the section element as a landmark, aria-controls, tables and the display property.
+
+						Until we stop and disentangle our deeply entrenched ableism from how we assume websites should look, we will keep creating and then trying to fix tooltip patterns.
+					</aside>
+				</section>
+				<section>
+					<p>So, when you write your tooltips:</p>
+					<ul>
+						<li>Keep it short (it is often not easily reviewable)</li>
+						<li>Keep in mind the purpose: naming or describing</li>
+						<li>Keep it non-essential</li>
+					</ul>
+					<aside class="notes">Go on, and write your tooltips. I know they'll continue to be made. But sometimes, consider how to structure information so that it does not rely on inaccessible patterns</aside c>
+				</section>
+
+				<!-- Conclusion -->
+				<section>
+					<h2>What now?</h2>
+				</section>
+				<section>
+					<p>We spend so long trying to make existing visual patterns accessible, when we should be trying to address the original need in a way that works for everyone.</p>
+				</section>
+				<section>
+					<p>Next time you struggle over tooltip accessibility, ask:</p>
+					<q>Why am I adding this text to the UI? Where else could it go?</q>
+				</section>
+				<section>
+					<p>Consider toggletips for longer or structured content:</p>
+					<img src="assets/toggletip.png" alt="a toggle tip with structured content, headings, and links, below a button with an info icon" style="width:40%">
+				</section>
+				<section>
+					<p>Consider static text for shorter strings:</p>
+					<img src="assets/static-text.png" alt="form field with static text description and menu button with both an icon and the word menu">
+				</section>
+				<section data-background="assets/slide-bg.png" data-background-size="100%" data-background-position="0% 0%">
+					<p style="transform: translate(0, 150%);">Or be creative! Make something new, and make it work for everyone.</p>
+				</section>
+
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+
+			// tooltip demo
+			const timeout = null;
+					const dismissed = false;
+
+					// here we attach all event listeners to control the tooltip
+					function initTooltip(tooltipContainer) {
+						const trigger = tooltipContainer;
+						const tooltip = tooltipContainer.querySelector('.tooltip');
+
+						// show tooltip on hover and focus
+						tooltipContainer.addEventListener('mouseenter', () => {
+							showTooltip(tooltip);
+						});
+						trigger.addEventListener('focus', () => {
+							showTooltip(tooltip);
+						});
+						
+						// hide tooltip on mouse out and blur
+						// use timeout on mouse leave
+						tooltipContainer.addEventListener('mouseleave', () => {
+							timeoutTooltip(tooltip);
+						});
+						trigger.addEventListener('blur', () => {
+							hideTooltip(tooltip);
+						});
+						
+						// hide the tooltip on escape key press
+						trigger.addEventListener('keydown', (event) => {
+							if (event.key === 'Escape') {
+								hideTooltip(tooltip);
+								dismissed = true;
+							}
+						});
+
+						// hide the tooltip in here so they show up without JS on
+						// debateably useful
+						tooltip.style.display = 'none';
+					}
+
+					function showTooltip(tooltip) {
+						// do not show if tooltip has been dismissed
+						if (dismissed) {
+							return false;
+						}
+
+						tooltip.style.display = 'block';
+						tooltip.removeAttribute('aria-hidden');
+						
+						// if a hide timeout exists for this tooltip, clear it
+						if (timeout) {
+							window.clearTimeout(timeout);
+						}
+					}
+
+					function hideTooltip(tooltip) {
+						tooltip.style.display = 'none';
+						tooltip.setAttribute('aria-hidden', 'true');
+					}
+
+					function timeoutTooltip(tooltip) {
+						// hide the tooltip after a set amount of time
+						const timeout = window.setTimeout(() => {
+							hideTooltip(tooltip);
+						}, 500);
+					}
+
+					// initiate tooltips
+					Reveal.addEventListener( 'slidechanged', function( event ) {
+						setTimeout(function() {
+							const tooltips = document.querySelectorAll('.tooltip-wrapper');
+							tooltips.forEach((tooltip) => {
+								initTooltip(tooltip);
+							});
+						}, 300);
+					});
+		</script>
+	</body>
+</html>
