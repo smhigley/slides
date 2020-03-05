@@ -52,7 +52,6 @@
 				</section>
 				<section>
 					<h3>Classifications and terms</h3>
-					[images of cats sorted into numbered groups]
 					<aside class="notes">
 						<p>If you're going to talk about cats, you need to know some terms. Tabby, calico, house cat, long hair, persian, things like that.</p>
 						<p>So let's start by going over some of the ways we classify notifications, and some of the characteristics you may observe. This will help you identify and distinguish between the different types when you encounter them.</p>
@@ -69,7 +68,6 @@
 						<li>marquee</li>
 						<li>timer</li>
 					</ul>
-					[images: house cats to the left/right of the first list, weird cats to the left/right of the second list]
 					<aside class="notes">
 						<p>Alert and status are the most common types of ARIA live regions. Alert is, as it sounds, an assertive announcement. Status provides a polite announcement.</p>
 						<p>We'll talk more about the lesser-used roles later, but one reason you don't see them much is they don't have good assistive tech support.</p>
@@ -182,6 +180,7 @@
 								<td>Medium</td>
 							</tr>
 						</table>
+						<img src="./assets/cat3.jpg" class="stats-image" alt="guilty looking cat giving side eye" style="max-width: 35%;">
 					</div>
 					<aside class="notes">
 						<p>Both form field errors and success messages that are displayed on screen as the user moves through a form should also be communicated to screen reader users.</p>
@@ -210,6 +209,7 @@
 								<td>Low</td>
 							</tr>
 						</table>
+						<img src="./assets/cat10.jpg" class="stats-image" alt="cat offering a fish in its mouth">
 					</div>
 					<aside class="notes">
 						<p>These can be full-site searches, product filters, or a data table search, as long as it happens without reload. Keep announcements as brief as possible, along the lines of "X results found"</p>
@@ -237,6 +237,7 @@
 								<td>Medium</td>
 							</tr>
 						</table>
+						<img src="./assets/cat13.jpg" class="stats-image" alt="illustrated cat washing its face">
 					</div>
 					<aside class="notes">
 						<p>Progressbars are common, and there is a progressbar role. Unfortunately, web has nothing like the support desktop does for that role. Medium risk because native support is so poor that a custom solution is needed if the progress is important to announce.</p>
@@ -348,6 +349,7 @@
 								<td>High</td>
 							</tr>
 						</table>
+						<img src="./assets/cat11.jpg" class="stats-image" alt="pink illustrated cat, looking up">
 					</div>
 					<aside class="notes">
 						<p>Timers should only be used if they are absolutely necessary, e.g. a stock trading time limit, or a standardized test (though even that is contentious). They cannot be a straightforward live region, since they would be overly distracting (like the last example)</p>
@@ -379,6 +381,7 @@
 								<td>Use standard, supported HTML and ARIA, simplify UI, write static instructions</td>
 							</tr>
 						</table>
+						<img src="./assets/cat15.jpg" alt="cat diving onto woman knitting">
 					</div>
 					<aside class="notes">
 						<p>Using live regions to try to patch real or perceived gaps in ARIA support is always a bad idea. Live regions add an extra layer of fragility, particularly when conflicting with user actions (as it will here). They are also custom and non-standard, meaning users cannot learn how to use a control across the entire web.</p>
@@ -432,7 +435,7 @@
 				</section>
 				<section>
 					<h4>The quick wrap</h4>
-					<p>i.e. <code>&lt;div aria-live="assertive"&gt;&lt;ul class="search-results&gt; ... &lt;/ul&gt;&lt;/div&gt;</code></p>
+					<p>i.e. <code>&lt;ul class="search-results" aria-live="assertive"&gt; ... &lt;/ul&gt;</code></p>
 					<div class="stats-card">
 						<table class="stats-table">
 							<tr>
@@ -467,22 +470,357 @@
 				</section>
 				<section>
 					<h3>Live region types</h3>
-					[insert support table here]
+					<table style="font-size: 0.75em">
+						<thead>
+						<tr>
+						<td>SR</td>
+						<td>Browser</td>
+						<td>alert</td>
+						<td>status</td>
+						<td>log</td>
+						<td>timer</td>
+						<td>marquee</td>
+						<td>progressbar</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+						<td>NVDA</td>
+						<td>Firefox</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Firefox</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>partial</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						<tr>
+						<td>Narrator</td>
+						<td>Edge</td>
+						<td>partial</td>
+						<td>partial</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						<tr>
+						<td>VoiceOver</td>
+						<td>iOS Safari</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						</tbody>
+						</table>
 					<aside class="notes">
 						I've collapsed some of the nuances of different screen readers and browsers for readability in a single slide. The full test results will be linked later, with the slide deck.
 					</aside>
 				</section>
 				<section>
 					<h3>Live region attributes</h3>
-					[insert support table here]
+					<table style="font-size:0.75em">
+						<thead>
+						<tr>
+						<td>SR</td>
+						<td>Browser</td>
+						<td>assertive</td>
+						<td>polite</td>
+						<td>atomic</td>
+						<td>relevant</td>
+						<td>busy</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+						<td>NVDA</td>
+						<td>Firefox</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>partial</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>partial</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Firefox</td>
+						<td>partial</td>
+						<td>partial</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>partial</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						<td>partial</td>
+						</tr>
+						<tr>
+						<td>Narrator</td>
+						<td>Edge</td>
+						<td>partial</td>
+						<td>partial</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>fail</td>
+						</tr>
+						<tr>
+						<td>VoiceOver</td>
+						<td>iOS Safari</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>fail</td>
+						</tr>
+						</tbody>
+						</table>
 				</section>
 				<section>
 					<h3>Handling conflicts</h3>
-					[insert support table here]
+					<table style="font-size:0.75em;">
+						<thead>
+						<tr>
+						<td>SR</td>
+						<td>Browser</td>
+						<td>User actions</td>
+						<td>Focus change</td>
+						<td>Two live regions</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+						<td>NVDA</td>
+						<td>Firefox</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Chrome</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Edge</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Chrome</td>
+						<td>fail</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Firefox</td>
+						<td>fail</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Edge</td>
+						<td>fail</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>Narrator</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>VoiceOver</td>
+						<td>iOS Safari</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>partial</td>
+						</tr>
+						</tbody>
+						</table>
 				</section>
 				<section>
-					<h3>Adding new content</h3>
-					[insert support table here]
+					<h3>Types of content</h3>
+					<table style="font-size:0.75em">
+						<thead>
+						<tr>
+						<td>SR</td>
+						<td>Browser</td>
+						<td>Rich text</td>
+						<td>Timeout</td>
+						<td>CSS Display</td>
+						<td>Non-text</td>
+						<td>Input value</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+						<td>NVDA</td>
+						<td>Firefox</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>NVDA</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Chrome</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Firefox</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>partial</td>
+						</tr>
+						<tr>
+						<td>JAWS</td>
+						<td>Edge</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>Narrator</td>
+						<td>Edge</td>
+						<td>partial</td>
+						<td>fail</td>
+						<td>fail</td>
+						<td>pass</td>
+						<td>pass</td>
+						</tr>
+						<tr>
+						<td>VoiceOver</td>
+						<td>iOS Safari</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>pass</td>
+						<td>partial</td>
+						<td>fail</td>
+						</tr>
+						</tbody>
+						</table>
 				</section>
 				<section>
 					<h3>Other factors</h3>
@@ -616,6 +954,7 @@
 					</code></pre>
 					Note: I will be fixing contrast in the code
 					<aside class="notes">
+						<p>I keep this saved in a gist for when I need it</p>
 						<p>With single page app frameworks like React, sometimes you can unintentionally remove and re-insert the live region element in the DOM if you aren't careful. The mutation observer lets you see exactly what DOM changes are occurring. Try adding it to a wrapper element around the live region element</p>
 						<p>Fun tip! You can also sometimes use this to debug other accessibility issues with dynamic content, particularly around inserting/removing content, or if the virtual cursor or focus is being unexpectedly lost.</p>
 					</aside>
@@ -623,6 +962,7 @@
 				<section>
 					<h3>8. Don't use a live region!</h3>
 					<img src="./assets/dog.jpg" alt="child looking at three dogs">
+					<aside class="notes">Like cats, live regions aren't always the best choice</aside>
 				</section>
 				<section>
 					<p>Instead:</p>
@@ -650,11 +990,27 @@
 					</aside>
 				</section>
 				<section>
-					<p>Get involved in standards, and let them know what you think</p>
+					<p>Get involved in standards! <br>Let them know what you think</p>
 					<img src="./assets/aria-live-github.png" alt="ARIA spec github issue about deprecating all live roles but alert">
 					<aside class="notes">
 						This is on the ARIA spec. If you don't agree (or if you do agree), go comment on this issue! If you have use cases that aren't covered by current live region semantics, open a new issue!
 					</aside>
+				</section>
+				<section>
+					<p>marquee, timer, or something new, could enable UI like this:</p>
+					<video controls>
+						<source src="./assets/task-manager.mp4" type="video/mp4">
+						Sorry, your browser doesn't support embedded videos.
+					</video>
+				</section>
+				<section>
+					<p>Push for browsers, screen readers, and specs to handle common use cases for you</p>
+					<img src="./assets/loading.gif" alt="animated loading bar">
+					<p>at forums like <a href="https://webwewant.fyi/">the Web We Want</a></p>
+				</section>
+				<section>
+					<p>And finally, use your powers wisely</p>
+					<img src="./assets/lightning-cat.jpg" alt="kitten standing atop a mountain range, shooting lightning from its paws" style="width:60%">
 				</section>
 			</div>
 			<footer class="global-footer">

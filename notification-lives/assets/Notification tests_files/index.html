@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>CodePen Demo</title>
+<meta name="robots" content="noindex">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+<link rel="canonical" href="https://codepen.io/smhigley/pen/abOwGro">
+<link rel="stylesheet" href="index_data/normalize.css">
+<style class="INLINE_PEN_STYLESHEET_ID">
+    body {
+  padding: 2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+td {
+  border: 1px solid grey;
+  padding: 0.25em;
+}
+  </style>
+<script src="index_data/iframeConsoleRunner-dc0d50e60903d6825042d06159a8d5ac69a6c0e9b.js"></script>
+<script src="index_data/iframeRefreshCSS-d00a5a605474f5a5a14d7b43b6ba5eb7b3449f04226e.js"></script>
+<script src="index_data/iframeRuntimeErrors-29f059e28a3c6d3878960591ef98b1e303c1fe193.js"></script>
+</head>
+<body>
+<h1>Testing notifications</h1>
+<p>Inline test cases and results for different variations of live regions.</p>
+<h2>Versions</h2>
+<ul>
+<li>Firefox: 73</li>
+<li>Chrome: 80</li>
+<li>Edge: 82</li>
+<li>iOS: 13.3.1</li>
+<li>NVDA: 2019.3.1</li>
+<li>JAWS: 2019.1912.1</li>
+<li>Narrator: Windows 10.0</li>
+</ul>
+<h2>Live region roles</h2>
+<h3>alert</h3>
+<ol>
+<li><div role="alert" aria-live="assertive">Alert on page load</div></li>
+<li>dynamic <code>role="alert"</code> <button onclick="createNotification('alert role test', 'alert')">create alert</button></li>
+<li>update existing <code>role="alert"</code> <button onclick="updateNotification('alert-test', 'second alert test')">update alert</button> <div role="alert" id="alert-test"></div></li>
+<li><code>role="alert"</code> with <code>aria-live="assertive"</code> <button onclick="updateNotification('alert-test2', 'third alert test')">update aria-live alert</button> <div id="alert-test2" role="alert" aria-live="assertive"></div></li>
+</ol>
+<h3>status</h3>
+<ol>
+<li><div role="status" aria-live="polite">Status on page load</div></li>
+<li>dynamic <code>role="status"</code> <button onclick="createNotification('status role test', 'status')">create status</button></li>
+<li>update existing <code>role="status"</code> <button onclick="updateNotification('status-test', 'second status test')">update status</button> <span id="status-test" role="status"></span></li>
+<li><code>role="status"</code> with <code>aria-live="polite"</code> <button onclick="updateNotification('status-test2', 'third status test')">update aria-live status</button> <span id="status-test2" role="status" aria-live="polite"></span></li>
+</ol>
+<h3>log</h3>
+<ol>
+<li><div role="log" aria-live="polite">Log on page load</div></li>
+<li>update <code>role="log"</code> <button onclick="updateNotification('log-test', 'log entry')">update log</button> <span id="log-test" role="log"></span></li>
+<li><code>role="log"</code> with <code>aria-live="polite"</code> <button onclick="updateNotification('log-test2', 'polite log entry')">update aria-live log</button> <span id="log-test2" role="status" aria-live="polite"></span></li>
+</ol>
+<h3>timer</h3>
+<ol>
+<li>update <code>role="timer"</code> <button id="timer">update timer</button> <span id="timer-test" role="timer"></span></li>
+</ol>
+<h3>marquee</h3>
+<ol>
+<li>update <code>role="marquee"</code> <button onclick="updateNotification('marquee-test', 'marquee entry')">update marquee</button> <span id="marquee-test" role="marquee"></span></li>
+</ol>
+<h3>progressbar</h3>
+<ol>
+<li>update <code>role="progressbar"</code> <button id="progressbar">run progressbar</button> <span id="progressbar-test" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></span></li>
+</ol>
+<h3>Results</h3>
+<p>Note: I marked marquee and timer as fails when nothing was read 
+despite the aria-live="off" mapping, because without any feedback they 
+don't add value. I also wrote pass/fail/partial based on the assumption 
+that alert and status should read on insertion, but other roles shoudl 
+not.</p>
+<table>
+<thead>
+<tr>
+<td>SR</td>
+<td>Browser</td>
+<td>alert</td>
+<td>status</td>
+<td>log</td>
+<td>timer</td>
+<td>marquee</td>
+<td>progressbar</td>
+<td>notes</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVDA</td>
+<td>Firefox</td>
+<td>pass</td>
+<td>partial</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>alert on page load doesn't read; alert with aria-live reads twice; update alert reads all text content; dynamic status not read;</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>partial</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>alert on load read; role not read when updating text; status only read when updating; entire text content always read</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Edge</td>
+<td>pass</td>
+<td>partial</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>Same as Chrome</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>partial</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>Only alert read on load and on insertion; full text always read;</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Firefox</td>
+<td>pass</td>
+<td>partial</td>
+<td>partial</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>alert on page load doesn't read; full alert text always read; only reads first update for status and log;</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>alert on load read; updated alert, status, and log read twice; dynamic status read;</td>
+</tr>
+<tr>
+<td>Narrator</td>
+<td>Edge</td>
+<td>partial</td>
+<td>partial</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>All alert regions read on page load; dynamic status read; no updates read;</td>
+</tr>
+<tr>
+<td>VoiceOver</td>
+<td>iOS Safari</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>nothing read on load; alert role not read; full text content always read except for log without aria-live</td>
+</tr>
+</tbody>
+</table>
+<h2>Live region Attributes</h2>
+<ol>
+<li>dynamic <code>aria-live="assertive"</code> <button onclick="createNotification('assertive test', false, 'assertive')">create assertive region</button></li>
+<li>update existing <code>aria-live="assertive"</code> <button onclick="updateNotification('assertive-test', 'second assertive test')">update assertive region</button> <span aria-live="assertive" id="assertive-test"></span></li>
+<li>dynamic <code>aria-live="polite"</code> <button onclick="createNotification('polite test', false, 'polite')">create polite region</button></li>
+<li>update existing <code>aria-live="polite"</code> <button onclick="updateNotification('polite-test', 'second polite test')">update polite region</button> <span aria-live="polite" id="polite-test"></span></li>
+<li><code>aria-atomic="true"</code> <button onclick="updateNotification('atomic-test', 'atomic test')">update atomic region</button> <span aria-live="assertive" aria-atomic="true" aria-label="Atomic Energy" id="atomic-test">Starting text</span></li>
+<li><code>aria-relevant="all"</code> <button onclick="updateNotification('relevant-test', 'relevant test')">add text</button> <button id="relevant-all">clear text</button> <span aria-live="assertive" aria-relevant="all" id="relevant-test"></span></li>
+<li><code>aria-relevant="removals"</code> <button onclick="updateNotification('relevant-test2', 'relevant test')">add text</button> <button id="relevant-removal">clear text</button> <span aria-live="assertive" aria-relevant="removals" id="relevant-test2"></span></li>
+<li><code>aria-busy="true"</code>
+<div aria-busy="true">
+Busy region start: <button onclick="updateNotification('busy-test', 'busy notification')">update busy notification</button> <span aria-live="assertive" id="busy-test"></span>
+</div>
+</li>
+</ol>
+<h3>Results</h3>
+<table>
+<thead>
+<tr>
+<td>SR</td>
+<td>Browser</td>
+<td>assertive</td>
+<td>polite</td>
+<td>atomic</td>
+<td>relevant</td>
+<td>busy</td>
+<td>notes</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVDA</td>
+<td>Firefox</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>partial</td>
+<td>dynamic live regions not read; aria-relevant removals reads nothing; aria-busy not announced but suppresses live announcements</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>dynamic live regions not read; removals reads nothing; full text content always read</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>fail</td>
+<td>same as Chrome</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>partial</td>
+<td>dynamic live regions not read; removals reads nothing; aria-label read for atomic; aria-busy content not available but focusable</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Firefox</td>
+<td>partial</td>
+<td>partial</td>
+<td>pass</td>
+<td>fail</td>
+<td>partial</td>
+<td>dynamic regions read; only first update read; atomic reads all 
+updates; aria-label not read; aria-busy content not available but 
+focusable</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>pass</td>
+<td>dynamic live regions read; removals reads both additions and 
+removals; aria-label read for atomic; aria-busy content not available 
+but focusable</td>
+</tr>
+<tr>
+<td>Narrator</td>
+<td>Edge</td>
+<td>partial</td>
+<td>partial</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>dynamic regions read; updates not read; atomic region only reads label;</td>
+</tr>
+<tr>
+<td>VoiceOver</td>
+<td>iOS Safari</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>fail</td>
+<td>dynamic regions read; non-atomic regions only read additions (unlike with roles); removals read; aria-label not read;</td>
+</tr>
+</tbody>
+</table>
+<h2>Conflicts</h2>
+<ol>
+<li>
+<div>Assertive + user interaction: <button id="conflict1-start">start assertive test</button> <button id="conflict1-stop">stop assertive test</button> <span id="conflict1-target" aria-live="assertive"></span></div>
+<div>Some focus stops: <button>cats</button> <button>dogs</button> <button>mice</button></div>
+</li>
+<li>
+<div>Polite + user interaction: <button id="conflict2-start">start polite test</button> <button id="conflict2-stop">stop polite test</button> <span id="conflict2-target" aria-live="polite"></span></div>
+<div>Some focus stops: <button>cats</button> <button>dogs</button> <button>mice</button></div>
+</li>
+<li>
+<div>Assertive + focus change: <button id="conflict3">fire live region and move focus</button> <span id="conflict3-target" aria-live="assertive"></span></div>
+<div><label for="conflict3-input">Focus jump</label><input type="text" id="conflict3-input" value="Some existing value"></div>
+</li>
+<li>
+<div>Polite + focus change: <button id="conflict4">fire live region and move focus</button> <span id="conflict4-target" aria-live="polite"></span></div>
+<div><label for="conflict4-input">Focus jump</label><input type="text" id="conflict4-input" value="Some existing value"></div>
+</li>
+<li>
+Competing assertive regions: <button id="conflict5">Fire double live regions</button> <span id="conflict5-1" aria-live="assertive"></span> <span id="conflict5-2" aria-live="assertive"></span>
+</li>
+<li>
+Competing polite regions: <button id="conflict6">Fire double live regions</button> <span id="conflict6-1" aria-live="polite"></span> <span id="conflict6-2" aria-live="polite"></span>
+</li>
+<li>
+Competing assertive &amp; polite regions: <button id="conflict7">Fire double live regions</button> <span id="conflict7-1" aria-live="assertive"></span> <span id="conflict7-2" aria-live="polite"></span>
+</li>
+</ol>
+<h3>Results</h3>
+<table>
+<thead>
+<tr>
+<td>SR</td>
+<td>Browser</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>notes</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVDA</td>
+<td>Firefox</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Chrome</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Edge</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Chrome</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Firefox</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Edge</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>Narrator</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>Updated test to use dynamic live region for Narrator</td>
+</tr>
+<tr>
+<td>VoiceOver</td>
+<td>iOS Safari</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>assertive region prevents user interaction announcements or focus 
+announcement; polite region never read; only one assertive update read, 
+all polite live conflicts read.</td>
+</tr>
+</tbody>
+</table>
+<h2>Content insertion</h2>
+<ol>
+<li>Insert formatted text <button id="formatted">Add heading and text</button><div id="formatted-test" aria-live="assertive"></div></li>
+<li>Insert and immediately remove text <button id="flash">Add text</button><div id="flash-test" aria-live="assertive"></div></li>
+<li>Use CSS display <button id="display">Toggle display</button><span aria-live="assertive"><span id="display-test" class="hide">Jellicle cats come out tonight</span>
+</span></li><li>Insert non-text elements <button id="images">Add images, buttons, etc</button><div id="images-test" aria-live="assertive"><img src="index_data/grumpycat.jpg" alt="Grumpy cat"><button aria-label="get a dog">get a cat</button><input type="text" value="Tigger"></div></li>
+<li>Live input <button id="input">Update input</button><input type="text" id="input-test" aria-live="assertive"></li>
+</ol>
+<h3>Results</h3>
+<table>
+<thead>
+<tr>
+<td>SR</td>
+<td>Browser</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>notes</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVDA</td>
+<td>Firefox</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>No semantic information read, only text; aria-label not read</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>aria-label is read</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>aria-label is read</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Chrome</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>partial</td>
+<td>pass</td>
+<td>aria-label is read; image alt is not read</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Firefox</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>partial</td>
+<td>partial</td>
+<td>rich text read twice; aria-label and image alt not read; input value only read first update</td>
+</tr>
+<tr>
+<td>JAWS</td>
+<td>Edge</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>aria-label is read; image alt is read; timeout fixes double reading problem</td>
+</tr>
+<tr>
+<td>Narrator</td>
+<td>Edge</td>
+<td>partial</td>
+<td>fail</td>
+<td>fail</td>
+<td>pass</td>
+<td>pass</td>
+<td>test 1 only reads heading, not text; aria-label is read; image alt is read;</td>
+</tr>
+<tr>
+<td>VoiceOver</td>
+<td>iOS Safari</td>
+<td>pass</td>
+<td>pass</td>
+<td>pass</td>
+<td>partial</td>
+<td>fail</td>
+<td>image alt and aria-label read; input value not read;</td>
+</tr>
+</tbody>
+</table>
+<script src="index_data/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a6.js"></script>
+<script id="INLINE_PEN_JS_ID">
+    "use strict";
+// helper functions
+function createNotification(text, role, ariaLive) {
+  var el = document.createElement('div');
+  el.innerText = text;
+  if (role) {
+    el.setAttribute('role', role);
+  }
+  if (ariaLive) {
+    el.setAttribute('aria-live', ariaLive);
+  }
+  document.body.appendChild(el);
+}
+function updateNotification(id, text) {
+  var el = document.getElementById(id);
+  if (!el) {
+    console.warn('could not find element with id', id);
+    return;
+  }
+  var newContent = document.createElement('span');
+  newContent.innerText = text;
+  el.appendChild(newContent);
+}
+function timedUpdates(el, text, interval) {
+  if (interval === void 0) {interval = 1000;}
+  var index = 1;
+  if (!el) {
+    console.warn('could not find element with id', id);
+    return;
+  }
+  return setInterval(function () {
+    el.innerHTML = el.innerHTML + ' ' + text + ' ' + index;
+    index++;
+  }, interval);
+}
+// attach events
+var progress = 0;
+document.getElementById('progressbar').addEventListener('click', function () {
+  var progressbar = document.getElementById('progressbar-test');
+  progress = 0;
+  var update = function () {
+    progressbar.innerHTML = progress;
+    progressbar.setAttribute('aria-valuenow', progress);
+    if (progress < 100) {
+      progress += 10;
+      setTimeout(update, 300);
+    }
+  };
+  update();
+});
+var timerIndex = 1;
+document.getElementById('timer').addEventListener('click', function () {
+  document.getElementById('timer-test').innerHTML = timerIndex;
+  timerIndex++;
+});
+document.getElementById('relevant-all').addEventListener('click', function () {
+  document.getElementById('relevant-test').innerHTML = '';
+});
+document.getElementById('relevant-removal').addEventListener('click', function () {
+  document.getElementById('relevant-test2').innerHTML = '';
+});
+var conflict1;
+document.getElementById('conflict1-start').addEventListener('click', function () {
+  var el = document.getElementById('conflict1-target');
+  el.innerHTML = '';
+  conflict1 = timedUpdates(el, 'assertive test');
+});
+document.getElementById('conflict1-stop').addEventListener('click', function () {
+  conflict1 && clearInterval(conflict1);
+});
+var conflict2;
+document.getElementById('conflict2-start').addEventListener('click', function () {
+  var el = document.getElementById('conflict2-target');
+  el.innerHTML = '';
+  conflict2 = timedUpdates(el, 'polite test');
+});
+document.getElementById('conflict2-stop').addEventListener('click', function () {
+  conflict2 && clearInterval(conflict2);
+});
+document.getElementById('conflict3').addEventListener('click', function () {
+  var liveEl = document.getElementById('conflict3-target');
+  var focusTarget = document.getElementById('conflict3-input');
+  liveEl.innerHTML = liveEl.innerHTML + 'some text that fires an assertive notification goes here';
+  focusTarget.focus();
+});
+document.getElementById('conflict4').addEventListener('click', function () {
+  var liveEl = document.getElementById('conflict4-target');
+  var focusTarget = document.getElementById('conflict4-input');
+  liveEl.innerHTML = liveEl.innerHTML + 'some text that fires a polite notification goes here';
+  focusTarget.focus();
+});
+document.getElementById('conflict5').addEventListener('click', function () {
+  var el1 = document.getElementById('conflict5-1');
+  var el2 = document.getElementById('conflict5-2');
+  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';
+  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';
+});
+document.getElementById('conflict6').addEventListener('click', function () {
+  var el1 = document.getElementById('conflict6-1');
+  var el2 = document.getElementById('conflict6-2');
+  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';
+  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';
+});
+document.getElementById('conflict7').addEventListener('click', function () {
+  var el1 = document.getElementById('conflict7-1');
+  var el2 = document.getElementById('conflict7-2');
+  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';
+  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';
+});
+document.getElementById('formatted').addEventListener('click', function () {
+  var el = document.getElementById('formatted-test');
+  el.innerHTML = el.innerHTML + '<h3>Cats</h3><p>Cats is a musical by Andrew Lloyd Webber featuring disturbing human-cat hybrids</p>';
+});
+document.getElementById('flash').addEventListener('click', function () {
+  var el = document.getElementById('flash-test');
+  el.innerHTML = el.innerHTML + 'Possum \'s book of practical cats';
+  setTimeout(function () {el.innerHTML = '';}, 100);
+});
+document.getElementById('display').addEventListener('click', function () {
+  var el = document.getElementById('display-test');
+  el.classList.toggle('hide');
+});
+document.getElementById('images').addEventListener('click', function () {
+  var el = document.getElementById('images-test');
+  el.innerHTML = el.innerHTML + '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/125707/grumpycat.jpg" alt="Grumpy cat"><button aria-label="get a dog">get a cat</button><input type="text" value="Tigger">';
+});
+var textareaNum = 1;
+document.getElementById('input').addEventListener('click', function () {
+  var el = document.getElementById('input-test');
+  el.value = "Ideal number of pets: " + textareaNum;
+  textareaNum++;
+});
+    //# sourceURL=pen.js
+  </script>
+
+</body></html>

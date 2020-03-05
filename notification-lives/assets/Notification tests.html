@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]>
+<html class="ie" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="pc firefox73 js" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Notification tests</title>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CodePen">
+<meta name="twitter:title" content="Notification tests">
+<meta name="twitter:description" content="...">
+<meta name="twitter:image" content="https://screenshot.codepen.io/125707.abOwGro.480262fc-19cb-495a-8a39-9999783a048d.png">
+<meta property="og:image" content="https://codepen.io/smhigley/pen/abOwGro/image/large.png" itemprop="thumbnailUrl">
+<meta property="og:title" content="Notification tests">
+<meta property="og:url" content="https://codepen.io/smhigley/details/abOwGro">
+<meta property="og:site_name" content="CodePen">
+<meta property="og:description" content="...">
+<link rel="alternate" type="application/json+oembed" href="https://codepen.io/api/oembed?url=https%3A%2F%2Fcodepen.io%2Fsmhigley%2Fpen%2FabOwGro&amp;format=json" title="Notification tests">
+<link href="Notification%20tests_files/css.css" rel="stylesheet">
+<link rel="stylesheet" media="all" href="Notification%20tests_files/global-14249c2f56c5ee1b6e0bb3c5bc82e1635b7b6ea01524071aa7b34.css">
+<link rel="stylesheet" media="screen" href="Notification%20tests_files/everypage-0b358e01.css">
+<link rel="stylesheet" media="all" href="Notification%20tests_files/editor-4b9455e47e680eb3ba4d576bce3169777f15a82bd0a30b719d5c5.css">
+<meta name="description" content="...">
+<link rel="stylesheet" media="screen" href="Notification%20tests_files/twilight-c4d2eafba805f08fdb40c0900ac100b78469aba0532ca487a4f.css" id="cm-theme">
+<style id="cm-font-family" class="cm-font-family">
+  
+      
+  .CodeMirror,
+  .console-logs .console-line,
+  .console-command-line-input,
+  .console-message,
+  .CodeMirror-hint {
+    font-family: Monaco, MonoSpace;
+  }
+</style>
+<style id="cm-font-size">
+  .CodeMirror,
+  .console-logs .console-line,
+  .console-command-line-input,
+  .console-message,
+  .CodeMirror-hint {
+    font-size: 14px;
+  }
+</style>
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="22Ldqop1lkL2VtNEAZpz4OBB9UYFPY6S7h6hXmDzRviHrZcNYEjIpMI2wxzfrAJKSIBY1WEE4+QixJKpQ5u3iQ==">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script>/* Firefox needs this to prevent FOUC. */</script><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+<script charset="utf-8" src="Notification%20tests_files/20-c168c647a77d5b4e3940.js"></script><script charset="utf-8" src="Notification%20tests_files/firebase-de1f1ae1ef89f7726fb4.js"></script></head>
+<body class="room-editor editor state-htmlOn-cssOn-jsOn sidebar-false   layout-top  logged-in show-run-button unsaved">
+<header class="main-header" id="main-header"><div class="header-wrap ItemHeader_headerWrap-2WdNj"><h1 class="Logo_root-3XNFn" data-test-id="logo"><a href="https://codepen.io/" class="Logo_small-3i6l6"><svg width="20" height="20" class=" icon icon-codepen-box"><use xlink:href="/svg_sprite?v=8885a907#codepen-box"></use></svg><span class="screen-reader-text">CodePen Home</span></a><a href="https://codepen.io/" class="Logo_large-3FckA"><svg width="20" height="20" class=" icon icon-logo" title="CodePen"><use xlink:href="/svg_sprite?v=8885a907#logo"></use></svg><span class="screen-reader-text">CodePen Home</span></a></h1><div class="ItemTitle_root-3FqLB" data-test-id="item-title-area"><div class="ItemTitle_text-2ho1f"><h1 class="ItemTitle_title-3OkGi" id="item-title"><a href="https://codepen.io/smhigley/pen/abOwGro" class="ItemTitle_titleLink-mr9H4" id="editable-title-span" title="Notification tests">Notification tests</a><svg width="20" height="20" class="ItemTitle_iconEdit-jPjlp icon icon-edit"><use xlink:href="/svg_sprite?v=8885a907#edit"></use></svg></h1><div class="ItemTitle_by-24dz8" data-test="AnItemBy">A Pen By <a class="ItemTitle_ownerLink-tMhWC" href="https://codepen.io/smhigley">Sarah Higley <span class="badge badge-pro" data-test-id="pro-badge">PRO</span></a></div></div></div><div class="navigation-wrap editor-actions-menu"><button class="footer-button invisible-button " aria-expanded="false"><div class="toggle-actions-button" aria-hidden="true"><span></span><svg width="20" height="20" class=" icon icon-arrow-down-mini"><use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use></svg></div><span class="screen-reader-text">Pen Editor Menu</span></button><div class="editor-actions" data-expanded="false" aria-hidden="true"><button class="button loves heart-button button-editor-outline loved-0" data-item="PEN" data-hashid="abOwGro" title="Love"><span class="screen-reader-text">Love</span><svg width="16" height="16" class=" icon icon-heart"><use xlink:href="/svg_sprite?v=8885a907#heart"></use></svg></button><button id="run" title="Com/Ctrl - Shift - 7 to Run" class="button icon-button button-editor-outline run"><svg width="20" height="20" class=" icon icon-rerun"><use xlink:href="/svg_sprite?v=8885a907#rerun"></use></svg><span class="label">Run</span></button><button id="update" data-test-id="save-button" title="Save this Pen" class="button icon-button button-editor-outline unsaved-wobble"><svg width="20" height="20" class=" icon icon-cloud"><use xlink:href="/svg_sprite?v=8885a907#cloud"></use></svg><span class="label">Save</span></button><button id="edit-settings" data-test-id="edit-settings" title="Pen Settings" class="button icon-button button-editor-solid"><svg width="20" height="20" class=" icon icon-gear"><use xlink:href="/svg_sprite?v=8885a907#gear"></use></svg><span class="label">Settings</span></button><button id="view-switcher-button" data-test-id="view-switcher-button" title="Change View" class="button icon-button button button-editor-solid view-switcher-button"><svg width="20" height="20" class=" icon icon-viewswitcher"><use xlink:href="/svg_sprite?v=8885a907#viewswitcher"></use></svg><span class="label">Change View</span></button><div class="view-switcher" style="left: 1129px;"><div class="ViewSwitcher_switch-1Ih20"><h3>Open this Pen in:</h3><nav class="link-list"><a id="pen-link" href="https://codepen.io/smhigley/pen/abOwGro" class="view-switcher-row editor-link pen-link active">Editor View<span class="view-meta">/pen/<span data-href="https://blog.codepen.io/documentation/views/editor-view/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="details-link" href="https://codepen.io/smhigley/details/abOwGro" class="view-switcher-row editor-link details-link">Details View<span class="view-meta">/details/<span data-href="https://blog.codepen.io/documentation/views/details-view/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="full-link" href="https://codepen.io/smhigley/full/abOwGro" class="view-switcher-row editor-link full-link">Full Page View<span class="view-meta">/full/<span data-href="https://blog.codepen.io/documentation/views/full-page-view/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="debug-link" href="https://codepen.io/smhigley/debug/abOwGro" class="view-switcher-row editor-link debug-link" target="_blank" rel="noopener">Debug mode<span class="view-meta">/debug/<span data-href="https://blog.codepen.io/documentation/views/debug-view/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="live-link" href="https://codepen.io/smhigley/live/abOwGro" class="view-switcher-row editor-link live-link" target="_blank" rel="noopener">Live View<span class="view-meta">/live/<span data-href="http://blog.codepen.io/documentation/pro-features/live-view/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="collab-link" href="https://codepen.io/smhigley/collab/abOwGro" class="view-switcher-row editor-link collab-link">Collab Mode<span class="view-meta">/collab/<span data-href="https://blog.codepen.io/documentation/pro-features/collab-mode/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="professor-link" href="https://codepen.io/smhigley/professor/abOwGro" class="view-switcher-row editor-link professor-link">Professor Mode<span class="view-meta">/professor/<span data-href="http://blog.codepen.io/documentation/pro-features/professor-mode/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a><a id="pres-link" href="https://codepen.io/smhigley/pres/abOwGro" class="view-switcher-row editor-link pres-link">Presentation Mode<span class="view-meta">/pres/<span data-href="http://blog.codepen.io/documentation/pro-features/presentation-mode/" class="learn-more inline-q"><svg width="13" height="13" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></span></span></a></nav></div><div class="ViewSwitcher_switch-1Ih20"><h3>Direct Code Links:</h3><div class="share-static share-section"><a target="_blank" rel="noopener noreferrer" href="https://codepen.io/smhigley/pen/abOwGro.html">.html</a><a target="_blank" rel="noopener noreferrer" href="https://codepen.io/smhigley/pen/abOwGro.css">.css</a><a target="_blank" rel="noopener noreferrer" href="https://codepen.io/smhigley/pen/abOwGro.js">.js</a><a target="_blank" rel="noopener noreferrer" href="https://codepen.io/smhigley/pen/abOwGro.typescript">.typescript</a></div></div><div class="ViewSwitcher_switch-1Ih20 editor-layout-section"><h3>Editor Layout:</h3><div class="editor-layout-buttons"><a id="left-layout" href="https://codepen.io/smhigley/pen/abOwGro/left/" class="layout-change-icon" data-layout-type="left"><span class="screen-reader-text">Use Left Layout</span><svg width="20" height="20" class="editor-left rotate-cc90 icon icon-icon-new-pen"><use xlink:href="/svg_sprite?v=8885a907#icon-new-pen"></use></svg></a><a id="top-layout" href="https://codepen.io/smhigley/pen/abOwGro/top/" class="layout-change-icon" data-layout-type="top"><span class="screen-reader-text">Use Top Layout</span><svg width="20" height="20" class="new-pen icon icon-icon-new-pen"><use xlink:href="/svg_sprite?v=8885a907#icon-new-pen"></use></svg></a><a id="right-layout" href="https://codepen.io/smhigley/pen/abOwGro/right/" class="layout-change-icon" data-layout-type="right"><span class="screen-reader-text">Use Right Layout</span><svg width="20" height="20" class="editor-right rotate-c90 icon icon-icon-new-pen"><use xlink:href="/svg_sprite?v=8885a907#icon-new-pen"></use></svg></a></div></div></div><div class="multi-button multi-button-outline multi-button-pin"><button class="button button-editor-outline pin-button" title="Pin"><svg width="20" height="20" class=" icon icon-icon-pin"><use xlink:href="/svg_sprite?v=8885a907#icon-pin"></use></svg></button><button class="button button-editor-outline pin-dropdown-button" title="View Pins"><svg width="20" height="20" class=" icon icon-arrow-down-mini"><use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use></svg></button></div><div class="drawer PinsDrawer_drawer-1Qbdu PinsDrawer_headerDrawer-1EhwY Drawer_root-3dt6g"><h3>Pinned Items</h3><p class="no-pins-yet">You don't have any <a href="https://blog.codepen.io/documentation/features/pinned-items/" class="docs-link" target="_blank" rel="noopener noreferrer">pinned items</a> yet. You can pin any Pen, Post, or Collection (from their respective pages) for easy access here.</p></div></div></div><div class="UserMenu_userMenuDropdownParent-5tsjj"><nav title="User Menu"><button class="UserMenu_userMenuButton-38sVN invisible-button" aria-haspopup="true" aria-expanded="false" data-test-id="user-menu-button"><img src="Notification%20tests_files/80.jpg" class="user-avatar" alt="User Avatar" data-test-id="user-avatar" width="44" height="44"><span class="screen-reader-text">User Menu</span></button><ul class="UserMenu_userMenu-3E8E-" data-open="false" data-test-id="user-menu"></ul></nav></div></div></header>
+<div class="item-settings-modal tab-layout tab-layout-modal pen" id="item-settings-modal">
+<header class="item-settings-modal-header tab-layout-header">
+<h2 class="item-settings-modal-header-title tab-layout-header-title">Pen Settings</h2>
+<div class="save-and-close-wrap">
+<button type="button" class="button mini-button button-no-right-margin close" id="top-close-settings">
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+</button>
+</div>
+</header>
+<div class="tabs tab-layout-wrapper settings-tabs-wrapper">
+<nav id="settings-tabs" class="no-mobile-nav tab-layout-tabs item-settings-tabs">
+<div class="tab-layout-tab-group">
+<a id="settings-html-tab" href="#settings-html" class="settings-tab-html" data-type="html">
+HTML
+</a>
+<a id="settings-css-tab" href="#settings-css" class="settings-tab-css" data-type="css">
+CSS
+</a>
+<a id="settings-js-tab" href="#settings-js" class="settings-tab-js" data-type="js">
+JS
+</a>
+</div>
+<div class="tab-layout-tab-group">
+<a id="settings-details-tab" href="#settings-details" class="settings-tab-details" data-type="details">
+Pen Details
+</a>
+<a id="settings-privacy-tab" href="#settings-privacy" class="settings-tab-privacy" data-type="privacy">
+Privacy
+<span class="badge badge-pro">PRO</span>
+</a>
+<a id="settings-behavior-tab" href="#settings-behavior" class="settings-tab-behavior active" data-type="behavior">
+Behavior
+</a>
+<a id="settings-editor-tab" href="#settings-editor" class="settings-tab-editor" data-type="editor">
+Editor
+</a>
+<a id="settings-template-tab" href="#settings-template" class="settings-tab-template" data-type="template">
+Template
+</a>
+<a id="settings-screenshot-tab" href="#settings-screenshot" class="settings-tab-screenshot" data-type="screenshot">
+Screenshot
+<span class="badge badge-pro">PRO</span>
+</a>
+</div>
+</nav>
+<div class="settings tab-page" id="settings-html">
+<h3 aria-label="HTML">HTML</h3>
+<form class="settings-row top-label-form normal-labels preprocessor-choice group">
+<h4>
+<label for="html-preprocessor">HTML Preprocessor</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About HTML Preprocessors</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>HTML preprocessors can make writing HTML more powerful or convenient.
+ For instance, Markdown is designed to be easier to write and read for 
+text documents and you could write a loop in Pug.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-html-preprocessors/" target="_blank" rel="noopener">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank" rel="noopener">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="html-preprocessor" id="html-preprocessor" class="fullwidth">
+<option value="none" selected="selected">None</option>
+<option value="haml">Haml</option>
+<option value="markdown">Markdown</option>
+<option value="slim">Slim</option>
+<option value="pug">Pug</option>
+</select>
+<div class="select-icon">
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</div>
+</div>
+</form>
+<form class="settings-row top-label-form normal-labels prevent-form-submit" onsubmit="return false;">
+<h4>
+<label for="html-classes">Add Class(es) to &lt;html&gt;</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>Adding Classes</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>In CodePen, whatever you write in the HTML editor is what goes within the <code>&lt;body&gt;</code> tags in <a target="_blank" rel="noopener" href="https://blog.codepen.io/documentation/features/preview-template/">a basic HTML5 template</a>. So you don't have access to higher-up elements like the <code>&lt;html&gt;</code> tag. If you want to add classes there that can affect the whole document, this is the place to do it.</p>
+</div>
+</div>
+<input type="text" id="html-classes" name="html-classes" class="fullwidth" placeholder="e.g. single post post-1234" maxlength="250">
+</form>
+<form class="settings-row top-label-form normal-labels prevent-form-submit" onsubmit="return false;">
+<h4>
+<label for="head-content">Stuff for &lt;head&gt;</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About the &lt;head&gt;</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>In CodePen, whatever you write in the HTML editor is what goes within the <code>&lt;body&gt;</code> tags in <a target="_blank" rel="noopener" href="https://blog.codepen.io/documentation/features/preview-template/">a basic HTML5 template</a>. If you need things in the <code>&lt;head&gt;</code> of the document, put that code here.</p>
+</div>
+</div>
+<div class="head-content-wrapper">
+<textarea id="head-content" name="head-content" class="fullwidth is-code head-content" placeholder="e.g. &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;"></textarea>
+<span class="insecure-resource-tooltip">
+<div class="help-flyout-link">
+<span class="icon-help">!</span>
+<div class="help-flyout help-flyout-reverse">
+<svg class="icon-x">
+<use xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<h5>Insecure Resource</h5>
+<p>The resource you are linking to is using the 'http' protocol, which may not work when the browser is using https.</p>
+</div>
+</div>
+</span>
+</div>
+<button class="button mini-button button-medium" id="meta-tag-insert">↑ Insert the most common viewport meta tag</button>
+</form>
+</div>
+<div class="settings tab-page" id="settings-css">
+<h3 aria-label="CSS">CSS</h3>
+<form class="settings-row settings-row-1 top-label-form normal-labels preprocessor-choice group">
+<h4>
+<label for="css-preprocessor">CSS Preprocessor</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About CSS Preprocessors</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>CSS preprocessors help make authoring CSS easier. All of them offer 
+things like variables and mixins to provide convenient abstractions.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-css-preprocessors/" target="_blank">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="css-preprocessor" id="css-preprocessor" class="fullwidth css-preprocessor">
+<option value="none" selected="selected">None</option>
+<option value="less">Less</option>
+<option value="scss">SCSS</option>
+<option value="sass">Sass</option>
+<option value="stylus">Stylus</option>
+<option value="postcss">PostCSS</option>
+</select>
+<div class="select-icon">
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</div>
+</div>
+<div id="need-an-addon" class="align-right hide">
+<a id="css-need-an-addon-button" href="#0" class="button button-medium mini-button need-an-addon-button">
+Need an add-on?
+</a>
+</div>
+<div class="add-ons add-ons-scss hide" id="add-ons"></div>
+</form>
+<form id="startercss-options-form" class="settings-row settings-row-2 top-label-form prevent-form-submit" onsubmit="return false;">
+<h4>
+CSS Base
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About CSS Base</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>It's a common practice to apply CSS to a page that styles elements 
+such that they are consistent across all browsers. We offer two of the 
+most popular choices: <a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a> and a <a href="http://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">reset</a>. Or, choose <b>Neither</b> and nothing will be applied.</p>
+</div>
+</div>
+<ul class="radio-list">
+<li>
+<input type="radio" id="startercss-normalize" name="startercss" checked="checked" value="normalize">
+<label for="startercss-normalize" class="small-inline">Normalize</label>
+</li>
+<li>
+<input type="radio" id="startercss-reset" name="startercss" value="reset">
+<label for="startercss-reset" class="small-inline">Reset</label>
+</li>
+<li>
+<input type="radio" id="startercss-neither" name="startercss" value="neither">
+<label for="startercss-neither" class="small-inline">Neither</label>
+</li>
+</ul>
+</form>
+<form id="prefix-options-form" class="settings-row settings-row-3 top-label-form">
+<h4>
+Vendor Prefixing
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About Vendor Prefixing</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>To get the best cross-browser support, it is a common practice to 
+apply vendor prefixes to CSS properties and values that require them to 
+work. For instance <code>-webkit-</code> or <code>-moz-</code>.</p>
+<p>We offer two popular choices: <a href="https://github.com/postcss/autoprefixer" target="blank" rel="noopener">Autoprefixer</a> (which processes your CSS server-side) and <a href="https://leaverou.github.io/prefixfree/" target="_blank" rel="noopener">-prefix-free</a> (which applies prefixes via a script, client-side).</p>
+</div>
+</div>
+<ul class="radio-list">
+<li>
+<input type="radio" id="prefix-autoprefixer" name="prefix" value="autoprefixer">
+<label for="prefix-autoprefixer" class="small-inline">Autoprefixer</label>
+</li>
+<li>
+<input type="radio" id="prefix-prefixfree" name="prefix" value="prefixfree">
+<label for="prefix-prefixfree" class="small-inline">Prefixfree</label>
+</li>
+<li>
+<input type="radio" id="prefix-neither" name="prefix" value="neither" checked="checked">
+<label for="prefix-neither" class="small-inline">Neither</label>
+</li>
+</ul>
+</form>
+<form id="external-css-resources" class="settings-row settings-row-4 top-label-form prevent-form-submit" onsubmit="return false;">
+<h4>
+Add External Stylesheets/Pens
+</h4>
+<p>Any URL's added here will be added as <code>&lt;link&gt;</code>s in 
+order, and before the CSS in the editor. If you link to another Pen, it 
+will include the CSS from that Pen. If the preprocessor matches, it will
+ attempt to combine them before processing.</p>
+<div class="resource-search-bar">
+<svg class="icon icon-mag">
+<use xlink:href="/svg_sprite?v=8885a907#mag"></use>
+</svg>
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="external-css-search" type="text" placeholder="Search for resources (Bootstrap, Foundation, Animate.css...)" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" style="position: relative; vertical-align: top;" dir="auto"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Lato&quot;, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Tahoma, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: none;"></pre><span class="aa-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;" role="listbox" id="algolia-autocomplete-listbox-0"><div class="aa-dataset-1"></div><div class="aa-dataset-2"></div></span></span>
+</div>
+<div class="algolia-shoutout">
+<a href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=codepen.io&amp;utm_campaign=poweredby" target="_blank">
+Powered by <img alt="Algolia" src="Notification%20tests_files/algolia-9e1c0c887f4db420704b2a79926864019ef156bcecc9d5774a7e.svg">
+</a>
+</div>
+<div class="help-flyout-link">
+<svg class="icon-help">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About External Resources</h5>
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>You can apply CSS to your Pen from any stylesheet on the web. Just 
+put a URL to it here and we'll apply it, in the order you have them, 
+before the CSS in the Pen itself.</p>
+<p>If the stylesheet you link to has the file extension of a preprocessor, we'll attempt to process it before applying.</p>
+<p>You can also link to another Pen here, and we'll pull the CSS from 
+that Pen and include it. If it's using a matching preprocessor, we'll 
+combine the code before preprocessing, so you can use the linked Pen as a
+ true dependency.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/adding-external-resources/" target="_blank" rel="noopener">Learn more</a></p>
+</div>
+</div>
+<div id="css-external-resources" class="external-resource-wrapper ui-sortable">
+<div data-view-id="51370033" class="external-resource-url-row ">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle"></use>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-51370033" class="fullwidth css-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-css" placeholder="https://yourwebsite.com/style.css" data-view-id="51370033">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// 
+protocol, which may not work when the browser is using https:// like 
+CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="51370033">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x"></use>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-51370033" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="51370033" href="">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye"></use>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="95330303" class="external-resource-url-row ">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle"></use>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-95330303" class="fullwidth css-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-css" placeholder="https://codepen.io/username/pen/aBcDef" data-view-id="95330303">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// 
+protocol, which may not work when the browser is using https:// like 
+CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="95330303">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x"></use>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-95330303" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="95330303" href="">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye"></use>
+        </svg>
+      </a>
+    </div>
+
+  </div></div>
+<script id="css-external-resources-template" type="text/template">
+  <div data-view-id="<%= view_id %>" class="external-resource-url-row <%= insecure_resource %>">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle" />
+      </svg>
+    </span>
+
+    <input
+      id="external-resource-input-<%= view_id %>"
+      class="fullwidth css-resource external-resource"
+      type="text"
+      pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+      name="external-css"
+      placeholder="<%= placeholder %>"
+      value="<%= url %>"
+      data-view-id="<%= view_id %>">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="<%= view_id %>">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x" />
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-<%= view_id %>" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="<%= view_id %>" href="<%= url %>">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</script>
+<div class="external-resource-actions group">
+<span id="add-css-resource" class="button mini-button button-medium add-resource" data-type="css">
+<span data-type="css">+ add another resource</span>
+</span>
+</div>
+</form>
+</div>
+<div class="settings tab-page" id="settings-js">
+<div class="item-settings-javascript normal-labels">
+<h3 aria-label="JavaScript">JavaScript</h3>
+<div class="item-settings-javascript-preprocessor settings-row">
+<h4>
+<label for="js-preprocessor">JavaScript Preprocessor</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" width="14" height="14">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About JavaScript Preprocessors</h5>
+<svg class="icon-x" width="12" height="12">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>JavaScript preprocessors can help make authoring JavaScript easier 
+and more convenient. For instance, CoffeeScript can help prevent 
+easy-to-make mistakes and offer a cleaner syntax and Babel can bring 
+ECMAScript 6 features to browsers that only support ECMAScript 5.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-js-preprocessors/" target="_blank" rel="noopener">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="js-preprocessor" id="js-preprocessor" class="fullwidth">
+<option value="none">None</option>
+<option value="babel">Babel</option>
+<option value="typescript" selected="selected">TypeScript</option>
+<option value="coffeescript">CoffeeScript</option>
+<option value="livescript">LiveScript</option>
+</select>
+<div class="select-icon">
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</div>
+</div>
+<div class="processing-packages-message callout hide" id="processing-packages-message">
+Babel is required to process package imports. If you need a different preprocessor remove all packages first.
+</div>
+</div>
+<div id="external-js-resources" class="item-settings-javascript-external settings-row external-js-resources top-label-form prevent-form-submit" onsubmit="return false;">
+<h4>
+Add External Scripts/Pens
+</h4>
+<p>Any URL's added here will be added as <code>&lt;script&gt;</code>s in order, and run <em>before</em> the JavaScript in the editor. You can use the URL of any other Pen and it will include the JavaScript from that Pen.</p>
+<div class="resource-search-bar">
+<svg class="icon icon-mag" width="18" height="18">
+<use xlink:href="/svg_sprite?v=8885a907#mag"></use>
+</svg>
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="external-js-search" type="text" placeholder="Search CDNjs (jQuery, Lodash, React, Angular, Vue.js, Ember...)" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-3" style="position: relative; vertical-align: top;" dir="auto"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Lato&quot;, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Tahoma, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: none;"></pre><span class="aa-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;" role="listbox" id="algolia-autocomplete-listbox-3"><div class="aa-dataset-4"></div><div class="aa-dataset-5"></div></span></span>
+</div>
+<div class="algolia-shoutout">
+<a href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=codepen.io&amp;utm_campaign=poweredby" target="_blank">
+Powered by <img alt="Algolia" src="Notification%20tests_files/algolia-9e1c0c887f4db420704b2a79926864019ef156bcecc9d5774a7e.svg">
+</a>
+</div>
+<div class="help-flyout-link">
+<svg class="icon-help" width="14" height="14">
+<use xlink:href="/svg_sprite?v=8885a907#help"></use>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About External Resources</h5>
+<svg class="icon-x" width="12" height="12">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+<p>You can apply a script from anywhere on the web to your Pen. Just put
+ a URL to it here and we'll add it, in the order you have them, before 
+the JavaScript in the Pen itself.</p>
+<p>If the script you link to has the file extension of a preprocessor, we'll attempt to process it before applying.</p>
+<p>You can also link to another Pen here, and we'll pull the JavaScript 
+from that Pen and include it. If it's using a matching preprocessor, 
+we'll combine the code before preprocessing, so you can use the linked 
+Pen as a true dependency.</p>
+ <p><a href="https://blog.codepen.io/documentation/editor/adding-external-resources/" target="_blank">Learn more</a></p>
+</div>
+</div>
+<div id="js-external-resources" class="external-resource-wrapper ui-sortable">
+<div data-view-id="33399335" class="external-resource-url-row ">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle"></use>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-33399335" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://yourwebsite.com/script.js" data-view-id="33399335">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// 
+protocol, which may not work when the browser is using https:// like 
+CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="33399335">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x"></use>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-33399335" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="33399335" href="">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye"></use>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="83313300" class="external-resource-url-row ">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle"></use>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-83313300" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://codepen.io/username/pen/aBcDef" data-view-id="83313300">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// 
+protocol, which may not work when the browser is using https:// like 
+CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="83313300">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x"></use>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-83313300" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="83313300" href="">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye"></use>
+        </svg>
+      </a>
+    </div>
+
+  </div></div>
+<script id="js-external-resources-template" type="text/template">
+  <div data-view-id="<%= view_id %>" class="external-resource-url-row <%= insecure_resource %>">
+
+    <span class="move-external-url">
+      <svg class="icon-drag-handle" width="20" height="17">
+        <use xlink:href="/svg_sprite?v=8885a907#drag-handle" />
+      </svg>
+    </span>
+
+    <input
+      id="external-resource-input-<%= view_id %>"
+      class="fullwidth js-resource external-resource"
+      type="text"
+      pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+      name="external-js"
+      placeholder="<%= placeholder %>"
+      value="<%= url %>"
+      data-view-id="<%= view_id %>">
+
+    <span class="insecure-resource-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">!</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg_sprite?v=8885a907#x"></use>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="<%= view_id %>">
+        <svg class="icon-x" width="12" height="12">
+          <use xlink:href="/svg_sprite?v=8885a907#x" />
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-<%= view_id %>" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="<%= view_id %>" href="<%= url %>">
+        <svg class="icon-eye" width="14" height="14">
+          <use xlink:href="/svg_sprite?v=8885a907#eye" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</script>
+<div class="external-resource-actions group">
+<span id="add-js-resource" class="button button-medium mini-button add-resource" data-type="js">
+<span data-type="js">+ add another resource</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="settings tab-page" id="settings-details">
+<div id="pen-details" class="pen-details">
+<form id="pen-details-form" class="pen-details-form top-label-form" _lpchecked="1">
+<h3 aria-label="Pen Details">Details</h3>
+<div class="settings-row normal-labels">
+<h4><label for="item-details-title">Pen Title</label></h4>
+<input type="text" id="item-details-title" class="item-details-title" name="item-details-title" value="Notification tests" maxlength="255" placeholder="Untitled">
+</div>
+<div class="settings-row normal-labels">
+<h4><label for="item-details-description">Pen Description</label></h4>
+<textarea class="item-details-description" id="item-details-description" placeholder="Explain what’s going on in your Pen here. This text is searchable, so it can also help others find your work. Remember to credit others where credit is due. Markdown supported."></textarea>
+</div>
+<div class="tags settings-row normal-labels">
+<h4><label for="pen-tags" class="tags-label">Tags <em>comma separated, <span id="max-tags-label">max of five</span></em></label></h4>
+<input type="text" id="pen-tags" class="pen-tags">
+<div class="active-tags" id="active-tags"></div>
+</div>
+</form>
+</div>
+</div>
+<div class="settings tab-page" id="settings-privacy">
+<div id="pen-privacy" class="pen-details">
+<form id="pen-privacy-form" class="pen-details-form top-label-form">
+<h3 aria-label="Privacy">Privacy</h3>
+<div class="settings-row public-private-checkbox-row">
+<div class="public-private-wrap">
+<h4>Make this Pen private <span class="badge badge-pro">PRO</span></h4>
+<p>Private Pens are hidden everywhere on CodePen, except to you. You can
+ still share them and other people can see them, they just can't find 
+them through searching or browsing. <a href="https://blog.codepen.io/documentation/pro-features/privacy/">Learn More</a>.</p>
+<div class="ios-toggle-mega-label-wrap settings-row">
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" name="item-details-private" id="item-details-private">
+<label for="item-details-private"></label>
+<label for="item-details-private" class="ios-toggle-mega-label"><span>On</span></label>
+</span>
+</div>
+<h4>Private by Default <span class="badge badge-pro">PRO</span></h4>
+<p>As a PRO member, you can turn on Private by Default in your user settings under the <a href="https://codepen.io/smhigley/settings/privacy-safety">Privacy and Safety tab</a>.</p>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="settings tab-page active" id="settings-behavior">
+<h3 aria-label="Pen Behavior">Behavior</h3>
+<div class="settings-row">
+<h4>Save Automatically?</h4>
+<div>
+<p class="hint">If active, Pens will autosave every 30 seconds after being saved once.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" id="auto-save" name="auto-save" checked="checked">
+<label for="auto-save"></label>
+<label for="auto-save" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+</div>
+<div class="settings-row">
+<h4>Auto-Updating Preview</h4>
+<p class="hint">If enabled, the preview panel updates automatically as you code. If disabled, use the "Run" button to update.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" id="auto-run" name="auto-run">
+<label for="auto-run"></label>
+<label for="auto-run" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+<div class="settings-row">
+<h4>Format on Save</h4>
+<p class="hint">If enabled, your code will be formatted with Prettier on save.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" id="format_on_save" name="format_on_save">
+<label for="format_on_save"></label>
+<label for="format_on_save" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+</div>
+<div class="settings tab-page" id="settings-editor">
+<h3 aria-label="Editor Settings">Editor Settings</h3>
+<form id="editor-settings-form" class="settings-row settings-row-1 top-label-form prevent-form-submit" onsubmit="return false;">
+<h4>Code Indentation</h4>
+<div class="settings-row">
+<ul class="radio-list">
+<li>
+<input type="radio" id="indent-with-spaces" name="indent-with" value="spaces" checked="checked">
+<label for="indent-with-spaces" class="small-inline">Spaces</label>
+</li>
+<li>
+<input type="radio" id="indent-with-tabs" name="indent-with" value="tabs">
+<label for="indent-with-tabs" class="small-inline">Tabs</label>
+</li>
+</ul>
+</div>
+<div class="settings-row top-label-form normal-labels">
+<h4><label for="tab-size">Indent width</label></h4>
+<div class="custom-select-wrap">
+<select id="tab-size" class="fullwidth" name="tab-size">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2" selected="selected">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+<div class="select-icon">
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+<svg class="icon-arrow-down-mini">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</div>
+</div>
+</div>
+</form>
+<div class="settings-row">
+<h4>Want to change your Syntax Highlighting theme, Fonts and more?</h4>
+<p>Visit <a href="https://codepen.io/you/settings/editor" target="_blank">your global Editor Settings</a>.</p>
+</div>
+</div>
+<div class="settings tab-page" id="settings-template">
+<div id="pen-template" class="pen-details">
+<form id="pen-template-form" class="pen-details-form top-label-form">
+<h3 aria-label="Template">Template</h3>
+<div class="settings-row">
+<h4>Make Template?</h4>
+<p>Templates are Pens that can be used to start other Pens. You can <a target="_blank" rel="noopener" href="https://codepen.io/you/pens/templates">view all of your templates</a>, or <a target="_blank" rel="noopener" href="https://blog.codepen.io/documentation/api/templates/">learn more in the documentation</a>.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" name="item-details-template" id="item-details-template">
+<label for="item-details-template"></label>
+<label for="item-details-template" class="ios-toggle-mega-label"><span>On</span></label>
+</span>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="settings tab-page" id="settings-screenshot">
+<div id="pen-screenshot" class="pen-details">
+<h3 aria-label="Screenshot or Custom Thumbnail">Screenshot</h3>
+<form id="pen-screenshot-form" class="pen-details-form top-label-form">
+<div class="thumnail-upload-section settings-row top-label-form normal-labels">
+<h4><label>Screenshot or Custom Thumbnail</label></h4>
+<p>Screenshots of Pens are shown in mobile browsers, RSS feeds, to users
+ who chose images instead of iframes, and in social media sharing.</p>
+<div id="settings-screenshot-wrap" class="settings-screenshot-wrap">
+<div id="screenshot-type" class="screenshot-description">
+<div class="screenshot-area-screenshot screenshot-image" id="custom-screenshot" style="background-image: url(https://screenshot.codepen.io/125707.abOwGro.480262fc-19cb-495a-8a39-9999783a048d.png);">
+<a id="delete-screenshot" class="button mini-button button-dark delete-screenshot" style="display: none;">× Delete</a>
+</div>
+<div class="uploading-message expand-right action-button in-action">
+<span class="spinner"></span>
+Uploading
+</div>
+<div class="screenshot-description-container">
+<div class="screenshot-description-copy">
+<p>This is the default screenshot generated by CodePen.</p>
+</div>
+<div class="screenshot-description-links">
+<div id="screenshot-urls" class="screenshot-urls">
+<a href="https://screenshot.codepen.io/125707.abOwGro.480262fc-19cb-495a-8a39-9999783a048d.png" target="_blank">
+<svg>
+<use xlink:href="/svg_sprite?v=8885a907#file-image"></use>
+</svg>
+View Large
+</a>
+<a href="https://screenshot.codepen.io/125707.abOwGro.small.480262fc-19cb-495a-8a39-9999783a048d.png" target="_blank">
+<svg>
+<use xlink:href="/svg_sprite?v=8885a907#file-image"></use>
+</svg>
+View Small
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="image-changer" id="screenshot-image-changer">
+<h5>Upload a Custom Screenshot <span class="badge badge-pro">PRO</span></h5>
+<div class="image-changer-message">
+<p>Drag and drop to upload or<br><input type="file" name="image-upload" class="file-upload-button" id="personal-profile-image-upload-input"> to choose a file.</p>
+<p class="small">(1000 x 562px recommended)</p>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<footer>
+<div class="save-and-close-wrap pro">
+<div class="footer-privacy">
+<div class="ios-toggle-mega-label-wrap">
+Public
+<span class="ios-toggle ios-toggle-ambiguous">
+<input type="checkbox" name="item-details-private-footer" id="item-details-private-footer">
+<label for="item-details-private-footer"></label>
+</span>
+Private
+<label for="item-details-private-footer"></label>
+</div>
+<span class="badge badge-pro">PRO</span>
+</div>
+<input type="submit" class="button button-small green button-no-right-margin save-and-close" value="Save &amp; Close" id="save-details">
+</div>
+</footer>
+</div>
+<div class="tour-modals">
+<div id="tour-intro-modal" class="tour-modal tour-intro-modal">
+<h2 id="tour-intro-modal-heading" class="tour-intro-modal-heading"></h2>
+<p id="tour-intro-modal-description" class="tour-intro-modal-description"></p>
+<a href="#" id="tour-intro-start-btn" class="tour-intro-start-btn button green"></a>
+<a href="#" id="tour-intro-cancel-link" class="tour-cancel-link"></a>
+</div>
+<div id="tour-step-modal" class="tour-modal tour-step-modal">
+<div class="tour-modal-instructions">
+<p id="tour-step-modal-instruction" class="tour-modal-instruction">HTML Settings</p>
+<p id="tour-step-modal-info" class="tour-modal-further-info">Here you 
+can Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non
+ metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit
+ amet non magna. Donec id elit non mi porta gravida at eget metus. 
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. </p>
+</div>
+<div id="tour-progress" class="tour-progress">
+<div id="tour-progress-indicator" class="tour-progress-indicator"></div>
+</div>
+<div class="tour-next-step">
+<a id="tour-step-next-btn" class="tour-next-step-btn button green">Next Step</a>
+<a id="tour-step-cancel" class="tour-cancel-link" href="#">Leave tour</a>
+</div>
+<div id="tour-step-modal-arrow" class="tour-step-modal-arrow"></div>
+</div>
+<div id="tour-complete-modal" class="tour-modal tour-complete-modal">
+<h2 id="tour-complete-modal-heading" class="tour-intro-complete-heading"></h2>
+<p id="tour-complete-modal-description" class="tour-intro-complete-description"></p>
+<a href="#" id="tour-complete-option-1" class="tour-intro-start-btn button green"></a>
+<a href="#" id="tour-complete-option-2" class="tour-cancel-link"></a>
+<a href="#" id="tour-complete-option-3" class="tour-cancel-link"></a>
+<a href="#" id="tour-complete-option-4" class="tour-cancel-link"></a>
+</div>
+</div>
+<div id="tour-overlay" class="tour-overlay">
+<div id="tour-overlay-section-0" class="tour-overlay-section"></div>
+<div id="tour-overlay-section-1" class="tour-overlay-section"></div>
+<div id="tour-overlay-section-2" class="tour-overlay-section"></div>
+<div id="tour-overlay-section-3" class="tour-overlay-section"></div>
+</div>
+<div class="page-wrap twilight">
+<div class="boxes">
+<div class="mobile-editor-nav">
+<button id="html-toggle" class="selected"><span>HTML</span></button>
+<button id="css-toggle"><span>CSS</span></button>
+<button id="js-toggle"><span>JS</span></button>
+<button id="result-toggle" class="selected"><span>Result</span></button>
+</div>
+<div class="top-boxes editor-parent" data-number-of-editors="3" style="height: 352.423px;">
+<div class="editor-resizer html-editor-resizer" title="Double-click to expand."><h2 class="box-title html-editor-title box-title--resizer" id="html-editor-title">
+<span class="box-title-name">
+ HTML
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2></div>
+<div id="box-html" class="box box-html" data-type="html" style="width: 33.9506%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<button id="settings-pane-html" class="button button-medium mini-button settings-nub" data-type="html" title="Open HTML Settings">
+<svg class="icon-gear" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#gear"></use>
+</svg>
+</button>
+<h2 class="box-title html-editor-title" id="html-editor-title">
+<span class="box-title-name">
+ HTML
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2>
+<div class="unsaved-editor-message"><b>10</b> unsaved changes <span class="dismiss"><svg class="icon-x"><use xlink:href="/svg_sprite?v=8885a907#x"></use></svg></span></div></div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-html" data-dropdown="#editor-dropdown-html" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+HTML Options
+</span>
+<svg class="icon-arrow-down-mini" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</button>
+<ul id="editor-dropdown-html" class="link-list is-dropdown editor-dropdown editor-dropdown-html" data-dropdown-position="css" data-dropdown-type="html">
+<li class="editor-dropdown-list-item">
+<button id="tidy-html" class="invisible-button tidy-code-button" data-editor-type="html">
+Format HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-html" class="invisible-button view-compiled-button hide" data-editor-type="html">
+View Compiled HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-html" class="invisible-button analyze-button" data-editor-type="html">
+Analyze HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-html-editor" class="invisible-button maximize-button" data-editor-type="html">
+Maximize HTML Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-html-editor" class="invisible-button minimize-button" data-editor-type="html">
+Minimize HTML Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-html" class="invisible-button fold-all-button" data-editor-type="html">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-html" class="invisible-button unfold-all-button" data-editor-type="html">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 190.8px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" wrap="off">partial</textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 10px; top: 277.52px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 44px; margin-bottom: -17px; border-right-width: 13px; min-height: 14352px; padding-right: 9px; padding-bottom: 0px;"><div style="position: relative; top: 12180px;"><div class="CodeMirror-lines" role="presentation" style="padding-bottom: 278px;"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket CodeMirror-matchingtag">&lt;</span><span class="cm-tag CodeMirror-matchingtag emmet-open-tag">td</span><span class="cm-tag cm-bracket CodeMirror-matchingtag">&gt;</span><span class=" emmet-abbreviation">partial</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag emmet-close-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 146.8px; top: 189px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">444</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">445</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">thead</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">446</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tbody</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">447</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">448</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>NVDA<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">449</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>Firefox<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">450</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">451</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">452</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">453</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket CodeMirror-matchingtag">&lt;</span><span class="cm-tag CodeMirror-matchingtag emmet-open-tag">td</span><span class="cm-tag cm-bracket CodeMirror-matchingtag">&gt;</span><span class=" emmet-abbreviation">partial</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag emmet-close-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">454</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">455</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>No semantic information read, only text; aria-label not read<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">456</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">457</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">458</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>NVDA<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">459</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>Chrome<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">460</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">461</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">462</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">463</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">464</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">465</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>aria-label is read<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">466</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">467</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">468</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>NVDA<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">469</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>Edge<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">470</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">471</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">472</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">473</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">474</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">475</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>aria-label is read<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">476</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">477</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">478</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>JAWS<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">479</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>Chrome<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">480</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">481</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">482</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">483</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>partial<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">484</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">485</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>aria-label is read; image alt is not read<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">486</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">487</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">488</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>JAWS<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">489</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>Firefox<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">490</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">491</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">492</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span>pass<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 14352px;"></div><div class="CodeMirror-gutters" style="height: 14365px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 34px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-html" style="display: none;">
+<span class="error-icon" data-type="html">
+!
+</span>
+</div>
+</div>
+</div>
+<div class="editor-resizer css-editor-resizer is-horiz-skinny" title="Double-click to expand."><h2 class="box-title css-editor-title box-title--resizer" id="css-editor-title">
+<span class="box-title-name">
+CSS
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2></div>
+<div id="box-css" class="box box-css" data-type="css" style="width: 0%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<button id="settings-pane-css" class="button button-medium mini-button settings-nub" data-type="css" title="Open CSS Settings">
+<svg class="icon-gear" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#gear"></use>
+</svg>
+</button>
+<h2 class="box-title css-editor-title" id="css-editor-title">
+<span class="box-title-name">
+CSS
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2>
+</div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-css" data-dropdown="#editor-dropdown-css" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+CSS Options
+</span>
+<svg class="icon-arrow-down-mini" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</button>
+<ul id="editor-dropdown-css" class="link-list is-dropdown editor-dropdown editor-dropdown-css" data-dropdown-position="css" data-dropdown-type="css">
+<li class="editor-dropdown-list-item">
+<button id="tidy-css" class="invisible-button tidy-code-button" data-editor-type="css">
+Format CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-css" class="invisible-button view-compiled-button hide" data-editor-type="css">
+View Compiled CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-css" class="invisible-button analyze-button" data-editor-type="css">
+Analyze CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-css-editor" class="invisible-button maximize-button" data-editor-type="css">
+Maximize CSS Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-css-editor" class="invisible-button minimize-button" data-editor-type="css">
+Minimize CSS Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-css" class="invisible-button fold-all-button" data-editor-type="css">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-css" class="invisible-button unfold-all-button" data-editor-type="css">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 43px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 144.008px; top: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -17px; border-right-width: 13px; min-height: 700px; padding-right: 9px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation" style="padding-bottom: 295px;"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-tag">body</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">padding</span>: <span class="cm-number">2em</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-tag">li</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">margin-bottom</span>: <span class="cm-number">0.5em</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-qualifier">.show</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">display</span>: <span class="cm-atom">block</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-qualifier">.hide</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">display</span>: <span class="cm-atom">none</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-tag">td</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">border</span>: <span class="cm-number">1px</span> <span class="cm-atom">solid</span> <span class="cm-keyword">grey</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-property">padding</span>: <span class="cm-number">0.25em</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 700px;"></div><div class="CodeMirror-gutters" style="height: 713px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-css" style="display: none;">
+<span class="error-icon" data-type="css">
+!
+</span>
+</div>
+</div>
+</div>
+<div class="editor-resizer js-editor-resizer" title="Double-click to expand."><h2 class="box-title js-editor-title box-title--resizer" id="js-editor-title">
+<span class="box-title-name">
+JS
+</span>
+<span class="box-title-preprocessor-name ">(TypeScript)</span>
+</h2></div>
+<div id="box-js" class="box box-js" data-type="js" style="width: 63.0864%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<button id="settings-pane-js" class="button button-medium mini-button settings-nub" data-type="js" title="Open JS Settings">
+<svg class="icon-gear" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#gear"></use>
+</svg>
+</button>
+<h2 class="box-title js-editor-title" id="js-editor-title">
+<span class="box-title-name">
+JS
+</span>
+<span class="box-title-preprocessor-name ">(TypeScript)</span>
+</h2>
+</div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-js" data-dropdown="#editor-dropdown-js" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+JS Options
+</span>
+<svg class="icon-arrow-down-mini" width="10" height="10">
+<use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use>
+</svg>
+</button>
+<ul id="editor-dropdown-js" class="link-list is-dropdown editor-dropdown editor-dropdown-js" data-dropdown-position="css" data-dropdown-type="js">
+<li class="editor-dropdown-list-item">
+<button id="tidy-js" class="invisible-button tidy-code-button" data-editor-type="js">
+Format JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-js" class="invisible-button view-compiled-button" data-editor-type="js">
+View Compiled JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-js" class="invisible-button analyze-button" data-editor-type="js">
+Analyze JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-js-editor" class="invisible-button maximize-button" data-editor-type="js">
+Maximize JavaScript Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-js-editor" class="invisible-button minimize-button" data-editor-type="js">
+Minimize JavaScript Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-js" class="invisible-button fold-all-button" data-editor-type="js">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-js" class="invisible-button unfold-all-button" data-editor-type="js">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 48px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 23.0213px; top: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 44px; margin-bottom: -17px; border-right-width: 13px; min-height: 4503px; padding-right: 9px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation" style="padding-bottom: 278px;"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>168</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">type</span> <span class="cm-type">Role</span> <span class="cm-operator">=</span> <span class="cm-string">'alert'</span> <span class="cm-operator">|</span> <span class="cm-string">'status'</span> <span class="cm-operator">|</span> <span class="cm-string">'log'</span> <span class="cm-operator">|</span> <span class="cm-string">'marquee'</span> <span class="cm-operator">|</span> <span class="cm-string">'timer'</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">type</span> <span class="cm-type">AriaLive</span> <span class="cm-operator">=</span> <span class="cm-string">'assertive'</span> <span class="cm-operator">|</span> <span class="cm-string">'polite'</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-comment">// helper functions</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">5</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">function</span> <span class="cm-def">createNotification</span>(<span class="cm-def">text</span>: <span class="cm-type">string</span>, <span class="cm-def">role</span>: <span class="cm-type">Role</span>, <span class="cm-def">ariaLive</span>: <span class="cm-type">AriaLive</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">const</span> <span class="cm-def">el</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">createElement</span>(<span class="cm-string">'div'</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-variable-2">el</span>.<span class="cm-property">innerText</span> <span class="cm-operator">=</span> <span class="cm-variable-2">text</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">9</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable-2">role</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-variable-2">el</span>.<span class="cm-property">setAttribute</span>(<span class="cm-string">'role'</span>, <span class="cm-variable-2">role</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">12</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable-2">ariaLive</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-variable-2">el</span>.<span class="cm-property">setAttribute</span>(<span class="cm-string">'aria-live'</span>, <span class="cm-variable-2">ariaLive</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-variable">document</span>.<span class="cm-property">body</span>.<span class="cm-property">appendChild</span>(<span class="cm-variable-2">el</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">19</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">function</span> <span class="cm-def">updateNotification</span>(<span class="cm-def">id</span>: <span class="cm-type">string</span>, <span class="cm-def">text</span>: <span class="cm-type">string</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">const</span> <span class="cm-def">el</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">getElementById</span>(<span class="cm-variable-2">id</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">22</div><div class="CodeMirror-gutter-elt" style="left: 34px; width: 10px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">el</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-variable">console</span>.<span class="cm-property">warn</span>(<span class="cm-string">'could not find element with id'</span>, <span class="cm-variable-2">id</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 26px;">24</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp; &nbsp;<span class="cm-keyword">return</span>;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 4503px;"></div><div class="CodeMirror-gutters" style="height: 4516px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 34px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-js" style="display: none;">
+<span class="error-icon" data-type="js">
+!
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="resizer" class="resizer"><span></span><div id="width-readout" class="width-readout">999px</div></div>
+<section id="drawer" class="drawer comments">
+</section>
+<div class="output-container">
+<div class="output-sizer">
+<div id="result_div" class="result"><iframe id="iFrameKey-128d4286-c01c-6c1c-72ee-06bf72dfb877" src="Notification%20tests_files/index.html" name="CodePen" allowfullscreen="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; microphone; midi; payment; vr" allowtransparency="true" allowpaymentrequest="true" class="result-iframe"></iframe>
+
+<div id="editor-drag-cover" class="drag-cover"></div>
+</div>
+<div id="box-console" class="box box-console">
+<div class="editor-resizer editor-resizer-console" title="Drag to resize. Double-click to expand."></div>
+<div class="powers">
+<div class="powers-drag-handle" title="Drag to resize. Double-click to expand."></div>
+<div class="editor-actions-left">
+<h2 class="box-title"><span class="box-title-name">Console</span></h2>
+</div>
+<div class="editor-actions-right">
+<button class="button button-medium mini-button console-clear-button" title="Clear">
+Clear
+</button>
+<button class="button button-medium mini-button close-editor-button" data-type="console" title="Close">
+<svg class="icon-x">
+<use xlink:href="/svg_sprite?v=8885a907#x"></use>
+</svg>
+</button>
+</div>
+</div>
+<div class="console-wrap">
+<div class="console-entries short-no-scroll"></div>
+<div class="console-command-line">
+<span class="console-arrow forwards"></span>
+<textarea class="console-command-line-input auto-expand" rows="1" data-min-rows="1"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="asset-bin-goes-here"></div>
+<footer id="react-pen-footer" class="site-footer editor-footer"><div class="footer-left"><div class="footer-actions-menu"><button id="footer-button" aria-expanded="false" class="button icon-button button button-medium toggle-footer-menu-button
+              
+            "><svg width="20" height="20" class=" icon icon-arrow-down-mini"><use xlink:href="/svg_sprite?v=8885a907#arrow-down-mini"></use></svg></button><div class="footer-actions" data-expanded="false"><button class="button footer-button console-toggle-button">Console</button><button class="button footer-button">Assets</button><button class="footer-button" data-id="editor-comments-button">Comments</button><button title="Keyboard Shortcuts" class="button footer-button keyboard-commands-button"><span>Ctrl</span></button></div><select name="zoom-choice" data-placeholder="Zoom Scale..." class="footer-button button mini-button zoom-select"><option value="1.0" class="option-green" selected="selected">1.0×</option><option value="0.5" class="option-green">0.5×</option><option value="0.25" class="option-green">0.25×</option></select></div></div><div class="footer-right"><span class="EditorStatus_editorState-23I3v" data-state="EMPTY"><span class="EditorStatus_text-3wSUC"><span>Last saved <time id="last-saved-time-ago" datetime="2020-03-04 13:01:45 UTC" title="2020-03-04 13:01:45 UTC">20 hours</time> ago</span></span><svg></svg></span><button id="live-view-popout-button" title="Open Live View in a New Window" class="button icon-button footer-button live-view-popout-button"><svg width="20" height="20" class=" icon icon-pop-out"><use xlink:href="/svg_sprite?v=8885a907#pop-out"></use></svg></button><button class="button footer-button delete-button">Delete</button><button data-id="add-to-collection-button" class="footer-button">Add to Collection</button><button data-test-id="fork-button" icon="branch" title="Fork this Pen" class="button fork-button footer-button">Fork</button><button class="button footer-button embed-builder-button">Embed</button><button data-test-id="export-panel-button" class="button footer-button export-button">Export </button><div id="export-panel" data-test-id="export-panel" class="export-panel ExportPanel_root-2-_BS"><section class="share-actions share-section"><h4>Export <a href="https://blog.codepen.io/documentation/features/exporting-pens/" class="inline-q" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></a></h4><button id="share-gist" data-test-id="export-gist" class="button button-fullwidth"><svg width="20" height="20" class=" icon icon-github"><use xlink:href="/svg_sprite?v=8885a907#github"></use></svg>Save as GitHub Gist</button><button data-test-id="export-zip" class="button button-fullwidth"><svg width="16" height="16" class=" icon icon-zip-badge"><use xlink:href="/svg_sprite?v=8885a907#zip-badge"></use></svg>Export .zip</button><div class="ExportPanel_fancyProArea-2Axi4"><span class="badge badge-pro ExportPanel_badgePro-3S1Gy" data-test-id="pro-badge">PRO</span></div><button data-test-id="export-zip-with-build" class="button button-fullwidth"><svg width="16" height="16" class=" icon icon-zip-badge"><use xlink:href="/svg_sprite?v=8885a907#zip-badge"></use></svg>.zip with Build Process </button></section></div><button class="button footer-button sharing-button">Share</button><div id="sharing-panel" class="sharing-panel"><ul id="share-buttons" class="share-buttons share-section"><li><a class="button " href="https://twitter.com/intent/tweet?text=Notification%20tests&amp;url=https://codepen.io/smhigley/pen/abOwGro&amp;via=CodePen" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" class=" icon icon-twitter"><use xlink:href="/svg_sprite?v=8885a907#twitter"></use></svg>Share on Twitter</a></li><li><a class="button " href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/smhigley/pen/abOwGro" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" class=" icon icon-facebook"><use xlink:href="/svg_sprite?v=8885a907#facebook"></use></svg>Share on Facebook</a></li><li><a class="button " href="https://dev.to/new?prefill=---%5Cn%20title:%20Notification%20tests%5Cn%20published:%20false%5Cn%20tags:%20codepen%5Cn%20---%5Cn%20%5Cn%20%5Cn%20%5Cn%20%7B%25%20codepen%20https://codepen.io%2Fsmhigley%2Fpen%2FabOwGro%20%25%7D%5Cn" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" class=" icon icon-dev"><use xlink:href="/svg_sprite?v=8885a907#dev"></use></svg>Share on DEV</a></li></ul><form id="send-to-phone-form" name="send-to-phone-form" action="#0" class="send-to-phone share-section"><h5>Send SMS with Live View URL to your phone<a href="http://blog.codepen.io/documentation/features/sms/" class="inline-q" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" class=" icon icon-help"><use xlink:href="/svg_sprite?v=8885a907#help"></use></svg></a></h5><div id="sms-phone"><input type="tel" id="send-to-phone" placeholder="1-555-555-5555" name="send-to-phone" required="" title="Phone number in international format" class="send-to-phone-input fullwidth"><input id="sms-send-button" type="submit" class="button green button-small button-fullwidth" value="Send"><span class="mobile-sms-left"><strong id="texts-left" class="texts-left">100</strong> left this month</span></div></form></div></div></footer>
+<div id="keycommands" class="modal modal-neutral">
+<div class="keycommands-container">
+<section class="editor-commands" style="padding-right: 10px;">
+<h2>Editor Commands</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key pc_only">Ctrl</span>
+<span class="key mac_only">Ctrl</span>
+<span class="key">Space</span>
+</kbd>
+Autocomplete
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">F</span>
+</kbd>
+Find
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">G</span>
+</kbd>
+Find Next
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">G</span>
+</kbd>
+Find Previous
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key pc_only" title="Shift">⇧</span>
+<span class="key mac_only">Opt</span>
+<span class="key">F</span>
+</kbd>
+Find &amp; Replace
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">F</span>
+</kbd>
+Format Code
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">[</span>
+</kbd>
+Indent Code Right
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">]</span>
+</kbd>
+Indent Code Left
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key" title="Shift">⇧</span>
+<span class="key">Tab</span>
+</kbd>
+Auto Indent Code
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">/</span>
+</kbd>
+Line Comment
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only" title="Shift">⇧</span>
+<span class="key mac_only">Opt</span>
+<span class="key">/</span>
+</kbd>
+Block Comment
+</div>
+<p style="margin: 20px 0 0 0;">Also see: <a href="https://blog.codepen.io/documentation/features/tab-triggers/" target="_blank" rel="noopener">Tab Triggers</a></p>
+</section>
+<section class="editor-commands">
+<h2>Editor Focus</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">1</span>
+</kbd>
+HTML Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">2</span>
+</kbd>
+CSS Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">3</span>
+</kbd>
+JS Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">4</span>
+</kbd>
+Toggle Console
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">0</span>
+</kbd>
+Preview
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key">Esc</span>
+</kbd>
+Exit currently focused editor
+</div>
+</section>
+<section class="editor-commands">
+<h2>Misc</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">7</span>
+</kbd>
+Re-run Preview
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+ <span class="key">8</span>
+</kbd>
+Clear All Analyze Errors
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">9</span>
+</kbd>
+Open This Dialog
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">0</span>
+</kbd>
+Open Debug View
+</div>
+<h2>HTML Specific</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">A</span>
+</kbd>
+Wrap With...
+</div>
+<h2>Pen Actions</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">P</span>
+</kbd>
+Create New Pen
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">S</span>
+</kbd>
+Save
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">S</span>
+</kbd>
+Save As Private <span class="badge badge-pro">PRO</span>
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">I</span>
+</kbd>
+Info Panel (if owned)
+</div>
+</section>
+</div>
+</div>
+<div id="popup-overlay" class="overlay popup-overlay" style="display: none;"></div>
+<div id="modal-overlay" class="overlay modal-overlay" style="display: none;"></div>
+<div id="react-popups" class="react-popups"></div>
+<noscript>
+
+  <input type="checkbox" class="modal-closing-trick" id="modal-closing-trick">
+
+  <div class="overlay noscript-overlay" style="display: block;"></div>
+
+  <div class="modal modal-message group modal-warning">
+
+    <div class="modal-title">CodePen requires JavaScript to render the code and preview areas in this view.</div>
+
+    <p>Trying <a href="https://codepen.io/smhigley/debug/abOwGro">viewing this Pen in Debug Mode</a>, which is the preview area without any iframe and does not require JavaScript. Although what the preview is of might!</p>
+
+    <p>Need to know how to enable JavaScript? <a href="http://enable-javascript.com/" target="_blank" rel="noopener">Go here.</a></p>
+
+    <label class="button button-medium" for="modal-closing-trick">Close this, use anyway.</label>
+
+  </div>
+
+</noscript>
+<input type="hidden" id="init-data" value="{&quot;__browser&quot;:{&quot;device&quot;:&quot;unknown&quot;,&quot;mobile&quot;:null,&quot;name&quot;:&quot;firefox&quot;,&quot;platform&quot;:&quot;pc&quot;,&quot;version&quot;:&quot;73&quot;},&quot;__analytics&quot;:{&quot;controllerActionName&quot;:&quot;show&quot;,&quot;controllerName&quot;:&quot;pen&quot;,&quot;enabled&quot;:true},&quot;__remote_addr&quot;:&quot;73.181.199.140&quot;,&quot;__CPDATA&quot;:{&quot;domain_iframe&quot;:&quot;https://cdpn.io&quot;,&quot;host&quot;:&quot;codepen.io&quot;,&quot;iframe_allow&quot;:&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; microphone; midi; payment; vr&quot;,&quot;iframe_sandbox&quot;:&quot;allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts&quot;},&quot;__env&quot;:&quot;production&quot;,&quot;__turnOffJS&quot;:false,&quot;__constants&quot;:{&quot;grid_iframe_sandbox_attributes&quot;:&quot;allow-scripts allow-pointer-lock allow-same-origin&quot;},&quot;__svg_sprite&quot;:&quot;/svg_sprite?v=8885a907&quot;,&quot;__user&quot;:{&quot;anon&quot;:false,&quot;base_url&quot;:&quot;/smhigley/&quot;,&quot;current_team_id&quot;:0,&quot;current_team_hashid&quot;:&quot;YdEzGn&quot;,&quot;hashid&quot;:&quot;DavVyp&quot;,&quot;id&quot;:125707,&quot;itemType&quot;:&quot;user&quot;,&quot;name&quot;:&quot;Sarah Higley&quot;,&quot;owner_id&quot;:&quot;DavVypYdEzGn&quot;,&quot;paid&quot;:true,&quot;tier&quot;:1,&quot;username&quot;:&quot;smhigley&quot;},&quot;__firestore&quot;:{&quot;config&quot;:{&quot;apiKey&quot;:&quot;AIzaSyBgLAe7N_MdFpuVofMkcQLGwwhUu5tuxls&quot;,&quot;authDomain&quot;:&quot;codepen-store-production.firebaseapp.com&quot;,&quot;databaseURL&quot;:&quot;https://codepen-store-production.firebaseio.com&quot;,&quot;disabled&quot;:false,&quot;projectId&quot;:&quot;codepen-store-production&quot;},&quot;token&quot;:&quot;eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImNsYWltcyI6eyJvd25lcklkIjoiRGF2VnlwWWRFekduIiwiYWRtaW4iOmZhbHNlfSwiZXhwIjoxNTgzNDAwOTAyLCJpYXQiOjE1ODMzOTczMDIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInN1YiI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6IkRhdlZ5cCJ9.2mpMEoFe7n6Wpqz7WQUgYnoJJHLHA7s3tar4H6PqMGdN_7ag8BmRXpQEd39UGWLl2l6tRxm85ktXACiq5h0TPylyusEzhFYVDBYewMuKVfHkNWUzo3vXNWt4qN0clczzyTWADiM7K6pkYVUCMhVGWJTfbbJzXdQwFdSg2YrhtX3VnY4PrLQdKj1sioCigDPeWe6y0OafWFrYWtzcc-jsuF_4XNHmNNWK6FxnXT4CUg7nI5ywq27fScEwnP_IZlbqTJzc5_uv7TmrvKPSzu5EAgg7ODeniuieg6evd4O0qDLISLXIffd71GeF1l8VOXSv-CJfwzyqIJ2pUj4lB5mIjw&quot;},&quot;__graphql&quot;:{&quot;data&quot;:{&quot;sessionUser&quot;:{&quot;id&quot;:&quot;DavVyp&quot;,&quot;name&quot;:&quot;Sarah Higley&quot;,&quot;avatar80&quot;:&quot;https://s.cdpn.io/profiles/user/125707/80.jpg?100000&quot;,&quot;avatar512&quot;:&quot;https://s.cdpn.io/profiles/user/125707/512.jpg?100000&quot;,&quot;canCreatePosts&quot;:true,&quot;currentContext&quot;:{&quot;id&quot;:&quot;DavVyp&quot;,&quot;baseUrl&quot;:&quot;/smhigley&quot;,&quot;title&quot;:&quot;Sarah Higley&quot;,&quot;name&quot;:&quot;Sarah Higley&quot;,&quot;avatar80&quot;:&quot;https://s.cdpn.io/profiles/user/125707/80.jpg?100000&quot;,&quot;avatar512&quot;:&quot;https://s.cdpn.io/profiles/user/125707/512.jpg?100000&quot;,&quot;username&quot;:&quot;smhigley&quot;,&quot;contextType&quot;:&quot;USER&quot;,&quot;projectLimitations&quot;:{&quot;projects&quot;:10,&quot;usedProjects&quot;:0,&quot;__typename&quot;:&quot;ProjectLimitations&quot;},&quot;privateByDefault&quot;:false,&quot;__typename&quot;:&quot;User&quot;},&quot;currentTeamId&quot;:null,&quot;baseUrl&quot;:&quot;/smhigley&quot;,&quot;username&quot;:&quot;smhigley&quot;,&quot;admin&quot;:false,&quot;anon&quot;:false,&quot;pro&quot;:true,&quot;verified&quot;:true,&quot;teams&quot;:[],&quot;permissions&quot;:{&quot;canCreatePrivate&quot;:true,&quot;canUploadAssets&quot;:true,&quot;__typename&quot;:&quot;UserPermissions&quot;},&quot;__typename&quot;:&quot;User&quot;}}},&quot;__pageType&quot;:&quot;pen&quot;,&quot;__jwt&quot;:&quot;eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InBhaWQiOnRydWUsInRlYW1faWQiOiJZZEV6R24iLCJ1c2VyX2lkIjoiRGF2VnlwIiwidXNlcm5hbWUiOiJzbWhpZ2xleSJ9LCJleHAiOjE1ODM0ODM3MDJ9.AKDO8MbUdto3FSy6uE9-kxguhpNOQMmjnjr5LIZAU8s&quot;,&quot;__boomboom&quot;:{&quot;serve_url&quot;:&quot;https://cdpn.io/boomboom/v2/index.html&quot;,&quot;store_url&quot;:&quot;https://cdpn.io/boomboom/v2/store&quot;},&quot;__preprocessors_url&quot;:&quot;https://wfwf9k3tn7.execute-api.us-west-2.amazonaws.com/production&quot;,&quot;__layoutType&quot;:null,&quot;__rtData&quot;:&quot;{\&quot;maxMembers\&quot;:0,\&quot;roomID\&quot;:\&quot;abOwGro/live\&quot;,\&quot;roomType\&quot;:\&quot;live\&quot;,\&quot;updatedAt\&quot;:1583326905,\&quot;user\&quot;:{\&quot;id\&quot;:\&quot;DavVyp\&quot;,\&quot;hashid\&quot;:\&quot;DavVyp\&quot;,\&quot;name\&quot;:\&quot;Sarah Higley\&quot;,\&quot;username\&quot;:\&quot;smhigley\&quot;,\&quot;role\&quot;:\&quot;editor\&quot;}}&quot;,&quot;__item&quot;:&quot;{\&quot;custom_screenshot\&quot;:null,\&quot;dependencies\&quot;:{},\&quot;editor_settings\&quot;:{\&quot;auto_run\&quot;:true,\&quot;autocomplete\&quot;:false,\&quot;code_folding\&quot;:true,\&quot;css_pre_processor\&quot;:\&quot;scss\&quot;,\&quot;css_prefix\&quot;:\&quot;neither\&quot;,\&quot;css_starter\&quot;:\&quot;normalize\&quot;,\&quot;emmet_active\&quot;:true,\&quot;font_size\&quot;:\&quot;14\&quot;,\&quot;font_type\&quot;:\&quot;monaco\&quot;,\&quot;format_on_save\&quot;:false,\&quot;html_pre_processor\&quot;:\&quot;none\&quot;,\&quot;indent_with\&quot;:\&quot;spaces\&quot;,\&quot;js_pre_processor\&quot;:\&quot;none\&quot;,\&quot;key_bindings\&quot;:\&quot;normal\&quot;,\&quot;line_numbers\&quot;:true,\&quot;line_wrapping\&quot;:true,\&quot;match_brackets\&quot;:true,\&quot;snippets\&quot;:{\&quot;markupSnippets\&quot;:{},\&quot;stylesheetSnippets\&quot;:{}},\&quot;tab_size\&quot;:\&quot;2\&quot;,\&quot;theme\&quot;:\&quot;twilight\&quot;,\&quot;auto_save\&quot;:true},\&quot;hashid\&quot;:\&quot;abOwGro\&quot;,\&quot;itemType\&quot;:\&quot;pen\&quot;,\&quot;owner_id\&quot;:\&quot;DavVypYdEzGn\&quot;,\&quot;resources\&quot;:[],\&quot;tags\&quot;:[],\&quot;id\&quot;:43183107,\&quot;user_id\&quot;:125707,\&quot;html\&quot;:\&quot;&lt;h1&gt;Testing notifications&lt;/h1&gt;\\n\\n&lt;p&gt;Inline test cases and results for different variations of live regions.&lt;/p&gt;\\n  \\n&lt;h2&gt;Versions&lt;/h2&gt;\\n&lt;ul&gt;\\n  &lt;li&gt;Firefox: 73&lt;/li&gt;\\n  &lt;li&gt;Chrome: 80&lt;/li&gt;\\n  &lt;li&gt;Edge: 82&lt;/li&gt;\\n  &lt;li&gt;iOS: 13.3.1&lt;/li&gt;\\n  &lt;li&gt;NVDA: 2019.3.1&lt;/li&gt;\\n  &lt;li&gt;JAWS: 2019.1912.1&lt;/li&gt;\\n  &lt;li&gt;Narrator: Windows 10.0&lt;/li&gt;\\n&lt;/ul&gt;\\n\\n&lt;h2&gt;Live region roles&lt;/h2&gt;\\n\\n&lt;h3&gt;alert&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;&lt;div role=\\\&quot;alert\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;Alert on page load&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;dynamic &lt;code&gt;role=\\\&quot;alert\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;createNotification('alert role test', 'alert')\\\&quot;&gt;create alert&lt;/button&gt;&lt;/li&gt;\\n  &lt;li&gt;update existing &lt;code&gt;role=\\\&quot;alert\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('alert-test', 'second alert test')\\\&quot;&gt;update alert&lt;/button&gt; &lt;div role=\\\&quot;alert\\\&quot; id=\\\&quot;alert-test\\\&quot;&gt;&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;role=\\\&quot;alert\\\&quot;&lt;/code&gt; with &lt;code&gt;aria-live=\\\&quot;assertive\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('alert-test2', 'third alert test')\\\&quot;&gt;update aria-live alert&lt;/button&gt; &lt;div id=\\\&quot;alert-test2\\\&quot; role=\\\&quot;alert\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/div&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;status&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;&lt;div role=\\\&quot;status\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;Status on page load&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;dynamic &lt;code&gt;role=\\\&quot;status\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;createNotification('status role test', 'status')\\\&quot;&gt;create status&lt;/button&gt;&lt;/li&gt;\\n  &lt;li&gt;update existing &lt;code&gt;role=\\\&quot;status\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('status-test', 'second status test')\\\&quot;&gt;update status&lt;/button&gt; &lt;span id=\\\&quot;status-test\\\&quot; role=\\\&quot;status\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;role=\\\&quot;status\\\&quot;&lt;/code&gt; with &lt;code&gt;aria-live=\\\&quot;polite\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('status-test2', 'third status test')\\\&quot;&gt;update aria-live status&lt;/button&gt; &lt;span id=\\\&quot;status-test2\\\&quot; role=\\\&quot;status\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;log&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;&lt;div role=\\\&quot;log\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;Log on page load&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;update &lt;code&gt;role=\\\&quot;log\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('log-test', 'log entry')\\\&quot;&gt;update log&lt;/button&gt; &lt;span id=\\\&quot;log-test\\\&quot; role=\\\&quot;log\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;role=\\\&quot;log\\\&quot;&lt;/code&gt; with &lt;code&gt;aria-live=\\\&quot;polite\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('log-test2', 'polite log entry')\\\&quot;&gt;update aria-live log&lt;/button&gt; &lt;span id=\\\&quot;log-test2\\\&quot; role=\\\&quot;status\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;timer&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;update &lt;code&gt;role=\\\&quot;timer\\\&quot;&lt;/code&gt; &lt;button id=\\\&quot;timer\\\&quot;&gt;update timer&lt;/button&gt; &lt;span id=\\\&quot;timer-test\\\&quot; role=\\\&quot;timer\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;marquee&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;update &lt;code&gt;role=\\\&quot;marquee\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('marquee-test', 'marquee entry')\\\&quot;&gt;update marquee&lt;/button&gt; &lt;span id=\\\&quot;marquee-test\\\&quot; role=\\\&quot;marquee\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;progressbar&lt;/h3&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;update &lt;code&gt;role=\\\&quot;progressbar\\\&quot;&lt;/code&gt; &lt;button id=\\\&quot;progressbar\\\&quot;&gt;run progressbar&lt;/button&gt; &lt;span id=\\\&quot;progressbar-test\\\&quot; role=\\\&quot;progressbar\\\&quot; aria-valuemin=\\\&quot;0\\\&quot; aria-valuemax=\\\&quot;100\\\&quot; aria-valuenow=\\\&quot;0\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;Results&lt;/h3&gt;\\n&lt;p&gt;Note: I marked marquee and timer as fails when nothing was read despite the aria-live=\\\&quot;off\\\&quot; mapping, because without any feedback they don't add value.&lt;/p&gt;\\n&lt;table&gt;\\n  &lt;thead&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;SR&lt;/td&gt;\\n      &lt;td&gt;Browser&lt;/td&gt;\\n      &lt;td&gt;alert&lt;/td&gt;\\n      &lt;td&gt;status&lt;/td&gt;\\n      &lt;td&gt;log&lt;/td&gt;\\n      &lt;td&gt;timer&lt;/td&gt;\\n      &lt;td&gt;marquee&lt;/td&gt;\\n      &lt;td&gt;progressbar&lt;/td&gt;\\n      &lt;td&gt;notes&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;alert on page load doesn't read; alert with aria-live reads twice; update alert reads all text content; dynamic status not read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;alert on load read; role not read when updating text; status only read when updating; entire text content always read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;Same as Chrome&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;Only alert read on load and on insertion; full text always read; progressbar only reads final state&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;alert on page load doesn't read; full alert text always read; only reads first update for status and log; progressbar only reads some updates&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;alert on load read; updated alert, status, and log read twice; dynamic status read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;Narrator&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;All alert regions read on page load; dynamic status read; no updates read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;VoiceOver&lt;/td&gt;\\n      &lt;td&gt;iOS Safari&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;nothing read on load; alert role not read; full text content always read except for log without aria-live&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n\\n&lt;h2&gt;Live region Attributes&lt;/h2&gt;\\n&lt;ol&gt;\\n    &lt;li&gt;dynamic &lt;code&gt;aria-live=\\\&quot;assertive\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;createNotification('assertive test', false, 'assertive')\\\&quot;&gt;create assertive region&lt;/button&gt;&lt;/li&gt;\\n  &lt;li&gt;update existing &lt;code&gt;aria-live=\\\&quot;assertive\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('assertive-test', 'second assertive test')\\\&quot;&gt;update assertive region&lt;/button&gt; &lt;span aria-live=\\\&quot;assertive\\\&quot; id=\\\&quot;assertive-test\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;dynamic &lt;code&gt;aria-live=\\\&quot;polite\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;createNotification('polite test', false, 'polite')\\\&quot;&gt;create polite region&lt;/button&gt;&lt;/li&gt;\\n  &lt;li&gt;update existing &lt;code&gt;aria-live=\\\&quot;polite\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('polite-test', 'second polite test')\\\&quot;&gt;update polite region&lt;/button&gt; &lt;span aria-live=\\\&quot;polite\\\&quot; id=\\\&quot;polite-test\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;aria-atomic=\\\&quot;true\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('atomic-test', 'atomic test')\\\&quot;&gt;update atomic region&lt;/button&gt; &lt;span aria-live=\\\&quot;assertive\\\&quot; aria-atomic=\\\&quot;true\\\&quot; aria-label=\\\&quot;Atomic Energy\\\&quot; id=\\\&quot;atomic-test\\\&quot;&gt;Starting text&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;aria-relevant=\\\&quot;all\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('relevant-test', 'relevant test')\\\&quot;&gt;add text&lt;/button&gt; &lt;button id=\\\&quot;relevant-all\\\&quot;&gt;clear text&lt;/button&gt; &lt;span aria-live=\\\&quot;assertive\\\&quot; aria-relevant=\\\&quot;all\\\&quot; id=\\\&quot;relevant-test\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;aria-relevant=\\\&quot;removals\\\&quot;&lt;/code&gt; &lt;button onclick=\\\&quot;updateNotification('relevant-test2', 'relevant test')\\\&quot;&gt;add text&lt;/button&gt; &lt;button id=\\\&quot;relevant-removal\\\&quot;&gt;clear text&lt;/button&gt; &lt;span aria-live=\\\&quot;assertive\\\&quot; aria-relevant=\\\&quot;removals\\\&quot; id=\\\&quot;relevant-test2\\\&quot;&gt;&lt;/span&gt;&lt;/li&gt;\\n  &lt;li&gt;&lt;code&gt;aria-busy=\\\&quot;true\\\&quot;&lt;/code&gt;\\n    &lt;div aria-busy=\\\&quot;true\\\&quot;&gt;\\n      Busy region start: &lt;button onclick=\\\&quot;updateNotification('busy-test', 'busy notification')\\\&quot;&gt;update busy notification&lt;/button&gt; &lt;span aria-live=\\\&quot;assertive\\\&quot; id=\\\&quot;busy-test\\\&quot;&gt;&lt;/span&gt;\\n    &lt;/div&gt;\\n  &lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;Results&lt;/h3&gt;\\n&lt;table&gt;\\n  &lt;thead&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;SR&lt;/td&gt;\\n      &lt;td&gt;Browser&lt;/td&gt;\\n      &lt;td&gt;assertive&lt;/td&gt;\\n      &lt;td&gt;polite&lt;/td&gt;\\n      &lt;td&gt;atomic&lt;/td&gt;\\n      &lt;td&gt;relevant&lt;/td&gt;\\n      &lt;td&gt;busy&lt;/td&gt;\\n      &lt;td&gt;notes&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;dynamic live regions not read; aria-relevant removals reads nothing; aria-busy not announced but suppresses live announcements&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;dynamic live regions not read; removals reads nothing; full text content always read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;same as Chrome&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;dynamic live regions not read; removals reads nothing; aria-label read for atomic; aria-busy content not available but focusable&lt;/td&gt;\\n    &lt;/tr&gt;&lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;dynamic live regions not read; removals reads nothing; aria-label read for atomic; aria-busy content not available but focusable&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;dynamic regions read; only first update read; atomic reads all updates; aria-label not read; aria-busy content not available&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;dynamic live regions read; removals reads both additions and removals; aria-label read for atomic; aria-busy content not available but focusable&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;Narrator&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;dynamic regions read; updates not read; atomic region only reads label;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;VoiceOver&lt;/td&gt;\\n      &lt;td&gt;iOS Safari&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;dynamic regions read; non-atomic regions only read additions (unlike with roles); removals read; aria-label not read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n\\n&lt;h2&gt;Conflicts&lt;/h2&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;\\n    &lt;div&gt;Assertive + user interaction: &lt;button id=\\\&quot;conflict1-start\\\&quot;&gt;start assertive test&lt;/button&gt; &lt;button id=\\\&quot;conflict1-stop\\\&quot;&gt;stop assertive test&lt;/button&gt; &lt;span id=\\\&quot;conflict1-target\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\\n    &lt;div&gt;Some focus stops: &lt;button&gt;cats&lt;/button&gt; &lt;button&gt;dogs&lt;/button&gt; &lt;button&gt;mice&lt;/button&gt;&lt;/div&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    &lt;div&gt;Polite + user interaction: &lt;button id=\\\&quot;conflict2-start\\\&quot;&gt;start polite test&lt;/button&gt; &lt;button id=\\\&quot;conflict2-stop\\\&quot;&gt;stop polite test&lt;/button&gt; &lt;span id=\\\&quot;conflict2-target\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\\n    &lt;div&gt;Some focus stops: &lt;button&gt;cats&lt;/button&gt; &lt;button&gt;dogs&lt;/button&gt; &lt;button&gt;mice&lt;/button&gt;&lt;/div&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    &lt;div&gt;Assertive + focus change: &lt;button id=\\\&quot;conflict3\\\&quot;&gt;fire live region and move focus&lt;/button&gt; &lt;span id=\\\&quot;conflict3-target\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\\n    &lt;div&gt;&lt;label for=\\\&quot;conflict3-input\\\&quot;&gt;Focus jump&lt;/label&gt;&lt;input type=\\\&quot;text\\\&quot; id=\\\&quot;conflict3-input\\\&quot; value=\\\&quot;Some existing value\\\&quot;&gt;&lt;/div&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    &lt;div&gt;Polite + focus change: &lt;button id=\\\&quot;conflict4\\\&quot;&gt;fire live region and move focus&lt;/button&gt; &lt;span id=\\\&quot;conflict4-target\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\\n    &lt;div&gt;&lt;label for=\\\&quot;conflict4-input\\\&quot;&gt;Focus jump&lt;/label&gt;&lt;input type=\\\&quot;text\\\&quot; id=\\\&quot;conflict4-input\\\&quot; value=\\\&quot;Some existing value\\\&quot;&gt;&lt;/div&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    Competing assertive regions: &lt;button id=\\\&quot;conflict5\\\&quot;&gt;Fire double live regions&lt;/button&gt; &lt;span id=\\\&quot;conflict5-1\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/span&gt; &lt;span id=\\\&quot;conflict5-2\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/span&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    Competing polite regions: &lt;button id=\\\&quot;conflict6\\\&quot;&gt;Fire double live regions&lt;/button&gt; &lt;span id=\\\&quot;conflict6-1\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt; &lt;span id=\\\&quot;conflict6-2\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;\\n  &lt;/li&gt;\\n  &lt;li&gt;\\n    Competing assertive &amp; polite regions: &lt;button id=\\\&quot;conflict7\\\&quot;&gt;Fire double live regions&lt;/button&gt; &lt;span id=\\\&quot;conflict7-1\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/span&gt; &lt;span id=\\\&quot;conflict7-2\\\&quot; aria-live=\\\&quot;polite\\\&quot;&gt;&lt;/span&gt;\\n  &lt;/li&gt;\\n&lt;/ol&gt;\\n\\n&lt;h3&gt;Results&lt;/h3&gt;\\n&lt;table&gt;\\n  &lt;thead&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;SR&lt;/td&gt;\\n      &lt;td&gt;Browser&lt;/td&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n      &lt;td&gt;5&lt;/td&gt;\\n      &lt;td&gt;6&lt;/td&gt;\\n      &lt;td&gt;7&lt;/td&gt;\\n      &lt;td&gt;notes&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;Narrator&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;Updated test to use dynamic live region for Narrator&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;VoiceOver&lt;/td&gt;\\n      &lt;td&gt;iOS Safari&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;assertive region prevents user interaction announcements or focus announcement; polite region never read; only one assertive update read, all polite live conflicts read.&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n\\n&lt;h2&gt;Content insertion&lt;/h2&gt;\\n&lt;ol&gt;\\n  &lt;li&gt;Insert formatted text &lt;button id=\\\&quot;formatted\\\&quot;&gt;Add heading and text&lt;/button&gt;&lt;div id=\\\&quot;formatted-test\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;Insert and immediately remove text &lt;button id=\\\&quot;flash\\\&quot;&gt;Add text&lt;/button&gt;&lt;div id=\\\&quot;flash-test\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/div&gt;&lt;/li&gt;\\n  &lt;li&gt;Use CSS display &lt;button id=\\\&quot;display\\\&quot;&gt;Toggle display&lt;/button&gt;&lt;span aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;span id=\\\&quot;display-test\\\&quot; class=\\\&quot;hide\\\&quot;&gt;Jellicle cats come out tonight&lt;/span&gt;&lt;/span&lt;/li&gt;\\n    &lt;li&gt;Insert non-text elements &lt;button id=\\\&quot;images\\\&quot;&gt;Add images, buttons, etc&lt;/button&gt;&lt;div id=\\\&quot;images-test\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/div&gt;&lt;/li&gt;\\n    &lt;li&gt;Live input &lt;button id=\\\&quot;input\\\&quot;&gt;Update input&lt;/button&gt;&lt;input type=\\\&quot;text\\\&quot; id=\\\&quot;input-test\\\&quot; aria-live=\\\&quot;assertive\\\&quot;&gt;&lt;/li&gt;\\n&lt;/ol&gt;\\n    \\n&lt;h3&gt;Results&lt;/h3&gt;\\n&lt;table&gt;\\n  &lt;thead&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;SR&lt;/td&gt;\\n      &lt;td&gt;Browser&lt;/td&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n      &lt;td&gt;5&lt;/td&gt;\\n      &lt;td&gt;notes&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;No semantic information read, only text; aria-label not read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;aria-label is read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;NVDA&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;aria-label is read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Chrome&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;aria-label is read; image alt is not read&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Firefox&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;rich text read twice; aria-label and image alt not read; input value only read first update&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;JAWS&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;aria-label is read; image alt is read; timeout fixes double reading problem&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;Narrator&lt;/td&gt;\\n      &lt;td&gt;Edge&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;test 1 only reads heading, not text; aria-label is read; image alt is read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;td&gt;VoiceOver&lt;/td&gt;\\n      &lt;td&gt;iOS Safari&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;pass&lt;/td&gt;\\n      &lt;td&gt;partial&lt;/td&gt;\\n      &lt;td&gt;fail&lt;/td&gt;\\n      &lt;td&gt;image alt and aria-label read; input value not read;&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\&quot;,\&quot;css\&quot;:\&quot;body {\\n  padding: 2em;\\n}\\n\\nli {\\n  margin-bottom: 0.5em;\\n}\\n\\n.show {\\n  display: block;\\n}\\n\\n.hide {\\n  display: none;\\n}\\n\\ntd {\\n  border: 1px solid grey;\\n  padding: 0.25em;\\n}\&quot;,\&quot;parent\&quot;:0,\&quot;js\&quot;:\&quot;type Role = 'alert' | 'status' | 'log' | 'marquee' | 'timer';\\ntype AriaLive = 'assertive' | 'polite';\\n\\n// helper functions\\nfunction createNotification(text: string, role: Role, ariaLive: AriaLive) {\\n  const el = document.createElement('div');\\n  el.innerText = text;\\n  \\n  if (role) {\\n    el.setAttribute('role', role);\\n  }\\n  if (ariaLive) {\\n    el.setAttribute('aria-live', ariaLive);\\n  }\\n  \\n  document.body.appendChild(el);\\n}\\n\\nfunction updateNotification(id: string, text: string) {\\n  const el = document.getElementById(id);\\n  \\n  if (!el) {\\n    console.warn('could not find element with id', id);\\n    return;\\n  }\\n  \\n  const newContent = document.createElement('span');\\n  newContent.innerText = text;\\n  \\n  el.appendChild(newContent);\\n}\\n\\nfunction timedUpdates(el: HTMLElement, text: string, interval: number = 1000) {\\n  let index = 1;\\n  \\n  if (!el) {\\n    console.warn('could not find element with id', id);\\n    return;\\n  }\\n  \\n  return setInterval(() =&gt; {\\n    el.innerHTML = el.innerHTML + ' ' + text + ' ' + index;\\n    index++;\\n  }, interval);\\n}\\n\\n// attach events\\nlet progress = 0;\\ndocument.getElementById('progressbar').addEventListener('click', () =&gt; {\\n  const progressbar = document.getElementById('progressbar-test');\\n  progress = 0;\\n  \\n  const update = () =&gt; {\\n    progressbar.innerHTML = progress;\\n    progressbar.setAttribute('aria-valuenow', progress);\\n    if (progress &lt; 100) {\\n      progress += 10;\\n      setTimeout(update, 300);\\n    }\\n  };\\n  \\n  update();\\n});\\n\\nlet timerIndex = 1;\\ndocument.getElementById('timer').addEventListener('click', () =&gt; {\\n  document.getElementById('timer-test').innerHTML = timerIndex;\\n  timerIndex++;\\n});\\n\\ndocument.getElementById('relevant-all').addEventListener('click', () =&gt; {\\n  document.getElementById('relevant-test').innerHTML = '';\\n});\\n\\ndocument.getElementById('relevant-removal').addEventListener('click', () =&gt; {\\n  document.getElementById('relevant-test2').innerHTML = '';\\n});\\n\\nlet conflict1;\\ndocument.getElementById('conflict1-start').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('conflict1-target');\\n  el.innerHTML = '';\\n  conflict1 = timedUpdates(el, 'assertive test');\\n});\\ndocument.getElementById('conflict1-stop').addEventListener('click', () =&gt; {\\n  conflict1 &amp;&amp; clearInterval(conflict1);\\n});\\n\\nlet conflict2;\\ndocument.getElementById('conflict2-start').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('conflict2-target');\\n  el.innerHTML = '';\\n  conflict2 = timedUpdates(el, 'polite test');\\n});\\ndocument.getElementById('conflict2-stop').addEventListener('click', () =&gt; {\\n  conflict2 &amp;&amp; clearInterval(conflict2);\\n});\\n\\ndocument.getElementById('conflict3').addEventListener('click', () =&gt; {\\n  const liveEl = document.getElementById('conflict3-target');\\n  const focusTarget = document.getElementById('conflict3-input');\\n  liveEl.innerHTML = liveEl.innerHTML + 'some text that fires an assertive notification goes here';\\n  focusTarget.focus();\\n});\\n\\ndocument.getElementById('conflict4').addEventListener('click', () =&gt; {\\n  const liveEl = document.getElementById('conflict4-target');\\n  const focusTarget = document.getElementById('conflict4-input');\\n  liveEl.innerHTML = liveEl.innerHTML + 'some text that fires a polite notification goes here';\\n  focusTarget.focus();\\n});\\n\\ndocument.getElementById('conflict5').addEventListener('click', () =&gt; {\\n  const el1 = document.getElementById('conflict5-1');\\n  const el2 = document.getElementById('conflict5-2');\\n  \\n  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';\\n  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';\\n});\\n\\ndocument.getElementById('conflict6').addEventListener('click', () =&gt; {\\n  const el1 = document.getElementById('conflict6-1');\\n  const el2 = document.getElementById('conflict6-2');\\n  \\n  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';\\n  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';\\n});\\n\\ndocument.getElementById('conflict7').addEventListener('click', () =&gt; {\\n  const el1 = document.getElementById('conflict7-1');\\n  const el2 = document.getElementById('conflict7-2');\\n  \\n  el1.innerHTML = el1.innerHTML + ' Cats are the best pets';\\n  el2.innerHTML = el2.innerHTML + ' Dogs are the best pets';\\n});\\n\\ndocument.getElementById('formatted').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('formatted-test');\\n  \\n  el.innerHTML = el.innerHTML + '&lt;h3&gt;Cats&lt;/h3&gt;&lt;p&gt;Cats is a musical by Andrew Lloyd Webber featuring disturbing human-cat hybrids&lt;/p&gt;';\\n});\\n\\ndocument.getElementById('flash').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('flash-test');\\n  \\n  el.innerHTML = el.innerHTML + 'Possum \\\\'s book of practical cats';\\n  setTimeout(() =&gt; { el.innerHTML = ''; }, 100);\\n});\\n\\ndocument.getElementById('display').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('display-test');\\n  el.classList.toggle('hide');\\n});\\n\\ndocument.getElementById('images').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('images-test');\\n  \\n  el.innerHTML = el.innerHTML + '&lt;img src=\\\&quot;https://s3-us-west-2.amazonaws.com/s.cdpn.io/125707/grumpycat.jpg\\\&quot; alt=\\\&quot;Grumpy cat\\\&quot;&gt;&lt;button aria-label=\\\&quot;get a dog\\\&quot;&gt;get a cat&lt;/button&gt;&lt;input type=\\\&quot;text\\\&quot; value=\\\&quot;Tigger\\\&quot;&gt;';\\n});\\n\\nlet textareaNum = 1;\\ndocument.getElementById('input').addEventListener('click', () =&gt; {\\n  const el = document.getElementById('input-test');\\n  \\n  el.value = \\\&quot;Ideal number of pets: \\\&quot; + textareaNum;\\n  textareaNum++;\\n});\\n\&quot;,\&quot;html_pre_processor\&quot;:\&quot;none\&quot;,\&quot;css_pre_processor\&quot;:\&quot;none\&quot;,\&quot;js_pre_processor\&quot;:\&quot;typescript\&quot;,\&quot;html_classes\&quot;:\&quot;\&quot;,\&quot;css_starter\&quot;:\&quot;normalize\&quot;,\&quot;css_prefix_free\&quot;:null,\&quot;css_external\&quot;:null,\&quot;js_library\&quot;:null,\&quot;js_modernizr\&quot;:null,\&quot;js_external\&quot;:null,\&quot;created_at\&quot;:\&quot;2020-03-02T04:25:30.000Z\&quot;,\&quot;updated_at\&quot;:\&quot;2020-03-04T13:01:45.000Z\&quot;,\&quot;session_hash\&quot;:null,\&quot;title\&quot;:\&quot;Notification tests\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;slug_hash\&quot;:\&quot;abOwGro\&quot;,\&quot;head\&quot;:\&quot;\&quot;,\&quot;private\&quot;:false,\&quot;slug_hash_private\&quot;:\&quot;323a529b9e57bab612a4b77cca791c51\&quot;,\&quot;has_animation\&quot;:true,\&quot;css_pre_processor_lib\&quot;:\&quot;\&quot;,\&quot;checksum\&quot;:0,\&quot;screenshot_uuid\&quot;:\&quot;480262fc-19cb-495a-8a39-9999783a048d\&quot;,\&quot;team_id\&quot;:0,\&quot;css_prefix\&quot;:\&quot;neither\&quot;,\&quot;template\&quot;:false,\&quot;js_module\&quot;:null}&quot;,&quot;__profiled&quot;:{&quot;id&quot;:125707,&quot;hashid&quot;:&quot;DavVyp&quot;,&quot;name&quot;:&quot;Sarah Higley&quot;,&quot;username&quot;:&quot;smhigley&quot;,&quot;type&quot;:&quot;user&quot;,&quot;is_team&quot;:false,&quot;base_url&quot;:&quot;/smhigley&quot;},&quot;__export_service_url&quot;:&quot;https://codepen.io/api/export&quot;,&quot;__editor_config&quot;:{&quot;id&quot;:&quot;classic&quot;,&quot;editors&quot;:[{&quot;id&quot;:&quot;html&quot;,&quot;type&quot;:&quot;html&quot;,&quot;name&quot;:&quot;HTML&quot;,&quot;showEditor&quot;:true,&quot;showSettings&quot;:true,&quot;showProcessors&quot;:true,&quot;settings&quot;:[{&quot;id&quot;:&quot;processor&quot;,&quot;name&quot;:&quot;HTML Preprocessor&quot;,&quot;type&quot;:&quot;select&quot;,&quot;visible&quot;:true,&quot;values&quot;:[{&quot;id&quot;:&quot;none&quot;,&quot;name&quot;:&quot;None&quot;,&quot;value&quot;:&quot;none&quot;,&quot;default&quot;:true},{&quot;id&quot;:&quot;haml&quot;,&quot;name&quot;:&quot;Haml&quot;,&quot;value&quot;:&quot;haml&quot;},{&quot;id&quot;:&quot;markdown&quot;,&quot;name&quot;:&quot;Markdown&quot;,&quot;value&quot;:&quot;markdown&quot;},{&quot;id&quot;:&quot;slim&quot;,&quot;name&quot;:&quot;Slim&quot;,&quot;value&quot;:&quot;slim&quot;},{&quot;id&quot;:&quot;pug&quot;,&quot;name&quot;:&quot;Pug&quot;,&quot;value&quot;:&quot;pug&quot;}]},{&quot;id&quot;:&quot;html_classes&quot;,&quot;name&quot;:&quot;Add Class(es) to &lt;html&gt;&quot;,&quot;type&quot;:&quot;input&quot;,&quot;placeholder&quot;:&quot;e.g. single post post-1234&quot;,&quot;visible&quot;:true},{&quot;id&quot;:&quot;head&quot;,&quot;name&quot;:&quot;Stuff for &lt;head&gt;&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;placeholder&quot;:&quot;e.g. &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;&quot;,&quot;visible&quot;:true}],&quot;actions&quot;:[{&quot;id&quot;:&quot;tidy_html&quot;,&quot;type&quot;:&quot;tidy_code&quot;,&quot;name&quot;:&quot;Format HTML&quot;,&quot;disabled_processors&quot;:[&quot;haml&quot;,&quot;slim&quot;]},{&quot;id&quot;:&quot;view_compiled_html&quot;,&quot;type&quot;:&quot;view_compiled&quot;,&quot;name&quot;:&quot;View Compiled HTML&quot;,&quot;disabled_processors&quot;:[&quot;none&quot;]},{&quot;id&quot;:&quot;analyze_html&quot;,&quot;type&quot;:&quot;analyze&quot;,&quot;name&quot;:&quot;Analyze HTML&quot;},{&quot;id&quot;:&quot;maximize_html_editor&quot;,&quot;type&quot;:&quot;maximize&quot;,&quot;name&quot;:&quot;Maximize HTML Editor&quot;},{&quot;id&quot;:&quot;minimize_html_editor&quot;,&quot;type&quot;:&quot;minimize&quot;,&quot;name&quot;:&quot;Minimize HTML Editor&quot;},{&quot;id&quot;:&quot;fold_all_html&quot;,&quot;type&quot;:&quot;fold_all&quot;,&quot;name&quot;:&quot;Fold All&quot;},{&quot;id&quot;:&quot;unfold_all_html&quot;,&quot;type&quot;:&quot;unfold_all&quot;,&quot;name&quot;:&quot;Unfold All&quot;}],&quot;processors&quot;:[{&quot;id&quot;:&quot;none&quot;,&quot;name&quot;:&quot;None&quot;},{&quot;id&quot;:&quot;haml&quot;,&quot;name&quot;:&quot;Haml&quot;},{&quot;id&quot;:&quot;markdown&quot;,&quot;name&quot;:&quot;Markdown&quot;},{&quot;id&quot;:&quot;slim&quot;,&quot;name&quot;:&quot;Slim&quot;},{&quot;id&quot;:&quot;pug&quot;,&quot;name&quot;:&quot;Pug&quot;}]},{&quot;id&quot;:&quot;css&quot;,&quot;type&quot;:&quot;css&quot;,&quot;name&quot;:&quot;CSS&quot;,&quot;showEditor&quot;:true,&quot;showSettings&quot;:true,&quot;showProcessors&quot;:true,&quot;showVendorPrefixing&quot;:true,&quot;actions&quot;:[{&quot;id&quot;:&quot;tidy_css&quot;,&quot;type&quot;:&quot;tidy_code&quot;,&quot;name&quot;:&quot;Format CSS&quot;,&quot;disabled_processors&quot;:[&quot;sass&quot;,&quot;stylus&quot;]},{&quot;id&quot;:&quot;view_compiled_css&quot;,&quot;type&quot;:&quot;view_compiled&quot;,&quot;name&quot;:&quot;View Compiled CSS&quot;,&quot;disabled_processors&quot;:[&quot;none&quot;]},{&quot;id&quot;:&quot;analyze_css&quot;,&quot;type&quot;:&quot;analyze&quot;,&quot;name&quot;:&quot;Analyze CSS&quot;},{&quot;id&quot;:&quot;maximize_css_editor&quot;,&quot;type&quot;:&quot;maximize&quot;,&quot;name&quot;:&quot;Maximize CSS Editor&quot;},{&quot;id&quot;:&quot;minimize_css_editor&quot;,&quot;type&quot;:&quot;minimize&quot;,&quot;name&quot;:&quot;Minimize CSS Editor&quot;},{&quot;id&quot;:&quot;fold_all_css&quot;,&quot;type&quot;:&quot;fold_all&quot;,&quot;name&quot;:&quot;Fold All&quot;,&quot;disabled_processors&quot;:[&quot;sass&quot;]},{&quot;id&quot;:&quot;unfold_all_css&quot;,&quot;type&quot;:&quot;unfold_all&quot;,&quot;name&quot;:&quot;Unfold All&quot;,&quot;disabled_processors&quot;:[&quot;sass&quot;]}],&quot;processors&quot;:[{&quot;id&quot;:&quot;none&quot;,&quot;name&quot;:&quot;None&quot;},{&quot;id&quot;:&quot;less&quot;,&quot;name&quot;:&quot;Less&quot;},{&quot;id&quot;:&quot;scss&quot;,&quot;name&quot;:&quot;SCSS&quot;},{&quot;id&quot;:&quot;sass&quot;,&quot;name&quot;:&quot;Sass&quot;},{&quot;id&quot;:&quot;stylus&quot;,&quot;name&quot;:&quot;Stylus&quot;},{&quot;id&quot;:&quot;postcss&quot;,&quot;name&quot;:&quot;PostCSS&quot;}],&quot;parSuffixes&quot;:[&quot;less&quot;,&quot;scss&quot;,&quot;sass&quot;,&quot;styl&quot;]},{&quot;id&quot;:&quot;js&quot;,&quot;type&quot;:&quot;js&quot;,&quot;name&quot;:&quot;JS&quot;,&quot;showEditor&quot;:true,&quot;showSettings&quot;:true,&quot;showProcessors&quot;:true,&quot;externalResourcesHidden&quot;:false,&quot;actions&quot;:[{&quot;id&quot;:&quot;tidy_js&quot;,&quot;type&quot;:&quot;tidy_code&quot;,&quot;name&quot;:&quot;Format JavaScript&quot;,&quot;disabled_processors&quot;:[&quot;coffeescript, livescript&quot;]},{&quot;id&quot;:&quot;view_compiled_js&quot;,&quot;type&quot;:&quot;view_compiled&quot;,&quot;name&quot;:&quot;View Compiled JavaScript&quot;,&quot;disabled_processors&quot;:[&quot;none&quot;]},{&quot;id&quot;:&quot;analyze_js&quot;,&quot;type&quot;:&quot;analyze&quot;,&quot;name&quot;:&quot;Analyze JavaScript&quot;},{&quot;id&quot;:&quot;maximize_js_editor&quot;,&quot;type&quot;:&quot;maximize&quot;,&quot;name&quot;:&quot;Maximize JavaScript Editor&quot;},{&quot;id&quot;:&quot;minimize_js_editor&quot;,&quot;type&quot;:&quot;minimize&quot;,&quot;name&quot;:&quot;Minimize JavaScript Editor&quot;},{&quot;id&quot;:&quot;fold_all_js&quot;,&quot;type&quot;:&quot;fold_all&quot;,&quot;name&quot;:&quot;Fold All&quot;},{&quot;id&quot;:&quot;unfold_all_js&quot;,&quot;type&quot;:&quot;unfold_all&quot;,&quot;name&quot;:&quot;Unfold All&quot;}],&quot;processors&quot;:[{&quot;id&quot;:&quot;none&quot;,&quot;name&quot;:&quot;None&quot;},{&quot;id&quot;:&quot;babel&quot;,&quot;name&quot;:&quot;Babel&quot;},{&quot;id&quot;:&quot;typescript&quot;,&quot;name&quot;:&quot;TypeScript&quot;},{&quot;id&quot;:&quot;coffeescript&quot;,&quot;name&quot;:&quot;CoffeeScript&quot;},{&quot;id&quot;:&quot;livescript&quot;,&quot;name&quot;:&quot;LiveScript&quot;}]}],&quot;formatters&quot;:[{&quot;id&quot;:&quot;classic&quot;,&quot;name&quot;:&quot;Classic&quot;,&quot;runOn&quot;:[{&quot;eventType&quot;:&quot;demand&quot;}],&quot;url&quot;:&quot;https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/format&quot;}],&quot;layout&quot;:{&quot;default&quot;:&quot;top&quot;},&quot;linters&quot;:[{&quot;id&quot;:&quot;classic&quot;,&quot;name&quot;:&quot;Classic&quot;,&quot;runOn&quot;:[{&quot;eventType&quot;:&quot;demand&quot;}],&quot;url&quot;:&quot;https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/lint&quot;}],&quot;preview&quot;:{&quot;intervalMaxWaitMS&quot;:3500,&quot;intervalMS&quot;:1200},&quot;settings&quot;:[{&quot;id&quot;:&quot;details&quot;,&quot;name&quot;:&quot;Pen Details&quot;,&quot;type&quot;:&quot;setting&quot;},{&quot;id&quot;:&quot;privacy&quot;,&quot;name&quot;:&quot;Privacy&quot;,&quot;pro&quot;:true,&quot;type&quot;:&quot;setting&quot;},{&quot;id&quot;:&quot;behavior&quot;,&quot;name&quot;:&quot;Behavior&quot;,&quot;type&quot;:&quot;setting&quot;},{&quot;id&quot;:&quot;editor&quot;,&quot;name&quot;:&quot;Editor&quot;,&quot;type&quot;:&quot;setting&quot;},{&quot;id&quot;:&quot;template&quot;,&quot;name&quot;:&quot;Template&quot;,&quot;type&quot;:&quot;setting&quot;},{&quot;id&quot;:&quot;screenshot&quot;,&quot;name&quot;:&quot;Screenshot&quot;,&quot;pro&quot;:true,&quot;type&quot;:&quot;setting&quot;}]},&quot;__packages_domain&quot;:&quot;https://bundles-development.cdpn.io&quot;,&quot;__packages_enabled&quot;:false,&quot;__embed_modal_script&quot;:&quot;https://static.codepen.io/assets/embed/modal/embed_modal-a2a4177b2efcfa6edbb42ce4ad81f7570b801d454f20828b9d24a6068ee3756c.js&quot;,&quot;__run_mode_script&quot;:&quot;https://static.codepen.io/assets/libs/codemirror/addon/runmode/runmode-71408fc65dcc694b1f598f08398b08c8f4494f90b73c64cd4ecf01eaaf3a65d7.js&quot;,&quot;__runtime_js&quot;:&quot;https://static.codepen.io/assets/common/runtime-78f7737f2b92b1b279253c92344b93db2bdf0e3193c90dae7d462d102b33c722.js&quot;,&quot;__standalone_run_mode_script&quot;:&quot;https://static.codepen.io/assets/libs/codemirror/addon/runmode/runmode-standalone-e82db9c70d13c4fd77beef3e400ebba56987206b1e5bb9e39f28c2044991b089.js&quot;,&quot;__syntax_highlighting_script&quot;:&quot;https://static.codepen.io/assets/comments/syntax_highlight_comments.js&quot;,&quot;__eijs&quot;:&quot;https://static.codepen.io/assets/embed/ei.js&quot;,&quot;__favicon_mask_icon&quot;:&quot;https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg&quot;,&quot;__favicon_shortcut_icon&quot;:&quot;https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico&quot;,&quot;__path_to_iframe_console_runner&quot;:&quot;https://static.codepen.io/assets/editor/iframe/iframeConsoleRunner-dc0d50e60903d6825042d06159a8d5ac69a6c0e9bcef91e3380b17617061ce0f.js&quot;,&quot;__path_to_iframe_refresh_css&quot;:&quot;https://static.codepen.io/assets/editor/iframe/iframeRefreshCSS-d00a5a605474f5a5a14d7b43b6ba5eb7b3449f04226e06eb1b022c613eabc427.js&quot;,&quot;__path_to_iframe_runtime_errors&quot;:&quot;https://static.codepen.io/assets/editor/iframe/iframeRuntimeErrors-29f059e28a3c6d3878960591ef98b1e303c1fe1935197dae7797c017a3ca1e82.js&quot;,&quot;__path_to_processor_worker&quot;:&quot;https://static.codepen.io/assets/packs/router.js&quot;,&quot;__path_to_stop_execution_on_timeout&quot;:&quot;https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js&quot;,&quot;__path_to_webpack_runtime&quot;:&quot;https://static.codepen.io/assets/common/runtime-78f7737f2b92b1b279253c92344b93db2bdf0e3193c90dae7d462d102b33c722.js&quot;,&quot;__pen_normalize_css_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css&quot;,&quot;__pen_prefix_free_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js&quot;,&quot;__pen_reset_css_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;,&quot;__cdn_css_url&quot;:&quot;https://static.codepen.io/assets/editor/other/cdn/cdncss_data-b2a6b09b819f5d5cad330bde53c28db816c78598cbec7c82693642c0f8198d81.json&quot;,&quot;__cdn_js_url&quot;:&quot;https://static.codepen.io/assets/editor/other/cdn/cdnjs_data-1ba370c14f6d31ca1535a87b2e3e151cf4b60d08485aba18ef86b137051f0175.json&quot;,&quot;__theme_url_twilight&quot;:&quot;https://static.codepen.io/assets/editor/themes/twilight-c4d2eafba805f08fdb40c0900ac100b78469aba0532ca487a4fb1591a9424a02.css&quot;,&quot;__theme_url_solarized_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/solarized-dark-be3733c3b9fe7b35d3900cdb1d552f7cef1930f90aedbe3b08a2f4f7363f47f8.css&quot;,&quot;__theme_url_tomorrow_night&quot;:&quot;https://static.codepen.io/assets/editor/themes/tomorrow-night-9f7a64b583f014a14d2b57f6b602f1b102c0603f13dfdb78d072e86e739bfa17.css&quot;,&quot;__theme_url_oceanic_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/oceanic-dark-75062c19b7b09467732c36bb9e63f72b576a2e4d1f6939ceeed4ba286210232b.css&quot;,&quot;__theme_url_panda&quot;:&quot;https://static.codepen.io/assets/editor/themes/panda-2b9f60f9baffb42b45bfa2fb8a8a32893eb378809a49a6aae1e6eca936e0c138.css&quot;,&quot;__theme_url_duotone_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/duotone-dark-1447b1135a3e20d5faa7f6eefaca8222696a4a0892e72d28818cb595b47fa7ef.css&quot;,&quot;__theme_url_highcontrast_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/highcontrast-dark-a9166d9422d2610b098ad9e69a49ae54f2cdd1fcb34e2c4613bf6d6bbe4bbd79.css&quot;,&quot;__theme_url_classic&quot;:&quot;https://static.codepen.io/assets/editor/themes/classic-2fa24f22265ce4cf2b8258542a3a1cafea72fd369cd81c1114fe7185a4175aea.css&quot;,&quot;__theme_url_solarized_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/solarized-light-0c461c28fa87008a5fd32233c2c6fc0204184273435145143f64b32e9a1e9f81.css&quot;,&quot;__theme_url_xq_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/xq-light-dcb53045ea59518f816ef2d6c40f171f7819a008bba9607e6a6faf4a73fcc119.css&quot;,&quot;__theme_url_oceanic_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/oceanic-light-aac2754a2516fd7493c296eaefb4c4a17415c2634ce362611c1ba38bd2a277cc.css&quot;,&quot;__theme_url_mdn_like&quot;:&quot;https://static.codepen.io/assets/editor/themes/mdn-like-4db89c6e07b846f47a817a6ece4f8d71e3b596b207534cf7cd822ab13e5d0f3b.css&quot;,&quot;__theme_url_duotone_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/duotone-light-8a45f16fbedcbed4220ddf03d615590570d1b885c59f998d5899c1d6f658f3df.css&quot;,&quot;__theme_url_highcontrast_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/highcontrast-light-9e727ae97fbe6e955041644fb9f185548aee393d5a0084544b7f71b39dfe2913.css&quot;,&quot;__theme_url_scoped_twilight&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/twilight-ab6718aaebdecf2af943a2f7d3ef87076601c4ef94f1e1aaaf9fa4267b60a2f8.css&quot;,&quot;__theme_url_scoped_solarized_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/solarized-dark-4e82f4e8dfe983227d8fcba0c4c14418ae4112ca15623390ad903567cc253638.css&quot;,&quot;__theme_url_scoped_tomorrow_night&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/tomorrow-night-0df4b141fac44720400a9a5ed2c9adc1f35d3f15bf16454b37f91461b5c04374.css&quot;,&quot;__theme_url_scoped_oceanic_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/oceanic-dark-5425f37e5d1e825a4095cd4a4ecf3cf521d221438aebdd30eeebfa323db10c30.css&quot;,&quot;__theme_url_scoped_panda&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/panda-67d0cfb233b3ab2bea5e2bb0943f8b1a89ae267b3fbfab25f005f487b06a502d.css&quot;,&quot;__theme_url_scoped_duotone_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/duotone-dark-5952572c9464491c3aacc4e7230abcf1e734d40374f59e59e959506741243bdb.css&quot;,&quot;__theme_url_scoped_highcontrast_dark&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/highcontrast-dark-5720bc7bfc07d7e3acc5e117b6fe35a6e14be412820790636f7b78727b6973e0.css&quot;,&quot;__theme_url_scoped_classic&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/classic-c62bf0da3affc130fe1fec30935afd3eec44e91c8cc1d13a0740696900f9cb63.css&quot;,&quot;__theme_url_scoped_solarized_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/solarized-light-828b823ba7e6f0dc8fc6fd7d80e518c834045ad3f809ecd117f7d58b9bbf1508.css&quot;,&quot;__theme_url_scoped_xq_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/xq-light-e0760645cf1cbe5f2d06e4ad60b7bb02a96cbc7f008b43f1a799d8cee9c27cea.css&quot;,&quot;__theme_url_scoped_oceanic_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/oceanic-light-2926c1cc436aacfae8536810b6bcc6e0692c6b3c5363430bab15d904e58a3851.css&quot;,&quot;__theme_url_scoped_mdn_like&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/mdn-like-d25db1336f1b20b562df6e0e5b2701bcaca89138d1017167212f9e727f49b367.css&quot;,&quot;__theme_url_scoped_duotone_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/duotone-light-410382287903ce7313c3a5c9cbf8e1c7de4caea890472df62fe6d63b3c7c115d.css&quot;,&quot;__theme_url_scoped_highcontrast_light&quot;:&quot;https://static.codepen.io/assets/editor/themes/scoped/highcontrast-light-8e466d48cd44142f30738f4cd07a197048c9b50dba771affb6b1717bc0b4442d.css&quot;}">
+<script src="Notification%20tests_files/browser_support-1963aa6406ae47d3176af996336c5d219acd8913c5af3.js"></script>
+<script src="Notification%20tests_files/everypage-19c754874d4e009048eabc63a3891b757cf1497bdf6bd0873bb.js"></script>
+<script src="Notification%20tests_files/vendor-75bc07d5eb729d7f7bc8.js"></script>
+<script src="Notification%20tests_files/2-36fc3eea57f7541322fe.js"></script>
+<script src="Notification%20tests_files/everypage-defeddc6d5c6255ccb28.js"></script>
+<script src="Notification%20tests_files/processorRouter-8dd7194544fd52d0dc69.js"></script>
+<script src="Notification%20tests_files/commonLibs-7484fe04f7187bb8ecb83c4962db75fdf5d900e6e629bfab2f.js"></script>
+<script src="Notification%20tests_files/codemirror-b8b886ef5a1a8d714eef6e7d5aec5b81630003feb80e3f9ef8.js"></script>
+<script src="Notification%20tests_files/emmet-codemirror-plugin-5d6164559517c9065f31696d2b6c916ff2386.js"></script>
+<script src="Notification%20tests_files/index-e8986b0aeb99841ff54a17126b37ad2b76e398a3e80ffc2f668737a.js"></script>
+
+
+</body></html>
