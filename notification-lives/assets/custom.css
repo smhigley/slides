@@ -78,6 +78,74 @@ blockquote {
 
 
 /* Specific slide styles */
+.terms-input {
+	padding: 0.5em 1em;
+	margin: 0.5em 0;
+	border: 2px solid #000;
+	box-sizing: border-box;
+	font-size: 1em;
+	width: 100%;
+	max-width: 550px;
+}
+
+.reveal .terms-list {
+	height: 10.5em;
+	overflow: hidden;
+	padding: 1px;
+	margin: 0;
+	list-style-type: none;
+	width: 100%;
+	max-width: 550px;
+}
+
+.terms-list li {
+	height: 1.5em;
+	border: 1px solid #666;
+	border-bottom: 0;
+	text-align: left;
+	padding: 0 0.5em;
+	overflow: hidden;
+}
+
+.terms-list li:last-child {
+	border-bottom: 1px solid #666;
+}
+
+.cat-list > div {
+	position: absolute;
+	left: 0;
+	top: 50%;
+}
+
+.cat-list {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+}
+
+.result-cat p {
+	position: absolute;
+	top: -25%;
+	right: -10%;
+	background-color: #000;
+	color: #fff;
+	padding: 5px;
+	border-radius:3px;
+}
+
+.result-cat p::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	right: 40%;
+	border-top: 10px solid #000;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+
 .profile-slide > div {
 	display: flex !important;
 	align-items: start;
