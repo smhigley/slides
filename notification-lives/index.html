@@ -68,6 +68,7 @@
 				</section>
 				<section>
 					<h3>Classifications and terms</h3>
+					<img src="./assets/cat-diagram.png" alt="abstract anatomical diagram of a cat" style="width: 80%">
 					<aside class="notes">
 						<p>If you're going to talk about cats, you need to know some terms. Tabby, calico, house cat, long hair, persian, things like that.</p>
 						<p>So let's start by going over some of the ways we classify notifications, and some of the characteristics you may observe. This will help you identify and distinguish between the different types when you encounter them.</p>
@@ -117,7 +118,7 @@
 					<blockquote>The output element represents the result of a calculation performed by the application, or the result of a user action.</blockquote>
 					<p>(Also, just read <a href="https://www.scottohara.me/blog/2019/07/10/the-output-element.html">Scott's article</a>)</p>
 					<aside class="notes">
-						The definition is from the WHATWG HTML spec. The output element is mapped to a role of status, and that is implemented in all browsers but Firefox and Android browsers (according to Scott, whose research I shamelessly copied here. I hope you all enjoyed his dialog talk yesterday, go bother him if you have questions about output.)
+						The definition is from the WHATWG HTML spec. The output element is mapped to a role of status, and that is implemented in all browsers but Firefox and Android browsers (according to Scott, whose research I shamelessly copied here.)
 					</aside>
 				</section>
 				<section>
@@ -145,6 +146,7 @@
 					<aside class="notes">
 						<p>This is the part of the talk where I ask you if you know what a notification is, and how to recognize one on them web. Then you tell me that you do, and then I proceed to classify them in detail anyway.</p>
 						<p>We're going to start with the common domestic notifications: these are the notifications you *want* to welcome into your website or web app.</p>
+						<p>There is an animated gif in the next slide, it's neither big nor flashing, but feel free to look away if needed.</p>
 					</aside>
 				</section>
 				<section>
@@ -222,7 +224,7 @@
 							</tr>
 							<tr>
 								<td>Risk</td>
-								<td>Low</td>
+								<td>Medium</td>
 							</tr>
 						</table>
 						<img src="./assets/cat10.jpg" class="stats-image" alt="cat offering a fish in its mouth">
@@ -250,13 +252,13 @@
 							</tr>
 							<tr>
 								<td>Risk</td>
-								<td>Medium</td>
+								<td>Low</td>
 							</tr>
 						</table>
 						<img src="./assets/cat13.jpg" class="stats-image" alt="illustrated cat washing its face">
 					</div>
 					<aside class="notes">
-						<p>Progressbars are common, and there is a progressbar role. Unfortunately, web has nothing like the support desktop does for that role. Medium risk because native support is so poor that a custom solution is needed if the progress is important to announce.</p>
+						<p>Progressbars are common, and there is a progressbar role. Support isn't bad, and risk is low even if it isn't announced, since no content is missed if progress updates are not announced</p>
 					</aside>
 				</section>
 				<section>
@@ -285,7 +287,7 @@
 					<aside class="notes">
 						<p>The word "toast" has come to mean asynchronous notifications that are not tied to any particular part of the UI, and often appear overlaid on the screen in one corner.</p>
 						<p>Toasts are a particular pest for magnification users</p>
-						<p>Because toasts are divorced from current user interaction and context, they are very difficult to review. Interactive elements within toasts present additional barriers. Also cause issues with magnifiers.</p>
+						<p>Because toasts are divorced from current user interaction and context, they are very difficult to review. Interactive elements within toasts present additional barriers. Can be distracting when noticed.</p>
 					</aside>
 				</section>
 				<section>
@@ -312,7 +314,7 @@
 						<img src="./assets/row-of-cats.jpg" class="stats-image" alt="cat with top hat conjures row of identical cats">
 					</div>
 					<aside class="notes">
-						<p>It's possible to have a feed as a supplemental part of a UI, particularly a complex app-like UI. But most often found in chat apps, or where the updating content is the primary focus of the UI. If it is supplemental, consider not having a live region at all; it could be distracting.</p>
+						<p>It's possible to have a feed as a supplemental part of a UI, particularly a complex app-like UI. But most often found in chat apps, or where the updating content is the primary focus of the UI. If a feed is present and supplemental, consider not having a live region at all; it could be distracting.</p>
 					</aside>
 				</section>
 				<section>
@@ -341,6 +343,7 @@
 					</div>
 					<aside class="notes">
 						<p>There is no good markup for this use case now, since marquee does not have good support. Both assertive and polite live regions would interfere with consuming other content, due to the constant updates.</p>
+						<p>When used, you are essentially making a mini custom screen reader for your specific product, for this specific control.</p>
 						<p>Current suggestion: manually batch and announce updates, or provide a way to turn live updates on and off. High cognitive load to use, and a lot of manual work needed.</p>
 					</aside>
 				</section>
@@ -470,7 +473,7 @@
 						<img src="./assets/cats-movie-cats.jpg" class="stats-image" alt="disturbling CGI human-cat hybrids from the 2019 movie">
 					</div>
 					<aside class="notes">
-						<p>This happens when you take a component that has many dynamic content updates, like a table that is either editable or has dynamic data or a search results list, and just slap a live region around it, thus creating a weird hybrid monster. This will be extremely over-verbose and unhelpful. A case like that needs custom live region text tailored to be concise.</p>
+						<p>This happens when you take a component that has many dynamic content updates, like a table that is either editable or has dynamic data or a search results list, and just slap a live region around it, thus creating a weird hybrid monster (like the 2019 movie Cats). This will be extremely over-verbose and unhelpful. A case like that needs custom live region text tailored to be concise.</p>
 						<p>Can also occur in search result sections, drag and drop interfaces (don't ask), </p>
 					</aside>
 				</section>
@@ -838,6 +841,7 @@
 						</tbody>
 						</table>
 				</section>
+				<!--
 				<section>
 					<h3>Other factors</h3>
 					<ul>
@@ -850,6 +854,7 @@
 						Large page weight, or frequent DOM mutations can have an outsize impact on screen reader performance. This could mean live region changes get dropped. This is a theory, since we've seen this happen on older machines and not repro on newer ones, or occur in an app but not in a simplified reproduction.
 					</aside>
 				</section>
+				-->
 
 				<!-- Tips & tricks section -->
 				<section>
@@ -859,96 +864,96 @@
 				</section>
 				<section>
 					<h3>1. Keep it concise</h3>
-					<p>Why?</p>
-					<ul>
-						<li>Notification text can't be easily reviewed</li>
-						<li>Distracts and interrupts user interaction</li>
-					</ul>
+					<img src="./assets/cat-books.jpg" alt="A cat surrounded by bookshelves looking out a window">
 					<aside class="notes">
+						<p>Why?</p>
+						<ul>
+							<li>Notification text can't be easily reviewed</li>
+							<li>Distracts and interrupts user interaction</li>
+						</ul>
 						<p>If you can see, you can visually scan the number of results returned without reading each one, until you choose to. Give the same experience to screen reader users. This is especially true for large blocks of updating content, like search results region or data table.</p>
 						<p>Lean towards custom notification text, and write that as concise as possible</p>
 					</aside>
 				</section>
 				<section>
 					<h3>2. Don't use special characters or non-text content</h3>
-					<p>Why?</p>
-					<ul>
-						<li>Notification text cannot be reviewed character-by-character</li>
-						<li>Many text-to-speech engines and verbosity settings will ignore them</li>
-						<li>Support is lacking for non-text content</li>
-					</ul>
+					<img src="./assets/ascii-cat.jpg" alt="overly cute cat drawn with ascii art">
+					<aside class="notes">
+						<p>Why?</p>
+						<ul>
+							<li>Notification text cannot be reviewed character-by-character</li>
+							<li>Many text-to-speech engines and verbosity settings will ignore them</li>
+							<li>Support is lacking for non-text content</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<h3>3. Set a timeout to remove notification text</h3>
-					<p>When?</p>
-					<ul>
-						<li>Screen reader-only notifications</li>
-					</ul>
-					<p>Why?</p>
-					<ul>
-						<li>Reduces duplicate announcements</li>
-						<li>Avoids reading all previons announcements</li>
-						<li>Allows repeating the same announcement</li>
-					</ul>
+					<img src="./assets/row-of-cats.jpg" alt="cat with top hat magically conjures row of identical cats">
 					<aside class="notes">
+						<p>When?</p>
+						<ul>
+							<li>Screen reader-only notifications</li>
+						</ul>
+						<p>Why?</p>
+						<ul>
+							<li>Reduces duplicate announcements</li>
+							<li>Avoids reading all previons announcements</li>
+							<li>Allows repeating the same announcement</li>
+						</ul>
 						<p>See: common bug where all text is read if new text is added, even if aria-atomic is false. Depending on how you handle updates, if you simply replace the notification text, you can't announce the same thing multiple times in a row.</p>
 					</aside>
 				</section>
 				<section>
 					<h3>4. Handle insertion vs. updates wisely</h3>
-					<p>Why?</p>
-					<ul>
-						<li>Support gaps for dynamic insertion</li>
-						<li>Certain role + attribute combinations cause duplicate announcements</li>
-						<li>For updates, support is better if the element exists at or close to page load</li>
-					</ul>
 					<aside class="notes">
+						<p>Why?</p>
+						<ul>
+							<li>Support gaps for dynamic insertion</li>
+							<li>Certain role + attribute combinations cause duplicate announcements</li>
+							<li>For updates, support is better if the element exists at or close to page load</li>
+						</ul>
 						<p>Only alert has good support for dynamic insertion (i.e. inserting the role when you want it read). </p>
 					</aside>
 				</section>
 				<section>
 					<h3>5. Create a notification service</h3>
-					<p>When?</p>
-					<ul>
-						<li>Complex apps with many notifications</li>
-						<li>App-wide notifications, toast notifications</li>
-						<li>Frequent conflicting notifications</li>
-					</ul>
 					<aside class="notes">
+						<p>When?</p>
+						<ul>
+							<li>Complex apps with many notifications</li>
+							<li>App-wide notifications, toast notifications</li>
+							<li>Frequent conflicting notifications</li>
+						</ul>
+						<p>Why?</p>
+						<ul>
+							<li>Prevents conflicts</li>
+							<li>Centralizes debugging work</li>
+							<li>Ensures the live region is present on page load</li>
+						</ul>
+						
 						By "notification service" I mean a centralized, top-level component that handles creating custom notification announcements, that lower-level components can simply invoke with a text string and options.
+						<p>Also, fewer live regions in the page means better performance. Handles the other nuances for you, so you don't need to remember to look support up every time.</p>
 					</aside>
-				</section>
-				<section>
-					<p>Why?</p>
-					<ul>
-						<li>Prevents conflicts</li>
-						<li>Centralizes debugging work</li>
-						<li>Ensures the live region is present on page load</li>
-					</ul>
-					<aside class="notes">Also, fewer live regions in the page means better performance. Handles the other nuances for you, so you don't need to remember to look support up every time.</aside>
 				</section>
 				<section>
 					<h3>6. Create a notifications center</h3>
 					<img src="./assets/notification-center.png" alt="github notification center showing icon and notification inbox">
-				</section>
-				<section>
+					<aside class="notes">
 					<p>When?</p>
 					<ul>
 						<li>Complex apps with many notifications</li>
 						<li>Toast notifications</li>
 					</ul>
-					<aside class="notes">
-						By "notification service" I mean a centralized, top-level component that handles creating custom notification announcements, that lower-level components can simply invoke with a text string and options.
-					</aside>
-				</section>
-				<section>
 					<p>Why?</p>
 					<ul>
 						<li>Solves magnification problems</li>
 						<li>Solves timeout issues, if timeouts exist</li>
 						<li>Easily reviewable</li>
 					</ul>
-					<aside class="notes">If you've learned nothing else, I hope you've learned that notifications fail easily. A notification center creates a failsafe. Also, solves issues with live text not being easily reviewable word-by-word for screen reader users</aside>
+						By "notification service" I mean a centralized, top-level component that handles creating custom notification announcements, that lower-level components can simply invoke with a text string and options.
+						<p>e learned nothing else, I hope you've learned that notifications fail easily. A notification center creates a failsafe. Also, solves issues with live text not being easily reviewable word-by-word for screen reader users</p>
+					</aside>
 				</section>
 				<section>
 					<h3>7. Debug with a mutation observer</h3>
@@ -968,7 +973,7 @@
 						  observer.observe(element, config);
 						}
 					</code></pre>
-					Note: I will be fixing contrast in the code
+					<!--TODO: I will be fixing contrast in the code-->
 					<aside class="notes">
 						<p>I keep this saved in a gist for when I need it</p>
 						<p>With single page app frameworks like React, sometimes you can unintentionally remove and re-insert the live region element in the DOM if you aren't careful. The mutation observer lets you see exactly what DOM changes are occurring. Try adding it to a wrapper element around the live region element</p>
