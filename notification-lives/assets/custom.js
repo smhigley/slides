@@ -86,15 +86,37 @@ function animateCat(results, el) {
 
 }
 
+let catTimeout = null;
+
+function createCatTimeout(results, el) {
+  if (catTimeout) {
+    window.clearTimeout(catTimeout);
+  }
+
+  catTimeout = window.setTimeout(() => {
+    console.log('creating cat');
+    animateCat(results, el);
+  }, 1000);
+}
+
 function onInput(event) {
+  // display list of results
   const results = filterTerms(event.target.value);
   const listId = event.target.getAttribute('data-results');
   const list = document.getElementById(listId);
-  const catList = list.parentElement.querySelector('.cat-list');
   list.innerHTML = generateListItems(results);
 
+  // display flying cats
+  const catList = list.parentElement.querySelector('.cat-list');
   if (catList) {
-    animateCat(results.length, catList);
+    const debounceCatlist = catList.classList.contains('debounce');
+
+    if (debounceCatlist) {
+      createCatTimeout(results.length, catList);
+    }
+    else {
+      animateCat(results.length, catList);
+    }
   }
 }
 
@@ -107,9 +129,23 @@ function initFilters(el) {
   }
 }
 
+function showToast(slideEl) {
+  const toast = slideEl.querySelector('.toast-example');
+
+  if (toast) {
+    toast.classList.remove('hidden');
+    setTimeout(function() {
+      console.log('show toast', toast);
+      toast.classList.remove('transition-start');
+    }, 1000);
+  }
+}
+
 // initiate filters
 Reveal.addEventListener( 'slidechanged', function( event ) {
   setTimeout(function() {
     initFilters(event.currentSlide);
+
+    showToast(event.currentSlide);
   }, 300);
 });

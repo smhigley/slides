@@ -30,7 +30,11 @@
 					<h1>The many lives of a notification</h1>
 					<img src="./assets/cat-gallery.jpg" alt="a series of colorful cat illustrations">
 					<aside class="notes">
-						Story: I used to foster kittens...
+						<p>Hello everyone! Welcome, and thanks for coming to this presentation! Today, I'd like to talk to you about cats.</p>
+						<p>See, I used to foster kittens somewhat frequently. Normally I would get a group of two or three kittens, which is a really fantastic thing to do. Kittens can really improve your day-to-day life a lot richer, and improve your overall experience.</p>
+						<p>However, sometimes I would get a batch of 5 or 6 kittens. It turns out there is such a thing as too many kittens. They end up taking over every moment of your waking (and often sleeping) life, and prevent you from focusing on literally anything else.</p>
+						<p>(and they generate a lot of poop, but that's not part of the metaphor)</p>
+						<p>So on that note, let's talk about live regions!</p>
 					</aside>
 				</section>
 
@@ -38,19 +42,24 @@
 					<label for="example-input1">Find notification terms</label>
 					<div><input type="text" id="example-input1" class="terms-input" data-results="example-results1"></div>
 					<ul id="example-results1" class="terms-list"></ul>
+					<aside class="notes">REMEMBER: Type into the actual slide, not the notes.</aside>
 				</section>
 
 				<section>
 					<label for="example-input1">Find notification terms</label>
 					<div><input type="text" id="example-input2" class="terms-input" data-results="example-results2"></div>
-					<ul id="example-results2" class="terms-list"></ul>
-					<div class="cat-list"></div>
+					<ul id="example-results2" class="terms-list" aria-live="assertive"></ul>
+					<div class="cat-list" aria-hidden="true"></div>
+					<aside class="notes">WARNING: there will be flying cats across this screen.</aside>
 				</section>
 
 				<!-- Overview of types of notifications -->
 				<section>
 					<h2>Notifications: a field guide</h2>
-					<aside class="notes">To start off, I'd like to first take you on a tour of the types of notifications you might find out in the wild</aside>
+					<aside class="notes">
+						<p>To start off, I'd like to first take you on a tour of the types of notifications you might find out in the wild</p>
+						<p>There are going to be a number of illustrations of cats on these slides, and almost all of the hand-drawn images are from Ed Gorey (who illustrated T.S. Eliot's Possum's book of practical cats), and Andy Warhol</p>
+					</aside>
 				</section>
 				<section class="profile-slide">
 					<img src="./assets/avatar.png" alt="illustrated avatar of Sarah with cat" class="profile">
@@ -67,6 +76,19 @@
 					</aside>
 				</section>
 				<section>
+					<h3>Human Interaction</h3>
+					<ul>
+						<li>No control</li>
+						<li>No review</li>
+					</ul>
+					<img src="./assets/cat1.jpg" alt="green cute but obstinate cat illustration">
+					<aside class="notes">
+						<p>Before going further, I think it's worth emphasizing two fundamental behaviors of live regions. Usually, someone using a screen reader has control over what sort of output they hear. Keyboard commands, etc.</p>
+						<p>Live regions in contrast are entirely in the control of the author, not the user.</p>
+						<p>Also, unlike any text that a user is directly interacting with, live regions cannot be reviewed.</p>
+					</aside>
+				</section>
+				<section>
 					<h3>Classifications and terms</h3>
 					<img src="./assets/cat-diagram.png" alt="abstract anatomical diagram of a cat" style="width: 80%">
 					<aside class="notes">
@@ -75,16 +97,28 @@
 					</aside>
 				</section>
 				<section>
+					<h4>What is a &ldquo;Live Region&rdquo;?</h4>
+					<p class="text-emphasis"><code>aria-live</code></p>
+					<img src="./assets/assertive-polite-arrows.png" alt="" style="max-width:30%;">
+					<p><span class="large">assertive</span> <span class="small" style="display:inline-block;margin:0 2em;">vs.</span> <span class="large">polite</span></p>
+				</section>
+				<section>
 					<h4>ARIA Roles</h4>
-					<ul aria-label="the common roles">
-						<li>alert</li>
-						<li>status</li>
-					</ul>
-					<ul class="fragment" aria-label="the rare varieties">
-						<li>log</li>
-						<li>marquee</li>
-						<li>timer</li>
-					</ul>
+					<div style="display: flex;align-items: center;">
+						<ul aria-label="the common roles">
+							<li>alert</li>
+							<li>status</li>
+						</ul>
+						<img src="./assets/common-roles.png" alt="the common roles: good support and wide use" style="max-width:40%">
+					</div>
+					<div class="fragment" style="display: flex;align-items: center;">
+						<ul aria-label="the rare varieties">
+							<li>log</li>
+							<li>marquee</li>
+							<li>timer</li>
+						</ul>
+						<img src="./assets/other-roles.png" alt="the other roles: poor or support and danger of extinction" style="max-width:50%">
+					</div>
 					<aside class="notes">
 						<p>Alert and status are the most common types of ARIA live regions. Alert is, as it sounds, an assertive announcement. Status provides a polite announcement.</p>
 						<p>We'll talk more about the lesser-used roles later, but one reason you don't see them much is they don't have good assistive tech support.</p>
@@ -93,32 +127,23 @@
 				</section>
 				<section>
 					<h4>ARIA attributes</h4>
+					<ul>
+						<li><code style="display:inline-block;width:9em;">aria-atomic</code> <span style="display:inline-block;width:2em;">:</span> what is read?</li>
+						<li><code style="display:inline-block;width:9em;">aria-relevant</code> <span style="display:inline-block;width:2em;">:</span> when is it read?</li>
+						<li><code style="display:inline-block;width:9em;">aria-busy</code> <span style="display:inline-block;width:2em;">:</span> maybe don't read this.</li>
+					</ul>
+					<img src="./assets/attr-support.png" alt="these attributes have poor or no support" style="max-width:40%;margin-top:1em;">
 					<aside class="notes">
-						All ARIA live region attributes define how a live region should behave, but not any semantic meaning. You can create a live region from scratch with no role using only attributes, or modify how a live region role behaves.
+						<p>We already talked about aria-live, but these other attributes define how a live region should behave.</p>
+						<p>All ARIA live region attributes define how a live region should behave, but not any semantic meaning. You can create a live region from scratch with no role using only attributes, or modify how a live region role behaves.</p>
 					</aside>
-				</section>
-				<section>
-					<p class="text-emphasis">aria-live</p>
-					<p><code>assertive</code> | <code>polite</code></p>
-				</section>
-				<section>
-					<p class="text-emphasis">aria-atomic</p>
-					<p><code>true</code> | <code>false</code></p>
-				</section>
-				<section>
-					<p class="text-emphasis">aria-relevant</p>
-					<p><code>all</code> | <code>additions</code> | <code>removals</code> | <code>text</code> | <code>additions text</code></p>
-				</section>
-				<section>
-					<p class="text-emphasis">aria-busy</p>
-					<p><code>true</code> | <code>false</code></p>
 				</section>
 				<section>
 					<h4>The &lt;output&gt; element</h4>
 					<blockquote>The output element represents the result of a calculation performed by the application, or the result of a user action.</blockquote>
 					<p>(Also, just read <a href="https://www.scottohara.me/blog/2019/07/10/the-output-element.html">Scott's article</a>)</p>
 					<aside class="notes">
-						The definition is from the WHATWG HTML spec. The output element is mapped to a role of status, and that is implemented in all browsers but Firefox and Android browsers (according to Scott, whose research I shamelessly copied here.)
+						The definition is from the HTML spec. The output element is mapped to a role of status, and that is implemented in all browsers but Firefox and Android browsers (according to Scott, whose research I shamelessly copied here.)
 					</aside>
 				</section>
 				<section>
@@ -170,7 +195,16 @@
 								<td>Low</td>
 							</tr>
 						</table>
-						<img src="./assets/roombacat.gif" class="stats-image" alt="slowly rotating cat sitting on a roomba">
+						<div class="stats-image" style="position: relative;">
+							<img src="./assets/roombacat.gif" class="stats-image" alt="slowly rotating cat sitting on a roomba" style="margin:0;display:block;">
+							<img src="./assets/roombacat-still.jpg" alt="" class="fragment" style="position:absolute;top:0;left:0;margin:0;">
+						</div>
+					</div>
+					<div class="badges">
+						<ul aria-label="ARIA options for loading regions">
+							<li>aria-live="polite"</li>
+							<li>aria-busy="true"</li>
+						</ul>
 					</div>
 					<aside class="notes">
 						<p>As single page apps are now much more common, often the loading of content and assets happens asynchronously, and not through the browser's default page load events. This requires handling loading and loaded announcements manually.</p>
@@ -207,12 +241,22 @@
 					</aside>
 				</section>
 				<section>
+					<img src="./assets/form-errors.png" alt="Sample shipping form showing two inline form errors highlighted" style="max-width: 55%;">
+					<div class="badges">
+						<ul aria-label="ARIA options for form errors">
+							<li>role="alert"</li>
+							<li>aria-live="polite"</li>
+							<li>aria-live="assertive"</li>
+						</ul>
+					</div>
+				</section>
+				<section>
 					<h4>Search results</h4>
 					<div class="stats-card">
 						<table class="stats-table">
 							<tr>
 								<td>Type</td>
-								<td>Assertive and concise</td>
+								<td>Polite and concise</td>
 							</tr>
 							<tr>
 								<td>Habitat</td>
@@ -233,6 +277,15 @@
 						<p>These can be full-site searches, product filters, or a data table search, as long as it happens without reload. Keep announcements as brief as possible, along the lines of "X results found"</p>
 						<p>Do not announce results if they live-update as the user is typing. Set a timeout after keyboard events, and only update the live region after a second (ish, test this) of no new key strokes.</p>
 					</aside>
+				</section>
+				<section>
+					<img src="./assets/search-region.png" alt="The Hulu search field with the word Cats entered and multiple results">
+					<div class="badges">
+						<ul aria-label="ARIA options for search results">
+							<li>role="status"</li>
+							<li>aria-live="polite"</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<h4>Progress indicators</h4>
@@ -262,6 +315,14 @@
 					</aside>
 				</section>
 				<section>
+					<img src="./assets/file-upload.png" alt="File input with a11y cats PNG file and progressbar at 72%">
+					<div class="badges">
+						<ul aria-label="ARIA options for progress bars">
+							<li>role="progressbar"</li>
+						</ul>
+					</div>
+				</section>
+				<section>
 					<h4>Toasts</h4>
 					<div class="stats-card">
 						<table class="stats-table">
@@ -282,9 +343,21 @@
 								<td>High</td>
 							</tr>
 						</table>
-						<img src="./assets/toast-cat.jpg" class="stats-image" alt="cat with its face stuck in a piece of bread, looking generally upset">
+						<div style="width:45%" class="stats-image"></div>
+					</div>
+					<div class="toast-example hidden transition-start" role="alert">
+						<button type="button" aria-label="close toast" class="toast-close">x</button>
+						<img src="./assets/toast-cat.jpg" alt="cat with its face stuck in a piece of bread, looking generally upset">
+						NOAP.
+					</div>
+					<div class="badges">
+						<ul aria-label="ARIA options for toast notifications">
+							<li>role="alert"</li>
+							<li>role="status"</li>
+						</ul>
 					</div>
 					<aside class="notes">
+						<p>Now we're getting to some of the more rare and temperamental live regions.</p>
 						<p>The word "toast" has come to mean asynchronous notifications that are not tied to any particular part of the UI, and often appear overlaid on the screen in one corner.</p>
 						<p>Toasts are a particular pest for magnification users</p>
 						<p>Because toasts are divorced from current user interaction and context, they are very difficult to review. Interactive elements within toasts present additional barriers. Can be distracting when noticed.</p>
@@ -296,7 +369,7 @@
 						<table class="stats-table">
 							<tr>
 								<td>Type</td>
-								<td>Polite / log</td>
+								<td>Log + assertive or polite</td>
 							</tr>
 							<tr>
 								<td>Habitat</td>
@@ -308,7 +381,7 @@
 							</tr>
 							<tr>
 								<td>Risk</td>
-								<td>Medium</td>
+								<td>High</td>
 							</tr>
 						</table>
 						<img src="./assets/row-of-cats.jpg" class="stats-image" alt="cat with top hat conjures row of identical cats">
@@ -316,6 +389,16 @@
 					<aside class="notes">
 						<p>It's possible to have a feed as a supplemental part of a UI, particularly a complex app-like UI. But most often found in chat apps, or where the updating content is the primary focus of the UI. If a feed is present and supplemental, consider not having a live region at all; it could be distracting.</p>
 					</aside>
+				</section>
+				<section>
+					<img src="./assets/chat-ui.png" alt="Twitter direct message conversation about an illicit catnip deal" style="max-width:65%">
+					<div class="badges">
+						<ul aria-label="ARIA options for feeds and chats">
+							<li>role="log"</li>
+							<li>aria-live="assertive/polite"</li>
+							<li>aria-atomic="false"</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<h4>Live charts and data</h4>
@@ -339,7 +422,12 @@
 								<td>High</td>
 							</tr>
 						</table>
-						<img src="./assets/cat16.jpg" class="stats-image" alt="six cats precariously dancing on top of each other">
+						<img src="./assets/cat16.jpg" class="stats-image" alt="six cats precariously dancing on top of each other" style="max-width:16%">
+					</div>
+					<div class="badges">
+						<ul aria-label="ARIA options for live charts and data">
+							<li>role="marquee"</li>
+						</ul>
 					</div>
 					<aside class="notes">
 						<p>There is no good markup for this use case now, since marquee does not have good support. Both assertive and polite live regions would interfere with consuming other content, due to the constant updates.</p>
@@ -369,6 +457,11 @@
 							</tr>
 						</table>
 						<img src="./assets/cat11.jpg" class="stats-image" alt="pink illustrated cat, looking up">
+					</div>
+					<div class="badges">
+						<ul aria-label="ARIA options for timers">
+							<li>role="timer"</li>
+						</ul>
 					</div>
 					<aside class="notes">
 						<p>Timers should only be used if they are absolutely necessary, e.g. a stock trading time limit, or a standardized test (though even that is contentious). They cannot be a straightforward live region, since they would be overly distracting (like the last example)</p>
@@ -425,6 +518,7 @@
 								<td>Drop the live region, and let the focus change do the work</td>
 							</tr>
 						</table>
+						<img src="./assets/cat18.jpg" class="stats-image" alt="trickster cat juggling household items">
 					</div>
 					<aside class="notes">
 						<p>Live regions combined with changes of context (meaning the user's focus is moved) are guaranteed to conflict at worst and at best are redundant. Move focus somewhere that makes sense, and let that more robust announcement do the work.</p>
@@ -447,6 +541,7 @@
 								<td>ARIA state attributes</td>
 							</tr>
 						</table>
+						<img src="./assets/cat19.jpg" class="stats-image" alt="six cats under a moonlit sky in different states of dancing">
 					</div>
 					<aside class="notes">
 						<p>Sometimes a developer will reach for live regions to indicate e.g. the expanded or collapsed state of an accordion. Don't let them do this. Bring along the ARIA spec for backup, and practice catch-and-release for these live regions.</p>
@@ -478,7 +573,7 @@
 					</aside>
 				</section>
 
-				<!-- Testing results section -->
+				<!-- Testing results section
 				<section>
 					<h2>Compatibility Tests</h2>
 					<p>Full tests and results at <a href="https://cdpn.io/smhigley/full/abOwGro">Codepen</a></p>
@@ -486,375 +581,8 @@
 					<aside class="notes">
 						Before choosing a cat or notification type, it is important to assess compatibility.
 					</aside>
-				</section>
-				<section>
-					<h3>Live region types</h3>
-					<table style="font-size: 0.75em">
-						<thead>
-						<tr>
-						<td>SR</td>
-						<td>Browser</td>
-						<td>alert</td>
-						<td>status</td>
-						<td>log</td>
-						<td>timer</td>
-						<td>marquee</td>
-						<td>progressbar</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-						<td>NVDA</td>
-						<td>Firefox</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Firefox</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>partial</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						<tr>
-						<td>Narrator</td>
-						<td>Edge</td>
-						<td>partial</td>
-						<td>partial</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						<tr>
-						<td>VoiceOver</td>
-						<td>iOS Safari</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						</tbody>
-						</table>
-					<aside class="notes">
-						I've collapsed some of the nuances of different screen readers and browsers for readability in a single slide. The full test results will be linked later, with the slide deck.
-					</aside>
-				</section>
-				<section>
-					<h3>Live region attributes</h3>
-					<table style="font-size:0.75em">
-						<thead>
-						<tr>
-						<td>SR</td>
-						<td>Browser</td>
-						<td>assertive</td>
-						<td>polite</td>
-						<td>atomic</td>
-						<td>relevant</td>
-						<td>busy</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-						<td>NVDA</td>
-						<td>Firefox</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>partial</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>partial</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Firefox</td>
-						<td>partial</td>
-						<td>partial</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>partial</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						<td>partial</td>
-						</tr>
-						<tr>
-						<td>Narrator</td>
-						<td>Edge</td>
-						<td>partial</td>
-						<td>partial</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>fail</td>
-						</tr>
-						<tr>
-						<td>VoiceOver</td>
-						<td>iOS Safari</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>fail</td>
-						</tr>
-						</tbody>
-						</table>
-				</section>
-				<section>
-					<h3>Handling conflicts</h3>
-					<table style="font-size:0.75em;">
-						<thead>
-						<tr>
-						<td>SR</td>
-						<td>Browser</td>
-						<td>User actions</td>
-						<td>Focus change</td>
-						<td>Two live regions</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-						<td>NVDA</td>
-						<td>Firefox</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Chrome</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Edge</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Chrome</td>
-						<td>fail</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Firefox</td>
-						<td>fail</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Edge</td>
-						<td>fail</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>Narrator</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>VoiceOver</td>
-						<td>iOS Safari</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>partial</td>
-						</tr>
-						</tbody>
-						</table>
-				</section>
-				<section>
-					<h3>Types of content</h3>
-					<table style="font-size:0.75em">
-						<thead>
-						<tr>
-						<td>SR</td>
-						<td>Browser</td>
-						<td>Rich text</td>
-						<td>Timeout</td>
-						<td>CSS Display</td>
-						<td>Non-text</td>
-						<td>Input value</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-						<td>NVDA</td>
-						<td>Firefox</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>NVDA</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Chrome</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Firefox</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>partial</td>
-						</tr>
-						<tr>
-						<td>JAWS</td>
-						<td>Edge</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>Narrator</td>
-						<td>Edge</td>
-						<td>partial</td>
-						<td>fail</td>
-						<td>fail</td>
-						<td>pass</td>
-						<td>pass</td>
-						</tr>
-						<tr>
-						<td>VoiceOver</td>
-						<td>iOS Safari</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>pass</td>
-						<td>partial</td>
-						<td>fail</td>
-						</tr>
-						</tbody>
-						</table>
-				</section>
-				<!--
-				<section>
-					<h3>Other factors</h3>
-					<ul>
-						<li>Page weight and performance</li>
-						<li>Hybrid apps, e.g. using Electron</li>
-						<li>User interaction</li>
-						<li>Hardware and other running software</li>
-					</ul>
-					<aside class="notes">
-						Large page weight, or frequent DOM mutations can have an outsize impact on screen reader performance. This could mean live region changes get dropped. This is a theory, since we've seen this happen on older machines and not repro on newer ones, or occur in an app but not in a simplified reproduction.
-					</aside>
-				</section>
-				-->
+				</section>  -->
+
 
 				<!-- Tips & tricks section -->
 				<section>
@@ -873,6 +601,16 @@
 						</ul>
 						<p>If you can see, you can visually scan the number of results returned without reading each one, until you choose to. Give the same experience to screen reader users. This is especially true for large blocks of updating content, like search results region or data table.</p>
 						<p>Lean towards custom notification text, and write that as concise as possible</p>
+					</aside>
+				</section>
+				<section>
+					<label for="example-input1">Find notification terms</label>
+					<div><input type="text" id="example-input2" class="terms-input" data-results="example-results3"></div>
+					<ul id="example-results3" class="terms-list"></ul>
+					<div class="cat-list debounce" aria-live="assertive"></div>
+					<aside class="notes">
+						<p>WARNING: there will be (fewer) flying cats across this screen.</p>
+						<p>Let's revisit the example from before, but this time with some debouncing added. A live region will only fire after a second of no typing, and it will only contain the number of results found, and not the text of those results.</p>
 					</aside>
 				</section>
 				<section>
@@ -906,16 +644,38 @@
 				</section>
 				<section>
 					<h3>4. Handle insertion vs. updates wisely</h3>
+					<div class="left">
+						<div class="fragment alert-visual" role="alert">
+							Alert 1
+						</div>
+						<div class="fragment alert-visual" role="alert">
+							Alert 1
+						</div>
+						<div class="fragment alert-visual" role="alert">
+							Alert 1
+						</div>
+					</div>
+					<div class="right">
+						<div class="status-visual fragment">
+							<span class="small">An empty aria-live element</span>
+							<div class="fragment status-visual-item">
+								Update 1
+							</div>
+							<div class="fragment status-visual-item">
+								Update 2
+							</div>
+						</div>
+					</div>
 					<aside class="notes">
 						<p>Why?</p>
 						<ul>
-							<li>Support gaps for dynamic insertion</li>
+							<li>Support gaps for dynamic insertion (this is only reliable with the alert role)</li>
 							<li>Certain role + attribute combinations cause duplicate announcements</li>
 							<li>For updates, support is better if the element exists at or close to page load</li>
 						</ul>
-						<p>Only alert has good support for dynamic insertion (i.e. inserting the role when you want it read). </p>
 					</aside>
 				</section>
+				<!--
 				<section>
 					<h3>5. Create a notification service</h3>
 					<aside class="notes">
@@ -936,6 +696,7 @@
 						<p>Also, fewer live regions in the page means better performance. Handles the other nuances for you, so you don't need to remember to look support up every time.</p>
 					</aside>
 				</section>
+				-->
 				<section>
 					<h3>6. Create a notifications center</h3>
 					<img src="./assets/notification-center.png" alt="github notification center showing icon and notification inbox">
@@ -1000,7 +761,8 @@
 				<!-- Future section -->
 				<section>
 					<h2>The future of notifications</h2>
-					<img src="./assets/borg-cats.jpg" alt="three cyborg cats" style="width:90%">
+					<img src="./assets/borg-cats.jpg" alt="three cyborg cats" style="width:80%">
+					<span style="display:block;font-size:0.5em;">Image credit: Lisette Murphy</span>
 				</section>
 				<section>
 					<p>File support issues</p>
@@ -1032,6 +794,16 @@
 				<section>
 					<p>And finally, use your powers wisely</p>
 					<img src="./assets/lightning-cat.jpg" alt="kitten standing atop a mountain range, shooting lightning from its paws" style="width:60%">
+				</section>
+				<section>
+					<h2>Links</h2>
+					<ul>
+						<li><a href="https://cdpn.io/smhigley/full/abOwGro">Codepen with Live region support tests and results</a></li>
+						<li><a href="https://webwewant.fyi/">the Web We Want</a></li>
+						<li><a href="https://github.com/w3c/aria/issues/1104">Live region deprecation ARIA issue</a></li>
+						<li><a href="https://github.com/w3c/aria/issues?q=is%3Aissue+is%3Aopen+live+region">All ARIA issues contaiing "live region"</a></li>
+						<li><a href="https://www.scottohara.me/blog/2019/07/10/the-output-element.html">Scott's <code>&lt;output&gt;</code> article</a></li>
+					</ul>
 				</section>
 			</div>
 			<footer class="global-footer">
