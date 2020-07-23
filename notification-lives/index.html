@@ -42,7 +42,11 @@
 					<label for="example-input1">Find notification terms</label>
 					<div><input type="text" id="example-input1" class="terms-input" data-results="example-results1"></div>
 					<ul id="example-results1" class="terms-list"></ul>
-					<aside class="notes">REMEMBER: Type into the actual slide, not the notes.</aside>
+					<aside class="notes">
+						<p>REMEMBER: Type into the actual slide, not the notes.</p>
+						<p>I made this example to show what a live region is, and why you might need one. This is a working filter or search field, and it dynamically updates every time I type into the field.</p>
+						<p>Because I can see, this works really well. As I type, I can immediately see feedback on what results are returned, and catch any typos.</p>
+					</aside>
 				</section>
 
 				<section>
@@ -50,7 +54,10 @@
 					<div><input type="text" id="example-input2" class="terms-input" data-results="example-results2"></div>
 					<ul id="example-results2" class="terms-list" aria-live="assertive"></ul>
 					<div class="cat-list" aria-hidden="true"></div>
-					<aside class="notes">WARNING: there will be flying cats across this screen.</aside>
+					<aside class="notes">
+						<p>WARNING: there will be flying cats across this screen.</p>
+						<p>Now I've added a small visual aid to show what it's like when you have an overly verbose, too frequent live region on the page. It interrupts everything, is extremely distracting, and can prevent you from perceiving what is going on with the UI control you want to interact with.</p>
+					</aside>
 				</section>
 
 				<!-- Overview of types of notifications -->
@@ -120,6 +127,7 @@
 						<img src="./assets/other-roles.png" alt="the other roles: poor or support and danger of extinction" style="max-width:50%">
 					</div>
 					<aside class="notes">
+						<p>ARIA stands for Accessible Rich Internet Applications, and is a supplement to HTML</p>
 						<p>Alert and status are the most common types of ARIA live regions. Alert is, as it sounds, an assertive announcement. Status provides a polite announcement.</p>
 						<p>We'll talk more about the lesser-used roles later, but one reason you don't see them much is they don't have good assistive tech support.</p>
 						<p>A role determines not only how the live region behaves, but also imparts semantics. So, for example, an alert role will cause the notification to be read immediately, and also adds "alert" semantic meaning.</p>
@@ -720,7 +728,7 @@
 					<h3>7. Debug with a mutation observer</h3>
 					<pre><code data-trim data-noescape class="js">
 						function observeElement(element) {
-						  const callback = function(mutationsList, observer) {
+						  const onMutuate = function(mutationsList, observer) {
 						    for(let mutation of mutationsList) {
 						      if (mutation.type === 'childList') {
 						        console.log('A child node has been added or removed.');
@@ -730,7 +738,7 @@
 						      }
 						    }
 						  };
-						  const observer = new MutationObserver(callback);
+						  const observer = new MutationObserver(onMutuate);
 						  observer.observe(element, config);
 						}
 					</code></pre>
@@ -804,6 +812,9 @@
 						<li><a href="https://github.com/w3c/aria/issues?q=is%3Aissue+is%3Aopen+live+region">All ARIA issues contaiing "live region"</a></li>
 						<li><a href="https://www.scottohara.me/blog/2019/07/10/the-output-element.html">Scott's <code>&lt;output&gt;</code> article</a></li>
 					</ul>
+					<aside class="notes">
+						These slides are online, hosted on github.io. I believe we'll have the link in the video description at some point. Most of the live region examples should actually function with a screen reader (and apologies in advance for that extremely verbose early example, if you try it out).
+					</aside>
 				</section>
 			</div>
 			<footer class="global-footer">
