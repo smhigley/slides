@@ -130,7 +130,9 @@
 				<section>
 					<p>Hovercards: no internal semantics will be conveyed</p>
 					<img src="assets/tooltip-twitter.png" alt="Twitter profile hover card for the Microsoft account" style="width:50%">
-					<aside class="notes">If this information were associated with the twitter handle link through hint text, it would be read all in one go</aside>
+					<aside class="notes">
+						<p>REMEMBER: do not talk about interaction, only semantics that are not conveyed</p>
+					</aside>
 				</section>
 				<section>
 					<p>Tooltip content is never independent of the control it describes</p>
@@ -225,39 +227,44 @@
 				<section>
 					<p>Where this doesn't work:</p>
 					<ul>
-						<li>tooltips in modals</li>
-						<li>tooltips in iframes</li>
-						<li>tooltips anywhere outside the current application window</li>
-						<li>tooltips that exist anywhere on a page with other complex widget</li>
-						<li>tooltips on fields that have a popup, e.g. a combobox</li>
-						<li>for touch and other pointer users</li>
-						<li>reusable tooltip components in any modern UI framework</li>
+						<li>Modals</li>
+						<li>iFrames</li>
+						<li>Comboboxes</li>
+						<li>Touch & pointer</li>
 					</ul>
-					<aside class="notes">(brief wcag rant here)</aside>
+					<aside class="notes">mention the issues with tooltips sharing a page with combos, or being on a combo. Also, trying to create reusable tooltips for a framework when you don't know where they'll be used.</aside>
 				</section>
 				<section>
 					<p>If escape doesn't work, what does?</p>
 				</section>
 				<section>
 					<h3>Usability testing tooltips</h3>
-					<img src="assets/tooltip-study.png" alt="two tooltips, without a close button and with a close button in the corner, showing red X's, and one tooltip with a close button near the trigger showing a green check">
+					<img src="assets/study2-prototypes.png" alt="two tooltips, without a close button and with a close button in the corner and one tooltip with a close button near the trigger">
+					<aside class="notes">Remember: image in this one is just for show, don't talk about it</aside>
 				</section>
 				<section>
 					<p>Tooltips in forms: maybe don't?</p>
 					<img src="assets/form-study-prototypes.png" alt="four styles of tips on a form: tooltip, two toggle tips, and static text">
 				</section>
-				<section>
+				<!--<section>
 					<img src="assets/study1-participants.png" alt="chart of all particiapnts, including three blind screen reader users, seven low vision magnification software users, and one smartbox grid switch user">
-				</section>
+				</section>-->
 				<section>
-					<p>A quick summary of user issues with form field tooltips:</p>
+					<p>User feedback:</p>
 					<ul>
-						<li>It was hidden behind the keyboard on iOS with zoom</li>
-						<li>The text was not reviewable character-by-character</li>
-						<li>The mechanism to show and hide the tooltip on demand was unclear</li>
-						<li>It "looked a bit annoying"</li>
+						<li>iOS keyboard overlap</li>
+						<li class="fragment">Not reviewable</li>
+						<li class="fragment">Hard to show/hide</li>
+						<li class="fragment">It "looked a bit annoying"</li>
 					</ul>
-					<aside class="notes">(ok, maybe that last one was just a comment on my lack of design chops)</aside>
+					<aside class="notes">
+						<ul>
+							<li>iOS keyboard issue showed up with zoom</li>
+							<li>People wanted to go in and review character-by-character, esp. for form instructions</li>
+							<li>People wanted control over when to look at instructions and when to look at the field</li>
+							<li>(ok, maybe that last one was just a comment on my lack of design chops)</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<p>Recommendation: static text or toggle tips</p>
@@ -267,22 +274,28 @@
 					<h4>Dismissing tooltips</h4>
 					<img src="assets/close-methods.png" alt="an escape key, a control key, and a close icon">
 				</section>
-				<section>
+				<!--<section>
 					<img src="assets/study2-participants.png" alt="chart of all particiapnts in second study, including three blind screen reader users, seven low vision magnification software users, and one switch users, and one dragon speech recognition user">
-				</section>
+				</section>-->
 				<section>
 					<img src="assets/study2-prototypes.png" alt="three tooltips, one with a close button in the corner, one with a close button above, and one with no close button">
 				</section>
 				<section>
 					<p>Feedback:</p>
 					<ul>
-						<li>A visible close button was preferred by pointer users</li>
-						<li>Close button placement has a big impact</li>
-						<li>Tooltip position is very important, even when hoverable</li>
-						<li>Participants were unwilling to use <kbd>Escape</kbd> within a modal</li>
-						<li>Once discovered, the <kbd>Control</kbd> key shortcut was ok, but was not well known</li>
-						<li>Screen reader users wanted the option to review tooltip text</li>
+						<li class="fragment">Close buttons = good</li>
+						<li class="fragment">Position is important</li>
+						<li class="fragment">Control > Escape</li>
+						<li class="fragment">Still not reviewable</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>When close buttons were present, even when keyboard dismissal also worked, low vision users used the button</li>
+							<li>Position of both the close button and the tooltip itself were very important</li>
+							<li>People were unwilling to use escape within a modal. Control worked well once people knew it, but it wasn't as intuitive as escape.</li>
+							<li>Screen reader users wanted to review the text of the tooltip. Empasize: People like control!</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<p>Main takeaway: when given a close button, people use the close button.</p>
@@ -301,6 +314,7 @@
 				<section>
 					<h3>Hover Cards</h3>
 					<img src="assets/tooltip-github-card.png" alt="hover card showing my github profile information next to my github avatar">
+					<aside class="notes">I mentioned the semantic issue with hover cards earlier, now let's talk about the interaction problems</aside>
 				</section>
 				<section>
 					<div class="left">
@@ -309,34 +323,59 @@
 					<div class="right">
 						<p>As a tooltip, this will:</p>
 						<ul style="font-size:0.8em">
-							<li>Be read all at once by screen readers</li>
-							<li>Lose formatting and interactive elements</li>
-							<li>Be a pain for magnification users</li>
-							<li>May not be accessible to mobile screen reader users, pointer users, and sometimes keyboard users</li>
+							<li class="fragment">Be read all at once by screen readers</li>
+							<li class="fragment">Be inaccessible through keyboard</li>
+							<li class="fragment">Be a pain for magnification users</li>
+							<li class="fragment">Be a pain for everyone else, too</li>
 						</ul>
 					</div>
+					<aside class="notes">
+						<ul>
+							<li>Not. Reviewable. People. Like. Control. Particularly: you lose info about formatting and interactive elements</li>
+							<li>It likely is not DOM-adjacent, because overflow</li>
+							<li>We just talked about all the problems for magnification</li>
+							<li>Last point: May not be accessible to mobile screen reader users, pointer users, and sometimes keyboard users, no matter what you do</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
-					<p>If you implement this as a toggle tip, it:</p>
-					<ul>
-						<li>Retains its semantics, and gives reading control back to screen reader users</li>
-						<li>Gives greater view/dismiss control to all users</li>
-						<li>Is more discoverable to screen reader users and non-mouse pointer users</li>
-					</ul>
+					<div class="left">
+						<img src="assets/toggletip.png" alt="A button that shows a non-modal dialog containing text about how to use a tooltip and a list of links.">
+					</div>
+					<div class="right">
+						<p>As a <strong>toggletip</strong>, this will:</p>
+						<ul style="font-size:0.8em">
+							<li>Retain semantics</li>
+							<li>Give show/hide control to everyone</li>
+							<li>Be more discoverable</li>
+						</ul>
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>People. Like. Control. Reviewable, has semantic info, gives reading control back to screen reader users</li>
+							<li>Gives greater view/dismiss control to all users (People. like. control.)</li>
+							<li>Particularly more discoverable to screen reader users and non-mouse pointer users</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!-- Part 4: Content -->
 				<section data-background="assets/corner-bottom-right.jpg" data-background-size="40%" data-background-position="100% 100%">
 					<h2>Part 4: Writing Tooltip Content</h2>
+					<aside class="notes">Why talk to a developer about writing content</aside>
 				</section>
 				<section>
 					<p><strong>The Tooltip Content Paradox:</strong></p>
 					<p>You must assume that some people will never be able to access the tooltip, so its content must not be necessary to use the UI.</p>
 					<p class="fragment">But if the tooltip is unnecessary, why have it at all?</p>
+					<aside class="notes">A two-parter</aside>
 				</section>
 				<section>
 					<!-- Billy Gregory #SUX tweet -->
-					<blockquote class="twitter-tweet"><p lang="en" dir="ltr">When UX doesn&#39;t consider ALL users, shouldn&#39;t it be known as &quot;SOME User Experience&quot; or... SUX? <a href="https://twitter.com/hashtag/a11y?src=hash&amp;ref_src=twsrc%5Etfw">#a11y</a></p>&mdash; Billy Gregory (@thebillygregory) <a href="https://twitter.com/thebillygregory/status/552466012713783297?ref_src=twsrc%5Etfw">January 6, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+					<blockquote class="twitter-tweet"><p lang="en" dir="ltr">When UX doesn&#39;t consider ALL users, shouldn&#39;t it be known as &quot;SOME User Experience&quot; or... SUX? <a href="https://twitter.com/hashtag/a11y?src=hash&amp;ref_src=twsrc%5Etfw">#a11y</a></p>&mdash; Billy Gregory (@thebillygregory) <a href="https://twitter.com/thebillygregory/status/552466012713783297?ref_src=twsrc%5Etfw">January 6, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					<aside class="notes">
+						The reason, of course, for having it is because we have a long history on the web of being OK creating experiences only for abled people. (explain tweet)
+					</aside>
 				</section>
 				<section>
 					<h3>The SAGA of alt text</h3>
@@ -348,6 +387,11 @@
 				<section>
 					<p>It begins in the dark days of yore, web browsers decided to present image <code>alt</code> text as a visual tooltip.</p>
 					<img src="assets/old-browsers.png" alt="netscape and internet explorer 5 saying remember us?">
+					<aside class="notes">
+						<p>I didn't intend for this to be particularly sad, given the Mozilla news.</p>
+						<p>To illustrate the problem, let's take a slight detour into the history of tooltips in web browsers.</p>
+						<p>So these two logos are within an image, and the image tag itself actually predates the ability to write alternative text for people who couldn't see it</p>
+					</aside>
 				</section>
 				<section>
 					<p>So people began writing alt text aimed at sighted users:</p>
@@ -359,7 +403,9 @@
 					</ul>
 					<p class="attribution">All from <a href="http://www.alanflavell.org.uk//alt/alt-text.html#howlers">A. J. Flavell</a>, circa 2006</p>
 
-					<aside class="notes">(note: the second one is even misspelled! the horror! The second two are written for visual users with image loading issues or text browsers)</aside>
+					<aside class="notes">
+						<p>And when the alt attribute was added, it was actually implemented as a tooltip for sighted users as well as SR and text-only users</p>
+						(note: the second one is even misspelled! the horror! The second two are written for visual users with image loading issues or text browsers)</aside>
 				</section>
 				<section>
 					<p>Then the <code>title</code> attribute was introduced to images in HTML4, bringing about the image tooltips we have now.</p>
@@ -367,14 +413,17 @@
 						<img src="assets/xkcd-html.png" alt="XKCD comic that says 'how do you annoy a web developer?' with incorrect HTML, and title text that says 'like this' with mismatched tag cases">
 						<figcaption class="attribution">Source: <a href="https://xkcd.com/1144/">XKCD</a></figcaption>
 					</figure>
+					<aside class="notes">So, partially to fix this problem of an accessibility-focused attribute being added and then misused, the title attribute was added to the image tag, bring about the image tooltips we have now</aside>
 				</section>
 				<section>
 					<p>This, of course, solved all remaining tooltip accessibility problems.</p>
 					<img src="assets/spec-title.png" alt="The HTML spec explicitly warns against the title attribute, saying user agents have not implemented it accessibly">
 					<aside class="notes">
-						There's a circular nature to web development: we fight the same battles over and over, in minorly different ways. In the same way that many slurs did not begin as slurs, but became so through racism, sexism, ableism, and more. We do this over and over again, turning descriptive words into insults, and slurs, because we don't bother to fix the basic problem.
+						This shows the circular nature of accessibility in web development: we added the alt attribute to fix images, then mucked that up and added the title attribute to fix it.
+						
+						we fight the same battles over and over, in minorly different ways. In the same way that many slurs did not begin as slurs, but became so through racism, sexism, ableism, and more. We do this over and over again, turning descriptive words into insults, and slurs, because we don't bother to fix the basic problem.
 
-						In the same way, we take technologies that have the potential to support universal access, but over and over we undermine them. We make alt text into tooltips, and then fix it by making titles into tooltips. I'm sure there was a way browsers could have chosen to present the title attribute other than a tooltip on hover, but they didn't.
+						In the same way, we take technologies that have the potential to support universal access, but over and over we undermine them. We make alt text into tooltips, and then fix it by making title attributes into tooltips. I'm sure there was a way browsers could have chosen to present the title attribute other than a tooltip on hover, but they didn't, and now we've lived with it for 27 years.
 
 						Next we fixed the title attribute with custom tooltips, and try to fix poor custom tooltip patterns with WCAG criteria that seem increasingly divorced from the realities of modern web development. There are other casualties along the way, caused by an entrenched ableism in every facet of our ecosystem: longdesc, the section element as a landmark, aria-controls, tables and the display property.
 
@@ -394,6 +443,7 @@
 				<!-- Conclusion -->
 				<section>
 					<h2>What now?</h2>
+					<aside class="notes">So after *all* of that, now that I've brought you along on my journey of tooltip hatred...</aside>
 				</section>
 				<section>
 					<p>We spend so long trying to make existing visual patterns accessible, when we should be trying to address the original need in a way that works for everyone.</p>
