@@ -1,0 +1,81 @@
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.left {
+	float: left;
+	width: 50%;
+	margin: 0;
+}
+
+.right {
+	float: right;
+	width: 50%;
+	margin: 0;
+}
+
+.text-emphasis {
+	font-size: 1.5em;
+	text-transform: uppercase;
+}
+
+.reveal .controls .navigate-right.highlight {
+	animation: none;
+}
+
+.reveal section img {
+	background: none;
+	box-shadow: none;
+	border: none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.reveal .attribution {
+	font-size: 0.5em;
+}
+
+.reveal h1 {
+	font-size: 3em;
+}
+
+.reveal a {
+	text-decoration: underline;
+}
+
+.reveal .global-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 0.6em;
+	color: grey;
+	z-index: 2;
+}
+
+.global-footer a {
+	color: grey;
+}
+
+/* custom text */
+.large {
+	font-size: 1.25em;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+blockquote {
+	text-align: left;
+}
