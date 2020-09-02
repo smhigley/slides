@@ -79,3 +79,71 @@
 blockquote {
 	text-align: left;
 }
+
+/* Some format helpers */
+.sequential-overlays {
+	list-style-type: none;
+	position: relative;
+}
+
+.sequential-overlays li {
+	display: block;
+	width: 100%;
+	background-color: #fff;
+}
+
+.sequential-overlays .step {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.sequential-overlays img {
+	width: 100%;
+}
+
+.reveal .inline-list {
+	list-style-type: none;
+	display: flex;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.inline-list li {
+	flex: 1 1 20%;
+	text-align: center;
+	padding: 0 0.5em;
+}
+
+.inline-list li.faded {
+	opacity: 0.1;
+}
+
+.inline-list img {
+	width: 100%;
+}
+
+/* Specific slide styles */
+
+.reveal .styled-nav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	border: 1px solid #646464;
+	background-color: #eee;
+}
+
+.styled-nav a {
+	display: block;
+	padding: 0.25em 0.5em;
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px solid #646464;
+}
+
+.styled-nav li:last-child a {
+	border-bottom: 0;
+}
