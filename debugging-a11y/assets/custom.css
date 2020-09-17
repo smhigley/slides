@@ -136,12 +136,17 @@ blockquote {
 	background-color: #eee;
 }
 
-.styled-nav a {
+.styled-nav a,
+.styled-nav a:hover {
 	display: block;
 	padding: 0.25em 0.5em;
 	color: #000;
 	text-decoration: none;
 	border-bottom: 1px solid #646464;
+}
+
+.styled-nav a:focus {
+	box-shadow: 0 0 3px 4px rgb(46, 46, 145);
 }
 
 .styled-nav li:last-child a {
