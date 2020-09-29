@@ -7,7 +7,7 @@
 		<title>Debugging Broken Accessibility -- Sarah Higley</title>
 
 		<link rel="stylesheet" href="../reveal/css/reveal.css">
-		<link rel="stylesheet" href="../reveal/css/theme/simple.css">
+		<link rel="stylesheet" href="../reveal/css/theme/sky.css">
 		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
 
 		<!-- Theme used for syntax highlighting of code -->
@@ -16,11 +16,11 @@
 
 		<!-- Printing and PDF exports -->
 		<script>
-			var link = document.createElement( 'link' );
+			var link = document.createElement('link');
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
+			link.href = window.location.search.match(/print-pdf/gi) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
 		</script>
 	</head>
 	<body>
@@ -34,32 +34,36 @@
 					</aside>
 				</section>
 				<section>
-					<h2>This talk is <strong>not</strong> about:</h2>
-					<ul>
-						<li class="fragment">how to test</li>
-						<li class="fragment">how to fix specific bugs</li>
-						<li class="fragment">tooltips</li>
-					</ul>
-					<aside class="notes">If I'm ever invited to an accessibility-themed halloween party, I'm going to dress up as a tooltip</aside>
+					<h2>Why debugging?</h2>
 				</section>
 				<section>
-					<h2>This talk <strong>is</strong> about:</h2>
-					<img src="./assets/rage-work.jpg" alt="aggretsuko, an aggrieved red panda, working furiously at her computer as papers go flying" style="width: 80%;">
-					<p class="fragment">frustration.</p>
-					<aside class="notes">
-						This talk is about that feeling when you've been working on one problem for far too long, and you still have no idea how to solve it.
-					</aside>
+					<h3>The accessibility process (imagination)</h3>
+					<div class="left">
+						<ol class="content-list">
+							<li>Tutorials: semantic HTML, tabbing, yay!</li>
+							<li>Do accessibility testing on product</li>
+							<li>Fix bugs</li>
+							<li>Include everyone!</li>
+						</ol>
+					</div>
+					<div class="right">
+						<img src="./assets/eager.jpg" alt="Retsuko is starry-eyed and eager, surrounded by bishie sparkles">
+					</div>
 				</section>
 				<section>
-					<h2>But why?</h2>
-					<p>A short diversion...</p>
-					<aside class="notes">
-						<p>This is a bit of personal story: the way I learned web dev, javascript, and accessibility was largely isolated, because:</p>
-						<ul>
-							<li>I was afraid to ask for help, yay imposter syndrome</li>
-							<li>Often companies only have one accessibility person, and even that is if you're lucky (I didn't always work at Microsoft).</li>
-						</ul>
-					</aside>
+					<h3>The accessibility process (reality)</h3>
+					<div class="left">
+						<ol class="content-list">
+							<li>Tutorials: semantic HTML, tabbing, yay!</li>
+							<li>Testing happens</li>
+							<li>...</li>
+							<li>...</li>
+							<li>... ... why is focus disappearing??!</li>
+						</ol>
+					</div>
+					<div class="right">
+						<img src="./assets/overworked.jpg" alt="Aggretsuko staggers under a huge pile of papers with deep shadows under her eyes, surrounded by little blue flames">
+					</div>
 				</section>
 				<section>
 					<h3>My learning process:</h3>
@@ -78,9 +82,31 @@
 						</li>
 					</ul>
 					<aside class="notes">
+						<p>This isn't made any easier by the way a lot of us approach learning (or maybe it's just me) I want to tell a personal story: the way I learned web dev, javascript, and accessibility was largely isolated, because:</p>
+						<ul>
+							<li>I was afraid to ask for help, yay imposter syndrome</li>
+							<li>Often companies only have one accessibility person, and even that is if you're lucky (I didn't always work at Microsoft).</li>
+						</ul>
 						<p>As a result, I ended up struggling through learning a lot of this on my own, which is a very lonely and stressful way to learn.</p>
 						<p>It also causes a lot of doubts: am I missing something really obvious? Am I looking at the right things? Do other people find this hard too? There must be a really obvious solution to this that I'm just not smart enough to see, etc.</p>
 						<p>I really don't recommend this way of learning.</p>
+					</aside>
+				</section>
+				<section>
+					<h2>This talk is <strong>not</strong> about:</h2>
+					<ul>
+						<li class="fragment">how to test</li>
+						<li class="fragment">how to fix specific bugs</li>
+						<li class="fragment">tooltips</li>
+					</ul>
+					<aside class="notes">To bring it back to the actual talk... (also there are a lot of resources already out there about these three things)</aside>
+				</section>
+				<section>
+					<h2>This talk <strong>is</strong> about:</h2>
+					<img src="./assets/rage-work.jpg" alt="aggretsuko, an aggrieved red panda, working furiously at her computer as papers go flying" style="width: 80%;">
+					<p class="fragment">frustration.</p>
+					<aside class="notes">
+						This talk is about that feeling when you've been working on one problem for far too long, and you still have no idea how to solve it.
 					</aside>
 				</section>
 				<section>
@@ -109,7 +135,6 @@
 					<!-- TODO: add a grpahic of a toolbox -->
 					<ul class="inline-list">
 						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
-						<li><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
 						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
 						<li><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
 						<li><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
@@ -132,7 +157,6 @@
 					<h3>Tools</h3>
 					<ul class="inline-list">
 						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
-						<li class="faded" aria-hidden="true"><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
 						<li><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
@@ -164,7 +188,56 @@
 				</section>
 
 				<section>
-					<h2>Bug 2: the screen reader should say...</h2>
+					<h2>Bug 2: the screen reader cursor is "lost"</h2>
+					<img src="./assets/actions-menu.png" alt="An open file actions dropdown menu with three actions: save, edit, and delete" style="width: 60%;">
+					<aside class="notes">This bug is logged on a dropdown menu (a programmatic menu, not a navigation menu), where after activating one of the items, the menu closes and the screen reader (JAWS on any browser or NVDA on Chrome) is jumped somewhere else (i.e. the top of the page). Tabbing still seems to work, though.</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>Virtual cursor bugs can be notoriously finicky across different screen readers and browsers, so AT can be useful to test. DevTools is going to be wayyy more helpful though</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Does it reproduce?</h3>
+					<figure>
+						<img src="./assets/focus-nav-start.png" alt="table of testing results for virtual cursor vs. tabbing when focus is lost. Full HTML version in linked article under results heading." style="width: 60%;">
+						<figcaption class="small">Full write-up at <a href="https://sarahmhigley.com/writing/focus-navigation-start-point/">sarahmhigley.com</a></figcaption>
+					</figure>
+					<aside class="notes">
+						<p>It *can* be useful to test if something that happens in one browser/SR pair also reproduces in other browser/SR pairs (doesn't need to be in this depth). In this case, I did tests and inexplicably it does not reproduce in NVDA/FF and macOS/VO. It does reproduce on iOS/VO, and all other Windows SR combos. This doesn't tell us much, but at least we now know that it's not a consistent thing. Still doesn't really tell us why, though. </p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Observing focus changes</h3>
+					<a href="examples/menu.html">Menu example page</a>
+					<pre><code data-trim data-noescape class="js">
+						document.activeElement
+					</code></pre>
+					<div class="center">or</div>
+					<pre><code data-trim data-noescape class="js">
+						document.addEventListener('focusin', () => {
+							console.log(document.activeElement);
+						});
+					</code></pre>
+					<aside class="notes">
+						<p>Deduction: when weird screen reader things happen at the same time as programmatic focus management, the first thing to suspect should be that something is going on with focus. Even though tabbing appears to work fine, it's a good idea to observe what *exactly* is going on with actual keybaord focus before moving on.</p>
+						<p>To do this, we can use the console rather than the elements pane or accessibility inspector. And document.activeElement is your friend :)</p>
+						<p>(also mention focusin vs. focus)</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 3: the screen reader should say...</h2>
 					<img src="./assets/links-ex2.png" alt="screenshot of a styled list of nav links: Home, About, and Contact" style="width: 70%;">
 					<p class="small">"NVDA isn't reading the index of the link when I tab"</p>
 					<aside class="notes">
@@ -176,7 +249,6 @@
 					<h3>Tools</h3>
 					<ul class="inline-list">
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
-						<li class="faded" aria-hidden="true"><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
 						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
@@ -189,9 +261,7 @@
 
 				<section>
 					<h4>Do NOT do this:</h4>
-					<pre class="html">
-						<code>&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code>
-					</pre>
+					<pre><code data-trim data-noescape class="html">&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code></pre>
 					<aside class="notes">
 						I agree this is a real problem, because if unchecked, it can result in bad code like this.
 						<p>However, rather than saying "never use screen readers"...</p>
@@ -228,70 +298,24 @@
 				</section>
 
 				<section>
+					<h3>Ask:</h3>
+					<ul>
+						<li>A coworker (in a relevant job)</li>
+						<li>A community (slack, twitter)</li>
+						<li>User studies</li>
+					</ul>
+					<aside class="notes">
+						Be respectful of peoples' time. Just as women and minorities shouldn't need to do "diversity" work on top of their actual job, disabled people shouldn't need to do free testing on top of their job.
+					</aside>
+				</section>
+
+				<section>
 					<h4>This applies to more than screen readers!</h4>
 					<p>Compare against plain HTML for keyboard, pointer, High Contrast Mode, voice control, etc.</p>
 					<aside class="notes">
 						Check your styled link-button hybrid in high contrast mode against a plain, unstyled HTML button in HCM. Different = real bug; same = no bug.
 						<p>This only works well for atomic patterns. Never assume you can evaluate page-level usability or navigation patterns with an AT you do not rely on.</p>
 						<p>Other things you can compare against: although it has flaws as pattern guidance, the APG examples give a good reference for composite widgets built according to spec. Sometimes I compare against desktop patterns as well.</p>
-					</aside>
-				</section>
-
-				<section>
-					<h2>Bug 3: live regions are dead</h2>
-					<img src="./assets/notification-ex4.png" alt="screenshot of a form with three fields, focus on the last field, and error messages on each of the first two" style="width: 60%;">
-					<aside class="notes">
-						<p>Live regions malfunctioning -- either by not reading at all, or by reading too many times -- is very common. Particularly because the support and behavior across different browsers, OS's, and screen readers is so varied and so poorly documented.</p>
-					</aside>
-				</section>
-
-				<section>
-					<h3>Tools</h3>
-					<ul class="inline-list">
-						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
-						<li><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
-						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
-						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
-						<li><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
-					</ul>
-					<aside class="notes">Time to break out the API debugging tools.</aside>
-				</section>
-
-				<section>
-					<h3>Debugging the browser itself:</h3>
-					<a href="./examples/notification.html" target="_blank">
-						<img src="./assets/notification-ex4-debug.png" alt="screenshot of accessibility insights for windows showing a log of live region events on a form with errors. Opens notification test page in new window.">
-					</a>
-					<a href="https://gist.github.com/smhigley/75fa44df8218d62714ea6df5bab353b5">Mutation Observer</a> &bull;
-					<a href="https://w3c.github.io/core-aam/#details-id-148" target="_blank">Core AAM spec</a>
-					<aside class="notes">
-						Steps:
-						<ul>
-							<li>Check the live region behavior with whatever screen reader the bug was raised in</li>
-							<li>Show that the ARIA spec does not say anything about when you can insert a live region vs. change in the DOM</li>
-							<li>Show how to listen to live region events with AI 4 Win. Must do this in Chrome (to show lack of live region event)</li>
-							<li>Compare against AAM specs. AAM = Accessibility API Mappings. Specify that AI4Win is looking at UIA</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
-					<p>Using Accessibility Insights for Windows</p>
-					<ul class="sequential-overlays">
-						<li><img src="./assets/ai4win1.png" alt="Select 'List to events' under the options menu for the document node"></li>
-						<li class="fragment step"><img src="./assets/ai4win2.png" style="width: 38%; height:80%;" alt="Check only the LiveRegionChanged event under the event configuration tab"></li>
-						<li class="fragment step"><img src="./assets/ai4win3.png" alt="Start recording events">
-						<li class="fragment step"><img src="./assets/notification-ex4-debug.png" alt="Finally, trigger live regions on the page and watch for API events"></li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>Find or log issues:</h3>
-					<a href="https://github.com/nvaccess/nvda/issues/7906" target="_blank">
-						<img src="./assets/notification-ex4-github.png" alt="github issue filed against NVDA about aria-live regions not being voiced when created. Originally opened in January 2018.">
-					</a>
-					<aside class="notes">
-						Debugging first at the Accessibility API level allows you to figure out whether a bug belongs on the browser or the screen reader or other AT.
 					</aside>
 				</section>
 
@@ -309,7 +333,6 @@
 					<h3>Tools</h3>
 					<ul class="inline-list">
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
-						<li class="faded" aria-hidden="true"><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
 						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
@@ -394,9 +417,7 @@
 
 				<section>
 					<h3>Bad Assistive Tech assumptions</h3>
-					<pre class="html">
-						<code>&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code>
-					</pre>
+					<pre><code data-trim data-noescape class="html">&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code></pre>
 					<p class="small">remember this?</p>
 				</section>
 
@@ -452,6 +473,24 @@
 				</section>
 
 				<section>
+					<h4>With some help:</h4>
+					<div class="steps2">
+						<div class="fragment fade-out step2">
+							<img src="./assets/gh-stats-search.png" alt="A screenshot of a form field collecting github repository URL information for ant-design, under the heading 'Find accessibility stats by github repository'.">
+						</div>
+						<div class="fragment fade-in-then-out step2">
+							<img src="./assets/gh-stats-labels.png" alt="A screenshot of a github label with the name 'accessibility' and a keyboard emoji under the heading 'Issue labels'." style="width: 60%;">
+						</div>
+						<div class="fragment fade-in step2">
+							<img src="./assets/gh-stats-results.png" alt="A heading saying 'Issue statistics' followed by a table that has shows issues tagged with accessibility on average get 6 comments, take 114 days to close, 7 days to comment, and are resolved 18% of the time compared to all issues, which average 2 comments, 13 hours to close, 8 hours to comment, and are resolved 5% of the time." style="width: 85%;">
+						</div>
+					</div>
+					<aside class="notes">
+						<p>I chose ant design because it came up first when I googled "most popular UI library of 2020." Those stats are actually on the good side of the UI libraries I checked. This is super rough and experimental, so take it with a lot of salt and critical thinking. I'd love feedback on it.</p>
+					</aside>
+				</section>
+
+				<section>
 					<h3>This sounds hopeful, but...</h3>
 					<img src="./assets/github-nope.png" alt="screenshot of multiple github labels and responses on accessibility issues, including a bot auto-closing an issue as stale; issues labeled won't fix, enhancement, and low priority; and a contributor commenting that it's something they would like, but not on the roadmap.">
 					<aside class="notes">
@@ -472,10 +511,21 @@
 				</section>
 
 				<section>
+					<img src="./assets/fire.jpg" alt="Aggretsuko, still in office mode with an obviously fake smile, holds her coffee cup while entirely surrounded by background flames. It really seems like her eye must be twitching.">
+					<p>...lots of frustration.</p>
+					<aside class="notes">
+						<p>And the thing is, that feeling of frustration is never going to fully go away, no matter how much we learn. Because there will always be a deeper problem to find. And the more you learn and the more time we spend in this field, the deeper the roots you find go, and the deeper the frustration starts to run.</p>
+						<p>it's also not just a11y, </p>
+						<p>Without any checks, that sort of frustration can easily lead to defeatism and burnout.</p>
+					</aside>
+				</section>
+
+				<section>
 					<p>...but it's better with friends.</p>
 					<img src="./assets/better-with-friends.png" alt="aggretsuko screams into a karaoke mic while sharing wine with two of her friends">
 					<aside class="notes">
 						<p>I still don't know how to solve this, and I'm not sure anyone does. But it doesn't do any good to try to figure it out alone.</p>
+						<p>The ultimate tool to debugging accessibility is sometimes just to be kind to yourself, and find people who you can share, rant, cry, and figure it out with.</p>
 					</aside>
 				</section>
 
@@ -491,7 +541,7 @@
 				</section>
 			</div>
 			<footer class="global-footer">
-				<a href="https://twitter.com/codingchaos">@codingchaos</a> &bull; <a href="https://twitter.com/hashtag/id24">#id24</a>
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
 			</footer>
 		</div>
 

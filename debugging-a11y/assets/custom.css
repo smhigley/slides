@@ -10,6 +10,10 @@
 	white-space: nowrap;
 }
 
+.content-list li {
+	margin-bottom: 0.5em;
+}
+
 .left {
 	float: left;
 	width: 50%;
@@ -97,6 +101,17 @@ blockquote {
 	top: 0;
 	bottom: 0;
 	left: 0;
+}
+
+.steps2 {
+	position: relative;
+}
+
+.steps2 .step2:not(:first-child) {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
 }
 
 .sequential-overlays img {
