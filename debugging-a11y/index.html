@@ -34,14 +34,26 @@
 					</aside>
 				</section>
 				<section>
+					<h2>This talk is <strong>not</strong> about:</h2>
+					<ul>
+						<li class="fragment">how to test</li>
+						<li class="fragment">how to fix specific bugs</li>
+						<li class="fragment">tooltips</li>
+					</ul>
+					<aside class="notes">To start off, I want to set expectations...</aside>
+				</section>
+				<section>
 					<h2>Why debugging?</h2>
+					<aside class="notes">
+						So why debugging specifically? It's because for me, that's usually the part of the learning process where I feel most lost (even outside of a11y)
+					</aside>
 				</section>
 				<section>
 					<h3>The accessibility process (imagination)</h3>
 					<div class="left">
 						<ol class="content-list">
-							<li>Tutorials: semantic HTML, tabbing, yay!</li>
-							<li>Do accessibility testing on product</li>
+							<li>Learn: semantic HTML, tabbing, yay!</li>
+							<li>Test</li>
 							<li>Fix bugs</li>
 							<li>Include everyone!</li>
 						</ol>
@@ -49,21 +61,30 @@
 					<div class="right">
 						<img src="./assets/eager.jpg" alt="Retsuko is starry-eyed and eager, surrounded by bishie sparkles">
 					</div>
+					<aside class="notes">
+						So tell me if this story sounds familiar: you're working on learning a skill, or getting your footing in a field. You soak up tutorials, articles, and talks. Then whenever you strike out on your own, you rapidly get mired in some unforseen problem and get stuck without a roadmap.
+						<p>Like when I bought my first car, which was a ~15 year old new england rust bucket, and when trying to fix it up...</p>
+					</aside>
 				</section>
 				<section>
 					<h3>The accessibility process (reality)</h3>
 					<div class="left">
 						<ol class="content-list">
-							<li>Tutorials: semantic HTML, tabbing, yay!</li>
+							<li>Learn: semantic HTML, tabbing, yay!</li>
 							<li>Testing happens</li>
 							<li>...</li>
 							<li>...</li>
-							<li>... ... why is focus disappearing??!</li>
+							<li>... ... what is aria-required-children??!</li>
 						</ol>
 					</div>
 					<div class="right">
 						<img src="./assets/overworked.jpg" alt="Aggretsuko staggers under a huge pile of papers with deep shadows under her eyes, surrounded by little blue flames">
 					</div>
+					<aside class="notes">
+						<p>... I rapidly proceeded to sheer the head off a bolt, and was then just ... stuck.</p>
+						<p>And everything I knew up until that point had not told me what to do when something went wrong and I went off the rails.</p>
+						<p>Maybe this is just my perception, but I've found a lot of resources out there both about how to test (and great testing tools like aXe, accessibility insights, and others), and also on how to build or make specific patterns, like dialogs or SPA navigation. But not a lot on how to actually troubleshoot or move forward when stuck (which is one of the places I struggle most when learning a new skill)</p>
+					</aside>
 				</section>
 				<section>
 					<h3>My learning process:</h3>
@@ -82,7 +103,7 @@
 						</li>
 					</ul>
 					<aside class="notes">
-						<p>This isn't made any easier by the way a lot of us approach learning (or maybe it's just me) I want to tell a personal story: the way I learned web dev, javascript, and accessibility was largely isolated, because:</p>
+						<p>This isn't made any easier by the way a lot of us approach learning (or maybe it's just me): the way I learned web dev, javascript, and accessibility was largely isolated, because:</p>
 						<ul>
 							<li>I was afraid to ask for help, yay imposter syndrome</li>
 							<li>Often companies only have one accessibility person, and even that is if you're lucky (I didn't always work at Microsoft).</li>
@@ -91,15 +112,6 @@
 						<p>It also causes a lot of doubts: am I missing something really obvious? Am I looking at the right things? Do other people find this hard too? There must be a really obvious solution to this that I'm just not smart enough to see, etc.</p>
 						<p>I really don't recommend this way of learning.</p>
 					</aside>
-				</section>
-				<section>
-					<h2>This talk is <strong>not</strong> about:</h2>
-					<ul>
-						<li class="fragment">how to test</li>
-						<li class="fragment">how to fix specific bugs</li>
-						<li class="fragment">tooltips</li>
-					</ul>
-					<aside class="notes">To bring it back to the actual talk... (also there are a lot of resources already out there about these three things)</aside>
 				</section>
 				<section>
 					<h2>This talk <strong>is</strong> about:</h2>
@@ -113,6 +125,7 @@
 					<h3>A better option:</h3>
 					<img src="./assets/pairing.jpg" alt="Retsuko looking at her computer while Haida watches over her shoulder, both looking nonplussed.">
 					<aside class="notes">
+						<p>And it's also about finding or making a better option:</p>
 						<p>Good communication with coworkers who have domain expertise in the thing you want to learn is a good way to mitigate this. Pair programming (or just pairing) is a great method to get direct insight into how other people do things</p>
 						<p>But as mentioned, a11y folks can be a bit isolated work-wise, and sometimes there aren't a lot of opportunities to pair specifically on accessibility.</p>
 					</aside>
@@ -141,6 +154,19 @@
 					</ul>
 					<aside class="notes">
 						<p>Disclaimer: as mentioned, this is a talk on debugging, not on testing. There are a lot of other tools out there for testing that I won't be talking about. There are also a lot of other debugging tools out there, especially on other platforms. I'm going to focus on the ones I use every day, though.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>The bugs:</h2>
+					<ol>
+						<li>Semantics</li>
+						<li>Focus</li>
+						<li>Oops</li>
+						<li>Nope</li>
+					</ol>
+					<aside class="notes">
+						You'll see what I mean about those last two when we get to them
 					</aside>
 				</section>
 
@@ -190,7 +216,7 @@
 				<section>
 					<h2>Bug 2: the screen reader cursor is "lost"</h2>
 					<img src="./assets/actions-menu.png" alt="An open file actions dropdown menu with three actions: save, edit, and delete" style="width: 60%;">
-					<aside class="notes">This bug is logged on a dropdown menu (a programmatic menu, not a navigation menu), where after activating one of the items, the menu closes and the screen reader (JAWS on any browser or NVDA on Chrome) is jumped somewhere else (i.e. the top of the page). Tabbing still seems to work, though.</aside>
+					<aside class="notes">This bug is logged on a dropdown menu (a programmatic menu, not a navigation menu), where after activating one of the items, the menu closes and the screen reader (JAWS) is jumped somewhere else (i.e. the top of the page). Tabbing still seems to work, though.</aside>
 				</section>
 
 				<section>
@@ -238,10 +264,10 @@
 
 				<section>
 					<h2>Bug 3: the screen reader should say...</h2>
-					<img src="./assets/links-ex2.png" alt="screenshot of a styled list of nav links: Home, About, and Contact" style="width: 70%;">
-					<p class="small">"NVDA isn't reading the index of the link when I tab"</p>
+					<img src="./assets/actions-menu.png" alt="The same open file actions dropdown menu with three actions: save, edit, and delete" style="width: 50%;">
+					<p class="small">"VoiceOver isn't reading the index of the menu items"</p>
 					<aside class="notes">
-						This is a series of links within list items, and someone has reported that a screen reader is not reading the index of a link within the list when tabbing.
+						Someone, perhaps the same person as logged the previous bug, tested the same menu with VO on iOS and found that VO does not read the index of actions in a menu.
 					</aside>
 				</section>
 
@@ -261,7 +287,7 @@
 
 				<section>
 					<h4>Do NOT do this:</h4>
-					<pre><code data-trim data-noescape class="html">&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code></pre>
+					<pre><code data-trim data-noescape class="html">&lt;button role="menuitem" aria-label="Save, 1 of 3"&gt;Save&lt;/li&gt;</code></pre>
 					<aside class="notes">
 						I agree this is a real problem, because if unchecked, it can result in bad code like this.
 						<p>However, rather than saying "never use screen readers"...</p>
@@ -271,19 +297,11 @@
 				<section>
 					<h3>Compare:</h3>
 					<div class="left" role="nav" aria-label="example styled list of links">
-						<ul class="styled-nav">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
+						<img src="./assets/actions-menu.png" alt="Our custom, styled file actions menu" style="width: 90%;">
 					</div>
 
 					<div class="right" role="nav" aria-label="example plain HTML list of links">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
+						<a href="https://w3c.github.io/aria-practices/examples/menu-button/menu-button-actions.html"><img src="./assets/apg-menu.png" alt="The menu button example from the ARIA Authoring Practices" style="width: 40%;"></a>
 					</div>
 
 					<aside class="notes">
@@ -387,8 +405,12 @@
 				</section>
 
 				<section>
-					<h3>Table structure, HTML, and the value of front-end knowledge</h3>
-					<img src="./assets/table-ex1-debug.png" alt="screenshot of Firefox dev tools showing the incorrect table accessibility tree from bug 1">
+					<h3>The value of front-end knowledge</h3>
+					<div class="collage">
+						<img src="./assets/table-ex1-debug.png" alt="screenshot of Firefox dev tools showing the incorrect table accessibility tree from bug 1" style="transform: translateX(-15%);">
+						<img src="./assets/actions-menu.png" alt="The file menu from bug 2" style="width: 40%;top: -5%;right: -5%;">
+						<pre style="bottom: 10%;right: -10%;width: 50%;"><code data-trim data-noescape class="js">document.activeElement</code></pre>
+					</div>
 					<aside class="notes">
 						Going back to the semantic structure of that table from Bug 1
 					</aside>
@@ -398,7 +420,7 @@
 					<p>Accessibility practitioner yells at cloud</p>
 					<img src="./assets/yell-at-cloud.png" alt="meme of Abe Simpson shaking his fist with the headline Old Man Yells At Cloud.">
 					<aside class="notes">
-						<p>The problem with "developers these days" not knowing semantic HTML has been beaten to death by others, and doesn't really need input from me. So I'll be quick.</p>
+						<p>The problem with "developers these days" not knowing semantic HTML, or focus management has been beaten to death by others, and doesn't really need input from me. So I'll be quick.</p>
 					</aside>
 				</section>
 				
@@ -417,15 +439,16 @@
 
 				<section>
 					<h3>Bad Assistive Tech assumptions</h3>
-					<pre><code data-trim data-noescape class="html">&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code></pre>
+					<pre><code data-trim data-noescape class="html">&lt;button role="menuitem" aria-label="Save, 1 of 3"&gt;Save&lt;/li&gt;</code></pre>
 					<p class="small">remember this?</p>
 				</section>
 
 				<section>
-					<h4>Who is doing the testing?</h4>
+					<h4>Who is doing the testing, and who decides what the experience should be?</h4>
 					<ul>
-						<li>Are disabled people hired, and do they stay?</li>
-						<li>Are your devs and testers only familiar with VoiceOver?</li>
+						<li>Are disabled people hired?</li>
+						<li>Do they stay?</li>
+						<li>Are they listened to?</li>
 					</ul>
 					<aside class="notes">
 						Hiring isn't enough if accommodations aren't provided as well.
@@ -475,15 +498,15 @@
 				<section>
 					<h4>With some help:</h4>
 					<div class="steps2">
-						<div class="fragment fade-out step2">
+						<div class=" step2">
 							<img src="./assets/gh-stats-search.png" alt="A screenshot of a form field collecting github repository URL information for ant-design, under the heading 'Find accessibility stats by github repository'.">
 						</div>
-						<div class="fragment fade-in-then-out step2">
+						<!--<div class="fragment fade-in-then-out step2">
 							<img src="./assets/gh-stats-labels.png" alt="A screenshot of a github label with the name 'accessibility' and a keyboard emoji under the heading 'Issue labels'." style="width: 60%;">
 						</div>
 						<div class="fragment fade-in step2">
 							<img src="./assets/gh-stats-results.png" alt="A heading saying 'Issue statistics' followed by a table that has shows issues tagged with accessibility on average get 6 comments, take 114 days to close, 7 days to comment, and are resolved 18% of the time compared to all issues, which average 2 comments, 13 hours to close, 8 hours to comment, and are resolved 5% of the time." style="width: 85%;">
-						</div>
+						</div>-->
 					</div>
 					<aside class="notes">
 						<p>I chose ant design because it came up first when I googled "most popular UI library of 2020." Those stats are actually on the good side of the UI libraries I checked. This is super rough and experimental, so take it with a lot of salt and critical thinking. I'd love feedback on it.</p>
@@ -524,8 +547,9 @@
 					<p>...but it's better with friends.</p>
 					<img src="./assets/better-with-friends.png" alt="aggretsuko screams into a karaoke mic while sharing wine with two of her friends">
 					<aside class="notes">
-						<p>I still don't know how to solve this, and I'm not sure anyone does. But it doesn't do any good to try to figure it out alone.</p>
-						<p>The ultimate tool to debugging accessibility is sometimes just to be kind to yourself, and find people who you can share, rant, cry, and figure it out with.</p>
+						<p>But this talk is also about the better option:</p>
+						<p>Sometimes the best way to make progress on a seemingly impossible task is to find other people and other perspectives.</p>
+						<p>The ultimate tool to debugging accessibility is sometimes just to be kind to yourself, and find people who you can share, rant, cry, or maybe just sing death metal in a karaoke bar with plenty of wine.</p>
 					</aside>
 				</section>
 
@@ -536,7 +560,7 @@
 					<h2>contact:</h2>
 					<a href="https://twitter.com/codingchaos">@codingchaos</a>
 					<aside class="notes">
-						If you have any questions about the talk, or want to rant about tooltips, I'm on twitter @codingchaos.
+						If you have any questions about the talk, or want to rant, I'm on twitter @codingchaos.
 					</aside>
 				</section>
 			</div>

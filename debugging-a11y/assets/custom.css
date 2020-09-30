@@ -10,6 +10,11 @@
 	white-space: nowrap;
 }
 
+.reveal h4 {
+	font-weight: bold;
+	text-transform: none;
+}
+
 .content-list li {
 	margin-bottom: 0.5em;
 }
@@ -138,6 +143,15 @@ blockquote {
 
 .inline-list img {
 	width: 100%;
+}
+
+.collage {
+	position: relative;
+	width: 100%;
+}
+
+.collage > *:not(:first-child) {
+	position: absolute;
 }
 
 /* Specific slide styles */
