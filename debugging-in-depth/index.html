@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Debugging Broken Accessibility -- Sarah Higley</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/sky.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="./assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Intro -->
+				<section>
+					<h1>Debugging Broken Accessibility</h1>
+					<aside class="notes">
+						My name is sarah higley, I work on accessibility at Fluent UI, and on a11y standards on the ARIA working group, my twitter handle is codingchaos, and I often use it to rant about tooltips 
+					</aside>
+				</section>
+				<section>
+					<h2>This talk is <strong>not</strong> about:</h2>
+					<ul>
+						<li class="fragment">how to test</li>
+						<li class="fragment">how to fix specific bugs</li>
+						<li class="fragment">tooltips</li>
+					</ul>
+					<aside class="notes">There are quite a lot of resources both within Microsoft and generally online on how to test, and how to fix specific things. The hardest part (IMO) is figuring out what exactly it is you need to fix.</aside>
+				</section>
+				<section>
+					<h2>Why debugging?</h2>
+					<aside class="notes">
+						If you'll indulge me for a bit, we'll take a look at some real-world fairly representative issues
+					</aside>
+				</section>
+				<section>
+					<h3>We have an ARIA problem</h3>
+					<ul class="sequential-overlays">
+						<li>
+							<img src="assets/microsoft-banner.png" alt="screenshot of a carousel with an ad for the Surface Go, a shop now button, a book an appointment button, a play button and two carousel dots.">
+						</li>
+						<li class="fragment step">
+							<img src="assets/microsoft-banner-2.png" alt="The same screenshot, but it shows the book an appointment button has an aria-label of book a free appointment.">
+						</li>
+						<li class="fragment step">
+							<img src="assets/microsoft-banner-3.png" alt="The same screenshot, but now with a meme of Jackie Chan making a WTF face surrounded by so many question marks.">
+						</li>
+					</ul>
+					<aside class="notes">
+						<p>ARIA: define + it's for building complex semantics & functionality that doesn't exist in HTML</p>
+						<p>This slide: screenshot of MS home page</p>
+						I can think of no reason for this. Also: localization, anyone? Brittle/prone to future errors
+					</aside>
+				</section>
+				<section>
+					<p>It doesn't stop there...</p>
+					<img src="assets/carousel-controls.png" alt="zoomed in screenshot of the play button and two dots from the earlier carousel." width="300">
+					<pre><code data-trim data-noescape class="html">
+&lt;div role="tablist" aria-hidden="false"&gt;
+  &lt;button role="tab"
+          aria-selected="true"
+          aria-label="View slide 1-Save $150 on Surface Laptop Go"
+          title="Slide 1"
+          aria-setsize="2"
+          aria-posinset="1"
+          tabindex="0"&gt;&lt;/button&gt;
+  &lt;button role="tab" aria-label="View slide 2-Save big on select Xbox and PC games" title="Slide 2" aria-setsize="2" aria-posinset="2" aria-selected="false" tabindex="-1"&gt;&lt;/button&gt;
+&lt;/div&gt;
+					</code></pre>
+					<aside class="notes">
+						OK, so a lot going on here:
+						<ul>
+							<li>start with setsize and posinset: all they add is fragility and tech debt. Literally no reason to have them here.</li>
+							<li>The over-verbose aria-labels</li>
+							<li>aria-hidden="false" on the tablist, and the issue with aria-hidden containers</li>
+						</ul>
+						<p>What I really want to hammer in is that all this ARIA is only making the experience worse, and drastically increasing the chance something will fail somehow for disabled users. Also, tech debt. So much tech debt.</p>
+					</aside>
+				</section>
+				<section>
+					<p>So why did this happen?</p>
+					<img src="assets/position-bug-report.png" alt="Screenshot of a bug report saying TalkBack is not announcing the position of tab items, saying the expected result is TalkBack will announce 1 of 3 after the tab name." width="880">
+					<aside class="notes">
+						<p>So I just told you a bunch of issues with the end result, but this is a talk on debugging and not on overuse of ARIA</p>
+						<p>I get this specific bug saying screen readers "should" say e.g. "1 of 3" *constantly*. I literally closed one yesterday.</p>
+						<p>Talk a bit about other bugs that ask for extra, unneeded verbosity, and the patronizing assumption that blind people need more explaining than sighted people.</p>
+						<p>The long and short of it is: our testers are not a11y experts. It's not great, but here we are.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>Second case study:</h3>
+					<a href="https://dev.azure.com/microsoftdesign/fluent-ui/_workitems/edit/12602"><img src="assets/automated-bug-report.png" alt="Screenshot of another bug report saying to ensure all Area attributes have valid values on the PeoplePicker control.">
+					<aside class="notes"></a>
+						Talk about why the filed bug is BS, but there's a real usability improvement that can be made.
+						<p>link: <a href="https://dev.azure.com/microsoftdesign/fluent-ui/_workitems/edit/12602">12602</a></p>
+					</aside>
+				</section>
+				<section>
+					<img src="assets/triage-meme.png" alt="the small-medium-galaxy brain meme with the text 'fix bugs by adding ARIA until it seems like it works' for the small brain, 'close bad bugs without adding ARIA' for the medium brain, and 'fix the bug that should have been filed' for the galaxy brain.">
+					<aside class="notes">
+						(transition): this is why it's so important to have good debugging skills: you can quickly close issues that aren't valid, and get to the root cause of others so you can spend your time fixing them instead of repeatedly adding random ARIA and trying again.
+						<p>To get there, let's look at some of the tools we have to debug.</p>
+					</aside>
+				</section>
+
+				<!-- Part 1: toolbox -->
+				<section>
+					<h2>Our Toolbox:</h2>
+					<!-- TODO: add a grpahic of a toolbox -->
+					<ul class="inline-list">
+						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
+						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>Disclaimer: as mentioned, this is a talk on debugging, not on testing. There are a lot of other tools out there for testing that I won't be talking about. There are also a lot of other debugging tools out there, especially on other platforms. I'm going to focus on the ones I use every day, though.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 1: the dreaded &lt;table&gt;</h2>
+					<img src="./assets/table-ex1.png" alt="screenshot of a simple-looking table with information about books">
+					<p class="small">"NVDA's table commands aren't working properly..."</p>
+					<aside class="notes">
+						<p>We're going to jump right in the deep end with a bug logged on a table. This specific hypothetical bug is that when navigating a table, a screen reader (specifically NVDA in this case) is not moving between cells as expected when using ctrl + alt + arrow keys.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li class="faded"><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>When I get a bug like this about a screen reader not properly parsing a component or web page, I actually rarely jump directly to screen reader testing. Instead, I look directly at the accessibility information on the page itself.</p>
+						<p>Even though this particular bug mentions NVDA, parsing issues like this are likely to reproduce across different screen readers.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Inspect the browser's a11y tree:</h3>
+					<a href="./examples/table.html" target="_blank">
+						<img src="./assets/table-ex1-debug.png" alt="screenshot of the table being inspected in Firefox, with the table node highlighted, and one of the cells highlighted as a div with a class of row-header. Opens working example in a new window.">
+					</a>
+					<aside class="notes">
+						Remember to open link on actual slide.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Compare in the spec:</h3>
+					<a href="https://w3c.github.io/aria/#table" target="_blank">
+						<img src="./assets/table-ex1-spec.png" alt="screenshot of the ARIA spec for the table role, highlighting the required owned elements section with row and rowgroup. Opens ARIA spec in a new window.">
+					</a>
+					<aside class="notes">
+						Explain how to look up hierarchies of roles in the ARIA spec.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 2: the screen reader cursor is "lost"</h2>
+					<img src="./assets/actions-menu.png" alt="An open file actions dropdown menu with three actions: save, edit, and delete" style="width: 60%;">
+					<aside class="notes">This bug is logged on a dropdown menu (a programmatic menu, not a navigation menu), where after activating one of the items, the menu closes and the screen reader (JAWS on any browser or NVDA on Chrome) is jumped somewhere else (i.e. the top of the page). Tabbing still seems to work, though.</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li class="faded"><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
+						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>Virtual cursor bugs can be notoriously finicky across different screen readers and browsers, so AT can be useful to test. DevTools is going to be wayyy more helpful though</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>There are three main causes of screen reader cursor issues</p>
+					<ul>
+						<li>DOM order not matching visual order</li>
+						<li>A modal doesn't hide the background page</li>
+						<li>Focus changes</li>
+					</ul>
+					<p><a href="examples/menu.html">Menu example page</a></p>
+					<aside class="notes">
+						<p>Show debugging both on the actual page </p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Observing focus changes</h3>
+					<pre><code data-trim data-noescape class="js">
+						document.activeElement
+					</code></pre>
+					<div class="center">or</div>
+					<pre><code data-trim data-noescape class="js">
+						document.addEventListener('focusin', () => {
+							console.log(document.activeElement);
+						});
+					</code></pre>
+					<aside class="notes">
+						<p>Deduction: when weird screen reader things happen at the same time as programmatic focus management, the first thing to suspect should be that something is going on with focus. Even though tabbing appears to work fine, it's a good idea to observe what *exactly* is going on with actual keybaord focus before moving on.</p>
+						<p>To do this, we can use the console rather than the elements pane or accessibility inspector. And document.activeElement is your friend :)</p>
+						<p>(also mention focusin vs. focus)</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 3: the screen reader should say...</h2>
+					<img src="./assets/links-ex2.png" alt="screenshot of a styled list of nav links: Home, About, and Contact" style="width: 70%;">
+					<p class="small">"NVDA isn't reading the index of the link when I tab"</p>
+					<aside class="notes">
+						This is a series of links within list items, and someone has reported that a screen reader is not reading the index of a link within the list when tabbing.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
+						<li><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>SO this time I'm actually going to use a screen reader to debug, and not just to test.</p>
+						There are drawbacks to using a screen reader directly to test. Some people think anyone who does not personally rely on assistive tech should not test with it, because they will not know how to interpret the results. I have personally found this to often be this case.
+						<p>After all, that's how we got this bug in the first place</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Do NOT do this:</h4>
+					<pre><code data-trim data-noescape class="html">&lt;li aria-label="Home, 1 of 3"&gt;Home&lt;/li&gt;</code></pre>
+					<aside class="notes">
+						<p>Never, never, never stuff programmatic info in the accessible name. Generally just don't override the visible text being the accname (if there is some). If you find yourself doing this, debug further or consult an SME first.</p>
+						I agree this is a real problem, because if unchecked, it can result in bad code like this.
+						<p>However, rather than saying "never use screen readers"...</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Compare:</h3>
+					<div class="left" role="nav" aria-label="example styled list of links">
+						<ul class="styled-nav">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="right" role="nav" aria-label="example plain HTML list of links">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Reminder: this is not about how to test with a screen reader, but how to debug.</li>
+							<li>COMPARE. Compare to something you *know* is correct for the same platform and assistive tech. Make a plain example with semantic HTML. Use MDN or ARIA Practices (sometimes).</li>
+							<li>Bug Steps: Are the semantics correct? Can I reproduce on a vanilla list of links with the same browser/SR?</li>
+							<li>Don't rely on your own "intuition" about how a screen reader "should" work if you don't use one every day</li>
+							<li>SR experimentation doesn't cross platforms well: if you're primarily familiar with VoiceOver, you won't know Windows SRs, same with mobile/swiping interactions</li>
+						</ul>
+						<p>bonus: check the API with AI4Win to see if the info actually exists</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>Bonus:</p>
+					<img src="assets/ai4win-list.png" alt="screenshot of accessibility insights for windows inspecting the list on the slide, showing the API properties for PositionInSet and SizeOfSet.">
+				</section>
+
+				<section>
+					<h3>Ask:</h3>
+					<ul>
+						<li>An accessibility SME</li>
+						<li>A community (Teams, slack, twitter)</li>
+						<li>User studies</li>
+					</ul>
+					<aside class="notes">
+						<p>User studies only if no one is really sure what the interaction should be (not in this case)</p>
+						Be respectful of peoples' time. Just as women and minorities shouldn't need to do "diversity" work on top of their actual job, disabled people shouldn't need to do free testing on top of their job.
+					</aside>
+				</section>
+
+				<section>
+					<h4>This applies to more than screen readers!</h4>
+					<p>Compare against plain HTML for keyboard, pointer, High Contrast Mode, voice control, etc.</p>
+					<aside class="notes">
+						Check your styled link-button hybrid in high contrast mode against a plain, unstyled HTML button in HCM. Different = real bug; same = no bug.
+						<p>This only works well for atomic patterns. Never assume you can evaluate page-level usability or navigation patterns with an AT you do not rely on.</p>
+						<p>Other things you can compare against: although it has flaws as pattern guidance, the APG examples give a good reference for composite widgets built according to spec. Sometimes I compare against desktop patterns as well.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 4: live regions</h2>
+					<img src="./assets/notification-ex4.png" alt="screenshot of a form with three fields, focus on the last field, and error messages on each of the first two" style="width: 60%;">
+					<aside class="notes">
+						<p>Live regions malfunctioning -- either by not reading at all, or by reading too many times -- is very common. Particularly because the support and behavior across different browsers, OS's, and screen readers is so varied and so poorly documented.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li><img src="./assets/tools-insights.svg" alt="Accessibility Insights"> AI4Win</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">Time to break out the API debugging tools.</aside>
+				</section>
+
+				<section>
+					<h3>Debugging the browser itself:</h3>
+					<a href="./examples/notification.html" target="_blank">
+						<img src="./assets/notification-ex4-debug.png" alt="screenshot of accessibility insights for windows showing a log of live region events on a form with errors. Opens notification test page in new window.">
+					</a>
+					<a href="https://gist.github.com/smhigley/75fa44df8218d62714ea6df5bab353b5">Mutation Observer</a> &bull;
+					<a href="https://w3c.github.io/core-aam/#mapping_events_visibility" target="_blank">Core AAM spec</a>
+					&bull;
+					<a href="examples/notification.html">Example</a>
+					<aside class="notes">
+						Steps:
+						<ul>
+							<li>Check the live region behavior with whatever screen reader the bug was raised in</li>
+							<li>Show that the ARIA spec does not say anything about when you can insert a live region vs. change in the DOM</li>
+							<li>Show how to listen to live region events with AI 4 Win. Must do this in Chrome (to show lack of live region event)</li>
+							<li>Compare against AAM specs. AAM = Accessibility API Mappings. Specify that AI4Win is looking at UIA</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>Using Accessibility Insights for Windows</p>
+					<ul class="sequential-overlays">
+						<li><img src="./assets/ai4win1.png" alt="Select 'List to events' under the options menu for the document node"></li>
+						<li class="fragment step"><img src="./assets/ai4win2.png" style="width: 38%; height:80%;" alt="Check only the LiveRegionChanged event under the event configuration tab"></li>
+						<li class="fragment step"><img src="./assets/ai4win3.png" alt="Start recording events">
+						<li class="fragment step"><img src="./assets/notification-ex4-debug.png" alt="Finally, trigger live regions on the page and watch for API events"></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Find or log issues:</h3>
+					<a href="https://github.com/nvaccess/nvda/issues/7906" target="_blank">
+						<img src="./assets/notification-ex4-github.png" alt="github issue filed against NVDA about aria-live regions not being voiced when created. Originally opened in January 2018.">
+					</a>
+					<aside class="notes">
+						Debugging first at the Accessibility API level allows you to figure out whether a bug belongs on the browser or the screen reader or other AT.
+					</aside>
+				</section>
+
+				<section>
+					<p class="large">PSA: <br> <em>always ask an SME before you add a live region</em></p>
+					<aside class="notes">
+						Live regions are another category of things I see wayyyyy overused at Microsoft. We also get a lot of bugs that either directly or indirectly ask for one to be added, when it really shouldn't be.
+						<p>I just showed how to debug why an existing live region might not be working, but often the first thing to do is ask whether or not there should be one at all.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Bug 5: Return of the &lt;table&gt;</h2>
+					<img src="./assets/tooltip-ex5.png" alt="Screenshot of same table from example 1, showing truncated cell text with a tooltip containing the full text">
+					<p class="small">"The truncated text is not accessible via keyboard"</p>
+					<aside class="notes">
+						<p>OK, so I lied a little when I said this talk wasn't about tooltips.</p>
+						<p>This hypothetical bug is that the tooltip is not keyboard accessible</p>
+						<p>Remember back when I said the galaxy brain approach to debugging is to fix the bug that should have been filed? We're going to do that now.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Tools</h3>
+					<ul class="inline-list">
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-inspect.png" alt="Browser inspection tools"> Inspect</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-sr.jpg" alt="A screen reader logo (specifically the JAWS shark)"> Assistive Tech</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-w3c.png" alt="the W3C logo"> Specs</li>
+						<li class="faded" aria-hidden="true"><img src="./assets/tools-github.png" alt="The github logo"> Github issues</li>
+					</ul>
+					<aside class="notes">
+						<p>This isn't something to debug technically.</p>
+						<p>If you do want to reproduce: AT isn't just screen readers: you can try to understand the problem by using tooltips while you have your browser zoomed in + ZoomText. Or try it out with the keyboard.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Is this a good design?</h3>
+					<img src="./assets/tooltip-ex5.png" alt="same tooltip on a truncated cell within a table.">
+					<p class="fragment">Don't let designs get away with begging the question.</p>
+					<aside class="notes">
+						<h3>"Begging the question"</h3>
+					<blockquote>
+						<p>"To ignore a question under the assumption it has already been answered."</p>
+						<p>The phrase itself comes from a translation of an Aristotelian phrase rendered as "beg the question" but meaning "assume the conclusion."</p>
+					</blockquote>
+						<p>Sometimes with debugging it's easy to focus too much on solving the specific question that is placed in front of you: i.e., how do I make this thing accessible? When really, the premise is flawed: this is not an accessible design to start with.</p>
+						<p>Are you trying to solve the wrong problem if you take the issue at face value?</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>A website is not an art gallery.</p>
+					<img src="./assets/art-frame.png" alt="The same table with a tooltip, displayed inside an ornate frame" style="width: 70%;">
+					<!-- TODO: graphic here -->
+					<aside class="notes">
+						<p>To debug this one, there is no trick. There is spec you can go to.</p>
+						<p>The root cause of this isn't technical, but a design flaw: the idea that a uniform height is more visually pleasing + that this matters more than understandability and access.</p>
+						<p>No one is going to your website to appreciate the art of your graphic design. They want to consume your content or use your app.</p>
+						<p>Let's be clear, this affects a number of people:</p>
+						<ul>
+							<li>Low vision/zoom -- even if you can get the tooltip, it's more work to read each line, and likely each line will need a tooltip to read the full text</li>
+							<li>Someone who relies on the keyboard, switch, eye gaze</li>
+							<li>ANYONE ON MOBILE/TABLET, JESUS CHRIST</li>
+							<li>Higher cognitive load to read lines, can't read all of them at once, so potentially short term memory issues too. It's like playing a terrible version of the memory card game.</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h4>Thanks for listening!</h4>
+				</section>
+
+				<!-- <section>
+					<h2>slides:</h2>
+					<a href="https://smhigley.github.io/slides/debugging-a11y">smhigley.github.io/slides/debugging-in-depth</a>
+
+					<h2>contact:</h2>
+					<a href="https://twitter.com/codingchaos">@codingchaos</a>
+					<aside class="notes">
+						If you have any questions about the talk, or want to rant about tooltips, I'm on twitter @codingchaos.
+					</aside>
+				</section> -->
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+		<script src="./assets/custom.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>

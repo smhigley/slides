@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Notification Example</title>
+    <style type="text/css">
+      body {
+        font-size: 32px;
+        font-family: sans-serif;
+        padding: 1em;
+      }
+      button {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+      }
+      div {
+        font-size: 1em;
+        margin-bottom: 1em;
+      }
+    </style>
+	</head>
+	<body>
+    <h1>Create or modify a live region</h1>
+    <button type="button" id="create">Create a live region</button>
+    <div id="create-container"></div>
+    <button type="button" id="update">Update an existing live region</button>
+    <div id="update-container" aria-live="assertive"></div>
+
+    <script>
+      const createButton = document.getElementById('create');
+      const updateButton = document.getElementById('update');
+      const createContainer = document.getElementById('create-container');
+      const updateContainer = document.getElementById('update-container');
+      let createIndex = 0;
+      let updateIndex = 0;
+
+      createButton.addEventListener('click', function() {
+        const notification = document.createElement('div');
+        notification.setAttribute('aria-live', 'assertive');
+        notification.textContent = `${++createIndex}. Live region created`;
+        createContainer.appendChild(notification);
+      });
+
+      updateButton.addEventListener('click', function() {
+        const notification = document.createElement('div');
+        notification.textContent = `${++updateIndex}. Live region updated`;
+        updateContainer.appendChild(notification);
+      });
+    </script>
+  </body>
+</html>
