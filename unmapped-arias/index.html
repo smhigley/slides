@@ -1,0 +1,627 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Venturing into Unmapped ARIAs -- Sarah Higley</title>
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/beige.css">
+		<link rel="stylesheet" href="../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href="./assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Intro -->
+				<section data-background-image="./assets/parchment-compass.jpg" data-background-size="cover">
+					<h1>Venturing into Unmapped ARIAs</h1>
+					<aside class="notes">
+						My name is sarah higley, and the talk you've wandered into today, hopefully on purpose, is about how to find your way towards accessible component patterns when you're asked to make something that doesn't fit into one of the conventional, well-defined components.
+						<p>the web wasn't ever really design as an app platform even though it's often used as one now, and that means I, and I'm assuming many of you, have run into the need to build something for which there are no good guides on how to do so</p>
+					</aside>
+				</section>
+
+				<section data-background-image="./assets/map-bg1.jpg" data-background-size="cover">
+					<div class="flex-h">
+						<img src="./assets/avatar.png" alt="illustrated avatar of Sarah, with purple hair and a cat peaking out from behind her head" style="max-width: 300px;">
+						<p class="large" style="margin-top: -0.5em;">⬅️ who is this person?</p>
+					</div>
+					<aside class="notes">
+						<p>the reason I wanted to talk about this is...</p>
+						I work as a software developer on the Fluent component library at Microsoft, and contribute to the ARIA spec and ARIA practices guide. This is to say that I spend a fair amount of time researching existing patterns and working on defining new ones.
+					</aside>
+				</section>
+
+				<section data-background-image="./assets/map-lines1.png" data-background-size="cover">
+					<h2>What does the map look like?</h2>
+					<div class="collage">
+						<img src="./assets/aria-spec.png" alt="screenshot of the ARIA spec heading and first half page" width="33%">
+						<img src="./assets/a11y-project.png" alt="screenshot of the top half of the resources page of a11yproject.com" width="33%">
+						<img src="./assets/inclusive-components.png" alt="screenshot of the title on the home page of the Inclusive Components site" width="33%">
+					</div>
+					<aside class="notes">So if we're going to talk about how to go beyond the mapped patterns, we need to understand what the current map looks like and what it covers.</aside>
+				</section>
+
+				<section>
+					<h3>Specs</h3>
+					<ul>
+						<li><a href="https://w3c.github.io/aria/">ARIA spec</a></li>
+						<li><a href="https://w3c.github.io/aria-practices/">ARIA Practices (not a spec)</a></li>
+						<li><a href="https://w3c.github.io/html-aria/">ARIA in HTML</a>, <a href="https://w3c.github.io/html-aam/">HTML AAM</a>, <a href="https://w3c.github.io/core-aam/">Core AAM</a></li>
+					</ul>
+					<aside class="notes">
+						Specs are useful because they're definitive (more or less), but often harder to read than blog posts. They also often require more contextual knowledge to apply than an article that might walk you step-by-step through building a combobox, for example.
+
+						<p>I included the APG in here because although it's not a spec, it's still produced by the W3C, and can be useful (with contextual understanding) when looking for what patterns exist, and what they look like. It definitely shouldn't be taken as gospel, or applied without thought.</p>
+						<p>For more context, you can always look up github issues discussing specific patterns to get some sense of community feedback on existing specs</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Blogs, websites</h3>
+					<ul>
+						<li><a href="https://inclusive-components.design/">Inclusive Components</a></li>
+						<li><a href="https://www.a11yproject.com/">A11y Project</a></li>
+						<li><a href="https://www.24a11y.com/">24 A11y</a></li>
+					</ul>
+					<aside class="notes">
+						Blog posts can be much more digestible, but should be taken with several grains of salt: evaluate the trustworthyness of the source, look at the date written, compare approaches across multiple places, if possible.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Framework accessibility docs</h3>
+					<div class="collage">
+						<img src="./assets/mui-a11y-doc.png" alt="screenshot of the material UI accessibility docs for its data grid, claiming complete accessibility support" width="38%">
+						<img src="./assets/fluent-practices.png" alt="screenshot of the Fluent best practices for its peoplepicker combobox component, showing advice for mobile accessibility and truncation" width="38%">
+						<img src="./assets/react-aria.png" alt="screenshot of the accessibility section of Adobe's React ARIA package, showing generic intro to accessibility text" width="38%">
+					</div>
+					<aside class="notes">
+						<p>Included: React ARIA from Adobe's React Spectrum set of libraries, an example a11y section on a Fluent component</p>
+						Not always common or thorough, but definitely worth looking at existing component implementations across frameworks, especially if they include specific a11y info. Note that frameworks, even ones with a11y docs, are often not ideal examples, and come with their own baggage.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Compare sources</h3>
+					<a href="https://w3c.github.io/aria-practices/examples/menubar/menubar-navigation.html"><img src="./assets/apg-nav-menu.png" alt="screenshot of the ARIA Practices example of using a menubar role for site navigation, showing a warning about using menubar for site navigation" style="width: 50%"></a>
+					<a href="https://adrianroselli.com/2017/10/dont-use-aria-menu-roles-for-site-nav.html"><img src="./assets/adrian-aria-menu.png" alt="screenshot of Adrian Roselli's blog, showing the article titled Don't Use ARIA Menu Roles for Site Nav" class="right"></a>
+					<aside class="notes">
+						Sources don't always agree. For example, the APG might lead you to believe that a simple set of navigation links should use a menu role, while the overwhelming consensus is that they should be marked up without a composite widget role (i.e. as a list of links).
+
+						<p>This is where looking beyond the first source is important. It's not even that the APG is definitively wrong, it's just misleading. If you were building a web application like Google Docs, a menu role might be appropriate. But usually it's not, and researching and understanding multiple sources will get you there.</p>
+
+						<p>So I've been talking about where to find the map, but lets move on to what is actually covered.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Well-mapped components</h2>
+					<img src="./assets/combobox-map.png" alt="">
+					<aside class="notes">Here are some brief examples of patterns that are well defined. Please note, "well-defined" is not the same as "easy". A lot of these patterns are complex and hard to do well, but there is still good material out there on how to do so.</aside>
+				</section>
+
+				<section>
+					<h3>Comboboxes</h3>
+					<div class="collage">
+						<img src="./assets/apg-combo-examples.png" alt="screenshot of the ARIA practices list of 6 different combobox examples, from a select-only combobox to editable comboboxes, to a datepicker combo" style="width:50%">
+						<img src="./assets/24-a11y-combobox.png" alt="excerpt of a blog post on comboboxes detailing accessibility API mappings on windows and macOS" style="width: 30%">
+					</div>
+				</section>
+
+				<section>
+					<h3>Tables</h3>
+					<div class="collage">
+						<img src="./assets/sarah-blog-grid.png" alt="screenshot of my blog, showing a post titled to Grid or not to Grid" style="width: 40%">
+						<img src="./assets/apg-table.png" alt="screenshot of the ARIA Practices example of a sortable table" style="width: 35%">
+						<img src="./assets/adrian-tables.png" alt="screenshot of Adrian Roselli's website showing multiple search results for the word table" style="width: 33%">
+					</div>
+					<aside class="notes">Adrian actually has many, many more articles on tables.</aside>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 0.5em;">Form errors</h3>
+					<div class="collage">
+						<img src="./assets/form-errors-webaim.png" alt="article from WebAim titled usable and accessible form validation and error recovery" width="500">
+						<img src="./assets/errors-nngroup.png" alt="article titled Error message guidelines from the Nielson Norman Group" width="600">
+					</div>
+					<aside class="notes">Shoutout to Shell Little, who will be talking about form error patterns and cognitive a11y in her talk tomorrow.</aside>
+				</section>
+
+				<section data-background-image="./assets/map-bg2.jpg" data-background-size="cover">
+					<h2>The outer wilds</h2>
+					<img src="./assets/hybrid-combo.png" alt="a combobox where the trigger is select-only, and the dropdown is expanded to show a text input within it, above the other options" class="right">
+				</section>
+
+				<section>
+					<p>Where components look familiar, but with a twist</p>
+					<div class="collage">
+						<img src="./assets/files-grid.png" alt="example of a selectable grid labelled Files, showing one file selected, and the second file name currently being edited within the cell" style="width: 40%;">
+						<img src="./assets/hybrid-combo.png" alt="the same combobox from the previous slide, with a text input inside the dropdown" style="width: 40%;">
+						<img src="./assets/tree-actions.png" alt="a treeview where each item has an edit and delete button next to the tree item text, with the heading tree with buttons inside treeitems" style="width: 25%;">
+					</div>
+				</section>
+
+				<section data-background-image="./assets/map-lines2.png" data-background-size="cover">
+					<p>Planning your expedition</p>
+					<ol>
+						<li>Examine existing maps</li>
+						<li>Prior art from further afield</li>
+						<li>Interpret your sources, consider context</li>
+						<li>What information is missing?</li>
+					</ol>
+					<aside class="notes">
+						<ol>
+							<li>Find everything you can that resembles what you want to make, even if it isn't exactly the same</li>
+							<li>Remember that all existing maps are made by someone trying to solve a specific problem. It may not be the same problem you're trying to solve now. Consider where the similarities and differences lie.</li>
+							<li>Make an actual itemized list of what you need to know but can't find</li>
+							<li>Look at native desktop and mobile UX patterns to supplement web sources. Or literally any reference for how people interact with similar interfaces, even physical things if you get creative. (radio buttons came from literal radios, after all, and design systems use physical "elevation" as reference. You can look at how people touch and move things in the real world to understand what is intuitive in a touch UI)</li>
+						</ol>
+					</aside>
+				</section>
+
+				<section>
+					<h3>File selection</h3>
+					<img src="./assets/selection-list.png">
+					<aside class="notes">
+						We're going to imagine we're building an application where one common UX task is to select files, similar to File Explorer or Finder.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 1: inspect our maps</h4>
+					<div class="collage">
+						<img src="./assets/aria-grid-spec.png" alt="screenshot of the ARIA spec for the grid role" style="width: 40%">
+						<img src="./assets/apg-table.png" alt="screenshot of the ARIA Practices example of a sortable table" style="width: 35%">
+						<img src="./assets/adrian-tables.png" alt="screenshot of Adrian Roselli's website showing multiple search results for the word table" style="width: 33%">
+					</div>
+					<aside class="notes">
+						Things that are covered:
+						<ul>
+							<li>Table and grid semantics</li>
+							<li>Differences btw table and grid</li>
+							<li>Grid arrow keys between cells</li>
+							<li>Allowed attributes on gridcells, checkboxes</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 2: Prior art</h4>
+					<div class="collage">
+						<img src="./assets/finder.png" alt="screenshot of macOS finder, showing the table view for files for this presentation repository" width="33%">
+						<img src="./assets/file-explorer.png" alt="screenshot of Windows File Explorer, showing the table view for the same files for this presentation repository" width="33%">
+						<img src="./assets/word-recent-files.png" alt="screenshot of the recent files section of the MS Word home screen, showing three sample files with one column for file name and a second column for date modified" style="width:60%;transform: translate(-30%,30%) rotate(-15deg);">
+					</div>
+					<aside class="notes">
+						Since this is a component within an application that deals with file selection, it makes sense to look at desktop applications with similar purposes and UX.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Evaluating Prior Art</h4>
+					<p class="large">web is <u>not</u> desktop, <span class="small" style="display: block;">and</span> desktop is <u>not</u> web</p>
+					<aside class="notes">
+						<p>web has expectations for virtual cursor and tab that are very different that desktop</p>
+						<p>Desktop/mobile native apps are built for one platform, and don't need to be as flexible. Web apps need to work across multiple types of interface and multiple OS's a11y paradigms (both in terms of APIs, color modes, speech control, etc)</p>
+						<p>However: desktop/mobile patterns inform what users find intuitive, and electron apps blur the line further. If you know you're building a hybrid native app, lean much more heavily into native patterns.</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>Windows: lists have... columns?</p>
+					<img src="./assets/explorer-a11y.png">
+					<aside class="notes">
+						Native desktop and mobile apps have different a11y API options, e.g. on Windows a list can have columns by composing the TablePattern.
+				</section>
+
+				<section>
+					<p>Finder: lists also have columns</p>
+					<img src="./assets/finder-a11y.png" alt="">
+					<aside class="notes">
+						macOS also blurs the line between lists and tables/grids. Note: The Activity Monitor app is a good example of a full grid that is not a list.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 3: weigh sources</h4>
+					<img src="./assets/scale.png" alt="screenshot of a files grid with a file selected, sitting over a drawing of a kitchen scale" width="500">
+					<aside class="notes">
+						In this case study, we're imagining this is an application use case like a photo editor or finance tracking app, so user expectations may be more aligned with native desktop/mobile interaction patterns than website patterns.
+						<p>We're also looking specifically at file selection, so users will be much more interested in the file name, and only tangentially interested in the modified date, size, etc.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 4: what's missing?</h4>
+					<img src="./assets/selection-row.png">
+					<ul>
+						<li>Focus target: checkbox, cell, or row?</li>
+						<li>Checkbox name</li>
+						<li>Checkbox columnheader name</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Circle back on design</h4>
+					<div class="left">
+						<h5>Grid</h5>
+						<ul class="plain-list">
+							<li>✅ exposes columns</li>
+							<li>❌ navigate through all cells separately</li>
+							<li>❌ not a selection-focused pattern</li>
+						</ul>
+					</div>
+					<div class="right">
+						<h5>Listbox</h5>
+						<ul class="plain-list">
+							<li>❌ no columns, all one string</li>
+							<li>✅ selection control</li>
+							<li>✅ linear focus, similar to other file lists</li>
+						</ul>
+					</div>
+					<aside class="notes">
+						If a listbox fits better but the main issue is column info, can you go back to design and ask their opinion on how important the extra column info is?
+						<p>Could you associate the info as a description while the file name is the name?</p>
+						<p>Does the info disappear entirely on small screens, or move out of columns? (that's a way to gauge importance)</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Checking assumptions</h3>
+					<ul class="plain-list">
+						<li>🔲 Navigate by cell, not row</li>
+						<li>🔲 Put focus on the cell, but include a checkbox</li>
+						<li>🔲 Selection does not follow focus</li>
+					</ul>
+					<aside class="notes">
+						usability study time!! When I was working on exactly this pattern, I made prototypes of several different interaction paradigms based on the research we just talked about. I had the hypothesis I wrote on this slide, but I wanted to check it with actual AT users outside of Microsoft.
+						<p>If you don't have the resources to run studies but are still doing this sort of in-depth work, I'd still suggest making prototypes and asking for feedback from AT users in a public forum like twitter or the a11y slack channel.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>The studies</h4>
+					<div class="left" style="padding-right: 10px; box-sizing: border-box;">
+						Round 1:
+						<img src="./assets/user-study1.png" alt="screenshot of a grid with the first row checked, and the entire third row focused">
+					</div>
+					<div class="right">
+						Round 2:
+						<img src="./assets/user-study2.png" alt="screenshot of a similar grid with the first row checked, checkboxes in the first column, and the third checkbox in the first column focused">
+					</div>
+					<aside class="notes">
+						I actually ended up doing two studies about a year apart, with the second incorporating things I learned from the first. I did look at patterns beyond just selection in the studies, but we'll look at selection first.
+					</aside>
+				</section>
+
+				<section>
+					<p>Participant ATs:</p>
+					<div class="left small">
+						Round 1:
+						<ul>
+							<li>VoiceOver (2 people)</li>
+							<li>JAWS (2 people)</li>
+							<li>NVDA (2 people)</li>
+							<li>Narrator</li>
+							<li>Narrator + Refreshable Braille</li>
+							<li>ZoomText at 12x</li>
+							<li>Magnifier at 200%</li>
+							<li>Smartbox Grid 3 Switch</li>
+							<li>Dragon Professional</li>
+						</ul>
+					</div>
+					<div class="right small">
+						Round 2:
+						<ul>
+							<li>JAWS</li>
+							<li>JAWS + switch for typing</li>
+							<li>NVDA (2 people)</li>
+							<li>Narrator</li>
+							<li>No AT, but 2 users had a mobility impairment</li>
+							<li>Adesso ergonomic keyboard</li>
+							<li>Switch</li>
+							<li>Dragon Professional</li>
+						</ul>
+					</div>
+					<aside class="notes">
+						This is a lot of text on the screen, but the gist is we had participants using the most common SRs (list), and also wanted to get perspectives from people who used magnification and mobility-related ATs like switches and Dragon.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Takeaways</h4>
+					<ul class="plain-list">
+						<li>✅ Navigate by cell, not row</li>
+						<li>✅ Put focus on the cell, but include a checkbox</li>
+						<li>✅ Selection does not follow focus</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Takeaways: oops I didn't think of that</h4>
+					<ul>
+						<li><strong>Validation</strong> and confirmation messages are necessary</li>
+						<li><strong>Details</strong> matter: pay extra attention to naming</li>
+						<li>Needing to switch <strong>screen reader modes</strong> can build up annoyance</li>
+						<li>Bugs with <strong>virtual cursor</strong> table nav will make people abandon the task</li>
+						<li><strong>Double scrollbars</strong> when searching for info can be a <em>huge</em> burden</li>
+					</ul>
+					<aside class="notes">
+						<p>Things you don't think about enough can be the most important ones (see: feedback for completion). They really matter, and when you're thinking about your grid keyboarding, you also need to think holistically about validation/feedback/naming/etc</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3 class="large">Death by 1000 <s>&nbsp;Cats</s> Cuts</h3>
+					<img src="./assets/cat-fight.png" alt="clowder of black cats hissing at eachother at night">
+					<aside class="notes">
+						<p>Death by a thousand cuts: issues stack, and can become much larger than they seem on the surface.</p>
+						<p>The weirder and more complex of a UI you're building, the more important it is to make all the details very, very well done.</p>
+					</aside>
+				</section>
+<!-- Removed section on spreadsheets for time
+				<section>
+					<h3>Cell editing and spreadsheets</h3>
+					<p>when you think you have a map, but you really don't</p>
+					<aside class="notes">
+						Let's take The same steps and run through them really quickly for another scenario: cell editing. It's something that feels like it should be well mapped, but it actually isn't in a number of ways.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 1: the map</h4>
+					(images of APG, Excel/sheets, my grid blog post)
+					<aside class="notes">
+						There is surprisingly little guidance on how specifically to handle cell editing in specs, or in blog posts. Really the only thing to do is look at other implementations, which are varying quality.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 2: Prior Art</h4>
+					(imgs of excel/sheets, Fluent, another grid library)
+					<aside class="notes">
+						Spreedsheet desktop and web apps like Excel and Google Sheets are clear references for expected UX for use cases that veer more towards spreadsheets. If you're building for users who interact with a lot of spreadsheets, they're almost guaranteed to have used one or both of those apps.
+						<p>If you're not building a spreadsheet, you have to search farther afield, and your priors may or may not have much a11y thought put in them.</p>
+						<p>On the far other side of things, consider having an edit button that opens a modal with a form instead of editing directly in the cells.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 3: weigh sources</h4>
+					<p>Full spreadsheet, or occasional edits of existing data?</p>
+					<aside class="notes">
+						The biggest question here is what you're building, and for whom.
+						<p>In the past, I've worked on editable grids that were mainly designed for viewing, with editing as a less mainline scenario, and also grids that were essentially spreadsheets for finance folks used to Excel. Very different UX requirements</p>
+						<p>If you're trying to build a lite spreadsheet online, first, I'm sorry. Second, consider throwing out the ARIA recommendations for arrow keys (or don't treat them as hard reqs).</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 4: what's missing?</h4>
+					<div class="left">(image of cell with confirm/cancel btns)</div>
+					<div class="right">(image of cell with focus and no btns)</div>
+					<ul>
+						<li>What does <kbd>Tab</kbd> do while editing a cell?</li>
+						<li>Edit mode on focus, click, or double click?</li>
+						<li>How do mobile screen readers </li>
+					</ul>
+					<aside class="notes">
+						Obviously there are more questions, but lets limit it to these in the interest of time, and me maybe finishing this presentation.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Testing Options</h4>
+					<img src="./assets/cell-edit-plain.png" class="left">
+					<img src="./assets/cell-edit-btns.png" class="right" style="width:28%">
+				</section>
+
+				<section>
+					<p>Some initial assumptions</p>
+					<ul class="plain-list">
+						<li>🔲 Include edit, confirm, cancel buttons for touch and better discoverability</li>
+						<li>🔲 Make cells modal in edit mode</li>
+						<li>🔲 When editing, arrow keys navigate text</li>
+					</ul>
+					<aside class="notes">
+						Some of these assumptions come from the knowledge that I couldn't run a study targeting spreadsheet finance types. Just didn't have the user base for that level of specificity.
+						<p>It's good to take the time to understand how your app's user base will differ from user testing participants, because even user study results aren't infallible.</p>
+						<p>This also goes for asking communities and coworkers for feedback. Whether disabled or not, folks at tech companies and who are Very Online might end up being a significantly different demographic than your user base.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Takeaways</h4>
+					<ul class="plain-list">
+						<li>✅ Include edit, confirm, cancel buttons for touch and better discoverability</li>
+						<li>❓ Make cells modal in edit mode (mostly)</li>
+						<li>✅ When editing, arrow keys navigate text</li>
+					</ul>
+					
+					<aside class="notes">
+						The modal cell thing is one I've had different feedback on in different scenarios. It didn't make much difference to most users in this user study, but I've seen it be helpful elsewhere.
+						<p>It's also important to remember again that these users where exploring this once, for the first time, and were not spreadsheet experts or frequent users.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Unexpected takeaways</h4>
+					<ul>
+						<li>It is <em>extremely</em> important to make the current focus target obvious</li>
+						<li>Switching modes for text entry is needed, but switching modes for grid nav shouldn't be</li>
+						<li>Easy verification of user input is even more important than you think</li>
+						<li>AT quirks compound difficulty</li>
+					</ul>
+					<aside class="notes">
+						It's so important for complicated UX patterns to be both robust and easy to review. A complex composite widget like a grid + in-cell form fields and custom keyboarding is more likely to have AT bugs. When those bugs happen, it's extremely important that the user can quickly find where they were, and check if their changes were saved.
+					</aside>
+				</section>
+			-->
+				<section>
+					Efficiency vs. Discoverability
+					<aside class="notes">
+						Ideally these two don't clash, or you can layer on efficiency boosts like keyboard shortcuts without taking away discoverable buttons.
+						<p>Sometimes, though, you need to make a major decision like table vs. grid where the two are at odds. Then you need to ask questions about your users, like...</p>
+					</aside>
+				</section>
+
+				<section>
+					<ul>
+						<li>How many hours do users spend on this UI at a time?</li>
+						<li>How many days per week to users visit?</li>
+						<li>How tech-savvy are they?</li>
+					</ul>
+					<p><em>(a shallow learning curve is almost always more important than you think)</em></p>
+				</section>
+
+				<section data-background-image="./assets/map-bg3.jpg" data-background-size="cover">
+					<h2>The cursèd ARIAs</h2>
+				</section>
+
+				<section>
+					<p class="large">BEWARE:</p>
+					<p>is this place cursed because no users return?</p>
+					<img src="./assets/crossbones.png" alt="drawing of skull and crossbones" width="400">
+					<aside class="notes">
+						There's a whole talk to unpack here in being able to differentiate between complicated patterns that are complex out of necessity, or complex because they haven't been simplified enough. Someone who is more of a UX-er should give that :D
+					</aside>
+				</section>
+
+				<section>
+					<h3>A brief example</h3>
+					<img src="./assets/flowchart.jpg" alt="a flowchart that shames you for thinking you have time. Start with a decision to take on a new project. Ask if you have time to do this. If no, don't do it. If you said yes, no you don't." style="width: 65%;">
+					<aside class="notes">
+						<p>While I'm actively shaming myself with this image (describe it), the actual purpose on this slide is to examine flowcharts as a UI pattern</p>
+						Other off-the-maps UI include games, other data viz.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 1: start small</h4>
+					<img src="./assets/flowchart-node.png" alt="sketchy illustration of a single node in a flowchart" width="400">
+					<p>Begin with one basic interaction, and define it</p>
+					<aside class="notes">
+						Remember to consider: keyboard, semantics, mobility/zoom, touch/swipe
+						<p>Does a single node have a single possible interaction? Does it do something, multiple things, or is it just information?</p>
+						<p>Do you want to consider `roledescription`?</p>
+						<p>Keep multiple options here, not just one</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 2: break down keyboard navigation</h4>
+					<img src="./assets/flowchart-nav.png" alt="Sketchy illustration of a flowchart with three levels of nodes labelled A, B, and C" width="800">
+					<p>How do you get from node A to node C?</p>
+				</section>
+
+				<section>
+					<p>Is the keyboard model similar to any existing patterns?</p>
+					<img src="./assets/flow-related-icons.png" alt="stylized simple icons of a tree, a treegrid, and a listbox">
+					<aside class="notes">
+						Tree, treegrid, listbox.
+						<p>I put this after breaking down keyboard nav to avoid forcing semantics and interaction into a pre-existing box that doesn't actually fit</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Step 3: zoom out</h4>
+					<img src="./assets/filter-input.png" alt="a text input with a filter icon and placeholder text that says filter">
+					<p>Search, find in page, filter</p>
+					<aside class="notes">
+						For something like this, no matter what you do it will still be a lot of effort to understand and navigate. For keyboard users, SR users, and just a high cognitive load overall. Look for ways to get around that, like searching for + jumping to a specific node.
+					</aside>
+				</section>
+
+				<section>
+					<h4>Focus on the basics</h4>
+					<p>Labels, headings, page structure, user feedback</p>
+					<aside class="notes">
+						The weirder you make it, the more important it is to make it easy for users to have confidence finding where they are in the page, and reviewing the changes they've made. Any given interactive item must be absolutely clear in what it does, so they only have to figure out and guess one thing at a time.
+					</aside>
+				</section>
+
+				<section>
+					<h2 style="margin-bottom: 1em;">Changing the map</h2>
+					<div class="collage">
+						<img src="./assets/tab-actions.png" alt="screenshot of the VS Code editor tab UI showing close buttons on file tabs" width="500">
+						<img src="./assets/listitem-actions.png" alt="a single file list item UI, showing the file name with share, favorite, and more options buttons" width="650">
+					</div>
+					<img src="./assets/listitem-actions2.png" alt="a group call interface showing a single participant with mute and more actions buttons next to their name">
+					<aside class="notes">
+						Sometimes there's a pattern that you find everywhere, but somehow still doesn't have a clear way to mark it up
+					</aside>
+				</section>
+
+				<section>
+					<p>Is this button inside the tab? Next to it? Tab-accessible?</p>
+					<img src="./assets/tab-close-btn.png" alt="screenshot of a single VS Code file tab for index.html with a close button next to the file name">
+				</section>
+
+				<section>
+					<img src="./assets/secondary-actions.png" alt="screenshot of a github issue on the ARIA repository for secondary actions on composite issue roles, #1440">
+					<aside class="notes">
+						Brief plug for something I'm working on changing in the ARIA spec right now: secondary actions for things like close buttons on tabs, extra buttons on combobox options, mute buttons on call participant lists, etc.
+						<p>Semantically this is disallowed in ARIA, since things like tabs and options can't have interactive children, and tablists and listboxes can't have random button children.</p>
+					</aside>
+				</section>
+
+				<section data-background-image="./assets/map-bg1.jpg" data-background-size="cover">
+					<h3>Be a cartographer!</h3>
+					<p>Keep updating the map as you go, for the people who come after you.</p>
+				</section>
+				
+				<section data-background-image="./assets/map-lines3.png" data-background-size="cover">
+					<h2 style="margin-top:0.9em">slides:</h2>
+					<a href="https://smhigley.github.io/slides/unmapped-arias">smhigley.github.io/slides/unmapped-arias</a>
+
+					<h2 style="margin-top: 1em;">contact:</h2>
+					<a href="https://twitter.com/codingchaos">@codingchaos</a>
+					<p class="footnote" style="height:0;transform:translate(0, 40px)">(with thanks to <a href="https://twitter.com/ericwbailey">Eric Bailey</a> for slide review)</p>
+					<aside class="notes">
+						If you have any questions about the talk, or want to rant, I'm on twitter @codingchaos.
+					</aside>
+				</section>
+			</div>
+			<footer class="global-footer">
+				<a href="https://twitter.com/codingchaos">@codingchaos</a>
+			</footer>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+		<script src="./assets/custom.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../reveal/plugin/markdown/marked.js' },
+					{ src: '../reveal/plugin/markdown/markdown.js' },
+					{ src: '../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>
