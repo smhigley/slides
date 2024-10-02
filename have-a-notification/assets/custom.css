@@ -1,0 +1,153 @@
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.reveal .controls .navigate-right.highlight {
+	animation: none;
+}
+
+.reveal section img {
+	background: none;
+	box-shadow: none;
+	border: none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.reveal .attribution {
+	font-size: 0.5em;
+}
+
+.reveal h1 {
+	font-size: 3em;
+}
+
+.reveal a {
+	text-decoration: underline;
+}
+
+.reveal .global-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 0.6em;
+	color: grey;
+	z-index: 2;
+}
+
+.global-footer a {
+	color: grey;
+}
+
+/* custom text */
+.large {
+	font-size: 1.25em;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+blockquote {
+	text-align: left;
+}
+
+
+/* Specific slide styles */
+.terms-input,
+.terms-input-fixed {
+	padding: 0.5em 1em;
+	margin: 0.5em 0;
+	border: 2px solid #000;
+	box-sizing: border-box;
+	font-size: 1em;
+	width: 100%;
+	max-width: 550px;
+}
+
+.reveal .terms-list {
+	height: 10.5em;
+	overflow: hidden;
+	padding: 1px;
+	margin: 0;
+	list-style-type: none;
+	width: 100%;
+	max-width: 550px;
+}
+
+.terms-list li {
+	height: 1.5em;
+	border: 1px solid #666;
+	border-bottom: 0;
+	text-align: left;
+	padding: 0 0.5em;
+	overflow: hidden;
+}
+
+.terms-list li:last-child {
+	border-bottom: 1px solid #666;
+}
+
+.cat-list > div {
+	position: absolute;
+	left: 0;
+	top: 50%;
+}
+
+.cat-list {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+}
+
+.result-cat p {
+	position: absolute;
+	top: -25%;
+	right: -10%;
+	background-color: #000;
+	color: #fff;
+	padding: 5px;
+	border-radius:3px;
+}
+
+.result-cat p::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	right: 40%;
+	border-top: 10px solid #000;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+
+/* content layouts */
+
+.grid2cols {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.grid3cols {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.grid2cols > *,
+.grid3cols > * {
+	align-self: center;
+	justify-self: center;
+}
