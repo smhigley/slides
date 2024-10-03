@@ -28,18 +28,27 @@
 			<div class="slides">
 				<!-- Intro: be a snake oil salesman -->
 				<section>
-					<h1>May I interest you in a notification?</h1>
+					<h1 class="sr-only">Would you like a live region?</h1>
+					<img src="./assets/live-region-title.jpg" alt="old-timey advertisement for snake oil, with the text updated to say: would you like a live region? Made by: the ARIA WG. in the center is a picture of someone in a top hat flanked by two stylized snakes. The head of the person is updated to be an avatar of Sarah Higley" width="95%" style="position: relative; top: -40px">
 					<aside class="notes">
 						<p>Hello, and welcome to my travelling ARIA medicine show. Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
 					</aside>
 				</section>
 
 				<section>
-					<p>Do you sometimes wish you could yell specifically at people using a screen reader?</p>
+					<h2>Do you:</h2>
+					<ul class="large">
+						<li>Like using all caps?</li>
+						<li>Sometimes wish you could yell specifically at people using a screen reader?</li>
+					</ul>
 				</section>
 
 				<section>
-					<p>Let me interest you in.... LIVE REGIONS!</p>
+					<h2 class="sr-only">Try Dr. Aria's Live Regions</h2>
+					<img src="./assets/try-dr-aria.jpg" alt="old-timey quack patent medicine add showing 4 adults and 2 chilren sitting around a table and passing around boxes of medicine, and in the foreground are a bunch of medicine boxes with a lot of writing, including things like smart weed, water pepper, and a cure for chronic weakness and female complaints." width="100%" style="position: relative; top: -40px">
+					<aside class="notes">
+						<p>Hello, and welcome to my travelling ARIA medicine show. Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
+					</aside>
 					<aside class="notes">
 						Results not guaranteed, 
 					</aside>
@@ -47,10 +56,10 @@
 
 				<section>
 					<h2>Side effects may include:</h2>
-					<div class="grid2cols">
+					<div class="grid2cols" style="max-width: 60%;">
 						<span class="fragment"><img src="./assets/swearing-icon-14.jpg" alt="swearing" width="100%"></span>
-						<span class="fragment"><img src="./assets/leaving.jpg" alt="leaving at a run" width="60%"></span>
-						<span class="fragment"><img src="./assets/dumpster-fire.png" alt="spontaneous combustion" width="40%"></span>
+						<span class="fragment"><img src="./assets/leaving.png" alt="leaving at a run" width="80%"></span>
+						<span class="fragment"><img src="./assets/dumpster-fire.png" alt="spontaneous combustion" width="60%"></span>
 						<span class="fragment"><img src="./assets/middle-finger.jpg" alt="flipping the bird" width="80%"></span>
 					</div>
 					<aside class="notes">
@@ -61,12 +70,12 @@
 				<section>
 					<h2>Not intended for:</h2>
 					<div class="grid3cols">
-						<span><img src="./assets/baby.jpg" alt="young children" width="50%"></span>
-						<span><img src="./assets/elderly.jpg" alt="the elderly" width="50%"></span>
+						<span><img src="./assets/baby.png" alt="young children" width="60%"></span>
+						<span><img src="./assets/elderly.png" alt="the elderly" width="70%"></span>
 						<span><img src="./assets/heart-attach.jpg" alt="person with a heart condition" width="50%"></span>
-						<span><img src="./assets/stress.jpg" alt="person experiencing stress" width="50%"></span>
+						<span><img src="./assets/stress.jpg" alt="person experiencing stress" width="100%"></span>
 						<span><img src="./assets/anxiety.jpg" alt="person with anxiety" width="50%"></span>
-						<span><img src="./assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="50%"></span>
+						<span><img src="./assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="90%"></span>
 					</div>
 					<aside class="notes">
 						<p>young children, the elderly, anyone with a heart condition, or who is experiencing stress, anxiety, or anyone who enjoys peace and quiet.</p>
@@ -74,7 +83,7 @@
 				</section>
 
 				<section>
-					&lt; pause for tomatoes &gt;
+					<p class="large fancy-text">&lt; pause for tomatoes &gt;</p>
 					<aside class="notes">
 						<p>ok, okay, OK! Fine, I've just been made aware that I'm not allowed to use this platform to sell things to you.</p>
 						<p>(But, you know, if you're interested, see me afterwards.)</p>
@@ -84,7 +93,10 @@
 				<!-- Part 2: more sober examples of using live regions -->
 				<section>
 					<h2>What is a notification?</h2>
-					<div class="fragment fade-up notification">Hi! It me!</div>
+					<div class="fragment fade-up notification">
+						<svg fill="currentColor" class="___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.68 2.79a1.5 1.5 0 0 1 2.64 0l6.5 12A1.5 1.5 0 0 1 16.5 17h-13a1.5 1.5 0 0 1-1.32-2.21l6.5-12ZM10.5 7.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4Zm.25 6.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z" fill="currentColor"></path></svg>
+						Hi! It me!
+					</div>
 					<aside class="notes">
 						<p>It has come to my attention that "some" of you want to be "responsible" and "do the right thing"</p>
 						<p>So, under great duress, let's go over some definitions</p>
@@ -94,7 +106,10 @@
 				<section>
 					<h2>What is a live region?</h2>
 					<p>Is it a notification?</p>
-					<div class="fragment fade-up">[speech icon] Hi! It me!</div>
+					<div class="fragment fade-up notification">
+						<svg width="200" height="200" viewBox="0 0 1088 1024" fill="#3d3d3d" style="width:1em;height:1em"><path d="M890.040 922.040c-12.286 0-24.566-4.686-33.942-14.056-18.744-18.746-18.744-49.136 0-67.882 87.638-87.642 135.904-204.16 135.904-328.1 0-123.938-48.266-240.458-135.904-328.098-18.744-18.746-18.744-49.138 0-67.882s49.138-18.744 67.882 0c105.77 105.772 164.022 246.4 164.022 395.98s-58.252 290.208-164.022 395.98c-9.372 9.372-21.656 14.058-33.94 14.058zM719.53 831.53c-12.286 0-24.566-4.686-33.942-14.056-18.744-18.744-18.744-49.136 0-67.882 131.006-131.006 131.006-344.17 0-475.176-18.744-18.746-18.744-49.138 0-67.882 18.744-18.742 49.138-18.744 67.882 0 81.594 81.59 126.53 190.074 126.53 305.466 0 115.39-44.936 223.876-126.53 305.47-9.372 9.374-21.656 14.060-33.94 14.060v0zM549.020 741.020c-12.286 0-24.568-4.686-33.942-14.058-18.746-18.746-18.746-49.134 0-67.88 81.1-81.1 81.1-213.058 0-294.156-18.746-18.746-18.746-49.138 0-67.882s49.136-18.744 67.882 0c118.53 118.53 118.53 311.392 0 429.922-9.372 9.368-21.656 14.054-33.94 14.054z"></path><path d="M416.006 960c-8.328 0-16.512-3.25-22.634-9.374l-246.626-246.626h-114.746c-17.672 0-32-14.326-32-32v-320c0-17.672 14.328-32 32-32h114.746l246.626-246.628c9.154-9.154 22.916-11.89 34.874-6.936 11.958 4.952 19.754 16.622 19.754 29.564v832c0 12.944-7.796 24.612-19.754 29.564-3.958 1.64-8.118 2.436-12.24 2.436z"></path></svg>
+						Hi! It me!
+					</div>
 					<aside class="notes">
 						<p>Yes! A live region is a notification, but more specifically for screen reader users (or rather: a bit more complicated, braille too. Sort of.)</p>
 					</aside>
@@ -114,7 +129,7 @@
 
 				<section>
 					<h2>Practicum</h2>
-					<img src="./assets/form-errors.png" alt="Sample shipping form with three fields: name, street address, and city. The first two fields show red form errors marked up with arrows pointing to them" style="max-width: 55%;">
+					<img src="./assets/form-errors.png" class="framed" alt="Sample shipping form with three fields: name, street address, and city. The first two fields show red form errors marked up with arrows pointing to them" style="max-width: 55%;">
 				</section>
 
 				<section>
@@ -378,9 +393,6 @@
 					<p class="large">Slides: (url)</p>
 				</section>
 			</div>
-			<footer class="global-footer">
-				<a href="https://twitter.com/codingchaos">@codingchaos</a>
-			</footer>
 		</div>
 
 		<script src="../reveal/lib/js/head.min.js"></script>

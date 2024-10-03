@@ -15,6 +15,21 @@
 	white-space: nowrap;
 }
 
+.reveal {
+	position: relative;
+	background-color: #e3d0a8ff;
+	font-family: Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif; 
+}
+
+.reveal::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('./paper-bg.jpg');
+	background-size: cover;
+	opacity: 0.5;
+}
+
 .reveal .controls .navigate-right.highlight {
 	animation: none;
 }
@@ -36,6 +51,7 @@
 .reveal h3,
 .fancy-text {
 	font-family: 'SanAndreas', Rockwell, "Courier Bold", serif;
+	color: #341200;
 }
 
 .reveal h1 {
@@ -73,6 +89,10 @@
 
 blockquote {
 	text-align: left;
+}
+
+.reveal section .framed {
+	border: 10px solid #bfa193;
 }
 
 
@@ -146,18 +166,36 @@ blockquote {
 	border-right: 6px solid transparent;
 }
 
+.notification {
+	display: flex;
+	align-items: center;
+	gap: 0.25em;
+	padding: 0.5em;
+	background: #fff9f5;
+	border: 1px solid #965630;
+	border-radius: 4px;
+	text-align: left;
+	color: #3d3d3d;
+}
+
+.notification svg {
+	color: #c05800;
+}
+
 /* content layouts */
 
 .grid2cols {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 4px;
+	margin: 0 auto;
 }
 
 .grid3cols {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 4px;
+	margin: 0 auto;
 }
 
 .grid2cols > *,
