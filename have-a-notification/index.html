@@ -48,28 +48,28 @@
 				<section>
 					<h2>Side effects may include:</h2>
 					<div class="grid2cols">
-						<span>[icon: swearing]</span>
-						<span>[icon: leaving]</span>
-						<span>[icon: spontaneous combustion]</span>
-						<span>[icon: hatred]</span>
+						<span class="fragment"><img src="./assets/swearing-icon-14.jpg" alt="swearing" width="100%"></span>
+						<span class="fragment"><img src="./assets/leaving.jpg" alt="leaving at a run" width="60%"></span>
+						<span class="fragment"><img src="./assets/dumpster-fire.png" alt="spontaneous combustion" width="40%"></span>
+						<span class="fragment"><img src="./assets/middle-finger.jpg" alt="flipping the bird" width="80%"></span>
 					</div>
 					<aside class="notes">
-						<p>side effects may include: users swearing at their computers, abandoning your app, and developing a deep personal hatred of you, specifically.</p>
+						<p>side effects may include: users swearing at their computers, abandoning your app, spontaneous combustion, and developing a deep personal hatred of you, specifically.</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Not intended for:</h2>
-					<div class="grid2cols">
-						<span>[icon: children]</span>
-						<span>[icon: elderly]</span>
-						<span>[icon: heart]</span>
-						<span>[icon: stress]</span>
-						<span>[icon: anxiety]</span>
-						<span>[icon: peace]</span>
+					<div class="grid3cols">
+						<span><img src="./assets/baby.jpg" alt="young children" width="50%"></span>
+						<span><img src="./assets/elderly.jpg" alt="the elderly" width="50%"></span>
+						<span><img src="./assets/heart-attach.jpg" alt="person with a heart condition" width="50%"></span>
+						<span><img src="./assets/stress.jpg" alt="person experiencing stress" width="50%"></span>
+						<span><img src="./assets/anxiety.jpg" alt="person with anxiety" width="50%"></span>
+						<span><img src="./assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="50%"></span>
 					</div>
 					<aside class="notes">
-						<p>side effects may include: users swearing at their computers, abandoning your app, and developing a deep personal hatred of you, specifically.</p>
+						<p>young children, the elderly, anyone with a heart condition, or who is experiencing stress, anxiety, or anyone who enjoys peace and quiet.</p>
 					</aside>
 				</section>
 
@@ -119,7 +119,7 @@
 
 				<section>
 					<h3><code>role="alert"</code> insertion</h3>
-					(video of experience here)
+					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cItR8WNHesM?si=w3bpRKkufc9N1zEV&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					<aside class="notes">
 						This is the experience of having elements with role alert dynamically inserted into the DOM as you move focus. Maybe not ideal, but it works.
 					</aside>
@@ -132,11 +132,11 @@
 				</section>
 
 				<section>
-					(video embed of bad experience)
+					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7A0I-2Y_dU4?si=xvDaapZGuBjQoc-W&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 				</section>
 
 				<section>
-					(video embed of good experience)
+					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1i_Tm_oMgys?si=78jyE1G_-9Mm7IjQ&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 				</section>
 
 				<section>
@@ -163,7 +163,9 @@
 
 				<section>
 					<h3>But how do I apply live regions here? Help!</h3>
-					<div class="fragment fade-up">(image of snake oil bottle)</div>
+					<div class="fragment fade-up">
+						<img src="./assets/snake-oil-bottle.png" alt="a old timey glass bottle with blue liquid, and the label says dr. jake dawson's liniment tonic, snake oil. 50 cents." width="25%" style="transform: rotate(-25deg) translate(-40%, -18%)">
+					</div>
 					<aside class="notes">
 						<p>Don't worry, I have the answer to everything, just as a responsible vendor of reputable products should.</p>
 						<p>No but actually -- you can't just batch updates, since that can still conflict with typing</p>
@@ -171,12 +173,28 @@
 				</section>
 
 				<section>
-					<h3>Don't worry! Dr. ARIA's patented live regions can fix every ailment!</h3>
+					<h3>Don't worry!</h3>
+					<p class="fancy-text">Dr. ARIA's patented live regions can fix every ailment!</p>
 					<p>(just apply debouncing based on typing!)</p>
 					<aside class="notes">
 						<p>sometimes live regions can make users bounce out of their chair, which is why you sometimes need to debounce.</p>
 						<p>note: you could also just do this with a live region, depending on your specific needs. Sometimes live regions are NOT the answer. Don't worry, Dr. ARIA has a range of products available for purchase.</p>
 					</aside>
+				</section>
+
+				<section>
+					<pre><code data-trim data-noescape class="js">
+						function onInput(event) {
+							// cancel the timeout any time a user types
+							clearTimeout(id);
+
+							// start a new timeout to announce a message
+							// if the user stops typing
+							id = setTimeout(() => {
+								announce('10 results found');
+							}, 500);
+						}
+					</code></pre>
 				</section>
 
 				<section>
@@ -192,7 +210,7 @@
 
 				<section>
 					<h3>It also works here!</h3>
-					<div class="grid2cols">
+					<div class="grid2cols" style="background:#fff">
 						<img src="./assets/textarea-count-ok.png" alt="screenshot of a textarea with text asking to place an order for live regions, and a word count below the text, currently at 229 of 500.">
 						<img src="./assets/textarea-count-error.png" alt="screenshot of the same textarea with more text in it, the word count is now red and at 503 of 500, and there are red exclamation mark annotations scribbled over the screenshot.">
 					</div>
@@ -203,7 +221,7 @@
 				</section>
 
 				<section>
-					<h2>WARNING: Please consult a doctor for any of the following:</h2>
+					<h2>WARNING:<br> <span class="small">Please consult a doctor for any of the following:</span></h2>
 				</section>
 
 				<section>
@@ -227,7 +245,7 @@
 				</section>
 				<section>
 					<p class="large">Wrapping any major section of changing content in a live region</p>
-					(image of chat pane)
+					<img src="./assets/catbot-chat-pane.png" alt="screenshot of a chat pane between you and CatBot. You asked what are cats, and CatBot replied with information on cats first being domesticated in ancient egypt." width="55%">
 					<aside class="notes">
 						<p>This really happened, several times.</p>
 					</aside>
@@ -247,7 +265,7 @@
 				</section>
 				<section>
 					<h2>Chatbots: a shallow dive</h2>
-					(image of incoming chat loading)
+					<img src="./assets/chat-loading-message.png" alt="screenshot of part of a chat UI. The sent message says what are cats, and there is a message with a loading bar saying generating reply... followed by a stop generating button. Below that is an input with placeholder text that says ask me anything about cats.">
 					<aside class="notes">
 						<p>Chat bots are great because they have a little of everything: asynchronous updates, loading/loaded states, multiple possible sources for announcements (e.g. a new chat at the same time as uploading a file), and the need for the live region text to differ from the visual text content.</p>
 						<p>Also this is a place where you absolutely need to have</p>
@@ -255,11 +273,11 @@
 				</section>
 				<section>
 					<h3>Field testing <s>snake oil</s> live regions</h3>
-					(image of snake oil)
+					<img src="./assets/wizard-oil.webp" alt="old advertisement for hamlin's wizard oil. For some inexplicable reason there is a giant elephant in the middle of a street, with a man followed by two clowns painting the words Hamlin's wizard oil - cures all pain in man or beast on the elephant's back. A strange and chaotic parade is also happening on the street for no clear reason.">
 				</section>
 				<section>
-					<p class="large">Batch loading announcements</p>
-					(video of chat with loading incoming, but live regions every 5s)
+					<p class="large">Space out loading announcements</p>
+					<iframe width="480" height="550" src="https://www.youtube-nocookie.com/embed/W2GhbjbgsTc?autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					<aside class="notes">
 						<p>There may be semi-frequent visual updates to loading text on the screen, but that is less disruptive than having a live region fire. Also be careful of too much constant visual change.</p>
 						<p>Loading updates should be every 5 seconds, not based on visual changes. Re-announce the same text if needed, if there are no visual changes.</p>
@@ -268,6 +286,10 @@
 				</section>
 				<section>
 					<p class="large">Be intentional about message text</p>
+					<div class="grid2cols">
+						<img src="./assets/catbot-single-message.png" alt="a single chat message containing the following: a cat avatar followed by the name CatBot, a generated from wikipedia tag, a block of message text about taming african wildcats, and a set of 5 icon buttons including copy, share, more actions, etc.">
+						<blockquote class="small" style="background:#fefefe;padding:0.25em">CatBot said: The earliest known indication for the taming of an African wildcat was excavated close by a human Neolithic grave in Shillourokambos, southern Cyprus, dating to about 7500-7200 BC.</blockquote>
+					</div>
 					<aside class="notes">
 						<p>When a message is loaded and fully inserted, include the full message text, but also only the message text with a "Person said:" prefix.</p>
 						<p>Do NOT include action buttons, etc.</p>
@@ -275,17 +297,32 @@
 				</section>
 				<section>
 					<p class="large">Do NOT wrap streaming content in a live region</p>
-					(image of baby heroin snake oil)
+					<img src="./assets/child-cocaine.webp" alt="an old advertisement for cocaine toothache drops for 15 cents, featuring two very young children playing outside.">
 					<aside class="notes">
-						<p>I've seen this in the wild (the streaming content thing, not the baby heroin pictured below). JAWS got stuck in a loop constantly re-reading increasingly long snippets of the message text.</p>
+						<p>I've seen this in the wild (the streaming content thing, not the baby heroin pictured ono screen). JAWS got stuck in a loop constantly re-reading increasingly long snippets of the message text.</p>
 						<p>Also don't give heroin to babies, I guess</p>
 					</aside>
 				</section>
 				<section>
 					<p class="large">It can be good!</p>
-					<blockquote>(get a well-formated user quote here)</blockquote>
+					<blockquote>“I like it when it does that [reading the message text]! Then I don’t have to look around. That’s really what you’d like it to do, right, is just read it automatically so I don’t have to look around.” - Jennifer
+					</blockquote>
+					<blockquote>“I really liked whenever I pressed enter, you know, I liked how it said “generating reply, generating reply, still generating reply, that part was actually pretty cool. And I also liked how it actually read out the response — the entire response.” - Miguel</blockquote>
 					<aside class="notes">
 						One of the most consistent pieces of feedback on the chat user studies I've run is that screen reader users really like the ability to hear loading updates / confirmation that something happened, and listen to the entire message text without moving focus from the input.
+					</aside>
+				</section>
+				<section>
+					<p class="large">BUT. Live regions everywhere ≠ good</p>
+					<aside class="notes">
+						<p>Do not generalize this advice! This is a very considered application of live regions in a very specific scenario.</p>
+						<p>Do NOT NOT NOT use live regions to read everything that is happening in your page or app</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Do NOT use live regions to build a custom in-page screen reader</p>
+					<aside class="notes">
+						if I had a dollar for every time this has been suggested to me... I'd have maybe 10 dollars. Which is not a lot, but it's worrying that it's happened that many times.
 					</aside>
 				</section>
 				<section>
@@ -318,6 +355,8 @@
 					<aside class="notes">
 						<p>This is still being spec'd out, but there is an ARIA proposal for non-DOM-based screen reader notifications.</p>
 						<p>It would also potentially help resolve or at least standardize conflicts between notifications and user-initiated information. This depends on screen reader vendors implementing it, since they control the speech queue.</p>
+						<p>Also has the potential (emphasis on potential) for greater user customizability in screen reader behavior, e.g. between braille displays and speech output, or at a stretch, ear cons. This bit is still very much up in the air though.</p>
+						<p>If anyone has a complex or unique use case where you'd want to use this, I'd be interested to hear about it after.</p>
 					</aside>
 				</section>
 				
@@ -331,7 +370,7 @@
 					</p>
 				</section>
 				<section>
-					<p class="large">Only scream at developers</p>
+					<p class="large fancy-text">Only scream at developers</p>
 					<p class="fragment">(who abuse live regions)</p>
 				</section>
 				<section>
