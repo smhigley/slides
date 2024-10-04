@@ -31,7 +31,7 @@
 					<h1 class="sr-only">Would you like a live region?</h1>
 					<img src="./assets/live-region-title.jpg" alt="old-timey advertisement for snake oil, with the text updated to say: would you like a live region? Made by: the ARIA WG. in the center is a picture of someone in a top hat flanked by two stylized snakes. The head of the person is updated to be an avatar of Sarah Higley" width="95%" style="position: relative; top: -40px">
 					<aside class="notes">
-						<p>Hello, and welcome to my travelling ARIA medicine show. Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
+						<p>Hello, and welcome to my travelling ARIA medicine show. I've got a little of everything here -- some combobox roles, maybe you want some selection, or even a tooltip! Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
 					</aside>
 				</section>
 
@@ -56,7 +56,7 @@
 
 				<section>
 					<h2>Side effects may include:</h2>
-					<div class="grid2cols" style="max-width: 60%;">
+					<div class="grid2cols centered" style="max-width: 50%;">
 						<span class="fragment"><img src="./assets/swearing-icon-14.jpg" alt="swearing" width="100%"></span>
 						<span class="fragment"><img src="./assets/leaving.png" alt="leaving at a run" width="80%"></span>
 						<span class="fragment"><img src="./assets/dumpster-fire.png" alt="spontaneous combustion" width="60%"></span>
@@ -69,13 +69,13 @@
 
 				<section>
 					<h2>Not intended for:</h2>
-					<div class="grid3cols">
+					<div class="grid3cols centered">
 						<span><img src="./assets/baby.png" alt="young children" width="60%"></span>
 						<span><img src="./assets/elderly.png" alt="the elderly" width="70%"></span>
 						<span><img src="./assets/heart-attach.jpg" alt="person with a heart condition" width="50%"></span>
-						<span><img src="./assets/stress.jpg" alt="person experiencing stress" width="100%"></span>
-						<span><img src="./assets/anxiety.jpg" alt="person with anxiety" width="50%"></span>
-						<span><img src="./assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="90%"></span>
+						<span><img src="./assets/stress.jpg" alt="person experiencing stress" width="80%"></span>
+						<span><img src="./assets/anxiety.jpg" alt="person with anxiety" width="80%"></span>
+						<span><img src="./assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="75%"></span>
 					</div>
 					<aside class="notes">
 						<p>young children, the elderly, anyone with a heart condition, or who is experiencing stress, anxiety, or anyone who enjoys peace and quiet.</p>
@@ -134,7 +134,9 @@
 
 				<section>
 					<h3><code>role="alert"</code> insertion</h3>
-					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cItR8WNHesM?si=w3bpRKkufc9N1zEV&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<video controls="true">
+						<source data-src="./assets/jaws-form-errors.mp4" type="video/mp4" />
+					</video>
 					<aside class="notes">
 						This is the experience of having elements with role alert dynamically inserted into the DOM as you move focus. Maybe not ideal, but it works.
 					</aside>
@@ -147,11 +149,21 @@
 				</section>
 
 				<section>
-					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7A0I-2Y_dU4?si=xvDaapZGuBjQoc-W&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<video controls="true">
+						<source data-src="./assets/nvda-download-bad.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						BAD EXAMPLE
+					</aside>
 				</section>
 
 				<section>
-					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1i_Tm_oMgys?si=78jyE1G_-9Mm7IjQ&autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<video controls="true">
+						<source data-src="./assets/nvda-download-good.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						Slowed down the speed of updates to make this clearer.
+					</aside>
 				</section>
 
 				<section>
@@ -190,8 +202,8 @@
 				<section>
 					<h3>Don't worry!</h3>
 					<p class="fancy-text">Dr. ARIA's patented live regions can fix every ailment!</p>
-					<p>(just apply debouncing based on typing!)</p>
 					<aside class="notes">
+						<p>(just apply debouncing based on typing!)</p>
 						<p>sometimes live regions can make users bounce out of their chair, which is why you sometimes need to debounce.</p>
 						<p>note: you could also just do this with a live region, depending on your specific needs. Sometimes live regions are NOT the answer. Don't worry, Dr. ARIA has a range of products available for purchase.</p>
 					</aside>
@@ -291,9 +303,11 @@
 					<img src="./assets/wizard-oil.webp" alt="old advertisement for hamlin's wizard oil. For some inexplicable reason there is a giant elephant in the middle of a street, with a man followed by two clowns painting the words Hamlin's wizard oil - cures all pain in man or beast on the elephant's back. A strange and chaotic parade is also happening on the street for no clear reason.">
 				</section>
 				<section>
-					<p class="large">Space out loading announcements</p>
-					<iframe width="480" height="550" src="https://www.youtube-nocookie.com/embed/W2GhbjbgsTc?autoplay=0&showinfo=0&controls=0&modestbranding=1" title="YouTube video of JAWS navigating form errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<video controls="true" width="55%">
+						<source data-src="./assets/chat-loading-announcements.mp4" type="video/mp4" />
+					</video>
 					<aside class="notes">
+						<p>TWO Examles: first: what is a cat, then why is a cat, with different lengths of loading.</p>
 						<p>There may be semi-frequent visual updates to loading text on the screen, but that is less disruptive than having a live region fire. Also be careful of too much constant visual change.</p>
 						<p>Loading updates should be every 5 seconds, not based on visual changes. Re-announce the same text if needed, if there are no visual changes.</p>
 						<p>positive feedback to this cadence in user research. could potentially consider a setting to customize it, but that is low priority.</p>
@@ -320,9 +334,11 @@
 				</section>
 				<section>
 					<p class="large">It can be good!</p>
-					<blockquote>“I like it when it does that [reading the message text]! Then I don’t have to look around. That’s really what you’d like it to do, right, is just read it automatically so I don’t have to look around.” - Jennifer
-					</blockquote>
-					<blockquote>“I really liked whenever I pressed enter, you know, I liked how it said “generating reply, generating reply, still generating reply, that part was actually pretty cool. And I also liked how it actually read out the response — the entire response.” - Miguel</blockquote>
+					<div class="grid2cols">
+						<blockquote>“That’s really what you’d like it to do, right, is just read it automatically so I don’t have to look around.” - Jennifer
+						</blockquote>
+						<blockquote>“I really liked whenever I pressed enter, you know, I liked how it said “generating reply, generating reply, still generating reply, that part was actually pretty cool. And I also liked how it actually read out the response — the entire response.” - Miguel</blockquote>
+					</div>
 					<aside class="notes">
 						One of the most consistent pieces of feedback on the chat user studies I've run is that screen reader users really like the ability to hear loading updates / confirmation that something happened, and listen to the entire message text without moving focus from the input.
 					</aside>
@@ -390,7 +406,7 @@
 				</section>
 				<section>
 					<h2>Thank you!</h2>
-					<p class="large">Slides: (url)</p>
+					<p class="large">Slides: <a href="https://smhigley.github.io/slides/have-a-notification/">https://smhigley.github.io/slides/have-a-notification/</a></p>
 				</section>
 			</div>
 		</div>

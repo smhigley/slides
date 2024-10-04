@@ -18,7 +18,7 @@
 .reveal {
 	position: relative;
 	background-color: #e3d0a8ff;
-	font-family: Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif; 
+	font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;  
 }
 
 .reveal::before {
@@ -87,8 +87,9 @@
 	font-size: 0.8em;
 }
 
-blockquote {
+.reveal blockquote {
 	text-align: left;
+	background-color: rgba(255,255,255,0.5);
 }
 
 .reveal section .framed {
@@ -198,8 +199,14 @@ blockquote {
 	margin: 0 auto;
 }
 
-.grid2cols > *,
-.grid3cols > * {
+.grid2cols.centered > *,
+.grid3cols.centered > * {
 	align-self: center;
 	justify-self: center;
+}
+
+.grid2cols > blockquote,
+.grid3cols > blockquote {
+	width: 90%;
+	font-size: 0.8em;
 }
