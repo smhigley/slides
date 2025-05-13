@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Have a notification</title>
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../reveal/css/theme/serif.css">
+		<link rel="stylesheet" href="../../reveal/plugin/accessibility/helper.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+		<link rel="stylesheet" href=".../assets/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Intro: be a snake oil salesman -->
+				<section>
+					<h1 class="sr-only">Would you like a live region?</h1>
+					<img src="../assets/live-region-title.jpg" alt="old-timey advertisement for snake oil, with the text updated to say: would you like a live region? Made by: the ARIA WG. in the center is a picture of someone in a top hat flanked by two stylized snakes. The head of the person is updated to be an avatar of Sarah Higley" width="95%" style="position: relative; top: -40px">
+					<aside class="notes">
+						<p>Hello, and welcome to my travelling ARIA medicine show. I've got a little of everything here -- some combobox roles, maybe you want some selection, or even a tooltip! Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Ingredients</h2>
+					<ol class="large">
+						<li class="fancy-text">The Pitch</li>
+						<li class="fancy-text">Practical Examples</li>
+						<li class="fancy-text">Testing</li>
+					</ol>
+					<aside class="notes">
+						<p>(just apply debouncing based on typing!)</p>
+						<p>sometimes live regions can make users bounce out of their chair, which is why you sometimes need to debounce.</p>
+						<p>note: you could also just do this with a live region, depending on your specific needs. Sometimes live regions are NOT the answer. Don't worry, Dr. ARIA has a range of products available for purchase.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Do you:</h2>
+					<ul class="large">
+						<li>Like using all caps?</li>
+						<li>Sometimes wish you could yell specifically at people using a screen reader?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="sr-only">Try Dr. Aria's Live Regions</h2>
+					<img src="../assets/try-dr-aria.jpg" alt="old-timey quack patent medicine add showing 4 adults and 2 chilren sitting around a table and passing around boxes of medicine, and in the foreground are a bunch of medicine boxes with a lot of writing, including things like smart weed, water pepper, and a cure for chronic weakness and female complaints." width="100%" style="position: relative; top: -40px">
+					<aside class="notes">
+						<p>Hello, and welcome to my travelling ARIA medicine show. Have you ever experienced any of the following symptoms: hating your users, wishing you could take someone by the shoulders and yell at them, enjoying listening to a podcast while reading, talking during movies — you might like… LIVE REGIONS!</p>
+					</aside>
+					<aside class="notes">
+						Results not guaranteed, 
+					</aside>
+				</section>
+
+				<section>
+					<h2>Side effects may include:</h2>
+					<div class="grid2cols centered" style="max-width: 50%;">
+						<span class="fragment"><img src="../assets/swearing-icon-14.jpg" alt="swearing" width="100%"></span>
+						<span class="fragment"><img src="../assets/leaving.png" alt="leaving at a run" width="80%"></span>
+						<span class="fragment"><img src="../assets/dumpster-fire.png" alt="spontaneous combustion" width="60%"></span>
+						<span class="fragment"><img src="../assets/middle-finger.jpg" alt="flipping the bird" width="80%"></span>
+					</div>
+					<aside class="notes">
+						<p>side effects may include: users swearing at their computers, abandoning your app, spontaneous combustion, and developing a deep personal hatred of you, specifically.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Not intended for:</h2>
+					<div class="grid3cols centered">
+						<span><img src="../assets/baby.png" alt="young children" width="60%"></span>
+						<span><img src="../assets/elderly.png" alt="the elderly" width="70%"></span>
+						<span><img src="../assets/heart-attach.jpg" alt="person with a heart condition" width="50%"></span>
+						<span><img src="../assets/stress.jpg" alt="person experiencing stress" width="80%"></span>
+						<span><img src="../assets/anxiety.jpg" alt="person with anxiety" width="80%"></span>
+						<span><img src="../assets/noise.jpg" alt="anyone who doesn't like getting shouted at" width="75%"></span>
+					</div>
+					<aside class="notes">
+						<p>young children, the elderly, anyone with a heart condition, or who is experiencing stress, anxiety, or anyone who enjoys peace and quiet.</p>
+					</aside>
+				</section>
+
+				<section>
+					<p class="large fancy-text">&lt; pause for tomato throwing &gt;</p>
+					<aside class="notes">
+						<p>ok, okay, OK! Fine, I've just been made aware that I'm not allowed to use this platform to sell things to you.</p>
+						<p>(But, you know, if you're interested, see me afterwards.)</p>
+					</aside>
+				</section>
+
+				<!-- Part 2: more sober examples of using live regions -->
+				<section>
+					<h2>What is a notification?</h2>
+					<div class="fragment fade-up notification">
+						<svg fill="currentColor" class="___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.68 2.79a1.5 1.5 0 0 1 2.64 0l6.5 12A1.5 1.5 0 0 1 16.5 17h-13a1.5 1.5 0 0 1-1.32-2.21l6.5-12ZM10.5 7.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4Zm.25 6.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z" fill="currentColor"></path></svg>
+						Hi! It me!
+					</div>
+					<aside class="notes">
+						<p>It has come to my attention that "some" of you want to be "responsible" and "do the right thing"</p>
+						<p>So, under great duress, let's go over some definitions</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>What is a live region?</h2>
+					<p>Is it a notification?</p>
+					<div class="fragment fade-up notification">
+						<svg width="200" height="200" viewBox="0 0 1088 1024" fill="#3d3d3d" style="width:1em;height:1em"><path d="M890.040 922.040c-12.286 0-24.566-4.686-33.942-14.056-18.744-18.746-18.744-49.136 0-67.882 87.638-87.642 135.904-204.16 135.904-328.1 0-123.938-48.266-240.458-135.904-328.098-18.744-18.746-18.744-49.138 0-67.882s49.138-18.744 67.882 0c105.77 105.772 164.022 246.4 164.022 395.98s-58.252 290.208-164.022 395.98c-9.372 9.372-21.656 14.058-33.94 14.058zM719.53 831.53c-12.286 0-24.566-4.686-33.942-14.056-18.744-18.744-18.744-49.136 0-67.882 131.006-131.006 131.006-344.17 0-475.176-18.744-18.746-18.744-49.138 0-67.882 18.744-18.742 49.138-18.744 67.882 0 81.594 81.59 126.53 190.074 126.53 305.466 0 115.39-44.936 223.876-126.53 305.47-9.372 9.374-21.656 14.060-33.94 14.060v0zM549.020 741.020c-12.286 0-24.568-4.686-33.942-14.058-18.746-18.746-18.746-49.134 0-67.88 81.1-81.1 81.1-213.058 0-294.156-18.746-18.746-18.746-49.138 0-67.882s49.136-18.744 67.882 0c118.53 118.53 118.53 311.392 0 429.922-9.372 9.368-21.656 14.054-33.94 14.054z"></path><path d="M416.006 960c-8.328 0-16.512-3.25-22.634-9.374l-246.626-246.626h-114.746c-17.672 0-32-14.326-32-32v-320c0-17.672 14.328-32 32-32h114.746l246.626-246.628c9.154-9.154 22.916-11.89 34.874-6.936 11.958 4.952 19.754 16.622 19.754 29.564v832c0 12.944-7.796 24.612-19.754 29.564-3.958 1.64-8.118 2.436-12.24 2.436z"></path></svg>
+						Hi! It me!
+					</div>
+					<aside class="notes">
+						<p>Yes! A live region is a notification, but more specifically for screen reader users (or rather: a bit more complicated, braille too. Sort of.)</p>
+					</aside>
+				</section>
+
+				<section>
+					<ul>
+						<li><code data-noescape class="html">aria-live="assertive"</code></li>
+						<li><code data-noescape class="html">aria-live="polite"</code></li>
+						<li><code data-noescape class="html">role="alert"</code></li>
+						<li><code data-noescape class="html">role="status"</code></li>
+					</ul>
+					<aside class="notes">
+						<p>The other stuff doesn't matter. No, really. Don't sweat it. It's not _relevant_ (pun pun)</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Practicum</h2>
+					<img src="../assets/form-errors.png" class="framed" alt="Sample shipping form with three fields: name, street address, and city. The first two fields show red form errors marked up with arrows pointing to them" style="max-width: 55%;">
+				</section>
+
+				<section>
+					<h3><code>role="alert"</code> insertion</h3>
+					<video controls="true">
+						<source data-src="../assets/jaws-form-errors.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						This is the experience of having elements with role alert dynamically inserted into the DOM as you move focus. Maybe not ideal, but it works.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Loading...</h3>
+					<img src="../assets/loading-screenshot.png" alt="screenshot of a downloads dialog with a visual progressbar and text that says there have been 25 files downloaded">
+					<p><a href="https://stackblitz.com/edit/e4j54u?file=package.json">Demo code (before)</a> | <a href="https://stackblitz.com/edit/e4j54u-jy6k8w?file=src%2Fexample.tsx">Demo code (after)</a></p>
+				</section>
+
+				<section>
+					<video controls="true">
+						<source data-src="../assets/nvda-download-bad.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						BAD EXAMPLE
+					</aside>
+				</section>
+
+				<section>
+					<video controls="true">
+						<source data-src="../assets/nvda-download-good.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						Slowed down the speed of updates to make this clearer.
+					</aside>
+				</section>
+
+				<section>
+					<label for="example-input1">Find notification terms</label>
+					<div><input type="text" id="example-input1" class="terms-input" data-results="example-results1"></div>
+					<ul id="example-results1" class="terms-list"></ul>
+					<aside class="notes">
+						<p>REMEMBER: Type into the actual slide, not the notes.</p>
+						<p>Just to hammer this home a little more, what if we go for a visual metaphor. This is a filter/results pair, another good potential use for a live region</p>
+						<p>Because I can see, this works really well. As I type, I can immediately see feedback on what results are returned, and catch any typos.</p>
+					</aside>
+				</section>
+
+				<section>
+					<label for="example-input2">Find notification terms</label>
+					<div><input type="text" id="example-input2" class="terms-input" data-results="example-results2"></div>
+					<ul id="example-results2" class="terms-list" aria-live="assertive"></ul>
+					<div class="cat-list" aria-hidden="true"></div>
+					<aside class="notes">
+						<p>WARNING: there will be flying cats across this screen.</p>
+						<p>Now I've added a small visual aid to show what it's like when you have an overly verbose, too frequent live region on the page. It interrupts everything, is extremely distracting, and can prevent you from perceiving what is going on with the UI control you want to interact with.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>But how do I apply live regions here? Help!</h3>
+					<div class="fragment fade-up">
+						<img src="../assets/snake-oil-bottle.png" alt="a old timey glass bottle with blue liquid, and the label says dr. jake dawson's liniment tonic, snake oil. 50 cents." width="25%" style="transform: rotate(-25deg) translate(-40%, -18%)">
+					</div>
+					<aside class="notes">
+						<p>Don't worry, I have the answer to everything, just as a responsible vendor of reputable products should.</p>
+						<p>No but actually -- you can't just batch updates, since that can still conflict with typing</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Don't worry!</h3>
+					<p class="fancy-text">Dr. ARIA's patented live regions can fix every ailment!</p>
+					<aside class="notes">
+						<p>(just apply debouncing based on typing!)</p>
+						<p>sometimes live regions can make users bounce out of their chair, which is why you sometimes need to debounce.</p>
+						<p>note: you could also just do this with a live region, depending on your specific needs. Sometimes live regions are NOT the answer. Don't worry, Dr. ARIA has a range of products available for purchase.</p>
+					</aside>
+				</section>
+
+				<section>
+					<pre><code data-trim data-noescape class="js">
+						function onInput(event) {
+							// cancel the timeout any time a user types
+							clearTimeout(id);
+
+							// start a new timeout to announce a message
+							// if the user stops typing
+							id = setTimeout(() => {
+								announce('10 results found');
+							}, 500);
+						}
+					</code></pre>
+				</section>
+
+				<section>
+					<label for="example-input3">Find notification terms</label>
+					<div><input type="text" id="example-input3" class="terms-input-fixed" data-results="example-results3"></div>
+					<ul id="example-results3" class="terms-list"></ul>
+					<div class="cat-list" aria-hidden="true"></div>
+					<div class="terms-live-region sr-only"></div>
+					<aside class="notes">
+						<p>There is a 500ms delay after the last user input before the live region -- er, cat -- fires. This is somewhat arbitrary, but did fine in a user study.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>It also works here!</h3>
+					<div class="grid2cols" style="background:#fff">
+						<img src="../assets/textarea-count-ok.png" alt="screenshot of a textarea with text asking to place an order for live regions, and a word count below the text, currently at 229 of 500.">
+						<img src="../assets/textarea-count-error.png" alt="screenshot of the same textarea with more text in it, the word count is now red and at 503 of 500, and there are red exclamation mark annotations scribbled over the screenshot.">
+					</div>
+					<aside class="notes">
+						<p>This is another common use case where you want to debounce error messages based on typing.</p>
+						<p>Based on a user study I did a while ago, I would recommend firing a live region when the user approaches the limite (e.g. at 10-20 characters remaining, depending on length), and when the user has surpassed the limit. Only after the 500ms typing throttle, of course.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>WARNING:<br> <span class="small">Please consult a doctor for any of the following:</span></h2>
+				</section>
+
+				<section>
+					<p class="large">More than one simultaneous loading region</p>
+					<img src="../assets/skeleton-loaders.png" alt="way too many skeleton loaders on a page, arranged in roughly 3 sections with about 8 rows of shimmering loaders each" width="65%">
+				</section>
+				<section>
+					<p class="large">Using a live region to communicate what a focus change already did.</p>
+					<aside class="notes">
+						<p>screen readers can only say one thing at a time, so live regions at the same time as a focus change will war with eachother.</p>
+						<p>You can't control when the user moves focus, but you should always avoid firing a live region together with a programmatic focus change.</p>
+						<p>Example: in a SPA, you should set focus to some part of the new content (maybe the top heading) when you navigate to a new route. Do not do this with live regions.</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Wrapping any type of input in a live region</p>
+					<aside class="notes">
+						<p>this actually happened, because the input changed an invalid value on blur, and someone had the bright idea to let people know by wrapping the input in a live region. Any guesses about what that does?</p>
+						<p>YES. It double-keyboard-echos, yay.</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Wrapping any major section of changing content in a live region</p>
+					<img src="../assets/catbot-chat-pane.png" alt="screenshot of a chat pane between you and CatBot. You asked what are cats, and CatBot replied with information on cats first being domesticated in ancient egypt." width="55%">
+					<aside class="notes">
+						<p>This really happened, several times.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>Side effects include:</h3>
+					<ul>
+						<li class="fragment fade-out">Headaches, nausea, dizzyness...</li>
+						<li class="fragment fade-in">No control over timing and frequency of updates</li>
+						<li class="fragment fade-in">No control over visual vs. announced verbosity</li>
+						<li class="fragment fade-in">No ability to filter out repetitive &amp; supplementary content</li>
+						<li class="fragment fade-in">Too many announcements that are too verbose</li>
+					</ul>
+					<aside class="notes">
+						Let's actually dive into this a bit more using a chat pane, because it's the perfect example of multiple complex
+					</aside>
+				</section>
+				<section>
+					<h2>Chatbots: a shallow dive</h2>
+					<img src="../assets/chat-loading-message.png" alt="screenshot of part of a chat UI. The sent message says what are cats, and there is a message with a loading bar saying generating reply... followed by a stop generating button. Below that is an input with placeholder text that says ask me anything about cats.">
+					<aside class="notes">
+						<p>Chat bots are great because they have a little of everything: asynchronous updates, loading/loaded states, multiple possible sources for announcements (e.g. a new chat at the same time as uploading a file), and the need for the live region text to differ from the visual text content.</p>
+						<p>Also this is a place where you absolutely need to have</p>
+					</aside>
+				</section>
+				<section>
+					<h3>Field testing <s>snake oil</s> live regions</h3>
+					<img src="../assets/wizard-oil.webp" alt="old advertisement for hamlin's wizard oil. For some inexplicable reason there is a giant elephant in the middle of a street, with a man followed by two clowns painting the words Hamlin's wizard oil - cures all pain in man or beast on the elephant's back. A strange and chaotic parade is also happening on the street for no clear reason.">
+				</section>
+				<section>
+					<video controls="true" width="55%">
+						<source data-src="../assets/chat-loading-announcements.mp4" type="video/mp4" />
+					</video>
+					<aside class="notes">
+						<p>TWO Examles: first: what is a cat, then why is a cat, with different lengths of loading.</p>
+						<p>There may be semi-frequent visual updates to loading text on the screen, but that is less disruptive than having a live region fire. Also be careful of too much constant visual change.</p>
+						<p>Loading updates should be every 5 seconds, not based on visual changes. Re-announce the same text if needed, if there are no visual changes.</p>
+						<p>positive feedback to this cadence in user research. could potentially consider a setting to customize it, but that is low priority.</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Be intentional about message text</p>
+					<div class="grid2cols">
+						<img src="../assets/catbot-single-message.png" alt="a single chat message containing the following: a cat avatar followed by the name CatBot, a generated from wikipedia tag, a block of message text about taming african wildcats, and a set of 5 icon buttons including copy, share, more actions, etc.">
+						<blockquote class="small" style="background:#fefefe;padding:0.25em">CatBot said: The earliest known indication for the taming of an African wildcat was excavated close by a human Neolithic grave in Shillourokambos, southern Cyprus, dating to about 7500-7200 BC.</blockquote>
+					</div>
+					<aside class="notes">
+						<p>When a message is loaded and fully inserted, include the full message text, but also only the message text with a "Person said:" prefix.</p>
+						<p>Do NOT include action buttons, etc.</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Do NOT wrap streaming content in a live region</p>
+					<img src="../assets/child-cocaine.webp" alt="an old advertisement for cocaine toothache drops for 15 cents, featuring two very young children playing outside.">
+					<aside class="notes">
+						<p>I've seen this in the wild (the streaming content thing, not the baby heroin pictured ono screen). JAWS got stuck in a loop constantly re-reading increasingly long snippets of the message text.</p>
+						<p>Also don't give heroin to babies, I guess</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">It can be good!</p>
+					<div class="grid2cols">
+						<blockquote>“That’s really what you’d like it to do, right, is just read it automatically so I don’t have to look around.” - Jennifer
+						</blockquote>
+						<blockquote>“I really liked whenever I pressed enter, you know, I liked how it said “generating reply, generating reply, still generating reply, that part was actually pretty cool. And I also liked how it actually read out the response — the entire response.” - Miguel</blockquote>
+					</div>
+					<aside class="notes">
+						One of the most consistent pieces of feedback on the chat user studies I've run is that screen reader users really like the ability to hear loading updates / confirmation that something happened, and listen to the entire message text without moving focus from the input.
+					</aside>
+				</section>
+				<section>
+					<p class="large">BUT. Live regions everywhere ≠ good</p>
+					<aside class="notes">
+						<p>Do not generalize this advice! This is a very considered application of live regions in a very specific scenario.</p>
+						<p>Do NOT NOT NOT use live regions to read everything that is happening in your page or app</p>
+					</aside>
+				</section>
+				<section>
+					<p class="large">Do NOT use live regions to build a custom in-page screen reader</p>
+					<aside class="notes">
+						if I had a dollar for every time this has been suggested to me... I'd have maybe 10 dollars. Which is not a lot, but it's worrying that it's happened that many times.
+					</aside>
+				</section>
+				<section>
+					<h3>Any sufficiently complex application should have central live region handling</h3>
+					<ul>
+						<li class="fragment">Handle batching back-to-back loading/loaded announcements</li>
+						<li class="fragment">Only need one live region node in the page</li>
+						<li class="fragment">Allows components to fire a live region on insertion</li>
+						<li class="fragment">Better testing and debugging</li>
+					</ul>
+					<aside class="notes">
+						<p>Genuinely one of the most painful parts of live regions is debugging them when something goes wrong. Doing this lets you abstract the DOM implementation and assert against a single stable function.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>Notification center</h3>
+					<img src="../assets/notification-center.png" alt="github notification center showing bell icon in the top bar and the page content is a notification inbox with two unread messages">
+					<aside class="notes">
+						<p>If you're buliding something with notifications that are persistently relevant (if you have toasts, this is a good indication that you are), strongly consider building a notification center.</p>
+						<p>This is a heavy lift, but people WILL miss toasts. Screen reader users will miss live regions sometimes even if you do everything right, and magnification users especially will miss toasts.</p>
+						<p>Let people review things, and take the stress away.</p>
+						<p>Also you can potentially add settings here, for example around the frequency and verbosity of loading updates in chat.</p>
+					</aside>
+				</section>
+				<section>
+					<h2>ariaNotify</h2>
+					<pre><code data-trim data-noescape class="js">
+						ariaNotify('Help my web page is yelling at me');
+					</code></pre>
+					<aside class="notes">
+						<p>This is still being spec'd out, but there is an ARIA proposal for non-DOM-based screen reader notifications.</p>
+						<p>It would also potentially help resolve or at least standardize conflicts between notifications and user-initiated information. This depends on screen reader vendors implementing it, since they control the speech queue.</p>
+						<p>Also has the potential (emphasis on potential) for greater user customizability in screen reader behavior, e.g. between braille displays and speech output, or at a stretch, ear cons. This bit is still very much up in the air though.</p>
+						<p>If anyone has a complex or unique use case where you'd want to use this, I'd be interested to hear about it after.</p>
+					</aside>
+				</section>
+				
+				<!-- Conclusion -->
+				<section>
+					<h2>Remember:</h2>
+					<p class="large">
+						<code data-trim data-noescape class="js">
+							ariaNotify('do not SCREAM at your users');
+						</code>
+					</p>
+				</section>
+				<section>
+					<p class="large fancy-text">Only scream at developers</p>
+					<p class="fragment">(who abuse live regions)</p>
+				</section>
+				<section>
+					<h2>Thank you!</h2>
+					<p class="large">Slides: <a href="https://smhigley.github.io/slides/have-a-notification/workshop">https://smhigley.github.io/slides/have-a-notification/workshop</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+		<script src="../assets/custom.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: '../../reveal/plugin/markdown/marked.js' },
+					{ src: '../../reveal/plugin/markdown/markdown.js' },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/accessibility/helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+				history: true, // Transition style
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'fade'
+			});
+		</script>
+	</body>
+</html>
