@@ -12,7 +12,7 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
-		<link rel="stylesheet" href=".../assets/custom.css">
+		<link rel="stylesheet" href="../assets/custom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -383,6 +383,53 @@
 					</aside>
 				</section>
 				<section>
+					<h2>Testing</h2>
+					<img src="../assets/mays.jpg" alt="A three-tier array of patent medicine bottles sold at May's in Pittsburg PA. There are soaps, salves, pills, syrups, and more. It appears to be a newspaper ad." width="70%" style="margin-top: -2%">
+					<aside class="notes">
+						<p>Speaking of having better testing and debugging, let's examine that a bit more.</p>
+						<p>With accessibility in general, the best laid plans often go astray, which is trebly so for live regions.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>First: authoring error?</h3>
+					<p>Check the following:</p>
+					<ul>
+						<li class="fragment">The live region exists on the page <span class="fragment">before text is added</span></li>
+						<li class="fragment">Is there a simultaneous conflicting event, e.g. a focus change?</li>
+						<li class="fragment">Is the live region outside an open dialog?</li>
+						<li class="fragment">Is the live region actually updating its inner text?</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Second: browser or screen reader error?</h3>
+					<ul>
+						<li class="fragment">Check the screen reader speech log for immediately overridden text</li>
+						<li class="fragment">Advanced: check the API events</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Live debugging: MutationObserver</h4>
+					<pre><code data-trim data-noescape class="js">
+						function observeElement(element) {
+							const config = {
+								attributes: true,
+								childList: true,
+								subtree: true
+							};
+							const callback = function(mutationsList, observer) {
+							  for(let mutation of mutationsList) {
+								  if (mutation.type === 'childList') {
+									const additions = mutation.addedNodes;
+									const removals = mutation.removedNodes;
+						// etc.
+					</code></pre>
+					<p>code: <a href="https://gist.github.com/smhigley/75fa44df8218d62714ea6df5bab353b5">MutationObserver gist</a></p>
+				</section>
+				<section>
+					<h2>Closing thoughts</h2>
+					<img src="../assets/closing-soapbox.jpg" alt="an illustration of a man with white sideburns and a grey suit and top hat gestures grandly at a tiny medicine bottle with his mouth open comically">
+				</section>
+				<section>
 					<h3>Notification center</h3>
 					<img src="../assets/notification-center.png" alt="github notification center showing bell icon in the top bar and the page content is a notification inbox with two unread messages">
 					<aside class="notes">
@@ -420,7 +467,8 @@
 				</section>
 				<section>
 					<h2>Thank you!</h2>
-					<p class="large">Slides: <a href="https://smhigley.github.io/slides/have-a-notification/workshop">https://smhigley.github.io/slides/have-a-notification/workshop</a></p>
+					<p class="large">Slides: <a href="https://smhigley.github.io/slides/have-a-notification/workshop">smhigley.github.io/slides/have-a-notification/workshop</a></p>
+					<p class="large">Code examples: <a href="https://github.com/smhigley/notification-workshopp">github.com/smhigley/notification-workshop</a></p>
 				</section>
 			</div>
 		</div>
